@@ -236,6 +236,58 @@ a.rr:hover{border-color:var(--live);background:var(--live-tint)}
   border:1px solid var(--done);border-radius:6px;padding:7px 12px;cursor:pointer;align-self:flex-start}
 .accept:hover{filter:brightness(1.05)}
 
+/* ---- PMP analysis ---- */
+.subh{font-size:15px;font-weight:600;letter-spacing:-.015em;margin:0 0 4px}
+.subp{font-size:13.5px;color:var(--ink-soft);font-weight:300;max-width:68ch;margin:0 0 12px}
+.doms{display:flex;flex-direction:column;gap:17px}
+.dom{display:flex;flex-direction:column;gap:8px}
+.domh{display:flex;align-items:baseline;gap:10px}
+.domh b{font-size:15px;font-weight:600;letter-spacing:-.015em}
+.domh .pct{font-family:var(--mono);font-size:13px;color:var(--live);margin-left:auto;
+  font-variant-numeric:tabular-nums}
+.dombar{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.dombar i{display:block;height:100%;background:var(--live)}
+.dom ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:6px;
+  font-size:13.5px;color:var(--ink-mid);font-weight:300;line-height:1.5}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:7px;
+  padding:14px 16px;background:var(--live-tint);border-radius:9px}
+.chain b{font-size:13.5px;font-weight:600;background:var(--card);padding:4px 10px;
+  border-radius:6px;white-space:nowrap}
+.chain i{font-style:normal;color:var(--live);font-family:var(--mono);font-size:13px}
+.conf.confhead{background:var(--sunk);border-left-color:var(--ink-faint)}
+.gcol ul li i{font-style:italic}
+
+.ladder{background:var(--card);border:1px solid var(--rule-soft);border-radius:9px;
+  padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.ladder > .lb,.mconf > .lb,.gcol > .lb{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-faint);display:block}
+.ladsteps{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0;
+  counter-reset:lad}
+.ladsteps li{counter-increment:lad;display:flex;gap:12px;align-items:baseline;
+  padding:9px 0;border-top:1px solid var(--rule-soft)}
+.ladsteps li:first-child{border-top:none}
+.ladsteps li::before{content:counter(lad);flex:0 0 20px;font-family:var(--mono);font-size:11px;
+  color:var(--live)}
+.ladsteps li b{font-size:13.5px;font-weight:600;flex:0 0 128px}
+.ladsteps li em{font-style:normal;font-size:13px;color:var(--ink-mid);font-weight:300}
+.ladnote{font-size:12.5px;color:var(--ink-faint);font-weight:300;line-height:1.55;
+  border-top:1px solid var(--rule-soft);padding-top:10px}
+.mconf{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.conf{border-left:2px solid var(--learn);background:var(--learn-tint);border-radius:0 8px 8px 0;
+  padding:12px 14px;display:flex;flex-direction:column;gap:5px}
+.conf b{font-size:13.5px;font-weight:600}
+.conf p{font-size:13.5px;color:var(--ink-mid);font-weight:300;line-height:1.55;max-width:72ch}
+
+.gains{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gcol{border-radius:9px;padding:14px 16px;display:flex;flex-direction:column;gap:9px;
+  border:1px solid var(--rule-soft);background:var(--card)}
+.gcol.yes{background:var(--done-tint);border-color:var(--done-line)}
+.gcol.no{background:var(--flag-tint);border-color:transparent}
+.gcol ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:7px;
+  font-size:13.5px;color:var(--ink-mid);line-height:1.5}
+
+@media (max-width:720px){ .gains{grid-template-columns:1fr} .ladsteps li{flex-wrap:wrap} }
+
 /* ---- PMP track ---- */
 .elig{display:flex;flex-direction:column;gap:9px;background:var(--card);
   border:1px solid var(--rule-soft);border-radius:9px;padding:14px 16px}
@@ -707,6 +759,40 @@ footer code{font-family:var(--mono);font-size:11.5px}
     </section>
 
     <div class="callout" id="pm-note"></div>
+
+    <section class="d-sec">
+      <header>
+        <h2>PMP xây kỹ năng gì</h2>
+        <p>Ba domain của Examination Content Outline, với trọng số theo tài liệu cho kỳ 2026. Đây là bản đồ đầy đủ những gì chương trình bao phủ — không lọc theo vai trò nào.</p>
+      </header>
+      <div class="doms" id="pm-domains"></div>
+      <div class="callout" id="pm-mix"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Mindset — phần thật sự được kiểm tra</h2>
+        <p>Đề thi cho bốn đáp án đều nghe hợp lý. Thứ phân biệt chúng không phải kiến thức mà là một hệ giá trị nhất quán về việc một PM nên hành xử thế nào. Đây cũng là phần duy nhất còn giá trị nếu không bao giờ dự thi.</p>
+      </header>
+      <div class="ladder" id="pm-ladder"></div>
+      <h3 class="subh" style="margin-top:22px">Thứ tự ưu tiên khi mâu thuẫn</h3>
+      <p class="subp">Khi hai giá trị xung đột, thứ tự này quyết định. Nó không bao giờ đảo.</p>
+      <div class="chain" id="pm-chain"></div>
+      <h3 class="subh" style="margin-top:22px">Những đáp án gần như luôn sai</h3>
+      <p class="subp">Danh sách này đọc ngược lại chính là một danh mục cách quản lý tồi — giá trị của nó vượt ra ngoài phòng thi.</p>
+      <div class="scroll"><table id="pm-wrong"><thead><tr>
+        <th>Dạng hành vi</th><th>Vì sao sai theo PMI</th>
+      </tr></thead><tbody></tbody></table></div>
+      <div class="mconf" id="pm-conflict"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Học xong thì đạt được gì</h2>
+        <p>Tách rõ hai cột, vì phần lớn thất vọng về PMP đến từ việc kỳ vọng những thứ ở cột bên phải.</p>
+      </header>
+      <div class="gains" id="pm-gains"></div>
+    </section>
 
     <section class="d-sec">
       <header>
@@ -1335,7 +1421,7 @@ var SOURCES = [
   items:[["pmbok8_process_matrix.html","Ma trận 7×5 — tra nhanh quy trình nào thuộc nhóm nào"],
          ["pmbok8_process_giai_thich.html","Từ điển 40 quy trình — tra khi gặp khái niệm lạ"],
          ["pmbok8_ghi_chu.md","Sổ ghi cá nhân. Dòng “kinh nghiệm dẫn dắt” cần khớp với số tháng thật, hoặc ghi rõ quyết định hoãn PMP"],
-         ["pmp_lo_trinh_30_ngay.md","103 KB, mới điền Day 1/30. Đóng băng, không xoá"],
+         ["pmp_lo_trinh_30_ngay.md","103 KB — nhịp học hằng ngày. Khi hoãn thi thì đóng băng, không xoá"],
          ["PMBOK® Guide 8th Edition.pdf","10 MB — tra cứu, không đọc tuần tự"],
          ["PMP-Examination-Content-Outline-2026.pdf","Chỉ có nghĩa nếu quay lại thi"]],
   sk:["risk-register","stakeholder","change-control","dependencies","commitment"]},
@@ -1535,6 +1621,98 @@ var PMP_BOOKS = [
  {t:"Ma trận 7×5 và từ điển quy trình",n:"Hai file HTML anh tự dựng — bản tra cứu tốt nhất trong cả folder pmp.",p:"pmp/pmbok8_process_matrix.html"},
  {t:"Lộ trình 30 ngày (file gốc)",n:"Nơi viết reflection dài cho từng ngày. Tab này chỉ theo dõi trạng thái, không thay thế nó.",p:"pmp/pmp_lo_trinh_30_ngay.md"}
 ];
+
+/* ---------- PMP: phân tích mục đích và thu hoạch ---------- */
+var PMP_DOMAINS = [
+ {n:"People",w:33,items:[
+  "Dẫn dắt mà không có quyền hành chính — thuyết phục, xây đồng thuận, tạo động lực",
+  "Xây và duy trì team: quy tắc làm việc chung, team charter, phát triển năng lực",
+  "Xử lý xung đột — nhận diện nguồn gốc, chọn cách xử lý theo bối cảnh",
+  "Đàm phán với bên liên quan và nhà cung cấp",
+  "Huấn luyện và cố vấn thành viên; hỗ trợ team làm việc phân tán",
+  "Servant leadership: gỡ rào cản thay vì ra lệnh"]},
+ {n:"Process",w:41,items:[
+  "Phạm vi: thu thập yêu cầu, định nghĩa, kiểm soát thay đổi phạm vi",
+  "Tiến độ: chia việc, ước lượng, đường găng, kiểm soát tiến độ",
+  "Chi phí: ước lượng, lập ngân sách, kiểm soát bằng earned value",
+  "Rủi ro: nhận diện, phân tích định tính và định lượng, ứng phó, giám sát",
+  "Chất lượng: lập kế hoạch, đảm bảo, kiểm soát",
+  "Truyền thông và stakeholder: xác định, phân loại, lập kế hoạch tương tác",
+  "Mua sắm: chiến lược, loại hợp đồng, tiêu chí chọn nhà cung cấp",
+  "Tích hợp: project charter, kế hoạch tổng thể, change control tích hợp, đóng dự án",
+  "Chọn cách tiếp cận — predictive, agile, hybrid — theo bối cảnh dự án"]},
+ {n:"Business Environment",w:26,items:[
+  "Tuân thủ: pháp lý, quy định ngành, chính sách nội bộ",
+  "Giá trị kinh doanh: business case, benefit realization, đo giá trị đã giao",
+  "Thay đổi tổ chức: đánh giá tác động, dẫn dắt chuyển đổi",
+  "Môi trường bên ngoài: thị trường, công nghệ, quy định thay đổi giữa dự án",
+  "Tính bền vững và trách nhiệm xã hội của dự án",
+  "Vai trò của AI trong quản lý dự án — mới trong đợt cập nhật gần nhất"]}
+];
+
+var PMP_MIX = "Khoảng <b>40% nội dung theo hướng predictive</b> — lập kế hoạch trước, quản theo baseline — và <b>60% theo hướng adaptive hoặc hybrid</b>. Đây là thay đổi lớn so với hình dung cũ về PMP như một chứng chỉ thác nước: ai học PMP bây giờ sẽ dành phần lớn thời gian với Scrum, Kanban, backlog và retrospective.";
+
+var PMP_PRIORITY = ["An toàn &amp; đạo đức","Tuân thủ pháp lý","Giá trị khách hàng","Chất lượng","Tiến độ &amp; chi phí"];
+
+var PMP_WRONG = [
+ ["Leo thang lên sponsor ngay lập tức","Chưa dùng hết thẩm quyền mình đang có"],
+ ["Thêm người giám sát, lập thêm ban","Tăng ma sát thay vì gỡ ma sát"],
+ ["Bỏ qua quy trình vì gấp","Deadline không tạo ra ngoại lệ"],
+ ["Tự quyết việc vượt thẩm quyền","Vi phạm governance — sai ngang với leo thang quá sớm"],
+ ["Phớt lờ, chờ xem sao","PM không bị động"],
+ ["Thay người hoặc sa thải ngay","Chưa thử huấn luyện và kèm cặp"],
+ ["Đổi baseline khi chưa gỡ nguyên nhân gốc","Hợp thức hoá thất bại thay vì xử lý nó"],
+ ["Thêm người hoặc tăng ca làm phản xạ đầu","Chưa phân tích nguyên nhân"],
+ ["Trách một cá nhân","Xử lý hệ thống, không xử lý người"],
+ ["Làm thêm ngoài yêu cầu cho khách hài lòng","Gold plating — cũng là một dạng mất kiểm soát phạm vi"],
+ ["Nhượng bộ yêu cầu ngoài scope","Scope creep, dù thiện chí"],
+ ["Đáp án chứa “always”, “never”, “immediately”","Tuyệt đối hoá gần như luôn sai trong bối cảnh dự án"]
+];
+
+var PMP_LADDER = {
+ t:"Thang bậc hành động — đáp án đúng thường là bậc thấp nhất chưa thử",
+ steps:[
+  {n:1,t:"Hiểu vấn đề",d:"Thu thập dữ liệu, phân tích, tìm nguyên nhân gốc"},
+  {n:2,t:"Nói với người",d:"Nói chuyện trực tiếp với cá nhân liên quan"},
+  {n:3,t:"Đưa ra team",d:"Họp team, cùng phân tích, cùng tìm giải pháp"},
+  {n:4,t:"Dùng quy trình",d:"Issue log, risk register, change control"},
+  {n:5,t:"Leo thang",d:"Sponsor hoặc cấp trên — CHỈ khi vượt thẩm quyền"}
+ ],
+ note:"Ba câu tự vấn khi phân vân: tôi đã hiểu nguyên nhân gốc chưa · việc này có trong thẩm quyền tôi không · đáp án nào chủ động và phục vụ team nhiều hơn."
+};
+
+var PMP_CONFLICT = [
+ {t:"Mindset này giả định một thế giới cụ thể",
+  d:"Nó giả định có sponsor, có governing body, có baseline được duyệt, có ranh giới thẩm quyền rõ ràng, và có một dự án với ngày kết thúc — thế giới của tổ chức lớn, dự án có hợp đồng, ngành có quy định chặt. Ở startup hoặc đội sản phẩm giao hàng liên tục, một phần nguyên tắc mất chỗ bám. Bốn chỗ va rõ nhất, kèm bản dịch đúng:",head:1},
+ {t:"“Mọi thay đổi qua change control, không có ngoại lệ”",
+  d:"Đúng trong phòng thi và trong tổ chức có PMO. Ở product company giao hàng liên tục, áp nguyên văn sẽ thành quan liêu. Bản dịch đúng: change control áp cho <b>cam kết đã công bố</b>, không áp cho từng thay đổi công việc."},
+ {t:"“Đổi baseline là bước cuối, sau khi đã thử gỡ vấn đề”",
+  d:"Giả định có một baseline lập trước toàn bộ. Ở product team, lập lại kế hoạch mỗi quý là bình thường, không phải hợp thức hoá thất bại. Giữ tinh thần “gỡ vấn đề gốc trước”, bỏ ý “đổi kế hoạch là thất bại”."},
+ {t:"“PM không làm thay việc kỹ thuật của team”",
+  d:"Chuyển được, và đúng là kỹ năng lõi <em>Work Hoarding</em>. Nhưng PM rời hẳn khỏi nội dung kỹ thuật thì được, còn EM thì không: EM mất phán đoán kỹ thuật là mất uy tín với chính team mình. Ranh giới đúng là ngừng <b>thực thi</b>, không ngừng <b>hiểu</b>."},
+ {t:"“Leo thang là bậc gần cuối”",
+  d:"Đúng với leo thang kiểu cầu cứu. Nhưng ở product company, đưa vấn đề lên sớm <b>kèm phương án</b> thường là hành vi được đánh giá cao, không phải dấu hiệu bất lực. Phân biệt: leo thang để xin quyết định khác với leo thang để xin cứu."}
+];
+
+var PMP_GAINS = {
+ yes:[
+  "Một <b>khung ra quyết định</b> dùng được ngay, độc lập với ngành",
+  "<b>Từ vựng chuẩn</b> để làm việc với PMO, tài chính, pháp chế, nhà cung cấp",
+  "Kỷ luật <b>rủi ro và stakeholder</b> có cấu trúc — thứ rất ít người tự hình thành",
+  "Một <b>khung đạo đức nghề nghiệp</b> viết thành lời, có thể dẫn chiếu khi bị ép",
+  "Bộ <b>tài liệu mẫu</b> đầy đủ cho gần như mọi việc quản lý dự án",
+  "Một <b>tín hiệu tuyển dụng</b> có giá trị thật ở đúng ngành và đúng khu vực",
+  "Tư cách hội viên và mạng lưới PMI địa phương, nếu chịu dùng"
+ ],
+ no:[
+  "<b>Kinh nghiệm.</b> PMP xác nhận kinh nghiệm đã có, không tạo ra kinh nghiệm mới",
+  "<b>Uy tín với team.</b> Uy tín đến từ việc gỡ được vấn đề thật, không từ chữ viết sau tên",
+  "<b>Năng lực kỹ thuật</b> hoặc kiến thức ngành cụ thể",
+  "<b>Quyền với con người</b> — tuyển, đánh giá, phát triển sự nghiệp đều nằm ngoài khung PMI",
+  "<b>Khả năng nói điều khó nghe.</b> PMP dạy <i>nên</i> nói trực tiếp, không dạy <i>cách</i> nói",
+  "<b>Tăng lương tự động.</b> Khảo sát lương của PMI cho thấy chênh lệch có lợi, nhưng đó là khảo sát tự khai do chính bên cấp chứng chỉ thực hiện — người đi thi vốn đã chủ động hơn mức trung bình, nên không tách được nhân quả"
+ ]
+};
 
 var LS="roadmap-em-v1", DOC="roadmap/progress";
 var state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null};
@@ -2097,7 +2275,45 @@ function renderReading(){
 /* ================= tab PMP ================= */
 function pmpDone(d){ return !!(state.pmp && state.pmp[d]); }
 function pmpScore(d){ var v = state.pmpSc && state.pmpSc[d]; return (v===0||v)?v:null; }
+function renderPmpAnalysis(){
+  document.getElementById("pm-domains").innerHTML = PMP_DOMAINS.map(function(d){
+    return '<div class="dom"><div class="domh"><b>'+esc(d.n)+'</b><span class="pct">'+d.w+'%</span></div>'
+      + '<div class="dombar"><i style="width:'+d.w+'%"></i></div>'
+      + '<ul>'+d.items.map(function(x){return "<li>"+esc(x)+"</li>";}).join("")+'</ul></div>';
+  }).join("");
+  document.getElementById("pm-mix").innerHTML = PMP_MIX;
+
+  document.getElementById("pm-chain").innerHTML = PMP_PRIORITY.map(function(x,i){
+    return (i? '<i>&gt;</i>' : '') + '<b>'+x+'</b>';
+  }).join("");
+
+  document.querySelector("#pm-wrong tbody").innerHTML = PMP_WRONG.map(function(r){
+    return '<tr><td class="metric">'+esc(r[0])+'</td><td class="how">'+esc(r[1])+'</td></tr>';
+  }).join("");
+
+  document.getElementById("pm-ladder").innerHTML =
+      '<span class="lb">'+esc(PMP_LADDER.t)+'</span>'
+    + '<ol class="ladsteps">' + PMP_LADDER.steps.map(function(x){
+        return '<li><b>'+esc(x.t)+'</b><em>'+esc(x.d)+'</em></li>';
+      }).join("") + '</ol>'
+    + '<p class="ladnote">'+esc(PMP_LADDER.note)+'</p>';
+
+  document.getElementById("pm-conflict").innerHTML =
+      '<span class="lb">Giới hạn của mindset này</span>'
+    + PMP_CONFLICT.map(function(x){
+        return '<div class="conf'+(x.head?" confhead":"")+'"><b>'+esc(x.t)+'</b><p>'+x.d+'</p></div>';
+      }).join("");
+
+  document.getElementById("pm-gains").innerHTML =
+      '<div class="gcol yes"><span class="lb">Đạt được</span><ul>'
+    + PMP_GAINS.yes.map(function(x){return "<li>"+x+"</li>";}).join("") + '</ul></div>'
+    + '<div class="gcol no"><span class="lb">Không đạt được</span><ul>'
+    + PMP_GAINS.no.map(function(x){return "<li>"+x+"</li>";}).join("") + '</ul></div>';
+
+}
+
 function renderPmp(){
+  renderPmpAnalysis();
   var done = PMP_DAYS.filter(function(x){ return pmpDone(x.d); });
   var scored = PMP_DAYS.map(function(x){ return pmpScore(x.d); }).filter(function(v){ return v!==null; });
   var avg = scored.length ? (scored.reduce(function(a,b){return a+b;},0)/scored.length) : null;

@@ -13,7 +13,7 @@ Không có build step, không có dependency. Mở `roadmap-em.html` bằng trì
 | **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 89" khi cần bản đồ đầy đủ. |
 | **Cốt lõi** | 19 kỹ năng lõi kèm lý do vì sao là lõi, cộng phần kiểm kê tài liệu học và bảng 70 template PMBOK phân loại dùng / để dành / bỏ. |
 | **Đọc sách** | 16 mục đọc từ 5 cuốn, 2 phase, cộng 60 ngày attention training. Mỗi mục nối thẳng vào các kỹ năng nó phục vụ. |
-| **PMP** | Lộ trình 30 ngày, tự chấm 0–10 mỗi ngày, theo dõi điều kiện dự thi. Đánh dấu rõ ngày nào có giá trị ngoài phòng thi (16/30) và ngày nào chỉ để thi. |
+| **PMP** | Phân tích chứng chỉ PMP: ba domain của ECO với trọng số, mindset được kiểm tra (thang bậc hành động, chuỗi ưu tiên, 12 đáp án gần như luôn sai), và thu hoạch thật khi học xong. Kèm lộ trình 30 ngày có tự chấm 0–10 và theo dõi điều kiện dự thi. |
 | **Dashboard** | Cân bằng ba trục Leverage / People / Systems, tiến độ theo giai đoạn, danh sách đã xác minh, gợi ý học tiếp theo trục đang yếu nhất. |
 
 ## Mỗi kỹ năng có gì
