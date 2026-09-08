@@ -1,0 +1,24 @@
+# Allowlist: chặn tất cả, chỉ mở cho những file được liệt kê bên dưới.
+#
+# Lý do dùng kiểu allowlist thay vì liệt kê thứ cần chặn: thư mục làm việc
+# chứa sách và tài liệu khoá học có bản quyền — PMBOK® Guide 8th Edition,
+# PMP Examination Content Outline 2026, hai bản epub "Crafting Engineering
+# Strategy" (O'Reilly), bộ template trong pmp/materials/, và transcript của
+# một khoá Udemy trả phí. Không được phát hành lại. Một dòng `git add -A`
+# vô ý cũng không kéo chúng lên được với cấu hình này.
+
+*
+
+!.gitignore
+!README.md
+!LICENSE
+
+# Công cụ
+!roadmap-em.html
+!lo-trinh-em.html
+!lich-doc-sach.html
+!tien-do.json
+
+# Hệ thống luyện tư duy (bản công bố)
+!tu-duy-leader/
+!tu-duy-leader/*.md

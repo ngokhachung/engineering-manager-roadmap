@@ -1,0 +1,355 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F2F0;
+    --ink:#15191C;
+    --ink-soft:#5C6B73;
+    --rule:#D5D8D4;
+    --live:#2B6A72;
+    --later:#98A5A8;
+    --card:#FBFBFA;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:640px;margin:0 auto;padding:28px 18px 64px}
+
+  header{margin-bottom:26px}
+  h1{font-size:23px;font-weight:600;letter-spacing:-.02em;margin:0 0 6px;line-height:1.25}
+  .sub{color:var(--ink-soft);font-size:14px;font-weight:300;margin:0}
+
+  .meter{display:flex;align-items:baseline;gap:9px;margin-top:18px;
+    padding-top:16px;border-top:1px solid var(--rule)}
+  .meter b{font-size:31px;font-weight:500;letter-spacing:-.03em;line-height:1}
+  .meter span{font-size:13px;color:var(--ink-soft);font-weight:300}
+  .bar{height:3px;background:var(--rule);margin-top:12px;border-radius:2px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--live);
+    transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+  .phase{margin-top:34px}
+  .phase-head{font-size:15px;font-weight:600;margin:0 0 3px}
+  .phase-note{font-size:13px;color:var(--ink-soft);font-weight:300;margin:0 0 16px}
+
+  .spine{position:relative;padding-left:26px}
+  .spine::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;
+    width:1px;background:var(--rule)}
+
+  .week{position:relative;margin-bottom:22px}
+  .week::before{content:"";position:absolute;left:-25px;top:7px;width:11px;height:11px;
+    border-radius:50%;background:var(--paper);border:1.5px solid var(--rule);
+    transition:background .3s,border-color .3s}
+  .week.done::before{background:var(--live);border-color:var(--live)}
+  .later .week.done::before{background:var(--later);border-color:var(--later)}
+
+  .wk{font-size:13px;font-weight:500;color:var(--ink-soft);margin:0 0 2px}
+  .bk{font-size:16px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em}
+
+  ul{list-style:none;margin:0;padding:0}
+  li{margin-bottom:2px}
+  label{display:flex;gap:11px;align-items:flex-start;padding:8px 11px;
+    background:var(--card);border-radius:5px;cursor:pointer;
+    transition:opacity .25s}
+  label:has(input:checked){opacity:.5}
+  input[type=checkbox]{appearance:none;flex:0 0 auto;width:17px;height:17px;margin:2px 0 0;
+    border:1.5px solid var(--rule);border-radius:4px;background:#fff;cursor:pointer;
+    display:grid;place-content:center;transition:background .18s,border-color .18s}
+  input[type=checkbox]:checked{background:var(--live);border-color:var(--live)}
+  .later input[type=checkbox]:checked{background:var(--later);border-color:var(--later)}
+  input[type=checkbox]::after{content:"";width:9px;height:5px;
+    border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) scale(0);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1);margin-top:-2px}
+  input[type=checkbox]:checked::after{transform:rotate(-45deg) scale(1)}
+  input[type=checkbox]:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+  .t{font-size:14.5px;line-height:1.4}
+  .t em{display:block;font-style:normal;font-size:12.5px;color:var(--ink-soft);
+    font-weight:300;margin-top:2px}
+
+  .try{margin-top:9px;display:flex;align-items:center;gap:9px}
+  .try label{background:none;padding:0;display:block;font-size:12.5px;
+    color:var(--ink-soft);font-weight:300;white-space:nowrap;cursor:default}
+  .try input[type=text]{flex:1;min-width:0;font:inherit;font-size:13.5px;
+    background:none;border:none;border-bottom:1px dashed var(--rule);
+    padding:3px 1px;color:var(--ink)}
+  .try input[type=text]:focus{outline:none;border-bottom-color:var(--live);
+    border-bottom-style:solid}
+  .try input[type=text]::placeholder{color:#AEB6B4;font-weight:300}
+
+  .divider{margin:38px 0 0;padding-top:20px;border-top:1px solid var(--rule)}
+
+  .daily{margin-top:30px;padding:18px 16px 16px;background:var(--card);border-radius:7px}
+  .daily h2{font-size:15px;font-weight:600;margin:0 0 3px}
+  .daily .phase-note{margin-bottom:14px}
+  .how{margin:0 0 16px;padding:0;list-style:none;font-size:13.5px;color:var(--ink-soft);
+    font-weight:300;line-height:1.55}
+  .how li{padding-left:14px;position:relative;margin-bottom:5px}
+  .how li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;
+    border-radius:50%;background:var(--rule)}
+  .how b{color:var(--ink);font-weight:500}
+
+  .streak{display:flex;align-items:baseline;gap:8px;margin-bottom:9px}
+  .streak b{font-size:20px;font-weight:500;letter-spacing:-.02em}
+  .streak span{font-size:12.5px;color:var(--ink-soft);font-weight:300}
+  .grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+  .grid button{aspect-ratio:1;padding:0;border:1px solid var(--rule);border-radius:3px;
+    background:#fff;cursor:pointer;font-size:9.5px;color:#B9C0BE;line-height:1;
+    display:grid;place-content:center;transition:background .16s,border-color .16s,color .16s}
+  .grid button[aria-pressed=true]{background:var(--live);border-color:var(--live);color:#fff}
+  .grid button:hover{border-color:var(--ink-soft)}
+  .grid button:focus-visible{outline:2px solid var(--live);outline-offset:1px}
+  .milestone{font-size:12.5px;color:var(--ink-soft);font-weight:300;margin:12px 0 0}
+
+  footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .rule-note{font-size:12.5px;color:var(--ink-soft);font-weight:300;margin:0;max-width:400px}
+  button{font:inherit;font-size:12.5px;color:var(--ink-soft);background:none;
+    border:1px solid var(--rule);border-radius:5px;padding:6px 11px;cursor:pointer;
+    white-space:nowrap}
+  button:hover{color:var(--ink);border-color:var(--ink-soft)}
+  #status{font-size:12px;color:var(--later);font-weight:300;min-height:15px;margin:10px 0 0}
+
+  .io{display:flex;gap:8px;flex-wrap:wrap}
+  #box{display:none;margin-top:12px}
+  #box.open{display:block}
+  #box textarea{width:100%;height:110px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11.5px;line-height:1.45;color:var(--ink);background:var(--card);
+    border:1px solid var(--rule);border-radius:5px;padding:9px;resize:vertical}
+  #box textarea:focus{outline:none;border-color:var(--live)}
+  #box .io{margin-top:8px}
+  #box p{font-size:12.5px;color:var(--ink-soft);font-weight:300;margin:0 0 7px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Lịch đọc — quản lý con người &amp; phản hồi</h1>
+    <p class="sub">Bốn cuốn cốt lõi, cộng The Coaching Habit. Chia trước và sau kỳ thi PMP.</p>
+    <div class="meter"><b id="pct">0%</b><span id="count">0/17 mục</span></div>
+    <div class="bar"><i id="fill"></i></div>
+  </header>
+
+  <section class="daily">
+    <h2>Luyện tâm tịnh — 10 phút mỗi ngày</h2>
+    <p class="phase-note">Chạy song song suốt cả hai giai đoạn. Không tăng thời lượng.</p>
+    <ul class="how">
+      <li><b>Cùng một khung giờ</b>, sáng trước khi mở máy.</li>
+      <li>Ngồi thẳng lưng, mắt nhắm, chú ý ở vùng mũi nơi cảm nhận hơi thở ra vào.</li>
+      <li>Đếm hơi thở 1→10 rồi quay lại. Mất đếm thì bắt đầu lại từ 1.</li>
+      <li>Phát hiện mình đang nghĩ chuyện khác — <b>đó chính là lúc bài tập có tác dụng</b>. Ghi nhận, quay về hơi thở, không tự trách.</li>
+      <li>Thước đo không phải ngồi có yên không, mà là số lần nhận ra mình đi lạc và quay về được.</li>
+    </ul>
+    <div class="streak"><b id="dcount">0</b><span>/60 ngày</span></div>
+    <div class="grid" id="grid"></div>
+    <p class="milestone" id="milestone">Tuần đầu sẽ thấy tâm loạn. Đó không phải thất bại.</p>
+  </section>
+
+  <section class="phase">
+    <h2 class="phase-head">Giai đoạn 1 — song song ôn PMP</h2>
+    <p class="phase-note">Khoảng 3 giờ mỗi tuần. Chỉ đọc phần dùng được ngay.</p>
+    <div class="spine" id="p1"></div>
+  </section>
+
+  <section class="phase divider later">
+    <h2 class="phase-head">Giai đoạn 2 — sau kỳ thi</h2>
+    <p class="phase-note">Bắt đầu khi đã thi xong và đã có team để thực hành.</p>
+    <div class="spine" id="p2"></div>
+  </section>
+
+  <footer>
+    <p class="rule-note">Mỗi tuần chọn một kỹ thuật, dùng thật, ghi lại một dòng nó chạy hay không.</p>
+    <div class="io">
+      <button id="export">Xuất JSON</button>
+      <button id="import">Nhập JSON</button>
+      <button id="reset">Xoá tiến độ</button>
+    </div>
+  </footer>
+  <div id="box">
+    <p id="box-hint"></p>
+    <textarea id="json" spellcheck="false"></textarea>
+    <div class="io">
+      <button id="apply">Áp dụng</button>
+      <button id="close">Đóng</button>
+    </div>
+  </div>
+  <p id="status"></p>
+</div>
+
+<script>
+const PLAN = {
+  p1: [
+    {wk:"Tuần 1–2", bk:"The Manager's Path", items:[
+      ["ch1","Ch.1 — Management 101","Cách được quản lý: 1:1 với sếp, chủ động xin feedback"],
+      ["ch3","Ch.3 — Tech Lead","Chương lõi. Cân bằng code và dẫn dắt, khi nào ngừng tự làm"],
+      ["ch4","Ch.4 — Managing People","1:1, onboarding, phản hồi liên tục"]]},
+    {wk:"Tuần 3", bk:"The Manager's Path", items:[
+      ["ch5","Ch.5 — Managing a Team","Debug team trục trặc, quyết định kỹ thuật khi không còn viết code"],
+      ["skip","Bỏ ch.6–9","Cấp cao hơn. Để lại vài năm nữa"]]},
+    {wk:"Tuần 4–6", bk:"Crucial Conversations", items:[
+      ["cc12","Ch.1–2 — Nền tảng","Thế nào là cuộc trò chuyện then chốt"],
+      ["cc3","Ch.3 — Start with Heart","Xác định mình thật sự muốn gì trước khi mở lời"],
+      ["cc5","Ch.5 — Make It Safe","Giữ an toàn để người kia không đóng cửa"],
+      ["cc6","Ch.6 — Master My Stories","Chữa bệnh tự diễn giải ý đồ người khác"],
+      ["cc7","Ch.7 — STATE My Path","Khung nói điều khó nghe. Học thuộc khung này"]]}
+  ],
+  p2: [
+    {wk:"Tuần 1", bk:"Crucial Conversations", items:[
+      ["cc811","Ch.8–11 — Explore Others' Paths, Move to Action","Đọc nốt khi đã có tình huống thật để soi"]]},
+    {wk:"Tuần 2", bk:"The Coaching Habit", items:[
+      ["coach","Toàn bộ — 120 trang","Bảy câu hỏi. Thực hành trong 1:1 ngay tuần đó"]]},
+    {wk:"Tuần 3–5", bk:"Thanks for the Feedback", items:[
+      ["tf24","Ch.2–4 — Truth triggers","Khi phản hồi nghe có vẻ sai"],
+      ["tf5","Ch.5 — Switchtracking","Hai cuộc trò chuyện chạy song song mà không ai nhận ra"],
+      ["tf1012","Ch.10–12 — Nhận và dùng phản hồi",""],
+      ["tfskip","Bỏ phần identity triggers nếu thấy dài","Không bắt buộc"]]},
+    {wk:"Tuần 6–8", bk:"Never Split the Difference", items:[
+      ["nv2357","Ch.2, 3, 5, 7","Nghe chủ động, mirroring, labeling, câu hỏi hiệu chỉnh"],
+      ["nv9","Ch.9 — Mặc cả Ackerman","Chỉ đọc khi sắp đàm phán lương hoặc hợp đồng thật"]]}
+  ]
+};
+
+const KEY = "reading-plan-v1";
+let state = {checked:{}, notes:{}, days:{}};
+const $ = s => document.querySelector(s);
+
+function render(){
+  for (const p of ["p1","p2"]){
+    $("#"+p).innerHTML = PLAN[p].map((w,wi)=>{
+      const rows = w.items.map(([id,title,note])=>
+        `<li><label><input type="checkbox" data-id="${id}"><span class="t">${title}${
+          note?`<em>${note}</em>`:""}</span></label></li>`).join("");
+      return `<div class="week" data-week="${p}-${wi}">
+        <p class="wk">${w.wk}</p><h3 class="bk">${w.bk}</h3>
+        <ul>${rows}</ul>
+        <div class="try"><label for="n-${p}-${wi}">Thử gì tuần này</label>
+        <input type="text" id="n-${p}-${wi}" data-note="${p}-${wi}"
+          placeholder="một kỹ thuật, kết quả một dòng"></div></div>`;
+    }).join("");
+  }
+  document.querySelectorAll("input[type=checkbox]").forEach(c=>{
+    c.checked = !!state.checked[c.dataset.id];
+    c.addEventListener("change", ()=>{
+      state.checked[c.dataset.id] = c.checked; refresh(); save();
+    });
+  });
+  document.querySelectorAll("input[data-note]").forEach(n=>{
+    n.value = state.notes[n.dataset.note] || "";
+    n.addEventListener("input", ()=>{ state.notes[n.dataset.note] = n.value; save(); });
+  });
+  renderDays();
+  refresh();
+}
+
+function renderDays(){
+  $("#grid").innerHTML = Array.from({length:60}, (_,i)=>
+    `<button data-day="${i+1}" aria-pressed="${!!state.days[i+1]}"
+      aria-label="Ngày ${i+1}">${i+1}</button>`).join("");
+  $("#grid").querySelectorAll("button").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      const d = b.dataset.day;
+      state.days[d] = !state.days[d];
+      b.setAttribute("aria-pressed", !!state.days[d]);
+      refreshDays(); save();
+    });
+  });
+  refreshDays();
+}
+
+function refreshDays(){
+  const n = Object.values(state.days).filter(Boolean).length;
+  $("#dcount").textContent = n;
+  $("#milestone").textContent =
+    n === 0  ? "Tuần đầu sẽ thấy tâm loạn. Đó không phải thất bại." :
+    n < 8    ? "Giai đoạn loạn nhất. Chỉ cần ngồi đủ 10 phút, chưa cần yên." :
+    n < 42   ? "Đang vào nhịp. Vẫn giữ 10 phút, đừng tăng." :
+    n < 60   ? "Khoảng này bắt đầu thấy khác ở chỗ khác: ngồi đọc code hoặc họp mà không với tay lấy điện thoại." :
+               "Đủ 60 ngày. Giờ mới là lúc cân nhắc tăng thời lượng.";
+}
+
+function refresh(){
+  const all = [...document.querySelectorAll("input[type=checkbox]")];
+  const done = all.filter(c=>c.checked).length;
+  const pct = all.length ? Math.round(done/all.length*100) : 0;
+  $("#pct").textContent = pct + "%";
+  $("#count").textContent = `${done}/${all.length} mục`;
+  $("#fill").style.width = pct + "%";
+  document.querySelectorAll(".week").forEach(w=>{
+    const boxes = [...w.querySelectorAll("input[type=checkbox]")];
+    w.classList.toggle("done", boxes.length>0 && boxes.every(b=>b.checked));
+  });
+}
+
+let timer;
+function save(){
+  clearTimeout(timer);
+  timer = setTimeout(async ()=>{
+    try{
+      await window.storage.set(KEY, JSON.stringify(state));
+      $("#status").textContent = "Đã lưu";
+      setTimeout(()=>{ $("#status").textContent = ""; }, 1600);
+    }catch(e){
+      $("#status").textContent = "Không lưu được — tiến độ chỉ giữ trong phiên này";
+    }
+  }, 400);
+}
+
+(async function init(){
+  try{
+    const r = await window.storage.get(KEY);
+    if (r && r.value) state = Object.assign({checked:{}, notes:{}, days:{}}, JSON.parse(r.value));
+  }catch(e){ /* chưa có dữ liệu */ }
+  render();
+})();
+
+function note(msg){
+  $("#status").textContent = msg;
+  setTimeout(()=>{ $("#status").textContent = ""; }, 2400);
+}
+
+$("#export").addEventListener("click", ()=>{
+  const text = JSON.stringify(state, null, 2);
+  $("#box").classList.add("open");
+  $("#box-hint").textContent = "Bản sao tiến độ. Chép và lưu thành file .json trên máy.";
+  $("#json").value = text;
+  $("#apply").style.display = "none";
+  $("#json").select();
+  try{
+    const url = URL.createObjectURL(new Blob([text], {type:"application/json"}));
+    const a = document.createElement("a");
+    a.href = url; a.download = "tien-do-doc-sach.json";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  }catch(e){ /* không tải được thì vẫn chép tay được */ }
+});
+
+$("#import").addEventListener("click", ()=>{
+  $("#box").classList.add("open");
+  $("#box-hint").textContent = "Dán nội dung file .json vào đây rồi bấm Áp dụng. Tiến độ hiện tại sẽ bị thay thế.";
+  $("#json").value = "";
+  $("#apply").style.display = "";
+  $("#json").focus();
+});
+
+$("#apply").addEventListener("click", async ()=>{
+  let parsed;
+  try{ parsed = JSON.parse($("#json").value); }
+  catch(e){ note("JSON không hợp lệ — kiểm tra lại nội dung đã dán"); return; }
+  state = Object.assign({checked:{}, notes:{}, days:{}}, parsed);
+  render();
+  save();
+  $("#box").classList.remove("open");
+  note("Đã nhập tiến độ");
+});
+
+$("#close").addEventListener("click", ()=> $("#box").classList.remove("open"));
+
+$("#reset").addEventListener("click", async ()=>{
+  state = {checked:{}, notes:{}, days:{}};
+  try{ await window.storage.delete(KEY); }catch(e){}
+  render();
+  $("#status").textContent = "Đã xoá tiến độ";
+  setTimeout(()=>{ $("#status").textContent = ""; }, 1600);
+});
+</script>

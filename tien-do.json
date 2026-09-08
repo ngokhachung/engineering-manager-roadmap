@@ -1,0 +1,39 @@
+{
+  "_readme": [
+    "Bản sao tiến độ của roadmap-em.html. File này KHÔNG tự cập nhật.",
+    "Xuất: mở roadmap-em.html, cuối trang bấm 'Xuất JSON', lưu đè lên file này.",
+    "Nhập: bấm 'Nhập JSON', chọn file này (hoặc dán nội dung) rồi bấm 'Áp dụng'.",
+    "Dùng khi: chuyển sang máy khác, commit tiến độ vào git, hoặc phục hồi sau khi xoá dữ liệu trình duyệt.",
+    "status: id kỹ năng -> done | learning | skipped. Kỹ năng không có trong đây nghĩa là chưa học.",
+    "evidence: id kỹ năng -> { t: bằng chứng tự viết, v: kết quả Claude chấm, at: thời điểm }.",
+    "reading: id mục đọc -> 1 nếu đã đọc. Id khớp với lich-doc-sach.html (ch1, ch3, cc7, coach, nv9...).",
+    "attentionDays: số ngày 1-60 -> 1 nếu đã ngồi đủ 10 phút hôm đó.",
+    "pmpDays: số ngày 1-30 -> 1 nếu đã học xong ngày đó trong lộ trình PMP 30 ngày.",
+    "pmpScores: số ngày 1-30 -> điểm tự chấm 0-10. Dưới 7 là tín hiệu học lại (luật ngưỡng 7).",
+    "pmpMonthsLeading: số tháng dẫn dắt dự án đã tích luỹ. PMI yêu cầu 36."
+  ],
+  "schema": "career-path-roadmap-em",
+  "version": 1,
+  "exportedAt": null,
+  "summary": {
+    "skillsTotal": 89,
+    "skillsDone": 0,
+    "skillsLearning": 0,
+    "skillsSkipped": 0,
+    "coreDone": 0,
+    "coreTotal": 19,
+    "evidenceCount": 0,
+    "readingDone": 0,
+    "readingTotal": 16,
+    "attentionDays": 0,
+    "pmpDaysDone": 0,
+    "pmpMonthsLeading": null
+  },
+  "status": {},
+  "evidence": {},
+  "reading": {},
+  "attentionDays": {},
+  "pmpDays": {},
+  "pmpScores": {},
+  "pmpMonthsLeading": null
+}

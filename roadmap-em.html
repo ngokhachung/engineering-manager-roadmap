@@ -1,0 +1,2468 @@
+<title>Roadmap Dev đến Engineering Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F1F2F0; --card:#FBFBFA; --sunk:#E7EAE6;
+  --ink:#15191C; --ink-mid:#3A464B; --ink-soft:#5C6B73; --ink-faint:#8B999D;
+  --rule:#D5D8D4; --rule-soft:#E4E6E2;
+  --live:#2B6A72; --live-tint:#DCE8E7;
+  --done:#3C7551; --done-tint:#DDE9DF; --done-line:#8FB79C;
+  --learn:#96631A; --learn-tint:#F0E6D4; --learn-line:#D2AE6B;
+  --skip:#8B999D;
+  --axL:#2B6A72; --axP:#8A4A6B; --axS:#6B6320;
+  --shadow:0 1px 2px rgba(21,25,28,.05), 0 8px 24px rgba(21,25,28,.07);
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14181A; --card:#1B2124; --sunk:#20272A;
+    --ink:#E7EBE9; --ink-mid:#BAC5C6; --ink-soft:#94A4A7; --ink-faint:#6E7E82;
+    --rule:#2D3639; --rule-soft:#232B2E;
+    --live:#6FB9B2; --live-tint:#1C2E30;
+    --done:#7FBF97; --done-tint:#1B2A20; --done-line:#3E6349;
+    --learn:#D8AE5F; --learn-tint:#2A2317; --learn-line:#6B5527;
+    --skip:#6E7E82;
+    --axL:#6FB9B2; --axP:#D392B4; --axS:#C9BE6A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181A; --card:#1B2124; --sunk:#20272A;
+  --ink:#E7EBE9; --ink-mid:#BAC5C6; --ink-soft:#94A4A7; --ink-faint:#6E7E82;
+  --rule:#2D3639; --rule-soft:#232B2E;
+  --live:#6FB9B2; --live-tint:#1C2E30;
+  --done:#7FBF97; --done-tint:#1B2A20; --done-line:#3E6349;
+  --learn:#D8AE5F; --learn-tint:#2A2317; --learn-line:#6B5527;
+  --skip:#6E7E82;
+  --axL:#6FB9B2; --axP:#D392B4; --axS:#C9BE6A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p{margin:0}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ================= top bar ================= */
+.top{position:sticky;top:0;z-index:40;background:var(--paper);
+  border-bottom:1px solid var(--rule)}
+.top-in{max-width:1080px;margin:0 auto;padding:12px 20px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;gap:1px;margin-right:auto}
+.brand b{font-size:15.5px;font-weight:600;letter-spacing:-.015em}
+.brand span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.nav{display:flex;gap:2px;background:var(--sunk);padding:3px;border-radius:7px;flex-wrap:wrap}
+.nav a{font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none;
+  padding:5px 13px;border-radius:5px}
+.nav a.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.nav a:hover{color:var(--ink)}
+.top-meter{display:flex;align-items:center;gap:9px}
+.top-meter b{font-family:var(--mono);font-size:12.5px;font-weight:500;
+  font-variant-numeric:tabular-nums;color:var(--ink-mid)}
+.mini-bar{width:88px;height:4px;background:var(--rule);border-radius:2px;overflow:hidden}
+.mini-bar i{display:block;height:100%;width:0;background:var(--done);transition:width .4s}
+
+/* ================= layout ================= */
+.wrap{max-width:1080px;margin:0 auto;padding:26px 20px 90px}
+.intro{max-width:60ch;display:flex;flex-direction:column;gap:9px;margin-bottom:8px}
+.intro h1{font-size:26px;font-weight:600;letter-spacing:-.025em;line-height:1.2;text-wrap:balance}
+.intro p{color:var(--ink-soft);font-weight:300}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;padding:11px 0;
+  border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
+.lg{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft)}
+.lg i{width:11px;height:11px;border-radius:3px;border:1.5px solid var(--rule);
+  background:var(--card);flex:0 0 auto}
+.lg.d i{background:var(--done-tint);border-color:var(--done)}
+.lg.l i{background:var(--learn-tint);border-color:var(--learn)}
+.lg.s i{border-style:dashed;background:transparent}
+.lg .ax{width:8px;height:8px;border-radius:50%;border:none}
+.lg .ax.L{background:var(--axL)} .lg .ax.P{background:var(--axP)} .lg .ax.S{background:var(--axS)}
+.hint{font-size:12.5px;color:var(--ink-faint);font-weight:300;margin-top:11px}
+
+/* ================= filter / segmented ================= */
+.filter{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-top:15px}
+.flb{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.fnote{font-size:12.5px;color:var(--ink-faint);font-weight:300;flex:1;min-width:220px}
+.seg{display:inline-flex;background:var(--sunk);padding:3px;border-radius:7px;gap:2px}
+.seg button{font:inherit;font-size:12.5px;font-weight:500;color:var(--ink-soft);
+  background:transparent;border:none;border-radius:5px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.seg button:hover{color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+.seg-wide{align-self:flex-start}
+.node.dim{display:none}
+.group.dim{display:none}
+
+/* ================= core tab ================= */
+.core-stages{display:flex;flex-direction:column;gap:22px}
+.core-stage{display:flex;flex-direction:column;gap:9px}
+.core-stage > .ch{display:flex;align-items:baseline;gap:9px;padding-bottom:7px;
+  border-bottom:1px solid var(--rule-soft)}
+.core-stage .ch b{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.core-stage .ch span{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-faint);margin-left:auto}
+.core-item{display:flex;gap:12px;padding:11px 13px;border:1px solid var(--rule-soft);
+  border-radius:8px;background:var(--card);align-items:flex-start;width:100%;text-align:left;
+  font:inherit;cursor:pointer;color:inherit;transition:border-color .18s,background .18s}
+.core-item:hover{border-color:var(--live)}
+.core-item[data-s="done"]{background:var(--done-tint);border-color:var(--done-line)}
+.core-item[data-s="learning"]{background:var(--learn-tint);border-color:var(--learn-line)}
+.core-item[data-s="skipped"]{opacity:.55;border-style:dashed}
+.core-item .n{flex:0 0 24px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;padding-top:2px}
+.core-item .cbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.core-item .ct{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.core-item .ct b{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.core-item .why{font-size:13.5px;color:var(--ink-mid);font-weight:300;line-height:1.5}
+.core-item .dot{width:7px;height:7px;border-radius:50%;flex:0 0 auto}
+.core-item .dot.L{background:var(--axL)} .core-item .dot.P{background:var(--axP)} .core-item .dot.S{background:var(--axS)}
+.core-item .sflag{font-family:var(--mono);font-size:10px;letter-spacing:.05em;
+  text-transform:uppercase;border:1px solid var(--rule);border-radius:3px;padding:0 5px;color:var(--ink-faint)}
+.core-item[data-s="done"] .sflag{color:var(--done);border-color:var(--done)}
+.core-item[data-s="learning"] .sflag{color:var(--learn);border-color:var(--learn)}
+
+/* sources */
+.srcs{display:flex;flex-direction:column;gap:10px}
+.src{border:1px solid var(--rule-soft);border-radius:9px;background:var(--card);padding:14px 16px;
+  display:flex;flex-direction:column;gap:9px}
+.src-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.src-h code{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink)}
+.src-h .sz{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-left:auto;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.verdict{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  padding:1px 6px;border-radius:4px;border:1px solid}
+.verdict.use{color:var(--done);border-color:var(--done);background:var(--done-tint)}
+.verdict.mis{color:var(--learn);border-color:var(--learn);background:var(--learn-tint)}
+.verdict.keep{color:var(--ink-faint);border-color:var(--rule)}
+.src p{font-size:13.5px;color:var(--ink-mid);font-weight:300;max-width:70ch}
+.src .items{display:flex;flex-direction:column;gap:4px;margin-top:2px}
+.src .it{display:flex;gap:10px;align-items:baseline;font-size:13px;padding:5px 0;
+  border-top:1px solid var(--rule-soft)}
+.src .it code{font-family:var(--mono);font-size:12px;color:var(--ink-soft);flex:0 0 auto}
+.src .it span{color:var(--ink-mid);font-weight:300}
+.skl{display:flex;flex-wrap:wrap;gap:5px}
+.skl button{font:inherit;font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:4px;
+  background:var(--live-tint);color:var(--live);border:1px solid transparent;cursor:pointer}
+.skl button:hover{border-color:var(--live)}
+.skl button:focus-visible{outline:2px solid var(--live);outline-offset:1px}
+
+#tpl-table td .skl{margin:0}
+#tpl-table td.how{color:var(--ink-mid);font-weight:300}
+#tpl-table td code{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft)}
+
+.gaps{display:flex;flex-direction:column;gap:11px}
+.gap{border-left:2px solid var(--learn);background:var(--learn-tint);border-radius:0 8px 8px 0;
+  padding:13px 15px;display:flex;flex-direction:column;gap:6px}
+.gap b{font-size:14px;font-weight:600}
+.gap p{font-size:13.5px;color:var(--ink-mid);font-weight:300;max-width:70ch}
+
+
+.en{display:block;font-style:normal;font-family:var(--sans);font-size:11.5px;
+  font-weight:300;color:var(--ink-faint);margin-top:1px;line-height:1.35}
+.group-head h3 .en{font-size:11px;margin-top:2px}
+.gcard .gh b .en{font-size:11px;margin-top:1px;font-weight:300}
+.dr-en{font-family:var(--sans);font-size:13.5px;font-weight:300;color:var(--ink-soft);
+  display:block;margin-top:2px}
+.core-item .cen{font-family:var(--sans);font-size:12.5px;font-weight:300;color:var(--ink-faint);
+  display:block;margin-top:1px}
+
+/* ---- ok-box variants ---- */
+.ok-box.live{background:var(--live-tint);border-left-color:var(--live)}
+.ok-box.flag{background:var(--flag-tint);border-left-color:var(--flag)}
+
+/* ---- resource rows ---- */
+.res{display:flex;flex-direction:column;gap:6px}
+.rr{display:flex;align-items:flex-start;gap:10px;padding:9px 11px;border-radius:7px;
+  background:var(--sunk);text-decoration:none;color:var(--ink-mid);border:1px solid transparent}
+a.rr:hover{border-color:var(--live);background:var(--live-tint)}
+.rr .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-faint);flex:0 0 34px;padding-top:3px}
+.rr .rl{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.rr .rl b{font-size:13.5px;font-weight:500;color:var(--ink);line-height:1.35}
+.rr .rl em{font-style:normal;font-size:12.5px;font-weight:300;color:var(--ink-soft);line-height:1.45}
+.rr .rl code{font-family:var(--mono);font-size:11px;color:var(--ink-faint);word-break:break-all}
+.rr .go{flex:0 0 auto;font-family:var(--mono);font-size:10.5px;color:var(--live);
+  border:1px solid var(--live);border-radius:4px;padding:2px 7px;white-space:nowrap}
+.rr .cp{flex:0 0 auto;font:inherit;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);
+  background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:3px 8px;cursor:pointer;
+  white-space:nowrap}
+.rr .cp:hover{color:var(--live);border-color:var(--live)}
+.rnote{font-size:12px;color:var(--ink-faint);font-weight:300;margin-top:2px;line-height:1.5}
+.rnote code{font-family:var(--mono);font-size:11px}
+
+/* ---- evidence ---- */
+.ev-sec{border-top:1px solid var(--rule);padding-top:18px;margin-top:2px}
+.evhint{font-size:12.5px;color:var(--ink-faint);font-weight:300;line-height:1.5;max-width:60ch}
+#ev-text{width:100%;font:inherit;font-size:14px;line-height:1.55;color:var(--ink);
+  background:var(--sunk);border:1px solid var(--rule-soft);border-radius:7px;padding:11px 12px;
+  resize:vertical;min-height:96px}
+#ev-text:focus{outline:none;border-color:var(--live);background:var(--card)}
+#ev-text::placeholder{color:var(--ink-faint);font-weight:300}
+.ev-bar{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.ask{font:inherit;font-size:13px;font-weight:500;color:var(--card);background:var(--live);
+  border:1px solid var(--live);border-radius:7px;padding:8px 15px;cursor:pointer}
+.ask:hover{filter:brightness(1.08)}
+.ask:disabled{opacity:.5;cursor:default;filter:none}
+.ask:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+.evst{font-size:12.5px;color:var(--ink-faint);font-weight:300;flex:1;min-width:150px}
+.evst.warn{color:var(--flag)}
+
+.vd{margin-top:12px;border-radius:8px;padding:13px 15px;border:1px solid;
+  display:flex;flex-direction:column;gap:9px}
+.vd.done{background:var(--done-tint);border-color:var(--done-line)}
+.vd.learn{background:var(--learn-tint);border-color:var(--learn-line)}
+.vd.flag{background:var(--flag-tint);border-color:var(--flag)}
+.vd-h{display:flex;align-items:baseline;gap:10px}
+.vd-h b{font-size:15px;font-weight:600}
+.vd.done .vd-h b{color:var(--done)}
+.vd.learn .vd-h b{color:var(--learn)}
+.vd.flag .vd-h b{color:var(--flag)}
+.vd-h .score{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-left:auto;
+  font-variant-numeric:tabular-nums}
+.vd p{font-size:13.5px;color:var(--ink-mid);line-height:1.55}
+.vd-l{display:flex;flex-direction:column;gap:4px}
+.vd-l > span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-faint)}
+.vd-l ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:4px;
+  font-size:13.5px;color:var(--ink-mid)}
+.accept{font:inherit;font-size:12.5px;font-weight:500;color:var(--done);background:var(--card);
+  border:1px solid var(--done);border-radius:6px;padding:7px 12px;cursor:pointer;align-self:flex-start}
+.accept:hover{filter:brightness(1.05)}
+
+/* ---- PMP track ---- */
+.elig{display:flex;flex-direction:column;gap:9px;background:var(--card);
+  border:1px solid var(--rule-soft);border-radius:9px;padding:14px 16px}
+.eligrow{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.eligrow label{font-size:13.5px;color:var(--ink-mid)}
+.eligrow input{width:88px;font:inherit;font-family:var(--mono);font-size:14px;
+  background:var(--sunk);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;
+  color:var(--ink);font-variant-numeric:tabular-nums}
+.eligrow input:focus{outline:none;border-color:var(--live);background:var(--paper)}
+.eligof{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint)}
+.eligv{font-size:13.5px;color:var(--ink-mid);font-weight:300;line-height:1.55;max-width:72ch}
+.eligv code{font-family:var(--mono);font-size:11.5px}
+
+.pmphases{display:flex;flex-direction:column;gap:20px}
+.pmph{display:flex;flex-direction:column;gap:6px}
+.pmphh{display:flex;align-items:baseline;gap:10px;padding-bottom:6px;
+  border-bottom:1px solid var(--rule-soft)}
+.pmphh b{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.pmphh .rg{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.pmphh .pmpc{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-left:auto;
+  font-variant-numeric:tabular-nums}
+.pmpn{font-size:12.5px;color:var(--ink-soft);font-weight:300;margin-bottom:4px;max-width:72ch}
+.pmd{border:1px solid var(--rule-soft);border-radius:8px;background:var(--card);
+  padding:9px 11px;display:grid;grid-template-columns:1fr auto;gap:8px 10px;align-items:start}
+.pmd[data-done="true"]{background:var(--done-tint);border-color:var(--done-line)}
+.pmd[data-weak="1"]{background:var(--flag-tint);border-color:var(--flag)}
+.pmd > label{display:flex;gap:11px;align-items:flex-start;cursor:pointer;min-width:0}
+.pmdt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.pmdt b{font-size:13.5px;font-weight:500;letter-spacing:-.005em;line-height:1.4}
+.pmdt em{font-style:normal;font-size:11.5px;font-weight:300;color:var(--ink-faint)}
+.pmsc{font:inherit;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+  background:var(--sunk);border:1px solid var(--rule);border-radius:5px;padding:4px 6px;cursor:pointer}
+.pmsc:focus{outline:none;border-color:var(--live)}
+.pmd .rskl{grid-column:1 / -1;padding-left:27px}
+
+/* ---- xuất / nhập JSON ---- */
+.fbtns{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.iobox{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;
+  width:min(660px,calc(100% - 32px));background:var(--card);border:1px solid var(--rule);
+  border-radius:11px;box-shadow:var(--shadow);padding:15px 17px;
+  display:flex;flex-direction:column;gap:10px}
+.iohead{display:flex;align-items:center;gap:12px}
+.iohead b{font-size:15px;font-weight:600;letter-spacing:-.015em;margin-right:auto}
+.iohint{font-size:12.5px;color:var(--ink-soft);font-weight:300;line-height:1.5}
+.iohint code{font-family:var(--mono);font-size:11.5px}
+#io-json{width:100%;font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--ink);
+  background:var(--sunk);border:1px solid var(--rule-soft);border-radius:7px;padding:10px 11px;
+  resize:vertical;min-height:120px}
+#io-json:focus{outline:none;border-color:var(--live);background:var(--paper)}
+.iobar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.iobar .evst{flex:1;min-width:120px;text-align:right}
+
+/* ---- reading plan ---- */
+.rweeks{display:flex;flex-direction:column;gap:16px}
+.rweek{display:flex;flex-direction:column;gap:6px}
+.rwh{display:flex;align-items:baseline;gap:10px;padding-bottom:7px;
+  border-bottom:1px solid var(--rule-soft)}
+.rwh b{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.rwh span{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-left:auto}
+.ri{border:1px solid var(--rule-soft);border-radius:8px;background:var(--card);
+  padding:10px 12px;display:flex;flex-direction:column;gap:9px}
+.ri[data-done="true"]{background:var(--done-tint);border-color:var(--done-line)}
+.ri.skipitem{border-style:dashed;background:transparent}
+.ri.skipitem .rt b{color:var(--ink-soft)}
+.ri > label{display:flex;gap:11px;align-items:flex-start;cursor:pointer}
+.rt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.rt b{font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+.rt em{font-style:normal;font-size:12.5px;font-weight:300;color:var(--ink-soft);line-height:1.45}
+.rskl{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding-left:27px}
+.rlb{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-faint)}
+.rprog{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+.rk{font:inherit;font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:4px;
+  background:var(--sunk);color:var(--ink-soft);border:1px solid var(--rule-soft);cursor:pointer}
+.rk:hover{border-color:var(--live);color:var(--live)}
+.rk.d{background:var(--done-tint);color:var(--done);border-color:var(--done-line)}
+.rk.l{background:var(--learn-tint);color:var(--learn);border-color:var(--learn-line)}
+.grid60{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;max-width:460px}
+.grid60 button{aspect-ratio:1;padding:0;border:1px solid var(--rule);border-radius:4px;
+  background:var(--card);cursor:pointer;font-family:var(--mono);font-size:9.5px;color:var(--ink-faint);
+  line-height:1;display:grid;place-content:center}
+.grid60 button[aria-pressed="true"]{background:var(--live);border-color:var(--live);color:var(--card)}
+.grid60 button:hover{border-color:var(--ink-soft)}
+.grid60 button:focus-visible{outline:2px solid var(--live);outline-offset:1px}
+.milestone{font-size:12.5px;color:var(--ink-faint);font-weight:300;margin-top:2px}
+.drd{display:flex;flex-direction:column;gap:5px}
+.drdi{display:flex;gap:11px;align-items:flex-start;padding:8px 10px;border-radius:6px;
+  background:var(--sunk);cursor:pointer}
+.drdi:hover{background:var(--live-tint)}
+.drdi:has(input:checked){opacity:.6}
+@media (max-width:560px){ .grid60{grid-template-columns:repeat(6,1fr)} }
+
+/* ---- verified list on dashboard ---- */
+.ver{display:flex;flex-direction:column;gap:5px}
+.ver button{display:flex;align-items:center;gap:10px;text-align:left;font:inherit;width:100%;
+  background:var(--card);border:1px solid var(--rule-soft);border-radius:7px;padding:10px 12px;
+  cursor:pointer;color:var(--ink-mid);font-size:13.5px}
+.ver button:hover{border-color:var(--live);color:var(--ink)}
+.ver .vb{flex:0 0 auto;font-family:var(--mono);font-size:10px;letter-spacing:.05em;
+  text-transform:uppercase;border:1px solid;border-radius:4px;padding:1px 6px}
+.ver .vb.done{color:var(--done);border-color:var(--done)}
+.ver .vb.learn{color:var(--learn);border-color:var(--learn)}
+.ver .vb.flag{color:var(--flag);border-color:var(--flag)}
+.ver .sc{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ================= roadmap track ================= */
+.track{position:relative;margin-top:30px}
+.track::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:2px;
+  margin-left:-1px;background:var(--rule);border-radius:1px}
+.stage{position:relative;margin-bottom:14px}
+.stage-head{position:relative;z-index:2;width:max-content;max-width:min(420px,92%);
+  margin:0 auto 22px;background:var(--paper);padding:0 14px;text-align:center;
+  display:flex;flex-direction:column;gap:3px;align-items:center}
+.stage-head .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--live)}
+.stage-head h2{font-size:19px;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+.stage-head p{font-size:13px;color:var(--ink-soft);font-weight:300;max-width:44ch}
+.stage-bar{display:flex;align-items:center;gap:8px;margin-top:6px}
+.stage-bar .b{width:120px;height:4px;background:var(--rule);border-radius:2px;overflow:hidden}
+.stage-bar .b i{display:block;height:100%;width:0;background:var(--done);transition:width .4s}
+.stage-bar span{font-family:var(--mono);font-size:11px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums}
+
+.groups{display:flex;flex-direction:column;gap:16px;position:relative}
+.group{position:relative;width:calc(50% - 40px);background:var(--card);
+  border:1px solid var(--rule-soft);border-radius:9px;padding:13px 14px 11px}
+.group.r{margin-left:auto}
+.group::after{content:"";position:absolute;top:23px;width:38px;height:2px;background:var(--rule)}
+.group.l::after{right:-39px}
+.group.r::after{left:-39px}
+.group-head{display:flex;align-items:baseline;gap:8px;margin-bottom:10px;
+  padding-bottom:9px;border-bottom:1px solid var(--rule-soft)}
+.group-head h3{font-size:14px;font-weight:600;letter-spacing:-.01em;margin-right:auto}
+.group-head .cnt{font-family:var(--mono);font-size:11px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.nodes{display:flex;flex-direction:column;gap:4px}
+
+/* ---- node pill ---- */
+.node{display:flex;align-items:center;gap:0;border-radius:6px;
+  border:1px solid var(--rule);background:var(--card);overflow:hidden;
+  transition:border-color .18s,background .18s}
+.node:hover{border-color:var(--ink-faint)}
+.node .mark{flex:0 0 auto;width:26px;align-self:stretch;border:none;border-right:1px solid var(--rule-soft);
+  background:transparent;cursor:pointer;display:grid;place-content:center;padding:0}
+.node .mark i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--rule);display:block}
+.node .open{flex:1;min-width:0;text-align:left;border:none;background:transparent;cursor:pointer;
+  padding:7px 9px;display:flex;align-items:center;gap:8px;font:inherit;color:var(--ink-mid);font-size:13.5px}
+.node .open:hover{color:var(--ink)}
+.node .t{flex:1;min-width:0;line-height:1.35}
+.node .ax{flex:0 0 auto;width:7px;height:7px;border-radius:50%}
+.node .ax.L{background:var(--axL)} .node .ax.P{background:var(--axP)} .node .ax.S{background:var(--axS)}
+.node .opt{flex:0 0 auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule-soft);
+  border-radius:3px;padding:0 4px}
+.node[data-s="done"]{background:var(--done-tint);border-color:var(--done-line)}
+.node[data-s="done"] .mark i{background:var(--done);border-color:var(--done)}
+.node[data-s="done"] .open{color:var(--ink-mid)}
+.node[data-s="learning"]{background:var(--learn-tint);border-color:var(--learn-line)}
+.node[data-s="learning"] .mark i{background:var(--learn);border-color:var(--learn)}
+.node[data-s="skipped"]{border-style:dashed;background:transparent;opacity:.6}
+.node[data-s="skipped"] .t{text-decoration:line-through;text-decoration-color:var(--rule)}
+.node button:focus-visible{outline:2px solid var(--live);outline-offset:-2px}
+
+/* ================= drawer ================= */
+.scrim{position:fixed;inset:0;background:rgba(10,14,16,.42);z-index:60;
+  opacity:0;pointer-events:none;transition:opacity .22s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);z-index:70;
+  background:var(--card);border-left:1px solid var(--rule);box-shadow:var(--shadow);
+  transform:translateX(102%);transition:transform .26s cubic-bezier(.32,.72,0,1);
+  display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dr-top{display:flex;align-items:flex-start;gap:12px;padding:18px 20px 14px;
+  border-bottom:1px solid var(--rule-soft)}
+.dr-top .meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.dr-crumb{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-faint)}
+.dr-top h2{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.25;text-wrap:balance}
+.dr-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:1px 6px;
+  border-radius:4px;border:1px solid var(--rule);color:var(--ink-soft)}
+.tag.L{color:var(--axL);border-color:color-mix(in srgb,var(--axL) 40%,transparent)}
+.tag.P{color:var(--axP);border-color:color-mix(in srgb,var(--axP) 40%,transparent)}
+.tag.S{color:var(--axS);border-color:color-mix(in srgb,var(--axS) 40%,transparent)}
+.x{flex:0 0 auto;border:1px solid var(--rule);background:var(--card);color:var(--ink-soft);
+  width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:16px;line-height:1;
+  display:grid;place-content:center}
+.x:hover{color:var(--ink);border-color:var(--ink-faint)}
+.dr-body{flex:1;overflow-y:auto;padding:18px 20px 26px;display:flex;flex-direction:column;gap:20px}
+.dr-sec{display:flex;flex-direction:column;gap:9px}
+.dr-sec > .lb{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.dr-sec p{color:var(--ink-mid);font-size:14.5px}
+.dr-sec ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:8px;
+  color:var(--ink-mid);font-size:14.5px}
+.dr-sec ol li::marker{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+.ok-box{background:var(--done-tint);border-left:2px solid var(--done);border-radius:0 6px 6px 0;
+  padding:11px 13px;font-size:14px;color:var(--ink-mid)}
+.res{display:flex;flex-direction:column;gap:5px}
+.res a,.res .rfile{display:flex;align-items:baseline;gap:9px;padding:8px 10px;border-radius:6px;
+  background:var(--sunk);text-decoration:none;color:var(--ink-mid);font-size:13.5px}
+.res a:hover{background:var(--live-tint);color:var(--live)}
+.res .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-faint);flex:0 0 46px}
+.res .rfile code{font-family:var(--mono);font-size:12.5px;word-break:break-all}
+.dr-foot{border-top:1px solid var(--rule-soft);padding:13px 20px;display:flex;gap:6px;
+  flex-wrap:wrap;background:var(--card)}
+.st-btn{flex:1;min-width:96px;font:inherit;font-size:12.5px;font-weight:500;padding:8px 6px;
+  border-radius:6px;border:1px solid var(--rule);background:var(--card);color:var(--ink-soft);cursor:pointer}
+.st-btn:hover{border-color:var(--ink-faint);color:var(--ink)}
+.st-btn[aria-pressed="true"]{background:var(--live-tint);border-color:var(--live);color:var(--live)}
+.st-btn.done[aria-pressed="true"]{background:var(--done-tint);border-color:var(--done);color:var(--done)}
+.st-btn.learning[aria-pressed="true"]{background:var(--learn-tint);border-color:var(--learn);color:var(--learn)}
+.st-btn:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+
+/* ================= dashboard ================= */
+.dash{display:flex;flex-direction:column;gap:30px;margin-top:24px}
+.d-sec{display:flex;flex-direction:column;gap:13px}
+.d-sec > header{display:flex;flex-direction:column;gap:3px}
+.d-sec h2{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.d-sec header p{font-size:13.5px;color:var(--ink-soft);font-weight:300;max-width:64ch}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft);border-radius:9px;overflow:hidden}
+.tile{background:var(--card);padding:15px 16px;display:flex;flex-direction:column;gap:2px}
+.tile b{font-size:27px;font-weight:500;letter-spacing:-.03em;line-height:1.1;
+  font-variant-numeric:tabular-nums}
+.tile span{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.tile.d b{color:var(--done)} .tile.l b{color:var(--learn)}
+
+.rows{display:flex;flex-direction:column;gap:11px}
+.row{display:grid;grid-template-columns:170px 1fr 62px;gap:13px;align-items:center}
+.row .nm{font-size:13.5px;color:var(--ink-mid);font-weight:500}
+.row .nm em{display:block;font-style:normal;font-size:11.5px;color:var(--ink-faint);font-weight:300}
+.meter{height:8px;background:var(--sunk);border-radius:4px;overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .4s}
+.meter i.d{background:var(--done)}
+.meter i.l{background:var(--learn-line)}
+.row .vl{font-family:var(--mono);font-size:12px;color:var(--ink-soft);text-align:right;
+  font-variant-numeric:tabular-nums}
+
+.grid-groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px}
+.gcard{background:var(--card);border:1px solid var(--rule-soft);border-radius:8px;padding:11px 12px;
+  display:flex;flex-direction:column;gap:8px}
+.gcard .gh{display:flex;align-items:baseline;gap:7px}
+.gcard .gh b{font-size:13px;font-weight:600;margin-right:auto;line-height:1.3}
+.gcard .gh span{font-family:var(--mono);font-size:11px;color:var(--ink-faint);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.gcard .st{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-faint)}
+
+.next{display:flex;flex-direction:column;gap:5px}
+.next button{display:flex;align-items:center;gap:10px;text-align:left;font:inherit;
+  background:var(--card);border:1px solid var(--rule-soft);border-radius:7px;
+  padding:10px 12px;cursor:pointer;color:var(--ink-mid);font-size:13.5px}
+.next button:hover{border-color:var(--live);color:var(--ink)}
+.next .w{flex:0 0 auto;width:7px;height:7px;border-radius:50%}
+.next .w.L{background:var(--axL)} .next .w.P{background:var(--axP)} .next .w.S{background:var(--axS)}
+.next .where{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);
+  white-space:nowrap}
+.callout{background:var(--learn-tint);border-left:2px solid var(--learn);border-radius:0 7px 7px 0;
+  padding:13px 15px;font-size:14px;color:var(--ink-mid)}
+.callout b{color:var(--ink)}
+.empty{font-size:13.5px;color:var(--ink-faint);font-weight:300;padding:10px 0}
+
+footer{max-width:1080px;margin:0 auto;padding:0 20px 40px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer p{font-size:12.5px;color:var(--ink-faint);font-weight:300;max-width:56ch}
+footer code{font-family:var(--mono);font-size:11.5px}
+#save{font-family:var(--mono);font-size:11px;color:var(--ink-faint);min-height:15px}
+.ghost{font:inherit;font-size:12.5px;color:var(--ink-soft);background:var(--card);
+  border:1px solid var(--rule);border-radius:6px;padding:6px 12px;cursor:pointer}
+.ghost:hover{color:var(--ink);border-color:var(--ink-soft)}
+
+[hidden]{display:none!important}
+@media (max-width:860px){
+  .track::before{left:13px;margin-left:0}
+  .stage-head{margin-left:0;text-align:left;align-items:flex-start;padding-left:34px;max-width:100%}
+  .group{width:auto;margin-left:34px!important;margin-right:0!important}
+  .group::after{left:-34px!important;right:auto!important;width:33px}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .row{grid-template-columns:1fr;gap:5px}
+  .row .vl{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="top">
+  <div class="top-in">
+    <div class="brand">
+      <b>Dev → Engineering Manager</b>
+      <span id="brand-sub">Roadmap kỹ năng</span>
+    </div>
+    <nav class="nav">
+      <a href="#/" id="nav-map">Roadmap</a>
+      <a href="#/core" id="nav-core">Cốt lõi</a>
+      <a href="#/reading" id="nav-read">Đọc sách</a>
+      <a href="#/pmp" id="nav-pmp">PMP</a>
+      <a href="#/dashboard" id="nav-dash">Dashboard</a>
+    </nav>
+    <div class="top-meter">
+      <div class="mini-bar"><i id="top-fill"></i></div>
+      <b><span id="top-done" class="num">0</span>/<span id="top-all" class="num">0</span></b>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ ROADMAP ============================ -->
+<main class="wrap" id="view-map">
+  <div class="intro">
+    <h1>Roadmap kỹ năng: từ Dev lên Engineering Manager</h1>
+    <p>Bốn giai đoạn, hai mươi nhóm kỹ năng. Bấm vào một ô để mở chi tiết, tài liệu bấm-là-mở, và ô nhập bằng chứng để Claude chấm xem anh đã đạt kỹ năng đó chưa. Bấm chấm tròn bên trái để đổi trạng thái ngay tại chỗ.</p>
+  </div>
+  <div class="legend">
+    <span class="lg"><i></i>Chưa học</span>
+    <span class="lg l"><i></i>Đang học</span>
+    <span class="lg d"><i></i>Đã thành thạo</span>
+    <span class="lg s"><i></i>Bỏ qua</span>
+    <span class="lg"><i class="ax L"></i>Leverage</span>
+    <span class="lg"><i class="ax P"></i>People</span>
+    <span class="lg"><i class="ax S"></i>Systems</span>
+  </div>
+  <div class="filter">
+    <span class="flb">Hiện</span>
+    <div class="seg">
+      <button type="button" data-filter="core" class="on">19 kỹ năng lõi</button>
+      <button type="button" data-filter="all">Tất cả 89</button>
+    </div>
+    <span class="fnote" id="fnote">Bắt đầu ở chế độ lõi. Mở “tất cả” khi đã đóng gần hết ô lõi của giai đoạn đang làm.</span>
+  </div>
+  <div class="track" id="track"></div>
+</main>
+
+<!-- ============================ CỐT LÕI ============================ -->
+<main class="wrap" id="view-core" hidden>
+  <div class="intro">
+    <h1>Kỹ năng lõi và kho kiến thức</h1>
+    <p>Tám mươi chín kỹ năng là bản đồ đầy đủ, không phải danh sách việc phải làm. Trang này rút xuống <b>19 kỹ năng lõi</b> — nếu chỉ làm được từng ấy thì phần còn lại phần lớn tự đến — và xếp lại toàn bộ tài liệu đang có trong <code>career-path</code> theo đúng kỹ năng mà nó phục vụ.</p>
+  </div>
+
+  <div class="dash">
+    <section class="d-sec">
+      <header>
+        <h2>Mười chín kỹ năng lõi</h2>
+        <p>Chọn theo một tiêu chí: thiếu nó thì các kỹ năng khác trong cùng giai đoạn không đứng được. Bấm vào tên để mở chi tiết và tài liệu.</p>
+      </header>
+      <div id="core-list" class="core-stages"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Kho kiến thức đang có</h2>
+        <p>Sáu nguồn, tổng cộng khoảng 48 MB. Mỗi nguồn có một vai trò khác nhau — và hai trong số đó đang bị dùng sai vai.</p>
+      </header>
+      <div id="src-list" class="srcs"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Bảy mươi template PMBOK — cái nào dùng, cái nào bỏ</h2>
+        <p>Đây là phần giá trị nhất trong <code>pmp/materials/</code> và cũng là phần dễ chìm nhất. Hai mươi hai template dùng được ngay cho vai trò EM ở product company; số còn lại là công cụ của môi trường có PMO, giữ lại không hại nhưng đừng học.</p>
+      </header>
+      <div class="seg seg-wide" id="tpl-filter">
+        <button type="button" data-tpl="use" class="on">Dùng ngay</button>
+        <button type="button" data-tpl="later">Để dành</button>
+        <button type="button" data-tpl="skip">Bỏ</button>
+      </div>
+      <div class="scroll"><table id="tpl-table"><thead><tr>
+        <th>Template</th><th>Thư mục trong <code>materials/</code></th><th>Phục vụ kỹ năng</th><th>Dùng thế nào</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Ba chỗ lệch giữa tài liệu và kỹ năng</h2>
+      </header>
+      <div class="gaps" id="gap-list"></div>
+    </section>
+  </div>
+</main>
+
+<!-- ============================ ĐỌC SÁCH ============================ -->
+<main class="wrap" id="view-reading" hidden>
+  <div class="intro">
+    <h1>Reading plan</h1>
+    <p>Năm cuốn, mười sáu mục đọc cộng hai quyết định bỏ, và sáu mươi ngày chú tâm — đúng kế hoạch trong <code>lich-doc-sach.html</code> của anh, nhưng mỗi mục giờ nối thẳng vào những kỹ năng nó phục vụ. Tick một chương, kỹ năng tương ứng biết ngay là đã có tài liệu.</p>
+  </div>
+
+  <div class="dash">
+    <section class="d-sec">
+      <div class="tiles">
+        <div class="tile d"><b id="r-done" class="num">0</b><span>Mục đã đọc</span></div>
+        <div class="tile"><b id="r-days" class="num">0</b><span>Ngày chú tâm</span></div>
+        <div class="tile"><b id="r-cov" class="num">0</b><span>Kỹ năng có sách</span></div>
+        <div class="tile l"><b id="r-open" class="num">0</b><span>Kỹ năng đã đọc nhưng chưa đạt</span></div>
+      </div>
+    </section>
+
+    <div class="callout" id="r-note"></div>
+
+    <section class="d-sec">
+      <header>
+        <h2>Phase 1 — nền tảng</h2>
+        <p>Khoảng 3 giờ mỗi tuần. Chạy song song với M0 và M1 trên roadmap. Chỉ đọc phần dùng được ngay.</p>
+      </header>
+      <div id="r-p1" class="rweeks"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Phase 2 — khi đã có team để thực hành</h2>
+        <p>Điều kiện khởi động ban đầu anh viết là “sau kỳ thi PMP”. Kỳ thi đã hoãn, nên mốc mở phase này giờ là <b>khi anh có ít nhất một người để làm 1:1 thật</b> — tức khoảng M1. Mỗi tuần chọn một kỹ thuật, dùng thật, ghi lại một dòng nó chạy hay không.</p>
+      </header>
+      <div id="r-p2" class="rweeks"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Attention training — 10 phút mỗi ngày</h2>
+        <p>Chạy song song suốt cả hai phase. Không tăng thời lượng trước ngày thứ 60. Thước đo không phải ngồi có yên không, mà là số lần nhận ra mình đi lạc và quay về được.</p>
+      </header>
+      <div class="grid60" id="r-grid"></div>
+      <p class="milestone" id="r-mile"></p>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Sách phủ được trục nào</h2>
+        <p>Đây là lý do reading plan quan trọng hơn nó trông có vẻ: gần như toàn bộ tài liệu cho trục People nằm ở đây, không nằm trong 48 MB tài liệu kỹ thuật.</p>
+      </header>
+      <div class="rows" id="r-axis"></div>
+    </section>
+  </div>
+</main>
+
+<!-- ============================ PMP ============================ -->
+<main class="wrap" id="view-pmp" hidden>
+  <div class="intro">
+    <h1>PMP study track</h1>
+    <p>Nhánh song song, không nằm trên đường chính tới Engineering Manager. Nhưng 60–80 giờ đã bỏ ra không mất: lộ trình 30 ngày trong <code>pmp/pmp_lo_trinh_30_ngay.md</code> vẫn là cách có cấu trúc nhất để lấy phần kiến thức dùng được. Tab này theo dõi nó, và đánh dấu rõ ngày nào có giá trị ngoài phòng thi, ngày nào chỉ để thi.</p>
+  </div>
+
+  <div class="dash">
+    <section class="d-sec">
+      <div class="tiles">
+        <div class="tile d"><b id="pm-done" class="num">0</b><span>Ngày đã học</span></div>
+        <div class="tile"><b id="pm-avg" class="num">—</b><span>Điểm tự chấm TB</span></div>
+        <div class="tile l"><b id="pm-weak" class="num">0</b><span>Ngày dưới ngưỡng 7</span></div>
+        <div class="tile"><b id="pm-carry" class="num">0</b><span>Ngày có giá trị ngoài thi</span></div>
+      </div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Điều kiện dự thi</h2>
+        <p>PMI yêu cầu 36 tháng dẫn dắt dự án trong 8 năm gần nhất (bằng đại học 4 năm) cộng 35 contact hours. Nếu <code>pmbok8_ghi_chu.md</code> còn ghi 0 tháng thì đó là thứ chặn kỳ thi, không phải kiến thức.</p>
+      </header>
+      <div class="elig">
+        <div class="eligrow">
+          <label for="pm-months">Số tháng dẫn dắt dự án đã có</label>
+          <input type="number" id="pm-months" min="0" max="120" step="1" placeholder="0">
+          <span class="eligof">/ 36 tháng</span>
+        </div>
+        <div class="meter"><i class="d" id="pm-mfill" style="width:0%"></i></div>
+        <p class="eligv" id="pm-verdict"></p>
+      </div>
+    </section>
+
+    <div class="callout" id="pm-note"></div>
+
+    <section class="d-sec">
+      <header>
+        <h2>Lộ trình 30 ngày</h2>
+        <p>Tick ngày đã học, chấm 0–10. Luật ngưỡng 7 của anh: dưới 7 thì không đi tiếp — kiến thức PMP xếp chồng, thủng ở Day 6 thì Day 11 sập. Ngày có chip kỹ năng là ngày mang được thứ gì đó ra khỏi phòng thi.</p>
+      </header>
+      <div id="pm-phases" class="pmphases"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Năm cuốn sổ dùng xuyên suốt</h2>
+        <p>Phần II của <code>pmbok8_ghi_chu.md</code> — mở ra ghi bất cứ lúc nào, không đợi tới giai đoạn nào.</p>
+      </header>
+      <div class="res" id="pm-books"></div>
+    </section>
+  </div>
+</main>
+
+<!-- ============================ DASHBOARD ============================ -->
+<main class="wrap" id="view-dash" hidden>
+  <div class="intro">
+    <h1>Dashboard kỹ năng</h1>
+    <p>Không đo thời gian, không đo số ngày đã học. Chỉ đo một thứ: kỹ năng nào đã có, kỹ năng nào còn trống, và anh đang lệch về trục nào.</p>
+  </div>
+
+  <div class="dash">
+    <section class="d-sec">
+      <div class="tiles">
+        <div class="tile d"><b id="t-done" class="num">0</b><span>Đã thành thạo</span></div>
+        <div class="tile l"><b id="t-learn" class="num">0</b><span>Đang học</span></div>
+        <div class="tile"><b id="t-left" class="num">0</b><span>Chưa động tới</span></div>
+        <div class="tile"><b id="t-pct" class="num">0%</b><span>Toàn tuyến</span></div>
+      </div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Cân bằng ba trục</h2>
+        <p>Đây là chỉ số quan trọng nhất trên trang này. Dev đi lên quản lý gần như luôn đầy ở trục Đòn bẩy và Hệ thống, rỗng ở trục Con người — và đó chính là trục quyết định việc lên được EM hay không.</p>
+      </header>
+      <div class="rows" id="axis-rows"></div>
+      <div class="callout" id="axis-note"></div>
+    </section>
+
+    <section class="d-sec">
+      <header><h2>Tiến độ theo giai đoạn</h2></header>
+      <div class="rows" id="stage-rows"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Đọc sách so với kỹ năng</h2>
+        <p>Đọc xong không tính là đạt. Cột này để thấy khoảng cách giữa hai việc đó.</p>
+      </header>
+      <div class="rows" id="read-rows"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Đã xác minh bằng bằng chứng</h2>
+        <p>Kỹ năng anh đã nhập bằng chứng và được Claude chấm. Đây là danh sách đáng tin hơn cả ô tự đánh dấu, vì nó gắn với một tình huống thật.</p>
+      </header>
+      <div class="ver" id="verified-list"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Đang học</h2>
+        <p>Quá năm kỹ năng cùng lúc thì không kỹ năng nào vào sâu. Đóng bớt trước khi mở thêm.</p>
+      </header>
+      <div class="next" id="learning-list"></div>
+    </section>
+
+    <section class="d-sec">
+      <header>
+        <h2>Nên học tiếp</h2>
+        <p>Chọn từ giai đoạn sớm nhất còn dở, ưu tiên kỹ năng thuộc trục anh đang yếu nhất.</p>
+      </header>
+      <div class="next" id="next-list"></div>
+    </section>
+
+    <section class="d-sec">
+      <header><h2>Hai mươi nhóm kỹ năng</h2></header>
+      <div class="grid-groups" id="group-grid"></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>Tiến độ lưu tự động và đồng bộ giữa các máy. Xuất JSON để có bản sao trong <code>D:\LEARNING\career-path\tien-do.json</code> — dùng khi muốn commit vào git hoặc chuyển sang máy khác.</p>
+  <div class="fbtns">
+    <span id="save"></span>
+    <button type="button" class="ghost" id="export">Xuất JSON</button>
+    <button type="button" class="ghost" id="import">Nhập JSON</button>
+    <button type="button" class="ghost" id="reset">Xoá tiến độ</button>
+  </div>
+</footer>
+
+<div class="iobox" id="iobox" hidden>
+  <div class="iohead"><b id="io-title">Xuất JSON</b>
+    <button type="button" class="x" id="io-close" aria-label="Đóng">×</button></div>
+  <p class="iohint" id="io-hint"></p>
+  <textarea id="io-json" spellcheck="false" rows="9"></textarea>
+  <div class="iobar">
+    <input type="file" id="io-file" accept="application/json,.json" hidden>
+    <button type="button" class="ghost" id="io-pick">Chọn file .json</button>
+    <button type="button" class="ghost" id="io-copy">Chép</button>
+    <button type="button" class="ask" id="io-apply">Áp dụng</button>
+    <span class="evst" id="io-state"></span>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title" aria-hidden="true">
+  <div class="dr-top">
+    <div class="meta">
+      <span class="dr-crumb" id="dr-crumb"></span>
+      <h2 id="dr-title"></h2>
+      <span class="dr-en" id="dr-en"></span>
+      <div class="dr-tags" id="dr-tags"></div>
+    </div>
+    <button class="x" id="dr-close" aria-label="Đóng">×</button>
+  </div>
+  <div class="dr-body" id="dr-body"></div>
+  <div class="dr-foot">
+    <button class="st-btn" data-set="pending" aria-pressed="false">Chưa học</button>
+    <button class="st-btn learning" data-set="learning" aria-pressed="false">Đang học</button>
+    <button class="st-btn done" data-set="done" aria-pressed="false">Thành thạo</button>
+    <button class="st-btn" data-set="skipped" aria-pressed="false">Bỏ qua</button>
+  </div>
+</aside>
+
+<script>
+/* =====================================================================
+   DỮ LIỆU — 4 giai đoạn · 20 nhóm · 89 kỹ năng
+   axis: L = đòn bẩy · P = con người · S = hệ thống & kinh doanh
+   res:  f = file trong máy · b = sách · w = link ngoài
+   ===================================================================== */
+var DATA = [
+{id:"s0",st:"Giai đoạn 0",name:"Foundation · High-Leverage Senior Engineer",
+ sub:"Làm cho ảnh hưởng tồn tại khi mình không có mặt. Đây là tầng duy nhất anh có thể luyện trọn vẹn mà chưa cần ai báo cáo cho mình.",
+ groups:[
+ {id:"g-comm",en:"Technical Communication",side:"l",name:"Giao tiếp kỹ thuật",nodes:[
+  {id:"design-doc",en:"Design Doc / RFC",no:"Người khác đọc tài liệu của anh xong vẫn phải nhắn hỏi lại, hoặc anh phải ngồi cạnh giải thích khi họ bắt đầu làm.",first:"Chọn việc lớn nhất anh đang làm, viết một trang theo cấu trúc: vấn đề · ba phương án · phương án chọn · phương án đã loại và vì sao. Gửi cho một người không trong việc đó và đếm số câu họ hỏi.",core:1,why:"Leverage đầu tiên và rẻ nhất: một tài liệu tốt thay được mười lần giải thích, và là bằng chứng duy nhất ở giai đoạn 0 mà người ngoài đọc được.",t:"Viết design doc thực thi được",ax:"L",
+   d:"Tài liệu mô tả vấn đề, các phương án đã cân nhắc và phương án chọn — đủ để người khác triển khai mà không phải hỏi lại quá hai lần.",
+   how:["Viết cho một việc thật đang làm, không viết mẫu.","Bắt buộc có mục “phương án đã loại và vì sao” — đây là mục chống confirmation bias.","Đưa cho một người chưa biết bối cảnh đọc, đếm số câu hỏi họ phải hỏi."],
+   ok:"Một người khác triển khai xong mà anh không phải giải thích thêm lần nào.",
+   res:[{k:"file",l:"T2 — decision doc một trang",p:"tư duy leader/03_template.md"},{k:"book",l:"Crafting Engineering Strategy — Will Larson (bản song ngữ đã có)"},{k:"web",l:"lethain.com — kho bài về viết kỹ thuật",u:"https://lethain.com/"}]},
+  {id:"bluf",en:"BLUF & Pyramid Principle",no:"Anh kể theo trình tự thời gian — “đầu tiên em thấy…, sau đó em thử…” — và người nghe phải đợi tới cuối mới biết ý.",first:"Trong cuộc họp tiếp theo, viết sẵn một câu kết luận ra giấy trước khi phát biểu, rồi nói đúng câu đó trước.",t:"Kết luận trước, lý do sau",ax:"P",
+   d:"Nguyên tắc kim tự tháp: câu đầu tiên là kết luận, phần còn lại xếp theo tầm quan trọng chứ không theo trình tự thời gian.",
+   how:["T6 mỗi tuần một lần — nén một quyết định thành ba điểm.","Trước mỗi lần phát biểu trong họp, viết một câu kết luận ra giấy trước khi mở miệng.","Trong Slack/email: câu đầu là kết luận, bối cảnh xuống dưới."],
+   ok:"Sếp không còn phải hỏi “vậy ý em là gì”.",
+   res:[{k:"file",l:"T6 — giải thích 3 điểm",p:"tư duy leader/03_template.md"},{k:"book",l:"The Pyramid Principle — Barbara Minto"}]},
+  {id:"explain-nontech",en:"Explaining to Non-Technical Stakeholders",no:"Anh dùng từ viết tắt kỹ thuật với người ngoài ngành mà không nhận ra, hoặc thấy họ gật đầu nhưng không hỏi lại câu nào.",first:"Lấy một quyết định kỹ thuật tuần này, viết ba câu cho một người làm kế toán đọc. Nếu phải dùng một từ kỹ thuật, thay bằng so sánh đời thường.",t:"Giải thích cho người phi kỹ thuật",ax:"P",
+   d:"Chuyển một quyết định kỹ thuật thành thứ người không có nền kỹ thuật hiểu và ra quyết định được.",
+   how:["T6, nhưng người nhận tưởng tượng là kế toán hoặc sales, không phải dev.","Luật: nếu không giải thích nổi thì chưa hiểu đủ sâu — quay lại học, đừng viết dài hơn.","Bỏ hết từ viết tắt; mỗi khái niệm kỹ thuật đổi thành một so sánh đời thường."],
+   ok:"Người phi kỹ thuật hỏi lại đúng câu hỏi quan trọng nhất.",
+   res:[{k:"file",l:"T6 + Thẻ 2B",p:"tư duy leader/04_the-ghi-nho.md"}]},
+  {id:"postmortem",en:"Blameless Postmortem",no:"Câu hỏi đầu tiên sau incident là “ai làm”, và biên bản dừng ở “sẽ cẩn thận hơn”.",first:"Lấy incident gần nhất, viết T4 đủ ba tầng. Nếu tầng ba vẫn là tên người thì chưa đủ sâu — hỏi tiếp “vì sao hệ thống cho phép điều đó xảy ra”.",t:"Post-mortem không đổ lỗi",ax:"S",
+   d:"Truy nguyên nhân tới tầng hệ thống thay vì dừng ở nguyên nhân trực tiếp hoặc ở “lỗi của ai”.",
+   how:["T4 cho mọi incident, không đợi lịch.","Thẻ 5 ngay lúc nóng — trí nhớ bóp méo rất nhanh sau incident.","Bắt buộc đi đủ ba tầng: trực tiếp → quy trình → hệ thống."],
+   ok:"Cùng một loại incident không lặp lại trong hai quý liên tiếp.",
+   res:[{k:"file",l:"T4 + Thẻ 5",p:"tư duy leader/03_template.md"},{k:"web",l:"Google SRE Book — Postmortem Culture",u:"https://sre.google/sre-book/postmortem-culture/"}]},
+  {id:"async-writing",en:"Async Written Communication",no:"Lịch của anh đầy các cuộc họp mà kết quả chỉ là truyền đạt thông tin.",first:"Cuộc họp thông tin gần nhất: thay bằng một tài liệu ngắn, gửi trước, chỉ họp nếu có người phản hồi cần bàn.",t:"Viết để làm việc bất đồng bộ",ax:"L",opt:1,
+   d:"Viết đủ rõ để người khác hành động mà không cần một cuộc họp kèm theo.",
+   how:["Mỗi lần định đặt lịch họp để “đồng bộ thông tin”, thử viết trước.","Cấu trúc cố định: bối cảnh → điều cần quyết → hạn → ai quyết."],
+   ok:"Số cuộc họp thông tin trong tuần giảm rõ rệt.",
+   res:[{k:"web",l:"GitLab Handbook — cách vận hành bằng văn bản",u:"https://handbook.gitlab.com/"}]}]},
+
+ {id:"g-decide",en:"Decision Making",side:"r",name:"Tư duy quyết định",nodes:[
+  {id:"calibration",en:"Forecast Calibration",no:"Anh nói “chắc là kịp” hoặc “khả năng cao” mà không kèm con số, nên không lần nào sai được và không lần nào học được.",first:"Thứ Hai tới: mở T1, ghi ba dự đoán có phần trăm và hạn chót, một trong ba phải về người khác. Thứ Sáu chấm.",core:1,why:"Không có nó thì mọi phán đoán khác không kiểm chứng được. Toàn bộ T5 và T7 chỉ là bài chấm cho kỹ năng này.",t:"Hiệu chỉnh độ tự tin",ax:"S",
+   d:"Gán phần trăm cho mọi phán đoán rồi chấm lại, để biết mình đang tự tin thái quá hay quá dè dặt. Đây là kỹ năng nền của toàn bộ roadmap.",
+   how:["T1 thứ Hai: ba dự đoán, mỗi cái có % và hạn chót.","T5 chiều thứ Sáu: chấm đúng/sai, không sửa dự đoán cũ.","T7 cuối tháng: gom bảng, xem nhóm 70% có đúng khoảng 7/10 không."],
+   ok:"Ba tháng liên tiếp nhóm 70% rơi vào khoảng 6–8 trên 10.",
+   res:[{k:"file",l:"T1 · T5 · T7 — bộ ba nền",p:"tư duy leader/03_template.md"},{k:"file",l:"Vì sao T1 là bài tập nền",p:"tư duy leader/01_mục-đích.md"},{k:"book",l:"Superforecasting — Tetlock & Gardner"}]},
+  {id:"decision-doc",en:"Decision Doc / ADR",no:"Anh nhận ra mình chỉ liệt kê lý do ủng hộ phương án đã chọn sẵn từ đầu, không có phương án nào bị loại thật sự.",first:"Quyết định khó đảo ngược gần nhất anh vừa ra: viết ngược lại thành T2 một trang, đặc biệt mục “phương án đã loại” và mục 8 “hidden assumption”.",core:1,why:"Nơi duy nhất buộc anh cân nhắc thật thay vì hợp lý hoá phương án đã chọn sẵn. Ba mục cuối của nó chống ba bias khác nhau.",t:"Decision doc một trang",ax:"S",
+   d:"Buộc cân nhắc thật trước một quyết định khó đảo ngược, thay vì hợp lý hoá phương án đã chọn sẵn trong đầu.",
+   how:["T2 cho mọi quyết định khó đảo ngược, tối thiểu một cái mỗi tháng.","Không được tràn quá một trang — tràn nghĩa là đang mô tả chứ không quyết.","Mục 8 (hidden assumption) là mục quan trọng nhất; phần lớn quyết định sai phát sinh ở đó."],
+   ok:"Có ít nhất một lần anh đổi quyết định vì viết mục “phương án đã loại”.",
+   res:[{k:"file",l:"T2",p:"tư duy leader/03_template.md"},{k:"web",l:"ADR — Architecture Decision Records",u:"https://adr.github.io/"}]},
+  {id:"premortem",en:"Pre-mortem",no:"Khi được hỏi “có rủi ro gì không”, câu trả lời của anh chung chung: “chắc là về thời gian”.",first:"Hạng mục tiếp theo từ bốn tuần trở lên: viết T3 ở thì quá khứ — “dự án đã trượt vì…” — liệt kê năm nguyên nhân cụ thể, không viết “có thể”.",t:"Pre-mortem",ax:"S",
+   d:"Giả định dự án đã thất bại rồi, viết ở thì quá khứ vì sao — cách này moi ra nhiều nguyên nhân hơn hẳn câu hỏi “có rủi ro gì không”.",
+   how:["T3 trước mỗi hạng mục từ bốn tuần trở lên.","Viết ở thì quá khứ: “dự án đã trượt vì…”, không viết “có thể sẽ…”.","Ba tháng sau đối chiếu: rủi ro nào thành thật, rủi ro nào viết thừa."],
+   ok:"Ít nhất một rủi ro anh viết ra đã xảy ra thật — nếu chưa bao giờ, anh đang viết rủi ro quá an toàn.",
+   res:[{k:"file",l:"T3",p:"tư duy leader/03_template.md"}]},
+  {id:"second-order",en:"Second-Order Thinking",no:"Anh đánh giá phương án chỉ bằng việc nó có giải quyết vấn đề hiện tại không.",first:"Với quyết định đang cân nhắc, viết một dòng: sáu tháng nữa nó tạo ra ràng buộc gì mà bây giờ chưa thấy.",t:"Second-order effect",ax:"S",
+   d:"Hỏi “rồi sau đó thì sao” thêm hai lần nữa, thay vì dừng ở hệ quả trực tiếp.",
+   how:["Mục 7 trong T2: “thứ khó đảo ngược trong quyết định này là gì”.","Với mỗi phương án, viết một dòng về việc sáu tháng sau nó tạo ra ràng buộc gì."],
+   ok:"Anh tự nêu ra được second-order effect trước khi có người trong họp nhắc.",
+   res:[{k:"file",l:"T2 mục 7",p:"tư duy leader/03_template.md"}]},
+  {id:"reversible",en:"One-way vs Two-way Doors",no:"Anh dùng cùng một mức cẩn trọng cho mọi quyết định, hoặc ngược lại quyết nhanh cả những thứ không rút lại được.",first:"Ba quyết định gần nhất: phân loại đảo ngược được trong một tuần hay không. Loại đảo ngược được thì lần sau quyết ngay, không họp.",t:"Cửa một chiều và cửa hai chiều",ax:"S",
+   d:"Phân loại quyết định theo mức đảo ngược được: cửa hai chiều thì quyết nhanh, cửa một chiều thì chậm và viết ra.",
+   how:["Thẻ 3 cho quyết định vừa: một câu hỏi “đảo ngược được không”.","Nếu đảo ngược được trong một tuần — quyết luôn, đừng họp."],
+   ok:"Anh không còn dùng cùng một mức cẩn trọng cho mọi quyết định.",
+   res:[{k:"file",l:"Thẻ 3",p:"tư duy leader/04_the-ghi-nho.md"}]},
+  {id:"assumption",en:"Surfacing Hidden Assumptions",no:"Sau khi hỏng, câu hay nghe nhất trong nhóm là “tôi tưởng là…”.",first:"Trong tranh luận kỹ thuật tiếp theo, hỏi đúng một câu: “ta đang giả định gì mà chưa ai kiểm?” rồi ghi câu trả lời vào T2 mục 8.",t:"Truy hidden assumption",ax:"S",
+   d:"Tìm điều mà cả nhóm đang mặc định đúng nhưng chưa ai kiểm tra.",
+   how:["Mục 8 của T2, viết trước khi chọn phương án.","Trong mỗi tranh luận kỹ thuật, hỏi: “ta đang giả định gì mà chưa ai kiểm?”"],
+   ok:"Ít nhất một lần một giả định anh nêu ra hoá ra sai và cứu được cả hướng đi.",
+   res:[{k:"file",l:"T2 mục 8 · Thẻ 3",p:"tư duy leader/01_mục-đích.md"}]}]},
+
+ {id:"g-leverage",en:"Technical Leverage",side:"l",name:"Đòn bẩy kỹ thuật",nodes:[
+  {id:"review-teach",en:"Code Review as Teaching",no:"Nhận xét của anh chỉ nói phải sửa gì, không nói vì sao, và cùng một loại lỗi quay lại từ cùng một người.",first:"Tuần này chọn một pull request, viết nhận xét kèm lý do và phân ba mức: chặn merge / nên sửa / gợi ý.",t:"Code review kiểu dạy",ax:"L",
+   d:"Review để người viết lần sau tự làm đúng, không phải để bắt lỗi lần này.",
+   how:["Mỗi nhận xét kèm lý do, không chỉ yêu cầu sửa.","Tách rõ ba mức: chặn merge / nên sửa / gợi ý.","Mỗi tuần chọn một review viết kỹ hơn bình thường, coi như một bài dạy."],
+   ok:"Cùng một loại lỗi không xuất hiện lại từ cùng một người.",
+   res:[{k:"web",l:"Google Engineering Practices — Code Review",u:"https://google.github.io/eng-practices/review/"}]},
+  {id:"estimate-range",en:"Range Estimation",no:"Anh đưa một con số duy nhất, và con số đó gần như luôn lạc quan.",first:"Ước lượng tiếp theo: viết dạng “4–7 ngày, 80%”, ghi vào T1, chấm lại vào thứ Sáu.",t:"Ước lượng có khoảng",ax:"L",
+   d:"Đưa khoảng kèm mức tin cậy thay vì một con số trần trụi — và ghi lại để chấm.",
+   how:["Mỗi ước lượng ghi dạng “4–7 ngày, 80%”.","Ghi vào T1 như một dự đoán để cuối tuần chấm.","Sau ba tháng, đối chiếu để biết hệ số lạc quan của chính mình."],
+   ok:"Sai số ước lượng hạng mục 4–6 tuần dưới 20%.",
+   res:[{k:"file",l:"T1 — dùng ước lượng làm dự đoán",p:"tư duy leader/03_template.md"}]},
+  {id:"slicing",en:"Task Slicing",no:"Người nhận việc phải hỏi anh mới bắt đầu được, hoặc các phần chỉ ghép lại được khi anh ngồi ghép.",first:"Chia hạng mục đang làm thành các phần, rồi thử: đưa một phần cho người khác mà không giải thích gì thêm.",t:"Chia việc để người khác làm được",ax:"L",
+   d:"Chia theo năng lực và bối cảnh của người nhận, không chia theo cách mình dễ ghép lại.",
+   how:["Mỗi phần phải có Definition of Done riêng và kiểm chứng được độc lập.","Kiểm tra: người nhận có phải hỏi anh để bắt đầu không?"],
+   ok:"Người nhận bắt đầu được ngay sau khi đọc, không cần buổi giải thích."},
+  {id:"dod",en:"Definition of Done",no:"Chỉ anh biết thế nào là xong, nên mọi thứ đều phải qua anh trước khi merge.",first:"Viết một checklist năm dòng “thế nào là xong” cho mảng của anh, dán vào template pull request.",t:"Definition of Done",ax:"L",
+   d:"Viết ra tiêu chí xong một lần, để không phải tự kiểm từng lần.",
+   how:["Một checklist ngắn dán vào template pull request.","Rà lại sau mỗi incident: thiếu mục nào thì thêm vào."],
+   ok:"Anh không còn là người duy nhất biết thế nào là xong."},
+  {id:"automate",en:"Automation Judgment",no:"Anh tự động hoá thứ nghe có vẻ lặp lại nhưng thực ra một tháng chạy hai lần.",first:"Việc anh định tự động hoá: đếm số lần nó thật sự xảy ra trong bốn tuần vừa rồi trước khi viết dòng code nào.",t:"Chọn đúng chỗ tự động hoá",ax:"L",opt:1,
+   d:"Phân biệt việc lặp lại đáng tự động hoá với việc chỉ trông có vẻ lặp lại.",
+   how:["Đếm tần suất thật trong bốn tuần trước khi tự động hoá.","So thời gian xây với thời gian tiết kiệm trong sáu tháng."],
+   ok:"Anh từ chối được một đề xuất tự động hoá nghe hấp dẫn nhưng không đáng."}]},
+
+ {id:"g-system",en:"Systems & Metrics",side:"r",name:"Đọc hệ thống và số liệu",nodes:[
+  {id:"dora",en:"DORA Metrics",no:"Khi được hỏi mảng của anh khoẻ hay yếu, anh trả lời bằng cảm giác chứ không bằng con số.",first:"Chọn ba chỉ số lấy được số thật ở công ty anh, đo liên tục bốn tuần, rồi mang một chỉ số vào họp team.",core:1,why:"Không có số thật thì mọi lập luận của anh với cấp trên đều là ý kiến. Đây là bước đầu tiên ra khỏi ngôn ngữ kỹ thuật thuần.",t:"Bốn chỉ số giao hàng",ax:"S",
+   d:"Lead time, tần suất triển khai, tỷ lệ thay đổi gây lỗi, thời gian phục hồi — bốn con số nói được sức khoẻ giao hàng của team.",
+   how:["Chọn ba chỉ số lấy được số thật ở công ty anh, bỏ chỉ số không đo được.","Đo bốn tuần liên tiếp trước khi kết luận bất cứ điều gì.","Mang một chỉ số vào cuộc họp team, xem phản ứng."],
+   ok:"Anh nói được sức khoẻ mảng mình bằng ba con số, không bằng cảm giác.",
+   res:[{k:"web",l:"DORA — định nghĩa và cách đo",u:"https://dora.dev/"}]},
+  {id:"risk-register",en:"Risk Register",no:"Rủi ro chỉ được nói tới sau khi đã xảy ra.",first:"Mở Risk_Register_FILLED.pdf trong materials, viết một bảng mười dòng cho mảng của anh, rà lại sau một tháng.",t:"Risk register một trang",ax:"S",
+   d:"Danh sách rủi ro kèm xác suất, tác động và người chịu trách nhiệm — phần đáng giữ nhất của toàn bộ PMBOK.",
+   how:["Một bảng cho mảng mình, tối đa mười dòng.","Rà lại mỗi tháng: xoá dòng chết, thêm dòng mới.","Ghép với T3 — pre-mortem sinh ra dòng mới cho sổ này."],
+   ok:"Risk register dự báo đúng ít nhất một incident trước khi nó xảy ra.",
+   res:[{k:"file",l:"PMBOK 8 — phần quản lý rủi ro",p:"pmp/pmbok8_process_giai_thich.html"},{k:"file",l:"Ghi chú PMBOK của anh",p:"pmp/pmbok8_ghi_chu.md"}]},
+  {id:"tech-debt",en:"Tech Debt Quantification",no:"Anh nói “code chỗ đó tệ lắm” nhưng không nói được nó tốn bao nhiêu mỗi tháng.",first:"Chọn khoản nợ khó chịu nhất, gắn cho nó một con số: mất bao nhiêu giờ mỗi tháng, hoặc gây bao nhiêu incident trong quý.",t:"Đo và trình bày nợ kỹ thuật",ax:"S",
+   d:"Chuyển “code xấu” thành thứ người ngoài kỹ thuật hiểu: chậm bao nhiêu, rủi ro gì, tốn bao nhiêu.",
+   how:["Gắn mỗi khoản nợ với một con số: thời gian mất mỗi tháng, hoặc số incident.","Trình bày kèm phương án và chi phí, không trình bày kèm than phiền."],
+   ok:"Một khoản nợ kỹ thuật được duyệt ngân sách xử lý nhờ cách anh trình bày."},
+  {id:"observability",en:"Observability",no:"Mỗi lần incident, phần lớn thời gian là để đoán chuyện gì đang xảy ra chứ không phải để sửa.",first:"Sau incident gần nhất, hỏi một câu: thiếu tín hiệu nào khiến ta mất nhiều thời gian nhất? Bổ sung đúng tín hiệu đó.",t:"Quan sát đủ để ra quyết định",ax:"S",opt:1,
+   d:"Đủ log, chỉ số và dấu vết để trả lời câu hỏi mới phát sinh, không chỉ câu hỏi đã lường trước.",
+   how:["Sau mỗi incident, hỏi: thiếu tín hiệu nào khiến ta mất thời gian nhất?","Bổ sung đúng tín hiệu đó, không bổ sung tất cả."],
+   ok:"Thời gian chẩn đoán incident giảm rõ rệt qua ba lần liên tiếp."}]},
+
+ {id:"g-self",en:"Self-Management",side:"l",name:"Quản trị bản thân",nodes:[
+  {id:"reactive",en:"Reactive vs Proactive Time",no:"Anh thấy tuần nào cũng bận nhưng cuối tuần không kể được mình đã chủ động làm gì.",first:"Bảy ngày tới, mỗi tối ghi một dòng vào Thẻ 6: hôm nay bao nhiêu phần trăm là việc mình chọn.",t:"Phân biệt phản ứng và kiến tạo",ax:"P",
+   d:"Có bằng chứng — không phải cảm giác — về tỷ lệ thời gian bị kéo vào so với thời gian tự chọn.",
+   how:["Thẻ 6 cuối ngày ghi % kiến tạo.","T8 nhật ký thời gian hai tuần mỗi quý để đối chiếu với ước lượng.","Giữ % kiến tạo trên 20%; dưới 10% bốn tuần liền là tín hiệu dừng nhận việc mới."],
+   ok:"Số liệu T8 và cảm giác của anh lệch nhau dưới 10 điểm phần trăm.",
+   res:[{k:"file",l:"T8 · Thẻ 6",p:"tư duy leader/03_template.md"}]},
+  {id:"priority",en:"Prioritisation & Ownership",no:"Lịch làm việc của anh do người khác lấp đầy, và việc quan trọng nhất luôn bị đẩy sang ngày mai.",first:"Sáng mai, trước khi mở hộp thư, làm đúng một việc quan trọng mà không ai yêu cầu.",t:"Ưu tiên việc không ai yêu cầu",ax:"P",
+   d:"Việc quan trọng nhất của một leader thường là việc không ai giao — nếu chờ được giao thì lịch làm việc do người khác quyết.",
+   how:["Thẻ 1 đầu ngày, ba câu hỏi ưu tiên.","Mỗi tuần chọn một việc quan trọng mà không ai yêu cầu, làm trước khi mở hộp thư."],
+   ok:"Có ít nhất một việc mỗi tuần do anh tự chọn và hoàn thành.",
+   res:[{k:"file",l:"Thẻ 1",p:"tư duy leader/04_the-ghi-nho.md"}]},
+  {id:"stop-hoarding",en:"Work Hoarding",no:"Anh nghĩ “giải thích còn lâu hơn tự làm” rồi tự làm — và tuần nào cũng nghĩ vậy.",first:"Lần tới khi định tự làm, dừng lại tick Thẻ 4 trước khi tay chạm bàn phím. Đếm số tick trong tuần.",core:1,why:"Chỉ số dẫn dắt của cả giai đoạn 0. Ở tầng này anh vẫn được thưởng vì tự làm, nên đây là thứ duy nhất phát hiện được rằng anh chưa tạo leverage.",t:"Ngừng ôm việc",ax:"L",
+   d:"Phân biệt “tự làm vì nhanh hơn” với “tự làm vì thật sự cần thiết”. Đây là chỉ số dẫn dắt quan trọng nhất của giai đoạn 0.",
+   how:["Thẻ 4 mỗi lần định tự làm — tick trước khi tay chạm bàn phím.","Đếm số tick “vì nhanh hơn” theo tuần trong T5.","Mỗi tick là một lần ô delegation không tiến."],
+   ok:"Số tick “tôi làm vì nhanh hơn” giảm liên tục trong tám tuần.",
+   res:[{k:"file",l:"Thẻ 4 — vì sao nó tồn tại",p:"tư duy leader/01_mục-đích.md"}]},
+  {id:"attention",en:"Attention Training",no:"Anh với tay lấy điện thoại giữa lúc đọc code hoặc giữa cuộc họp mà không nhận ra.",first:"Ngày mai, trước khi mở máy: ngồi mười phút, đếm hơi thở 1 tới 10. Mất đếm thì bắt đầu lại từ 1. Tick ngày đầu tiên trong lịch đọc sách.",t:"Chú tâm mười phút mỗi ngày",ax:"P",
+   d:"Rèn khả năng nhận ra mình đã đi lạc và quay về — thước đo không phải ngồi có yên không, mà là số lần quay về được.",
+   how:["Cùng khung giờ, sáng trước khi mở máy.","Đếm hơi thở 1→10 rồi quay lại; mất đếm thì bắt đầu lại từ 1.","Không tăng thời lượng trước ngày thứ 60."],
+   ok:"Ngồi họp hoặc đọc code mà không với tay lấy điện thoại.",
+   res:[{k:"file",l:"Lịch 60 ngày đã có sẵn",p:"lich-doc-sach.html"}]}]}
+]},
+
+{id:"s1",st:"Giai đoạn 1",name:"Tech Lead",
+ sub:"Chuyển từ tạo kết quả bằng tay sang tạo kết quả qua người khác. Đây là chỗ trục Con người bắt đầu quyết định tất cả.",
+ groups:[
+ {id:"g-influence",en:"Informal Leadership",side:"r",name:"Dẫn dắt phi chính thức",nodes:[
+  {id:"influence",en:"Influence Without Authority",no:"Đề xuất của anh chỉ được làm khi anh tự làm, hoặc khi có sếp nhắc.",first:"Đề xuất tiếp theo: hỏi riêng hai người sẽ bị ảnh hưởng nhất trước khi đưa ra nhóm, và trình bày bằng vấn đề của họ.",t:"Ảnh hưởng khi không có quyền",ax:"P",
+   d:"Khiến người khác làm theo vì họ tin lý lẽ, không vì anh là sếp — kỹ năng duy nhất dùng được ở giai đoạn này vì anh chưa phải sếp.",
+   how:["Trước khi đề xuất, hỏi riêng hai người sẽ bị ảnh hưởng nhất.","Trình bày bằng vấn đề của họ, không bằng giải pháp của mình.","Nhường quyền đặt tên cho giải pháp cho người sẽ thực thi."],
+   ok:"Một đề xuất của anh được thực hiện mà anh không tham gia thực thi.",
+   res:[{k:"web",l:"StaffEng — các mô hình ảnh hưởng không chức danh",u:"https://staffeng.com/"}]},
+  {id:"consensus",en:"Building Technical Consensus",no:"Quyết định được chốt trong họp rồi hai tuần sau lại bị mở ra bàn tiếp.",first:"Cuộc họp quyết định tới: gửi phương án bằng văn bản trước 24 giờ, kết thúc bằng câu “ai không đồng ý nhưng vẫn cam kết làm?”",t:"Xây đồng thuận kỹ thuật",ax:"P",
+   d:"Đưa nhóm tới một quyết định chung mà người phản đối vẫn cam kết thực hiện.",
+   how:["Viết trước phương án ra văn bản, gửi trước họp 24 giờ.","Trong họp chỉ giải quyết bất đồng, không trình bày lại.","Kết thúc bằng câu: ai không đồng ý nhưng vẫn cam kết làm?"],
+   ok:"Quyết định không bị mở lại sau hai tuần."},
+  {id:"arbitrate",en:"Arbitrating Technical Disagreement",no:"Hai người giỏi tranh luận và anh chọn hộ theo phương án mình thích, hoặc để treo không quyết.",first:"Bất đồng tiếp theo: bắt hai bên viết tiêu chí đánh giá trước khi bàn phương án nào.",t:"Phân xử bất đồng kỹ thuật",ax:"P",
+   d:"Khi hai người giỏi không đồng ý, việc của anh là làm rõ tiêu chí chọn — không phải chọn hộ.",
+   how:["Bắt hai bên viết tiêu chí đánh giá trước khi bàn phương án.","Nếu không phân định được bằng dữ liệu, chọn phương án đảo ngược dễ hơn.","Ghi lại lý do chọn để sáu tháng sau còn đối chiếu."],
+   ok:"Cả hai bên đều thấy quyết định công bằng dù một bên không thắng."},
+  {id:"represent",en:"Representing the Team",no:"Team anh biết phải làm gì nhưng không biết vì sao công ty ưu tiên việc đó.",first:"Sau cuộc họp liên nhóm tới, tóm tắt ba dòng cho team ngay trong ngày.",t:"Đại diện team ra bên ngoài",ax:"P",
+   d:"Nói thay cho team trước các nhóm khác, và mang bối cảnh bên ngoài về cho team.",
+   how:["Thẻ 2B sau mỗi cuộc họp liên nhóm.","Sau mỗi cuộc họp bên ngoài, tóm tắt ba dòng cho team trong ngày."],
+   ok:"Team biết bối cảnh tổ chức mà không cần dự họp.",
+   res:[{k:"file",l:"Thẻ 2B",p:"tư duy leader/04_the-ghi-nho.md"}]}]},
+
+ {id:"g-delegate",en:"Delegation",side:"l",name:"Uỷ quyền",nodes:[
+  {id:"delegate-decision",en:"Delegating Decisions",no:"Anh giao việc nhưng vẫn duyệt từng bước, và người nhận phải đoán ý anh.",first:"Chọn một quyết định trong mảng của anh, nói rõ ràng buộc và tiêu chí, rồi im lặng để người khác chọn — kể cả khi họ chọn khác ý anh.",core:1,why:"Ranh giới thật giữa senior dev và tech lead. Giao việc thì ai cũng làm được; giao quyền quyết mới tạo ra người thay thế.",t:"Delegate quyết định, không chỉ việc",ax:"L",
+   d:"Giao cả quyền chọn phương án, không chỉ giao phần thực thi của phương án anh đã chọn.",
+   how:["Nói rõ ràng buộc và tiêu chí, rồi im lặng.","Chấp nhận phương án khác ý mình nếu nó đạt tiêu chí — đây là bài tập thật.","Thẻ 4 mỗi lần định lấy lại quyền quyết."],
+   ok:"Có quyết định trong mảng của anh được ra mà anh chỉ biết sau."},
+  {id:"delegation-levels",en:"Delegation Levels",no:"Hay xảy ra tình huống “tôi tưởng anh sẽ hỏi tôi trước”.",first:"Lần giao việc tới, nói rõ một trong ba: báo trước khi làm, báo sau khi làm, hay không cần báo.",t:"Bảy cấp uỷ quyền",ax:"L",
+   d:"Uỷ quyền không phải bật/tắt: từ “tôi quyết” tới “anh quyết, không cần báo” có nhiều nấc, và nói rõ nấc nào tránh được phần lớn hiểu lầm.",
+   how:["Mỗi lần giao việc, nói rõ nấc: báo trước khi làm, báo sau khi làm, hay không cần báo.","Nâng nấc dần cho từng người, ghi lại nấc hiện tại."],
+   ok:"Không còn tình huống “tôi tưởng anh sẽ hỏi tôi trước”.",
+   res:[{k:"web",l:"Delegation Poker — bảy cấp uỷ quyền",u:"https://management30.com/practice/delegation-poker/"}]},
+  {id:"stretch",en:"Stretch Assignment",no:"Anh chỉ giao cho mỗi người đúng thứ họ đã làm được rồi, nên không ai lớn lên.",first:"Chọn một việc quan trọng nhưng đảo ngược được, giao cho người chưa từng làm, nói trước chỗ họ sẽ vướng và mốc anh sẽ can thiệp.",t:"Giao việc căng vừa đủ",ax:"P",
+   d:"Giao việc trên khả năng hiện tại một chút, kèm lưới an toàn — cách duy nhất người khác lớn lên.",
+   how:["Chọn việc quan trọng nhưng đảo ngược được.","Nói trước: tôi kỳ vọng anh sẽ vướng ở chỗ này, cứ vướng rồi hỏi.","Đừng cứu quá sớm; đặt trước mốc mình sẽ can thiệp."],
+   ok:"Một người làm được việc mà ba tháng trước anh phải tự làm."},
+  {id:"bus-factor",en:"Bus Factor & Bottleneck Removal",no:"Anh nghỉ hai hôm và có ba việc phải chờ anh về.",first:"Liệt kê ba thứ chỉ mình anh biết. Tuần này chuyển giao một thứ — bằng tài liệu, không bằng buổi nói chuyện.",t:"Chống bottleneck",ax:"L",
+   d:"Không để mọi thông tin và mọi phê duyệt đi qua một người — kể cả khi người đó là anh và cảm giác rất giống đang dẫn dắt.",
+   how:["Phép thử: nghỉ ba ngày liền, xem team có đứng không.","Ghi lại mọi thứ chỉ mình anh biết, mỗi tuần chuyển giao một mục.","Luân phiên người đại diện trong các cuộc họp thường kỳ."],
+   ok:"Anh nghỉ ba ngày và không có quyết định nào phải chờ."}]},
+
+ {id:"g-11",en:"1:1s & Feedback",side:"r",name:"1-1 và phản hồi",nodes:[
+  {id:"one-on-one",en:"1:1s",no:"Anh chỉ nói chuyện riêng với người trong team khi có vấn đề, hoặc 1-1 biến thành báo cáo tiến độ.",first:"Đặt lịch 1-1 ba mươi phút với một người, mở đầu bằng đúng câu: “điều gì đang chiếm nhiều đầu óc anh/chị nhất?” Ghi một dòng sau buổi đó.",core:1,why:"Hạ tầng của mọi thứ ở trục Con người. Không có 1-1 đều thì phản hồi, coaching, giữ người, đánh giá đều không có chỗ diễn ra.",t:"Khung 1-1",ax:"P",
+   d:"Cuộc gặp định kỳ mà chương trình do người kia đặt, không phải báo cáo tiến độ trá hình.",
+   how:["30 phút, hai tuần một lần tối thiểu, không bao giờ huỷ — dời thì được.","Câu mở đầu cố định: “điều gì đang chiếm nhiều đầu óc anh/chị nhất?”","Ghi một dòng sau mỗi buổi; mở lại dòng cũ ở buổi sau."],
+   ok:"Người kia mang vấn đề tới trước khi nó thành incident.",
+   res:[{k:"book",l:"The Manager’s Path — Ch.4 (đã có trong lịch đọc)"},{k:"web",l:"Lara Hogan — câu hỏi cho buổi 1-1 đầu tiên",u:"https://larahogan.me/blog/first-one-on-one-questions/"}]},
+  {id:"sbi",en:"SBI Feedback",no:"Phản hồi của anh nói về con người — “em hơi cẩu thả” — thay vì về hành vi quan sát được.",first:"Viết ra trước ba phần cho một phản hồi thật: tình huống · hành vi · tác động. Đọc lại và xoá mọi từ nói về tính cách.",core:1,why:"Kỹ năng phân biệt người quản lý được với người chỉ có chức danh. Nói về hành vi quan sát được, không nói về tính cách.",t:"SBI feedback",ax:"P",
+   d:"Tình huống — hành vi — tác động: nói về việc quan sát được, không nói về tính cách.",
+   how:["Viết ra trước ba phần đó, đọc lại xem có từ nào nói về con người thay vì hành vi.","Bỏ hết “anh luôn” và “anh không bao giờ”.","Thẻ 2D sau mỗi 1-1: có nói thẳng hay đã né?"],
+   ok:"Người nhận hỏi lại “tôi nên làm khác thế nào” thay vì tự vệ.",
+   res:[{k:"file",l:"Thẻ 2D",p:"tư duy leader/04_the-ghi-nho.md"},{k:"book",l:"Radical Candor — Kim Scott"}]},
+  {id:"feedback-48h",en:"Timely Feedback",no:"Anh gom nhận xét lại để nói một thể vào kỳ review.",first:"Điều đáng nói gần nhất anh đang giữ trong đầu: nói trong hai ngày tới, hoặc viết ra rồi đọc trong 1-1 gần nhất.",t:"Phản hồi trong 48 giờ",ax:"P",
+   d:"Phản hồi để dành tới kỳ review thì mất hết giá trị — và biến thành một cú sốc.",
+   how:["Quy tắc cứng: quan sát được điều gì đáng nói, nói trong hai ngày.","Nếu chưa đủ can đảm, viết ra trước rồi đọc trong 1-1 gần nhất."],
+   ok:"Không có điều gì trong kỳ review là bất ngờ với người nhận."},
+  {id:"receive-feedback",en:"Receiving Feedback",no:"Phản ứng đầu tiên của anh khi nghe góp ý là giải thích vì sao mình đúng.",first:"Trong 1-1 với sếp tuần này, hỏi một câu cụ thể: “em nên bớt làm gì?” rồi chỉ hỏi làm rõ, không phản bác.",t:"Nhận feedback không phòng thủ",ax:"P",
+   d:"Tách ba loại kích hoạt — thấy sai sự thật, thấy do quan hệ, thấy đe doạ bản thân — để nghe được phần đúng.",
+   how:["Khi thấy muốn phản bác, hỏi một câu làm rõ trước khi trả lời.","Chủ động xin feedback mỗi quý, hỏi cụ thể: “tôi nên bớt làm gì?”"],
+   ok:"Anh đổi một hành vi thật vì phản hồi nghe khó chịu ban đầu.",
+   res:[{k:"book",l:"Thanks for the Feedback — Ch.2–5 (đã có trong lịch đọc)"}]},
+  {id:"coaching",en:"Coaching Questions",no:"Trong standup anh nghe được ba câu là đã đưa ra lời giải.",first:"Trong 1-1 tới, dùng đúng một câu hỏi thay vì đưa giải pháp: “điều gì hữu ích nhất cho anh/chị lúc này?” rồi im lặng đếm tới năm.",t:"Coaching bằng câu hỏi",ax:"P",
+   d:"Hỏi để người kia tự tìm ra, thay vì đưa lời giải — thói quen khó bỏ nhất của người giỏi kỹ thuật.",
+   how:["Bảy câu hỏi trong The Coaching Habit, dùng ngay trong 1-1 tuần đọc.","Câu chốt: “điều gì hữu ích nhất cho anh/chị lúc này?”","Thẻ 2C: đếm số lần anh nhảy vào giải hộ trong standup."],
+   ok:"Người kia rời cuộc nói chuyện với phương án của chính họ.",
+   res:[{k:"book",l:"The Coaching Habit — 120 trang, đọc trong một tuần"},{k:"file",l:"Thẻ 2C",p:"tư duy leader/04_the-ghi-nho.md"}]}]},
+
+ {id:"g-hard",en:"Crucial Conversations",side:"l",name:"Trò chuyện khó",nodes:[
+  {id:"state",en:"STATE — Crucial Conversations",no:"Anh biết cần nói một điều khó nhưng để nó trôi qua tuần này sang tuần khác.",first:"Chọn điều khó nhất anh đang né, viết ra ba câu đầu theo khung STATE, đặt lịch nói trong bảy ngày.",core:1,why:"Khung đáng thuộc nhất trong cả roadmap. Mọi cuộc khó ở ba giai đoạn sau đều chạy trên nó.",t:"Khung STATE",ax:"P",
+   d:"Cách nói điều khó nghe mà không làm người kia đóng cửa: nêu sự kiện, kể câu chuyện của mình, hỏi câu chuyện của họ, nói thăm dò, khuyến khích thử lại.",
+   how:["Học thuộc năm bước — đây là khung đáng thuộc nhất trong cả roadmap.","Viết ra trước ba câu đầu cho mỗi cuộc khó.","Sau mỗi lần, ghi lại: chuẩn bị gì, nói gì, họ phản ứng ra sao."],
+   ok:"Một cuộc trò chuyện khó đã diễn ra và quan hệ vẫn còn nguyên sau đó.",
+   res:[{k:"book",l:"Crucial Conversations — Ch.7 (đã có trong lịch đọc)"}]},
+  {id:"safety",en:"Psychological Safety in Dialogue",no:"Giữa cuộc nói chuyện, người kia im bặt hoặc mỉa mai, và anh vẫn nói tiếp nội dung.",first:"Học thuộc hai dấu hiệu: rút lui và tấn công. Lần tới thấy một trong hai, dừng nội dung và nói rõ ý định chung của cả hai.",t:"Giữ an toàn trong hội thoại",ax:"P",
+   d:"Nhận ra lúc người kia chuyển sang im lặng hoặc bạo lực lời nói, và khôi phục an toàn trước khi nói tiếp nội dung.",
+   how:["Học hai dấu hiệu: rút lui (im, đổi chủ đề) và tấn công (mỉa, dán nhãn).","Khi thấy dấu hiệu, dừng nội dung, nói rõ ý định chung."],
+   ok:"Anh cứu được một cuộc nói chuyện đang hỏng giữa chừng.",
+   res:[{k:"book",l:"Crucial Conversations — Ch.5"}]},
+  {id:"stories",en:"Master My Stories",no:"Anh kết luận về động cơ của người khác trước khi hỏi họ.",first:"Tình huống đang khó chịu: viết hai cột — tôi thấy gì / tôi đang kể chuyện gì. Rồi hỏi: người tử tế và có lý sẽ làm vậy vì lý do gì?",t:"Chống tự diễn giải ý đồ",ax:"P",
+   d:"Tách sự kiện khỏi câu chuyện mình tự dựng về động cơ người khác.",
+   how:["Viết hai cột: tôi thấy gì / tôi đang kể chuyện gì về điều đó.","Hỏi: người tử tế và có lý sẽ làm vậy vì lý do gì?"],
+   ok:"Ít nhất một lần anh phát hiện câu chuyện mình dựng là sai.",
+   res:[{k:"book",l:"Crucial Conversations — Ch.6"}]},
+  {id:"say-no",en:"Saying No with Options",no:"Anh nhận thêm việc rồi tự bù bằng làm ngoài giờ.",first:"Yêu cầu tiếp theo không vừa sức: trả lời theo công thức “điều tôi có thể làm là X, nếu cần Y thì phải bỏ Z”.",t:"Nói không kèm phương án",ax:"P",
+   d:"Từ chối mà vẫn giữ được quan hệ và vẫn giải quyết vấn đề gốc của người hỏi.",
+   how:["Công thức: điều tôi có thể làm là X, nếu cần Y thì phải bỏ Z.","Không bao giờ nói không mà không nêu cái giá của việc nói có."],
+   ok:"Anh từ chối một yêu cầu và người yêu cầu vẫn quay lại lần sau."}]},
+
+ {id:"g-delivery",en:"Delivery",side:"r",name:"Giao hàng",nodes:[
+  {id:"breakdown",en:"Work Breakdown & Sequencing",no:"Team làm phần dễ trước, và phần chứa ẩn số lớn nhất bị đẩy về cuối.",first:"Hạng mục đang làm: xác định phần chứa ẩn số lớn nhất, xếp nó vào một phần ba thời gian đầu.",t:"Chia nhỏ và sắp thứ tự",ax:"S",
+   d:"Xếp việc theo thứ tự giảm rủi ro sớm nhất, không theo thứ tự dễ làm trước.",
+   how:["Việc nào chứa ẩn số lớn nhất thì làm trước, dù khó.","Mỗi phần phải giao được độc lập, không đợi phần khác xong."],
+   ok:"Rủi ro lớn nhất của hạng mục được gỡ trong một phần ba thời gian đầu."},
+  {id:"dependencies",en:"Dependency Management",no:"Hạng mục trượt vì chờ một nhóm khác, và anh chỉ biết khi đã trễ.",first:"Liệt kê mọi thứ ngoài team mà hạng mục đang chờ. Mỗi cái ghi: người thật, hạn thật, phương án nếu trượt.",t:"Dependency management",ax:"S",
+   d:"Nhận ra và xử lý những thứ team anh không kiểm soát nhưng vẫn phải chờ.",
+   how:["Liệt kê dependency ngoài team ngay đầu hạng mục.","Với mỗi dependency: ai là người thật, hạn thật, phương án nếu trượt.","Hỏi trạng thái theo lịch, không hỏi khi đã trễ."],
+   ok:"Không có hạng mục nào trượt vì một dependency mà anh biết từ đầu."},
+  {id:"stakeholder",en:"Stakeholder Register & RACI",no:"Có người xuất hiện ở phút cuối phản đối một quyết định đã chốt xong.",first:"Mở Stakeholder_Register_FILLED.pdf, lập bảng mười dòng cho hạng mục lớn nhất anh đang làm.",t:"Stakeholder Register và RACI",ax:"S",
+   d:"Ai quyết, ai làm, ai cần được hỏi, ai chỉ cần biết — viết ra trước khi bắt đầu.",
+   how:["Một bảng cho mỗi hạng mục lớn, tối đa mười dòng.","Rà lại giữa chừng: ai đã đổi vai, ai mới xuất hiện."],
+   ok:"Không có ai xuất hiện ở phút cuối để phản đối một quyết định đã chốt.",
+   res:[{k:"file",l:"PMBOK 8 — stakeholder và truyền thông",p:"pmp/pmbok8_process_matrix.html"}]},
+  {id:"track-nomicro",en:"Tracking Without Micromanaging",no:"Anh hỏi trạng thái theo cảm hứng, thường là lúc đã lo, và người bị hỏi thấy như bị soi.",first:"Thống nhất trước với team tần suất cập nhật, rồi tôn trọng nó. Hỏi về việc, không hỏi về người.",t:"Theo dõi mà không micromanage",ax:"P",
+   d:"Biết trạng thái thật mà không khiến người khác cảm thấy bị soi.",
+   how:["Hỏi về việc, không hỏi về người: “hạng mục này đang vướng gì?”","Thống nhất trước tần suất cập nhật, rồi tôn trọng nó.","Đặt điểm kiểm tra theo cột mốc, không theo ngày."],
+   ok:"Anh biết được vấn đề sớm mà không ai thấy bị giám sát."},
+  {id:"scope-negotiation",en:"Scope Negotiation",no:"Anh gật đầu với deadline dù trong đầu biết là phi lý.",first:"Lần tới thấy vậy, tick Thẻ 2B, rồi mang ba phương án đến: đủ · tối thiểu · phương án cắt, kèm cái giá bằng con số.",core:1,why:"Nếu thiếu, anh sẽ hấp thụ mọi áp lực rồi đẩy xuống cho team dưới dạng làm thêm giờ. Đây là kỹ năng bảo vệ team.",t:"Scope negotiation",ax:"S",
+   d:"Đổi phạm vi thay vì đổi chất lượng hoặc đổi team health, khi hạn không đổi được.",
+   how:["Luôn mang ba phương án: đủ, tối thiểu, và phương án cắt.","Nêu cái giá bằng con số, không bằng cảm xúc.","Thẻ 2B: đếm số lần gật đầu deadline dù thấy phi lý — con số này phải giảm."],
+   ok:"Một lần anh đàm phán được phạm vi thay vì nhận thêm giờ làm.",
+   res:[{k:"file",l:"Thẻ 2B — chỉ số managing up",p:"tư duy leader/04_the-ghi-nho.md"}]}]},
+
+ {id:"g-up",en:"Managing Up",side:"l",name:"Quản lý ngược lên trên",nodes:[
+  {id:"status-report",en:"Status Reporting",no:"Sếp phải hỏi thêm sau khi đọc cập nhật của anh, hoặc anh trộn lẫn việc báo tin với việc xin quyết định.",first:"Cập nhật tuần này: kết luận trước, ba dòng, và ghi rõ đây là thông tin hay đang cần một quyết định.",t:"Báo cáo cho cấp trên",ax:"P",
+   d:"Ba loại cập nhật khác nhau — thông tin thường kỳ, xả áp lực, và báo thảm hoạ — dùng nhầm loại là mất tín nhiệm.",
+   how:["Cập nhật thường kỳ: kết luận trước, ba dòng, cùng khung mỗi tuần.","Phân biệt rõ: đây là thông tin, hay tôi đang cần một quyết định?"],
+   ok:"Sếp không phải hỏi thêm sau khi đọc cập nhật của anh.",
+   res:[{k:"web",l:"Rands — The Update, The Vent, and The Disaster",u:"https://randsinrepose.com/archives/the-update-the-vent-and-the-disaster/"}]},
+  {id:"bad-news",en:"Escalating Bad News Early",no:"Anh đợi tới khi chắc chắn trượt mới báo, hoặc sếp biết tin xấu từ người khác trước.",first:"Điều anh đang lo sẽ trượt: báo trong 24 giờ tới, kèm hai phương án.",t:"Báo tin xấu sớm",ax:"P",
+   d:"Tin xấu không tự tốt lên theo thời gian; giá trị của anh nằm ở chỗ báo sớm kèm phương án.",
+   how:["Quy tắc: biết sẽ trượt thì báo trong 24 giờ, kèm hai phương án.","Không bao giờ để sếp biết tin xấu từ người khác trước."],
+   ok:"Sếp phản ứng bằng câu hỏi về phương án, không bằng câu hỏi vì sao giờ mới biết."},
+  {id:"org-priority",en:"Reading Org Priorities",no:"Anh đề xuất những thứ hợp lý về kỹ thuật nhưng liên tục không được duyệt.",first:"Viết một dòng: ba ưu tiên thật của công ty quý này là gì, căn cứ vào tiền và người đi đâu chứ không căn cứ vào slide. Rồi dự đoán trong T1 đề xuất nào sẽ được duyệt.",t:"Đọc ưu tiên của tổ chức",ax:"S",
+   d:"Biết công ty đang thật sự ưu tiên gì, không phải đang nói ưu tiên gì.",
+   how:["Xem tiền và người đi đâu, không xem slide.","Mỗi quý viết một dòng: ba ưu tiên thật của công ty là gì.","Kiểm chứng bằng T1: dự đoán đề xuất nào sẽ được duyệt."],
+   ok:"Tỷ lệ đề xuất của anh được duyệt tăng lên mà không cần xin xỏ."}]}
+]},
+
+{id:"s2",st:"Giai đoạn 2",name:"Tech Lead Manager",
+ sub:"Nửa kỹ thuật, nửa quản lý — nấc rơi nhiều nhất. Từ đây phần lớn kỹ năng mới không còn liên quan gì đến code.",
+ groups:[
+ {id:"g-perf",en:"Performance Management",side:"r",name:"Quản lý hiệu suất",nodes:[
+  {id:"expectations",en:"Setting Expectations",no:"Anh chỉ nói ra kỳ vọng khi ai đó đã làm sai nó.",first:"Mở Team_Charter_FILLED.pdf, viết ba điều kỳ vọng cho quý này với một người, hai bên cùng đọc và cùng sửa.",core:1,why:"Nền của toàn bộ quản lý hiệu suất. Không viết kỳ vọng ra trước thì mọi đánh giá về sau đều là cảm tính và không bảo vệ được.",t:"Đặt kỳ vọng rõ ràng",ax:"P",
+   d:"Viết ra điều gì là tốt cho từng vai trò, trước khi đánh giá ai đó không đạt.",
+   how:["Mỗi người: ba điều kỳ vọng cho quý này, viết ra, hai bên cùng đọc.","Rà lại giữa quý, không đợi cuối quý."],
+   ok:"Không ai ngạc nhiên với đánh giá của mình."},
+  {id:"review-cycle",en:"Performance Review Cycle",no:"Đến kỳ review anh phải ngồi cố nhớ lại sáu tháng qua.",first:"Bắt đầu ngay: ghi một dòng sau mỗi 1-1 từ tuần này. Đó chính là nguyên liệu của bản đánh giá tới.",t:"Chu kỳ review",ax:"P",
+   d:"Thu thập chứng cứ liên tục, viết đánh giá dựa trên chứng cứ chứ không dựa trên ấn tượng tháng cuối.",
+   how:["Ghi một dòng sau mỗi 1-1 — đây chính là nguyên liệu của đánh giá.","Xin phản hồi từ ba đồng nghiệp cho mỗi người.","Viết bản nháp trước hai tuần, đọc lại xem có bias gần đây không."],
+   ok:"Anh viết được đánh giá mà không phải cố nhớ lại sáu tháng qua."},
+  {id:"underperform",en:"Managing Underperformance",no:"Anh biết một người đang không đạt nhưng đã hoãn nói chuyện đó hơn một tháng.",first:"Viết ra ba ví dụ quan sát được về khoảng cách, không phải cảm nhận chung. Đặt lịch nói trong bảy ngày, dùng khung STATE.",core:1,why:"Việc khó nhất và bị hoãn nhiều nhất. Hoãn nó gây hại cho cả người đó lẫn cả team, và là lý do phổ biến nhất khiến TLM không lên được EM.",t:"Xử lý người underperform",ax:"P",
+   d:"Nói sớm, cụ thể, có kế hoạch và có hạn — trì hoãn việc này gây hại cho cả người đó lẫn cả team.",
+   how:["Nêu khoảng cách bằng ví dụ quan sát được, không bằng cảm nhận chung.","Cùng viết performance improvement plan có mốc thời gian và tiêu chí rõ.","Thẻ 2D và khung STATE dùng ở đây."],
+   ok:"Anh đã có một cuộc như vậy, và kết quả — dù là cải thiện hay chia tay — đến từ tiêu chí đã thống nhất."},
+  {id:"ladder",en:"Career Ladder & Growth Plan",no:"Người trong team hỏi “em cần gì để lên level” và anh trả lời chung chung.",first:"Nếu công ty chưa có ladder, viết bản nháp cho một vai trò. Rồi cùng một người viết kế hoạch một trang: đích · khoảng trống · ba việc quý này.",t:"Career ladder và kế hoạch phát triển",ax:"P",
+   d:"Biết mỗi bậc đòi hỏi gì, và giúp từng người thấy đường đi của họ.",
+   how:["Nếu công ty chưa có ladder, viết bản nháp cho team mình.","Mỗi người một kế hoạch một trang: đích, khoảng trống, ba việc quý này."],
+   ok:"Mỗi người trong team nói được bậc tiếp theo của họ cần gì.",
+   res:[{k:"web",l:"progression.fyi — kho career ladder công khai",u:"https://progression.fyi/"}]},
+  {id:"retention",en:"Retention",no:"Anh biết ai đó muốn nghỉ vào lúc nhận được đơn.",first:"Trong 1-1 tới, hỏi thẳng: “điều gì có thể khiến anh/chị rời đi?” Ghi lại câu trả lời, hỏi lại sau ba tháng.",t:"Giữ người giỏi",ax:"P",
+   d:"Biết trước ai đang cân nhắc rời đi, và biết vì sao — trước khi đơn nghỉ việc xuất hiện.",
+   how:["Hỏi định kỳ trong 1-1: điều gì có thể khiến anh/chị rời đi?","Theo dõi ba tín hiệu: bớt phát biểu, bớt nhận việc mới, bớt tranh luận.","T1: mỗi quý một dự đoán về khả năng giữ người."],
+   ok:"Không ai rời team vì lý do quản lý trong hai quý liên tiếp."}]},
+
+ {id:"g-hire",en:"Hiring",side:"l",name:"Tuyển dụng",nodes:[
+  {id:"jd",en:"Job Description",no:"Mô tả vị trí của anh là danh sách công nghệ, và ứng viên tới phỏng vấn hiểu sai việc.",first:"Viết lại một mô tả bắt đầu từ ba việc người này sẽ làm trong sáu tháng đầu. Tách rõ bắt buộc và mong muốn.",t:"Viết mô tả vị trí",ax:"P",
+   d:"Mô tả việc thật sẽ làm và tiêu chí đánh giá, không phải danh sách công nghệ.",
+   how:["Bắt đầu từ ba việc người này sẽ làm trong sáu tháng đầu.","Tách rõ bắt buộc và mong muốn — thường danh sách bắt buộc dài gấp đôi mức cần."],
+   ok:"Ứng viên đến phỏng vấn hiểu đúng việc sẽ làm."},
+  {id:"loop-design",en:"Interview Loop Design",no:"Hai người phỏng vấn cùng một ứng viên ra hai kết luận trái ngược, và không ai biết vòng nào có quyền phủ quyết.",first:"Vẽ ma trận: mỗi vòng đo năng lực nào. Bỏ phần trùng, thống nhất thang điểm trước buổi phỏng vấn tới.",t:"Thiết kế interview loop",ax:"P",
+   d:"Mỗi vòng đo một thứ khác nhau, và biết trước vòng nào có quyền phủ quyết.",
+   how:["Vẽ ma trận: vòng nào đo năng lực nào, không để trùng.","Thống nhất trước thang điểm và mức chấp nhận."],
+   ok:"Hai người phỏng vấn khác nhau cho cùng một ứng viên ra kết luận gần nhau."},
+  {id:"behavioral",en:"Behavioral Interviewing",no:"Anh hỏi câu giả định — “nếu gặp tình huống X thì anh làm gì” — và nhận về câu trả lời lý thuyết.",first:"Buổi phỏng vấn tới: mỗi câu hỏi đào ba tầng — tình huống · hành động của chính họ · kết quả. Ghi nguyên văn, chấm sau.",core:1,why:"Tuyển sai một người tốn hơn mọi quyết định kỹ thuật anh từng ra. Đây là kỹ năng giảm sai số đó nhiều nhất.",t:"Phỏng vấn hành vi",ax:"P",
+   d:"Hỏi về việc đã làm thật, đào tới hành động cụ thể của cá nhân, không nhận câu trả lời “chúng tôi đã…”.",
+   how:["Mỗi câu hỏi đào ba tầng: tình huống → hành động của anh → kết quả.","Ghi lại nguyên văn, chấm sau, không chấm trong lúc nghe."],
+   ok:"Anh phát hiện được khoảng cách giữa điều ứng viên kể và điều họ thật sự làm."},
+  {id:"hiring-bias",en:"Hiring Bias Control",no:"Anh quyết trong năm phút đầu rồi dùng phần còn lại để xác nhận cảm giác đó.",first:"Chấm theo tiêu chí đã viết trước, từng tiêu chí một, trước khi bàn với người khác. Cấm dùng từ “hợp gu” mà không nêu hành vi cụ thể.",t:"Chống bias khi tuyển",ax:"P",
+   d:"Ấn tượng năm phút đầu và cảm giác “hợp gu” là hai nguồn sai lớn nhất trong tuyển dụng.",
+   how:["Chấm theo tiêu chí đã viết trước, từng tiêu chí một.","Cấm dùng từ “culture fit” mà không nêu hành vi cụ thể.","So kết quả thực tế của người đã tuyển với nhận định của anh lúc phỏng vấn."],
+   ok:"Nhận định lúc phỏng vấn của anh khớp với kết quả sau sáu tháng.",
+   res:[{k:"web",l:"Google re:Work — hướng dẫn tuyển dụng",u:"https://rework.withgoogle.com/"}]},
+  {id:"onboarding",en:"Onboarding 30-60-90",no:"Người mới hết tuần đầu vẫn chưa đưa được thay đổi nào lên production.",first:"Chuẩn bị trước một việc nhỏ giao được ngay ngày đầu, và chỉ định một onboarding buddy. Viết mốc 30-60-90 trước khi họ tới.",t:"Onboarding 30-60-90",ax:"P",
+   d:"Người mới có lộ trình rõ trong ba tháng đầu, không phải tự mò.",
+   how:["Ngày đầu: một onboarding buddy, một việc nhỏ giao được ngay.","30 ngày: giao được một việc thật; 60: tự chủ một mảng nhỏ; 90: đóng góp vào quyết định."],
+   ok:"Người mới đưa được thay đổi lên production trong tuần đầu."}]},
+
+ {id:"g-workflow",en:"Ways of Working",side:"r",name:"Thiết kế cách làm việc",nodes:[
+  {id:"quality-bar",en:"Quality Bar",no:"Chất lượng tụt ngay khi anh không review.",first:"Chuyển mọi thứ kiểm tra được sang tự động. Phần còn lại viết thành checklist ngắn, rà lại sau mỗi incident.",t:"Quality bar",ax:"L",
+   d:"Viết chuẩn ra một lần để không phải là người gác cổng mỗi lần.",
+   how:["Chuyển mọi thứ kiểm tra được sang tự động.","Phần còn lại viết thành checklist ngắn, rà sau mỗi incident."],
+   ok:"Chất lượng giữ nguyên khi anh không review."},
+  {id:"oncall",en:"On-call & Incident Management",no:"Incident ngoài giờ được xử lý bằng cách nhắn cho người biết nhiều nhất.",first:"Viết lịch trực có người dự phòng và quy trình leo thang. Sau incident tiếp theo, làm T4 và ra đúng một hành động sửa hệ thống.",t:"On-call và vận hành incident",ax:"L",
+   d:"Lịch trực, quy trình leo thang, và văn hoá không đổ lỗi — ba thứ phải có trước incident lớn tiếp theo.",
+   how:["Lịch công bằng, có bù, có người dự phòng.","Sau mỗi incident: T4 tới tầng ba, ra đúng một hành động sửa hệ thống.","Đo thời gian phục hồi qua từng quý."],
+   ok:"Incident được xử lý đúng quy trình khi anh không có mặt.",
+   res:[{k:"file",l:"T4 — post-mortem tầng ba",p:"tư duy leader/03_template.md"}]},
+  {id:"meeting-cadence",en:"Meeting Cadence",no:"Team họp nhiều nhưng không ai nói được cuộc nào bỏ đi thì hỏng gì.",first:"Với mỗi cuộc họp định kỳ, trả lời một câu: bỏ thì hỏng gì. Cắt thử một cuộc trong bốn tuần, xem có ai nhớ không.",t:"Meeting cadence",ax:"L",
+   d:"Quyết định họp gì, bao lâu một lần, và quan trọng hơn: bỏ cuộc họp nào.",
+   how:["Mỗi cuộc họp định kỳ phải trả lời được: nếu bỏ thì hỏng gì?","Cắt thử một cuộc trong bốn tuần, xem có ai nhớ không."],
+   ok:"Tổng thời gian họp của team giảm mà không mất thông tin."},
+  {id:"docs",en:"Documentation & Knowledge Sharing",no:"Anh trả lời cùng một câu hỏi trong kênh chat lần thứ tư.",first:"Lần tới trả lời câu hỏi lặp lại lần thứ ba, viết nó ra thay vì trả lời, rồi gửi link.",t:"Tài liệu và chia sẻ tri thức",ax:"L",
+   d:"Biến tri thức trong đầu vài người thành thứ tra được — điều kiện để nghỉ được hai tuần sau này.",
+   how:["Mỗi lần trả lời cùng một câu hỏi lần thứ ba, viết nó ra.","Một buổi chia sẻ nội bộ mỗi tháng, luân phiên người nói."],
+   ok:"Câu hỏi lặp lại trong kênh chat giảm rõ rệt."},
+  {id:"change-control",en:"Change Control",no:"Scope phình ra giữa chừng và không ai nhớ ai đã đồng ý điều gì.",first:"Mở Change_Request_Assessment_FILLED.pdf. Yêu cầu thay đổi tiếp theo: trả lời theo cấu trúc đó, nêu rõ đổi lấy gì.",t:"Change control",ax:"S",
+   d:"Cách trả lời “có, nhưng đổi cái gì” khi scope bị thêm giữa chừng — phần PMBOK dùng được nhiều nhất ở tầng này.",
+   how:["Mọi thay đổi phải nêu rõ đổi lấy gì: thời gian, phạm vi khác, hay người.","Ghi lại thay đổi và người duyệt, dù quy trình không bắt buộc."],
+   ok:"Không còn thay đổi nào lọt vào mà không ai nhớ ai đã đồng ý.",
+   res:[{k:"file",l:"PMBOK 8 — kiểm soát thay đổi tích hợp",p:"pmp/pmbok8_process_giai_thich.html"}]}]},
+
+ {id:"g-strategy",en:"Engineering Strategy",side:"l",name:"Chiến lược kỹ thuật",nodes:[
+  {id:"diagnosis",en:"Strategy Kernel — Diagnosis First",no:"Chiến lược của anh là danh sách mục tiêu, và ai đọc cũng gật đầu ngay.",first:"Viết ba đoạn cho mảng của anh: tình hình thật · ràng buộc thật · điều ta cố tình không làm. Đoạn thứ ba là đoạn khó nhất và cũng là đoạn quan trọng nhất.",t:"Chẩn đoán trước hướng đi",ax:"S",
+   d:"Chiến lược tốt bắt đầu bằng chẩn đoán trung thực về tình hình, không bằng danh sách mục tiêu.",
+   how:["Viết ba đoạn: tình hình thật, ràng buộc thật, và điều ta cố tình không làm.","Kiểm tra: nếu ai cũng đồng ý ngay thì đó chưa phải chiến lược."],
+   ok:"Chiến lược của anh nêu được ít nhất một điều team sẽ không làm.",
+   res:[{k:"book",l:"Good Strategy Bad Strategy — Richard Rumelt"},{k:"book",l:"Crafting Engineering Strategy — Will Larson (đã có)"}]},
+  {id:"strategy-note",en:"Strategy Note",no:"Anh giải thích hướng đi bằng lời trong họp, và mỗi lần giải thích lại hơi khác.",first:"Mở bản song ngữ Crafting Engineering Strategy, viết một trang cho quý này, gửi cho một người ngoài team đọc.",core:1,why:"Thứ phân biệt người chạy việc với người định hướng. Một trang mỗi quý, và bản quý sau phải khác bản trước vì dữ liệu mới.",t:"Viết strategy note",ax:"S",
+   d:"Một trang mỗi quý cho mảng của mình: bối cảnh, chẩn đoán, hướng đi, đánh đổi đã chấp nhận.",
+   how:["Mỗi quý một bản, không dài hơn một trang.","Đọc lại bản quý trước trước khi viết bản mới.","Gửi cho một người ngoài team đọc."],
+   ok:"Bản quý sau khác bản quý trước vì có dữ liệu mới, không vì đổi ý.",
+   res:[{k:"file",l:"Crafting Engineering Strategy (song ngữ)",p:"pmp/Crafting Engineering Strategy - Song ngu VI-EN.epub"}]},
+  {id:"conway",en:"Conway's Law",no:"Đề xuất tách dịch vụ của anh vướng vì lý do tổ chức chứ không vì lý do kỹ thuật.",first:"Vẽ sơ đồ team cạnh sơ đồ hệ thống. Khoanh chỗ một dịch vụ do hai team cùng sửa — đó là chỗ sẽ đau.",t:"Kiến trúc đi theo tổ chức",ax:"S",
+   d:"Cấu trúc hệ thống sẽ phản chiếu cấu trúc giao tiếp của tổ chức — nên đổi kiến trúc mà không đổi tổ chức thường thất bại.",
+   how:["Vẽ sơ đồ team cạnh sơ đồ hệ thống, tìm chỗ lệch.","Trước mỗi đề xuất tách dịch vụ, hỏi: ranh giới team có khớp không?"],
+   ok:"Anh dự đoán được vì sao một đề xuất kiến trúc sẽ vướng về mặt tổ chức.",
+   res:[{k:"book",l:"Team Topologies — Skelton & Pais"},{k:"web",l:"teamtopologies.com",u:"https://teamtopologies.com/"}]},
+  {id:"build-buy",en:"Build vs Buy",no:"Anh so chi phí xây ban đầu với giá mua, quên chi phí vận hành và tuyển người.",first:"Quyết định build hay buy gần nhất: tính lại tổng chi phí ba năm, và hỏi đây có phải chỗ tạo khác biệt cạnh tranh không.",t:"Đánh đổi tự xây hay mua",ax:"S",
+   d:"So tổng chi phí sở hữu trong ba năm, không so chi phí xây ban đầu.",
+   how:["Tính cả chi phí vận hành, tuyển người, và opportunity cost.","Hỏi: đây có phải chỗ tạo khác biệt cạnh tranh không? Nếu không thì mua."],
+   ok:"Một quyết định mua thay vì xây được duyệt nhờ lập luận của anh."},
+  {id:"tech-roadmap",en:"Technical Roadmap",no:"Lộ trình của anh là danh sách mong muốn, không nói cái gì bị hoãn.",first:"Với mỗi hạng mục trong lộ trình, thêm đúng một dòng: làm cái này thì hoãn cái gì.",t:"Technical roadmap có đánh đổi",ax:"S",
+   d:"Lộ trình nêu rõ cái gì bị hoãn để cái gì được làm, không phải danh sách mong muốn.",
+   how:["Mỗi hạng mục kèm một dòng: làm cái này thì hoãn cái gì.","Trình bày kèm mức độ tin cậy, không kèm ngày chắc chắn."],
+   ok:"Người ngoài kỹ thuật đọc lộ trình và hiểu được đánh đổi."}]},
+
+ {id:"g-biz",en:"Business Acumen",side:"r",name:"Ngôn ngữ kinh doanh",nodes:[
+  {id:"revenue",en:"Revenue Model Literacy",no:"Anh không nói được một thay đổi kỹ thuật ảnh hưởng tới dòng doanh thu nào.",first:"Vẽ một sơ đồ: người dùng · hành vi · doanh thu. Rồi hỏi PM hoặc tài chính ba câu để kiểm chứng.",t:"Mô hình doanh thu của sản phẩm",ax:"S",
+   d:"Biết tiền đến từ đâu, chi phí nằm ở đâu, và việc của team ảnh hưởng chỗ nào.",
+   how:["Vẽ một sơ đồ: người dùng → hành vi → doanh thu.","Hỏi bộ phận tài chính hoặc PM ba câu mỗi quý."],
+   ok:"Anh nối được một việc kỹ thuật với một dòng trong báo cáo kinh doanh."},
+  {id:"investment-case",en:"Business Case",no:"Đề xuất xin người hoặc thời gian của anh bị từ chối mà không rõ vì sao.",first:"Mở Business_Case_FILLED.pdf. Viết đề xuất tiếp theo theo ba phần: chi phí của việc không làm · chi phí của việc làm · mốc kiểm chứng.",core:1,why:"Không có nó thì team anh luôn thiếu người và thiếu thời gian mà không ai hiểu vì sao.",t:"Lập luận đầu tư",ax:"S",
+   d:"Xin người hoặc thời gian bằng ngôn ngữ tiền và rủi ro, không bằng ngôn ngữ kỹ thuật.",
+   how:["Ba phần: chi phí của việc không làm, chi phí của việc làm, và mốc kiểm chứng.","Đưa một con số dù ước lượng thô, còn hơn không có số nào."],
+   ok:"Một đề xuất đầu tư của anh được duyệt."},
+  {id:"opportunity-cost",en:"Opportunity Cost",no:"Anh nhận thêm việc mà không nói ra việc nào bị đẩy lùi.",first:"Yêu cầu tiếp theo: trả lời kèm backlog hiện tại và nói rõ cái nào lùi lại. Đưa danh sách đó ra công khai.",t:"Chi phí cơ hội",ax:"S",
+   d:"Mọi lựa chọn đều là từ chối thứ khác — nói ra thứ bị từ chối là việc của người quản lý.",
+   how:["Mỗi lần nhận việc mới, nêu rõ việc nào bị đẩy lùi.","Đưa backlog ra công khai cho các stakeholder."],
+   ok:"Người yêu cầu tự rút yêu cầu sau khi thấy cái giá."},
+  {id:"negotiation",en:"Negotiation",no:"Anh vào cuộc đàm phán với đúng một phương án và hy vọng bên kia đồng ý.",first:"Tập phản chiếu ba từ cuối trong các cuộc họp thường ngày tuần này, trước khi dùng vào việc lớn.",t:"Đàm phán",ax:"P",
+   d:"Nghe chủ động, phản chiếu, dán nhãn cảm xúc, và câu hỏi hiệu chỉnh — dùng cho phạm vi, nguồn lực, và cả lương.",
+   how:["Ch.2, 3, 5, 7 của Never Split the Difference.","Tập phản chiếu ba từ cuối trong các cuộc họp thường ngày trước khi dùng vào việc lớn.","Ch.9 chỉ đọc khi sắp đàm phán thật."],
+   ok:"Một cuộc đàm phán kết thúc tốt hơn phương án anh dự tính ban đầu.",
+   res:[{k:"book",l:"Never Split the Difference — Ch.2, 3, 5, 7 (đã có trong lịch đọc)"}]}]}
+]},
+
+{id:"s3",st:"Giai đoạn 3",name:"Engineering Manager",
+ sub:"Chịu trách nhiệm cho một cỗ máy chạy được khi mình vắng mặt. Vòng phản hồi kỹ thuật đã mất — phải dựng feedback loop mới.",
+ groups:[
+ {id:"g-ops",en:"Team Operations",side:"l",name:"Vận hành team",nodes:[
+  {id:"capacity",en:"Capacity Planning",no:"Team cam kết đủ 100% năng lực rồi quý nào cũng trượt.",first:"Lấy số liệu quý trước: bao nhiêu phần trăm thời gian đi vào việc không lường trước. Trừ đúng con số đó trước khi cam kết quý tới.",t:"Capacity planning",ax:"S",
+   d:"Biết team thật sự làm được bao nhiêu trong một quý, sau khi trừ nghỉ phép, vận hành, và việc phát sinh.",
+   how:["Trừ trước 20–30% cho việc không lường trước, dựa trên số liệu quý trước.","Không cam kết quá 70% năng lực đã trừ."],
+   ok:"Ba quý liên tiếp không phải xin lỗi vì cam kết quá tay."},
+  {id:"commitment",en:"Quarterly Commitments",no:"Anh báo trượt vào tuần cuối, khi không còn ai xoay được gì.",first:"Tách cam kết quý này thành ba mức: chắc · phấn đấu · ý tưởng. Đặt lịch tự rà vào tuần thứ ba.",core:1,why:"Tín nhiệm của team với phần còn lại của công ty nằm ở đây. Trượt cam kết không giết tín nhiệm, giấu việc sắp trượt thì có.",t:"Cam kết quý và khi trượt",ax:"S",
+   d:"Cách cam kết để giữ được tín nhiệm, và cách nói khi trượt để không mất nó.",
+   how:["Tách rõ: cam kết chắc / mục tiêu phấn đấu / ý tưởng.","Khi thấy sẽ trượt, báo ở tuần thứ ba chứ không ở tuần cuối."],
+   ok:"Tỷ lệ đạt cam kết quý trên 80% và không có bất ngờ phút cuối."},
+  {id:"budget",en:"Budget & Headcount",no:"Anh xin người vào lúc thiếu người, tức là đã muộn một quý.",first:"Chuẩn bị hồ sơ xin người trước mùa lập ngân sách một quý, mỗi vị trí gắn với một kết quả kinh doanh.",t:"Ngân sách và headcount",ax:"S",
+   d:"Xin người, giữ người, và tiêu ngân sách công cụ — bằng lập luận, không bằng cảm giác thiếu.",
+   how:["Chuẩn bị hồ sơ xin người trước mùa lập ngân sách một quý.","Mỗi vị trí xin thêm phải gắn với một kết quả kinh doanh."],
+   ok:"Một vị trí anh xin được phê duyệt trong chu kỳ ngân sách."},
+  {id:"team-health",en:"Team Health Metrics",no:"Anh đánh giá team đang ổn dựa trên việc không ai phàn nàn.",first:"Mở Team_Performance_Assessment_FILLED.pdf. Chạy một khảo sát ba câu ẩn danh trong quý này, giữ nguyên ba câu đó cho các quý sau.",t:"Đo team health bằng dữ liệu",ax:"S",
+   d:"Không đợi đơn nghỉ việc mới biết team đang mệt.",
+   how:["Khảo sát ngắn mỗi quý, ba câu, ẩn danh.","Theo dõi: số giờ ngoài giờ, số incident, tỷ lệ nghỉ phép chưa dùng.","T1 mỗi quý: một dự đoán về team health, chấm lại sau ba tháng."],
+   ok:"Anh dự đoán đúng một vấn đề về người trước khi nó nổ ra."},
+  {id:"topologies",en:"Team Topologies",no:"Một việc phải đi qua bốn team mới xong và không ai thấy điều đó bất thường.",first:"Vẽ value stream của một tính năng gần đây, đếm số lần bàn giao giữa các team.",t:"Cấu trúc và ranh giới team",ax:"S",opt:1,
+   d:"Chọn kiểu team và cách chúng tương tác, thay vì để cấu trúc hình thành ngẫu nhiên.",
+   how:["Vẽ value stream, tìm chỗ phải qua nhiều team nhất.","Giảm số điểm bàn giao trước khi thêm người."],
+   ok:"Một thay đổi cấu trúc do anh đề xuất giảm được thời gian giao hàng.",
+   res:[{k:"book",l:"Team Topologies"}]}]},
+
+ {id:"g-grow",en:"Growing Leaders",side:"r",name:"Xây leader",nodes:[
+  {id:"successor",en:"Succession Planning",no:"Nếu anh nghỉ, không ai biết ai sẽ thay.",first:"Chọn một người, nói thẳng ý định, viết kế hoạch một trang. Bắt đầu bằng việc để họ chủ trì một cuộc họp thường kỳ.",core:1,why:"Thước đo thật của một EM. Không có successor thì anh là nút chặn, dù mọi chỉ số khác đẹp.",t:"Nuôi successor",ax:"L",
+   d:"Xác định và phát triển người thay được anh — thước đo thật của một EM.",
+   how:["Chọn một người, nói thẳng ý định, viết kế hoạch một trang.","Giao dần: trước là họp, sau là quyết định, sau nữa là kết quả."],
+   ok:"Có người thay anh trong các cuộc họp thường kỳ ít nhất ba lần."},
+  {id:"delegate-role",en:"Delegating Roles",no:"Anh giao từng việc lẻ nhưng vẫn là người duy nhất giữ toàn cảnh mỗi mảng.",first:"Chọn một vai — phụ trách chất lượng, hoặc phụ trách on-call — giao trọn cho một người và công bố cho cả team biết.",t:"Delegate cả vai trò",ax:"L",
+   d:"Giao trọn một vai — kèm quyền, kèm bối cảnh, kèm chỗ sai — không chỉ giao từng việc.",
+   how:["Chuyển giao theo vai: người phụ trách chất lượng, người phụ trách on-call.","Công bố cho cả team biết ai giữ vai gì."],
+   ok:"Người khác được hỏi trực tiếp thay vì hỏi qua anh."},
+  {id:"manage-better",en:"Managing People Better Than You",no:"Anh tránh 1-1 với người giỏi hơn mình về kỹ thuật vì không biết nói gì.",first:"Trong 1-1 tới với người đó, nói thẳng: “anh giỏi phần này hơn tôi; việc của tôi là gỡ vật cản — đang có vật cản nào?”",t:"Quản người giỏi hơn mình",ax:"P",
+   d:"Giá trị của anh không còn là biết nhiều hơn, mà là gỡ vật cản và đặt đúng câu hỏi.",
+   how:["Hỏi thay vì phán, kể cả khi anh nghĩ mình biết câu trả lời.","Nói rõ: tôi không giỏi phần này hơn anh, việc của tôi là gì."],
+   ok:"Một người giỏi hơn anh về kỹ thuật vẫn thấy 1-1 với anh có giá trị.",
+   res:[{k:"web",l:"charity.wtf — The Engineer/Manager Pendulum",u:"https://charity.wtf/2017/05/11/the-engineer-manager-pendulum/"}]},
+  {id:"two-weeks",en:"The Two-Week Test",no:"Anh chưa từng nghỉ quá ba ngày liền mà không mở máy.",first:"Thử ba ngày trước. Trước khi đi, viết ra ai quyết cái gì. Sau khi về, đọc lại các quyết định team đã tự ra.",core:1,why:"Phép thử tổng hợp cho toàn bộ giai đoạn 3. Nó kiểm tra cùng lúc uỷ quyền, tài liệu, successor và quy trình.",t:"Nghỉ được hai tuần",ax:"L",
+   d:"Phép thử tổng hợp cho toàn bộ giai đoạn này: vắng mặt hai tuần, không có gì sập, không quyết định nào phải chờ.",
+   how:["Thử trước bằng ba ngày, rồi một tuần.","Trước khi đi, viết ra ai quyết cái gì.","Sau khi về, đọc lại các quyết định team đã tự ra."],
+   ok:"Đã thực hiện thật và không có gì phải xử lý bù sau khi về."}]},
+
+ {id:"g-org",en:"Org & Change",side:"l",name:"Tổ chức và thay đổi",nodes:[
+  {id:"lead-change",en:"Leading Org Change",no:"Anh thông báo thay đổi rồi ngạc nhiên vì team phản ứng tiêu cực.",first:"Thay đổi tiếp theo: nói vì sao trước khi nói làm gì, và nêu rõ điều gì không đổi. Mở một kênh để phản đối an toàn.",t:"Dẫn một thay đổi tổ chức",ax:"P",
+   d:"Đưa team qua một thay đổi lớn — đổi quy trình, đổi cấu trúc, đổi hướng — mà không mất người.",
+   how:["Nói vì sao trước khi nói làm gì.","Nêu rõ điều gì không đổi — phần này thường bị bỏ quên và gây lo nhất.","Có kênh để phản đối một cách an toàn."],
+   ok:"Thay đổi vẫn đứng vững sau ba tháng."},
+  {id:"cross-team",en:"Cross-Team Conflict",no:"Tranh chấp ưu tiên với team khác được giải quyết bằng cách đẩy lên sếp chung.",first:"Lần tới: gặp riêng người tương đương bên kia trước, tìm tiêu chí chung trước khi bàn phương án.",t:"Xung đột giữa các team",ax:"P",
+   d:"Giải quyết tranh chấp ưu tiên và ranh giới với EM khác mà không đẩy lên cấp trên.",
+   how:["Gặp riêng EM kia trước, đừng đưa ra họp chung ngay.","Tìm tiêu chí chung trước khi bàn phương án.","Nếu phải leo thang, leo thang cùng nhau."],
+   ok:"Một tranh chấp liên team được giải quyết mà không cần cấp trên phân xử."},
+  {id:"influence-up",en:"Influencing Skip-Level",no:"Anh biết một vấn đề quan trọng ở tầng tổ chức nhưng không có đường đưa nó lên.",first:"Tìm hiểu chu kỳ ra quyết định của công ty. Chuẩn bị một trang, kết luận trước, có con số, đưa trước chu kỳ đó.",t:"Ảnh hưởng lên cấp cao hơn",ax:"P",
+   d:"Đưa được thông tin và đề xuất tới cấp trên của sếp, đúng lúc và đúng dạng.",
+   how:["Biết chu kỳ ra quyết định của tổ chức và đưa đề xuất trước chu kỳ đó.","Một trang, kết luận trước, có con số.","T1: dự đoán đề xuất nào được duyệt để hiệu chỉnh cảm nhận về tổ chức."],
+   ok:"Một đề xuất của anh đổi được ưu tiên ở tầng trên."},
+  {id:"let-go",en:"Letting People Go",no:"Anh giữ một người không phù hợp thêm nhiều tháng vì ngại cuộc nói chuyện.",first:"Trước khi tới bước đó: đảm bảo mọi điều đã được nói trước bằng văn bản. Chuẩn bị câu nói ngắn, không thương lượng lại.",t:"Cho thôi việc tử tế",ax:"P",
+   d:"Khi đã làm đúng mọi bước mà vẫn không hợp, kết thúc rõ ràng và giữ nhân phẩm cho người ra đi.",
+   how:["Đảm bảo không có gì bất ngờ: mọi điều đã nói trước bằng văn bản.","Chuẩn bị câu nói trước, ngắn, không thương lượng lại.","Nói với team sau đó, trung thực trong giới hạn cho phép."],
+   ok:"Team không mất niềm tin sau sự việc — đây mới là thước đo."}]},
+
+ {id:"g-newdomain",en:"Judgment in a New Domain",side:"r",name:"Tư duy ở lĩnh vực mới",nodes:[
+  {id:"people-calibration",en:"Calibration in the People Domain",no:"Anh dự đoán về hệ thống thì khá đúng, nhưng dự đoán về người thì sai liên tục mà không nhận ra.",first:"Từ tuần này, hai trong ba dự đoán T1 phải về người hoặc tổ chức. Tách riêng bảng T7 cho nhóm đó.",core:1,why:"Sang lĩnh vực người thì trực giác kỹ thuật hết tác dụng. Đây là cách duy nhất dựng lại feedback loop đã mất.",t:"Hiệu chỉnh dự đoán về người",ax:"S",
+   d:"Năng lực tư duy phụ thuộc lĩnh vực: giỏi phản biện kiến trúc không có nghĩa giỏi phản biện về người. Sang lĩnh vực mới phải luyện lại từ đầu.",
+   how:["T1 đổi trọng tâm hoàn toàn sang dự đoán về người và tổ chức.","T7 tách hai bảng: nhóm dự đoán kỹ thuật và nhóm dự đoán về người.","Chấp nhận bảng T7 tệ đi trong hai quý đầu — đó là dấu hiệu đúng."],
+   ok:"Calibration table nhóm dự đoán về người đạt mức tương đương nhóm kỹ thuật.",
+   res:[{k:"file",l:"Cảnh báo về tính phụ thuộc lĩnh vực",p:"tư duy leader/00_huong-dan-luyen-tap-tu-duy.md"}]},
+  {id:"anti-gut",en:"Beyond Gut-Feel Management",no:"Quyết định về người của anh dựa vào ấn tượng, và chỉ biết sai khi hậu quả đã tới.",first:"Quyết định về người gần nhất: viết ra dự đoán kết quả kèm hạn, đặt lịch đọc lại sau ba tháng.",t:"Chống quản lý theo cảm tính",ax:"S",
+   d:"Quản kỹ thuật sai thì test đỏ; quản người sai thì sáu tháng sau mới biết qua một lá đơn. Phải dựng tín hiệu thay thế.",
+   how:["Mỗi quyết định về người, viết ra dự đoán kết quả kèm hạn.","Đặt lịch đọc lại các dự đoán đó."],
+   ok:"Anh phát hiện một quyết định sai từ dữ liệu chứ không từ hậu quả."},
+  {id:"new-loop",en:"Rebuilding the Feedback Loop",no:"Nguồn thông tin duy nhất về chất lượng quản lý của anh là cảm giác của chính anh.",first:"Tìm một người ngang cấp làm sounding board, hẹn hai tuần một lần. Đó là nguồn tín hiệu độc lập đầu tiên.",t:"Dựng feedback loop thay thế",ax:"S",
+   d:"Khi mất tín hiệu kỹ thuật, phải chủ động tạo tín hiệu mới: khảo sát, người phản biện cố định, dữ liệu định kỳ.",
+   how:["Một người ngang cấp làm sounding board, gặp hai tuần một lần.","Khảo sát team mỗi quý, cùng ba câu hỏi để so được qua thời gian.","Đọc lại decision doc đầu tiên cạnh cái mới nhất, mỗi quý."],
+   ok:"Anh có ít nhất hai nguồn tín hiệu độc lập về chất lượng quản lý của mình.",
+   res:[{k:"file",l:"Tiêu chí dừng — phương án người phản biện cố định",p:"tư duy leader/00_huong-dan-luyen-tap-tu-duy.md"}]}]}
+]}
+];
+
+/* ===================================================================== */
+var AXIS = {L:{n:"Leverage",v:"Đòn bẩy",d:"Tạo kết quả qua hệ thống và qua người khác"},
+            P:{n:"People",v:"Con người",d:"Giao tiếp, phản hồi, dẫn dắt, xung đột"},
+            S:{n:"Systems & Business",v:"Hệ thống & kinh doanh",d:"Quyết định, số liệu, chiến lược, kinh doanh"}};
+var ST_LABEL = {pending:"Chưa học",learning:"Đang học",done:"Thành thạo",skipped:"Bỏ qua"};
+var CYCLE = ["pending","learning","done","skipped"];
+
+/* ---------- kho kiến thức thật trong D:\LEARNING\career-path ---------- */
+var SOURCES = [
+ {p:"tư duy leader/",sz:"48 KB · 5 file",v:"mis",vl:"Công cụ đúng, chưa chạy",
+  d:"Hệ thống mạnh nhất anh đang có, và là nguồn duy nhất phục vụ trực tiếp kỹ năng lõi số 1. Nhưng chừng nào thư mục nhat-ky/ còn rỗng thì T5 và T7 chưa có gì để chấm.",
+  items:[["03_template.md","Tám template T1–T8: dự đoán, decision doc, pre-mortem, post-mortem, rà soát, giải thích 3 điểm, chấm calibration, nhật ký thời gian"],
+         ["04_the-ghi-nho.md","Bảy thẻ dưới một phút, dùng ngay sau họp và đầu/cuối ngày"],
+         ["00_huong-dan-luyen-tap-tu-duy.md","Cách vận hành, lộ trình 12 tuần, tiêu chí dừng"],
+         ["01_mục-đích.md","Từng hoạt động nhắm vào bias nào — đọc khi mất động lực"],
+         ["nhat-ky/","Rỗng. Đây là chỗ dữ liệu phải xuất hiện trước mọi thứ khác"]],
+  sk:["calibration","decision-doc","premortem","postmortem","stop-hoarding","reactive","bluf","assumption","reversible","priority"]},
+
+ {p:"pmp/materials/PMBOK+8+Plans+and+Documents/",sz:"~11 MB · 25 nhóm · ~70 cặp",v:"use",vl:"Chưa khai thác",
+  d:"Phần dùng được nhất của cả folder pmp và gần như chưa được mở. Mỗi template có một bản BLANK và một bản FILLED — bản FILLED mới là thứ đáng đọc, vì nó cho thấy mức chi tiết vừa đủ. Hai mươi hai cái dùng được ngay cho vai trò EM, không cần chứng chỉ nào.",
+  items:[["Identify Risk…/Risk_Register","Risk register — template nền của kỹ năng lõi ở M0"],
+         ["Lead the team/","Bốn bản đánh giá cá nhân và đánh giá team — hiếm và dùng được thẳng ở M2"],
+         ["Manage Project Knoowledge/","Lessons Learned Register — mẫu tốt cho T4"],
+         ["Marys_Consulting_PM_Plan.pdf","5 MB, một bộ kế hoạch hoàn chỉnh: đọc một lần để thấy tổng thể"]],
+  sk:["risk-register","stakeholder","change-control","postmortem","expectations","review-cycle","investment-case","estimate-range"]},
+
+ {p:"pmp/ (tài liệu gốc)",sz:"~24 MB · 10 file",v:"mis",vl:"Đang dùng sai vai",
+  d:"Đang được dùng như giáo trình luyện thi — lộ trình 30 ngày, transcript, từ vựng, bảng tự chấm. Với đích Engineering Manager thì vai đúng của chúng là tra cứu: mở khi cần một khung cụ thể, không học tuần tự. Hai file HTML anh tự dựng (matrix và giải thích quy trình) là bản tra cứu tốt nhất trong nhóm này.",
+  items:[["pmbok8_process_matrix.html","Ma trận 7×5 — tra nhanh quy trình nào thuộc nhóm nào"],
+         ["pmbok8_process_giai_thich.html","Từ điển 40 quy trình — tra khi gặp khái niệm lạ"],
+         ["pmbok8_ghi_chu.md","Sổ ghi cá nhân. Dòng “kinh nghiệm dẫn dắt” cần khớp với số tháng thật, hoặc ghi rõ quyết định hoãn PMP"],
+         ["pmp_lo_trinh_30_ngay.md","103 KB, mới điền Day 1/30. Đóng băng, không xoá"],
+         ["PMBOK® Guide 8th Edition.pdf","10 MB — tra cứu, không đọc tuần tự"],
+         ["PMP-Examination-Content-Outline-2026.pdf","Chỉ có nghĩa nếu quay lại thi"]],
+  sk:["risk-register","stakeholder","change-control","dependencies","commitment"]},
+
+ {p:"pmp/Crafting Engineering Strategy (2 epub)",sz:"21 MB · có bản song ngữ",v:"keep",vl:"Để dành tới M2",
+  d:"Will Larson, 2025. Đây là tài liệu đúng cho tầng chiến lược kỹ thuật, nhưng đọc ở giai đoạn 0–1 sẽ không bám được vì chưa có phạm vi để áp dụng. Mở khi bắt đầu viết strategy note đầu tiên.",
+  items:[["Crafting Engineering Strategy - Song ngu VI-EN.epub","Bản song ngữ — dùng bản này"]],
+  sk:["diagnosis","strategy-note","tech-roadmap","conway"]},
+
+ {p:"lich-doc-sach.html",sz:"17 KB · 5 sách · 17 mục",v:"use",vl:"Nguồn duy nhất cho trục Con người",
+  d:"Toàn bộ tài liệu về trục People của anh nằm ở đây. Kế hoạch này giờ đã có tab riêng trong trang, nối thẳng vào kỹ năng. Bốn cuốn cốt lõi cộng The Coaching Habit, chia hai giai đoạn, cộng 60 ngày chú tâm chạy song song.",
+  items:[["The Manager’s Path","Ch.1, 3, 4, 5 — xương sống của M0 và M1"],
+         ["Crucial Conversations","Ch.1–3, 5–7 — khung STATE nằm ở Ch.7"],
+         ["The Coaching Habit","120 trang, đọc trong một tuần, dùng ngay trong 1-1"],
+         ["Thanks for the Feedback","Nhận feedback — kỹ năng của M2"],
+         ["Never Split the Difference","Đàm phán — Ch.2, 3, 5, 7"]],
+  sk:["one-on-one","sbi","coaching","state","receive-feedback","negotiation","safety","stories"]},
+
+ {p:"pmp/materials/section_3/",sz:"2.9 MB · 2 file",v:"keep",vl:"Tra cứu",
+  d:"PM Terms là từ điển thuật ngữ 2.4 MB — hữu ích khi đọc tài liệu tiếng Anh về quản lý dự án. Process Chart trùng với bản trong thư mục template.",
+  items:[["PM+Terms.pdf","Từ điển thuật ngữ — tra, không học"]],
+  sk:[]}
+];
+
+var TPL = [
+ {v:"use",n:"Risk_Register",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Identify Risk and Plan risk Respone/Risk_Register_FILLED.pdf",f:"Identify Risk and Plan risk Respone",sk:["risk-register","premortem"],
+  h:"Một trang cho mảng của anh, tối đa mười dòng. Bản FILLED cho thấy mức chi tiết vừa đủ."},
+ {v:"use",n:"Assumption_Log",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Initiate Project or Phase/Assumption_Log_FILLED.pdf",f:"Initiate Project or Phase",sk:["assumption","decision-doc"],
+  h:"Ghép thẳng vào mục 8 của T2 — nơi phần lớn quyết định sai thật sự phát sinh."},
+ {v:"use",n:"Lessons_Learned_Register",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Manage Project Knoowledge/Lessons_Learned_Register_FILLED.pdf",f:"Manage Project Knoowledge",sk:["postmortem"],
+  h:"Mẫu tốt nhất cho T4. Dùng cấu trúc của nó thay vì tự nghĩ ra bảng mới."},
+ {v:"use",n:"Cause_and_Effect_Diagram",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Manage Quality Assurance/Cause_and_Effect_Diagram_FILLED.pdf",f:"Manage Quality Assurance",sk:["postmortem"],
+  h:"Biểu đồ xương cá — công cụ cụ thể để đào từ tầng một xuống tầng ba của T4."},
+ {v:"use",n:"Lessons_Learned_Register_Final",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Close project or phase/Lessons_Learned_Register_Final_FILLED.pdf",f:"Close project or phase",sk:["postmortem","new-loop"],
+  h:"Bản tổng kết cuối hạng mục. Dùng mỗi quý như một feedback loop thay thế."},
+ {v:"use",n:"Stakeholder_Register",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Identifiy Stakeholers/Stakeholder_Register_FILLED.pdf",f:"Identifiy Stakeholers",sk:["stakeholder"],
+  h:"Ai quan tâm tới hạng mục này. Lập một lần cho mỗi hạng mục lớn."},
+ {v:"use",n:"Stakeholder_Analysis",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Identifiy Stakeholers/Stakeholder_Analysis_FILLED.pdf",f:"Identifiy Stakeholers",sk:["stakeholder","influence"],
+  h:"Xếp theo quyền lực và mức quan tâm — quyết định ai cần được hỏi trước."},
+ {v:"use",n:"Stakeholder_Mapping_and_Representation",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Identifiy Stakeholers/Stakeholder_Mapping_and_Representation_FILLED.pdf",f:"Identifiy Stakeholers",sk:["stakeholder","represent"],
+  h:"Dùng khi anh phải nói thay cho team trước nhiều nhóm khác nhau."},
+ {v:"use",n:"Stakeholder_Engagement_Assessment_Matrix",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Plan Stakehler Engagement Plan/Stakeholder_Engagement_Assessment_Matrix_FILLED.pdf",f:"Plan Stakehler Engagement Plan",sk:["stakeholder","influence-up"],
+  h:"Ai đang ở mức nào và cần ở mức nào — công cụ tốt cho ảnh hưởng lên trên."},
+ {v:"use",n:"Responsibility_Assignment_Matrix",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Initiate Project or Phase/Responsibility_Assignment_Matrix_FILLED.pdf",f:"Initiate Project or Phase",sk:["stakeholder","delegate-decision"],
+  h:"RACI. Chỉ dùng khi có từ hai nhóm trở lên cùng làm, đừng dùng trong nội bộ một team."},
+ {v:"use",n:"Issue_Log",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Manage Project Execution/Issue_Log_FILLED.pdf",f:"Manage Project Execution",sk:["track-nomicro","dependencies"],
+  h:"Theo dõi vướng mắc mà không phải hỏi từng người — chống micromanage."},
+ {v:"use",n:"Change_Request_Assessment",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Assess and Implement changes/Change_Request_Assessment_FILLED.pdf",f:"Assess and Implement changes",sk:["change-control","scope-negotiation"],
+  h:"Khung trả lời “có, nhưng đổi cái gì”. Đây là template đáng học nhất ở M2."},
+ {v:"use",n:"Change_Log",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Assess and Implement changes/Change_Log_FILLED.pdf",f:"Assess and Implement changes",sk:["change-control"],
+  h:"Ghi ai đã đồng ý thay đổi gì. Dùng cả khi công ty không bắt buộc."},
+ {v:"use",n:"Business_Case",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Initiate Project or Phase/Business_Case_FILLED.pdf",f:"Initiate Project or Phase",sk:["investment-case","opportunity-cost"],
+  h:"Cấu trúc xin người hoặc ngân sách bằng ngôn ngữ tiền và rủi ro."},
+ {v:"use",n:"Benefits_Management_Plan",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Initiate Project or Phase/Benefits_Management_Plan_FILLED.pdf",f:"Initiate Project or Phase",sk:["revenue","investment-case"],
+  h:"Nối việc kỹ thuật với lợi ích kinh doanh — phần dev đi lên quản lý hay thiếu nhất."},
+ {v:"use",n:"Team_Charter",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Plan Resources Management/Team_Charter_FILLED.pdf",f:"Plan Resources Management",sk:["expectations","meeting-cadence"],
+  h:"Thoả thuận cách làm việc của team. Dùng được ngay ở M1, không cần chờ làm sếp."},
+ {v:"use",n:"Individual_Assessment (Bill · Bob · Christine)",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Lead the team/Individual_Assessment_Bill_FILLED.pdf",f:"Lead the team",sk:["review-cycle","expectations"],
+  h:"Ba bản FILLED khác nhau — hiếm và dùng thẳng được làm mẫu ghi chú đánh giá."},
+ {v:"use",n:"Team_Performance_Assessment",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Lead the team/Team_Performance_Assessment_FILLED.pdf",f:"Lead the team",sk:["team-health","review-cycle"],
+  h:"Đo team health có cấu trúc thay vì hỏi cảm tính."},
+ {v:"use",n:"Quality_Metrics",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Manage Quality Assurance/Quality_Metrics_FILLED.pdf",f:"Manage Quality Assurance",sk:["dora","quality-bar"],
+  h:"Cách định nghĩa một chỉ số chất lượng đo được — dùng khi chốt 3 chỉ số sức khoẻ mảng."},
+ {v:"use",n:"Work_Performance_Report",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Monitor and Contorl Project Performance/Work_Performance_Report_FILLED.pdf",f:"Monitor and Contorl Project Performance",sk:["status-report"],
+  h:"Mẫu báo cáo lên trên. Rút xuống ba dòng, giữ nguyên cấu trúc."},
+ {v:"use",n:"Basis_of_Estimates",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Estimate Costs/Basis_of_Estimates_FILLED.pdf",f:"Estimate Costs",sk:["estimate-range"],
+  h:"Phần đáng giữ: ghi rõ ước lượng dựa trên giả định nào, để sau còn chấm lại."},
+ {v:"use",n:"Duration_Estimates",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Develop Schedule/Duration_Estimates_FILLED.pdf",f:"Develop Schedule",sk:["estimate-range","commitment"],
+  h:"Ước lượng kèm khoảng thay vì một con số — đúng thứ cần cho T1."},
+
+ {v:"later",n:"Project_Charter",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Initiate Project or Phase/Project_Charter_FILLED.pdf",f:"Initiate Project or Phase",sk:["scope-negotiation"],
+  h:"Khi anh chủ một hạng mục có nhiều bên và cần chốt phạm vi bằng văn bản."},
+ {v:"later",n:"Communication_management_plan",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Plan Communication Management/Communication_management_plan_filled.pdf",f:"Plan Communication Management",sk:["represent","status-report"],
+  h:"Ai cần biết gì, bao lâu một lần. Có nghĩa từ M2 khi team đủ lớn."},
+ {v:"later",n:"Milestone_List",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Develop Schedule/Milestone_List_FILLED.pdf",f:"Develop Schedule",sk:["commitment"],
+  h:"Cam kết theo cột mốc thay vì theo ngày — dùng ở M3."},
+ {v:"later",n:"Final_Report",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Close project or phase/Final_Report_FILLED.pdf",f:"Close project or phase",sk:["commitment","postmortem"],
+  h:"Tổng kết hạng mục lớn. Ghép với Lessons Learned Final."},
+ {v:"later",n:"Resource_Management_Plan",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Plan Resources Management/Resource_Management_Plan_FILLED (2).pdf",f:"Plan Resources Management",sk:["capacity"],
+  h:"Có nghĩa khi anh thật sự quản năng lực của 5–8 người."},
+ {v:"later",n:"Quality_Report",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Manage Quality Assurance/Quality_Report_FILLED.pdf",f:"Manage Quality Assurance",sk:["quality-bar"],
+  h:"Khi đã có quality bar và cần báo cáo định kỳ."},
+ {v:"later",n:"Requirements_Traceability_Matrix",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Elicit and Analyze Requirements/Requirements_Traceability_Matrix_FILLED.pdf",f:"Elicit and Analyze Requirements",sk:["breakdown"],
+  h:"Nặng với product team, nhưng hữu ích cho hạng mục có ràng buộc tuân thủ."},
+ {v:"later",n:"Marys_Consulting_PM_Plan · Project_Documents",file:"pmp/materials/PMBOK+8+Plans+and+Documents/Marys_Consulting_PM_Plan.pdf",f:"(gốc thư mục)",sk:[],
+  h:"Hai bộ mẫu hoàn chỉnh 11 MB. Đọc lướt một lần để thấy tổng thể, không học thuộc."},
+
+ {v:"skip",n:"Tám template lập lịch chi tiết",f:"Develop Schedule · Plan Schedule Management",sk:[],
+  h:"Activity List, Activity Attributes, Network Diagram, Schedule Baseline, Project Calendar, Duration Estimating Worksheet, Project Schedule, Schedule Management Plan — công cụ của môi trường lập kế hoạch trước toàn bộ, không hợp nhịp lặp của product team."},
+ {v:"skip",n:"Năm template tài chính dự án",f:"Develop Budget · Estimate Costs · Plan Financial Management",sk:[],
+  h:"Cost Baseline, Funding Requirements, Activity Cost Estimates, Financial Management Plan, Funding Strategy — product company không quản theo earned value. Kỹ năng cần ở đây là lập luận đầu tư, đã có Business_Case lo."},
+ {v:"skip",n:"Sáu template phạm vi hình thức",f:"Define Scope · Develop Scope Structure · Plan Scope management",sk:[],
+  h:"WBS, WBS Dictionary, Scope Statement, Requirements Documentation, Scope Management Plan, Requirements Management Plan — thay bằng chia nhỏ theo giá trị và Definition of Done."},
+ {v:"skip",n:"Ba template nguồn lực hình thức",f:"Estimate Ressoruce",sk:[],
+  h:"Resource Breakdown Structure, Resource Requirements, Resource Basis of Estimates."},
+ {v:"skip",n:"Ba template mua sắm",f:"Plan Sourcing stratey",sk:[],
+  h:"Procurement Management Plan, Procurement Strategy, Source Selection Criteria — chỉ có nghĩa khi anh thật sự ký hợp đồng với nhà cung cấp."},
+ {v:"skip",n:"Bảy template còn lại",f:"nhiều thư mục",sk:[],
+  h:"Quality Management Plan, Affinity Diagram, Flowchart, Risk Management Plan, Work Performance Data/Information, Final Product Transition, ba biến thể Change Request, Stakeholder Identification Questionnaire — trùng chức năng với những cái đã chọn hoặc quá nặng thủ tục."}
+];
+
+var GAPS = [
+ {t:"Kho template mạnh nhất đang bị khoá sau một kỳ thi",
+  d:"Hai mươi hai template dùng được ngay đang nằm trong pmp/, nên chúng bị gắn với việc thi PMP — mà kỳ thi thì đã hoãn. Chúng không cần chứng chỉ nào để dùng. Hành động: tách 22 cái này ra một thư mục riêng, ví dụ cong-cu/, để chúng không chết chung với lộ trình 30 ngày."},
+ {t:"Hệ thống tư duy có công cụ nhưng chưa có dữ liệu",
+  d:"Tám template và bảy thẻ được thiết kế tốt, nhưng nhat-ky/ rỗng. Không có dữ liệu thì T5 và T7 không chấm được gì, và calibration — kỹ năng lõi số 1 của cả roadmap — chưa khởi động được. Đây là việc rẻ nhất và chặn nhiều thứ nhất."},
+ {t:"Trục Con người gần như không có tài liệu trong máy",
+  d:"Ba mươi tám trên tám mươi chín kỹ năng thuộc trục Con người, nhưng toàn bộ tài liệu cho nó nằm trong năm cuốn sách chưa đọc — trong khi trục Hệ thống có gần 48 MB tài liệu. Đây là chỗ lệch lớn nhất giữa kho kiến thức và bản đồ kỹ năng, và nó khớp chính xác với trục mà dashboard sẽ báo là yếu nhất."}
+];
+
+/* ---------- reading plan — giữ nguyên id trong lich-doc-sach.html ---------- */
+var READING = [
+{ph:1,wk:"Tuần 1–2",bk:"The Manager’s Path",items:[
+  {id:"ch1",t:"Ch.1 — Management 101",n:"Cách được quản lý: 1:1 với sếp, chủ động xin feedback",sk:["receive-feedback","one-on-one","status-report"]},
+  {id:"ch3",t:"Ch.3 — Tech Lead",n:"Chương lõi. Cân bằng code và dẫn dắt, khi nào ngừng tự làm",sk:["stop-hoarding","delegate-decision","influence","bus-factor","slicing"]},
+  {id:"ch4",t:"Ch.4 — Managing People",n:"1:1, onboarding, feedback liên tục",sk:["one-on-one","sbi","feedback-48h","onboarding"]}]},
+{ph:1,wk:"Tuần 3",bk:"The Manager’s Path",items:[
+  {id:"ch5",t:"Ch.5 — Managing a Team",n:"Debug team trục trặc, quyết định kỹ thuật khi không còn viết code",sk:["team-health","expectations","quality-bar","manage-better"]},
+  {id:"skip",t:"Bỏ Ch.6–9",n:"Cấp cao hơn. Để lại vài năm nữa — tick để xác nhận đã quyết định bỏ",sk:[],skip:1}]},
+{ph:1,wk:"Tuần 4–6",bk:"Crucial Conversations",items:[
+  {id:"cc12",t:"Ch.1–2 — Nền tảng",n:"Thế nào là một crucial conversation",sk:["state","safety"]},
+  {id:"cc3",t:"Ch.3 — Start with Heart",n:"Xác định mình thật sự muốn gì trước khi mở lời",sk:["state","say-no"]},
+  {id:"cc5",t:"Ch.5 — Make It Safe",n:"Giữ an toàn để người kia không đóng cửa",sk:["safety"]},
+  {id:"cc6",t:"Ch.6 — Master My Stories",n:"Chữa bệnh tự diễn giải ý đồ người khác",sk:["stories"]},
+  {id:"cc7",t:"Ch.7 — STATE My Path",n:"Khung nói điều khó nghe. Học thuộc khung này",sk:["state","underperform","say-no"]}]},
+{ph:2,wk:"Tuần 1",bk:"Crucial Conversations",items:[
+  {id:"cc811",t:"Ch.8–11 — Explore Others’ Paths, Move to Action",n:"Đọc nốt khi đã có tình huống thật để soi",sk:["arbitrate","consensus","cross-team"]}]},
+{ph:2,wk:"Tuần 2",bk:"The Coaching Habit",items:[
+  {id:"coach",t:"Toàn bộ — 120 trang",n:"Bảy câu hỏi. Thực hành trong 1:1 ngay tuần đó",sk:["coaching","one-on-one","stop-hoarding"]}]},
+{ph:2,wk:"Tuần 3–5",bk:"Thanks for the Feedback",items:[
+  {id:"tf24",t:"Ch.2–4 — Truth triggers",n:"Khi feedback nghe có vẻ sai",sk:["receive-feedback"]},
+  {id:"tf5",t:"Ch.5 — Switchtracking",n:"Hai cuộc trò chuyện chạy song song mà không ai nhận ra",sk:["receive-feedback","sbi"]},
+  {id:"tf1012",t:"Ch.10–12 — Nhận và dùng feedback",n:"Phần dùng được ngay trong review cycle",sk:["receive-feedback","review-cycle"]},
+  {id:"tfskip",t:"Bỏ phần identity triggers nếu thấy dài",n:"Không bắt buộc",sk:[],skip:1}]},
+{ph:2,wk:"Tuần 6–8",bk:"Never Split the Difference",items:[
+  {id:"nv2357",t:"Ch.2, 3, 5, 7",n:"Nghe chủ động, mirroring, labeling, câu hỏi hiệu chỉnh",sk:["negotiation","scope-negotiation","safety"]},
+  {id:"nv9",t:"Ch.9 — Mặc cả Ackerman",n:"Chỉ đọc khi sắp đàm phán lương hoặc hợp đồng thật",sk:["negotiation","budget"]}]}
+];
+var READ_BY_SKILL = {};
+READING.forEach(function(w){ w.items.forEach(function(it){
+  it.wk = w.wk; it.bk = w.bk; it.ph = w.ph;
+  (it.sk||[]).forEach(function(k){ (READ_BY_SKILL[k]=READ_BY_SKILL[k]||[]).push(it); });
+});});
+var READ_ITEMS = READING.reduce(function(a,w){ return a.concat(w.items); },[]);
+var READ_BY_ID = {}; READ_ITEMS.forEach(function(it){ READ_BY_ID[it.id]=it; });
+
+/* ---------- PMP: lộ trình 30 ngày ---------- */
+var PMP_PHASES = [
+{id:"pp1",name:"Nền móng",rng:"Day 1–4",note:"Luật thi, thuật ngữ, 6 nguyên tắc, 7 lĩnh vực hiệu suất.",days:[
+ {d:1,t:"Giới thiệu + Luật thi PMP",h:"2h",sk:[]},
+ {d:2,t:"Thuật ngữ quản lý dự án",h:"2h",sk:[]},
+ {d:3,t:"6 Nguyên tắc + Cách tiếp cận dự án",h:"2h",sk:["reversible","diagnosis"]},
+ {d:4,t:"7 Lĩnh vực hiệu suất + ITTO chung",h:"2h",sk:[]}]},
+{id:"pp2",name:"40 quy trình",rng:"Day 5–11",note:"Phần dày nhất, và cũng là phần chứa gần hết những template dùng được ngoài kỳ thi.",days:[
+ {d:5,t:"Khởi tạo + Quản trị lập kế hoạch",h:"2h",sk:["stakeholder","investment-case"]},
+ {d:6,t:"Phạm vi",h:"2h",sk:["breakdown","scope-negotiation"]},
+ {d:7,t:"Tiến độ + Nguồn lực",h:"2h",sk:["estimate-range","dependencies","capacity"]},
+ {d:8,t:"Tài chính — NGÀY CÔNG THỨC",h:"2h",sk:["budget","opportunity-cost"]},
+ {d:9,t:"Bên liên quan + Rủi ro",h:"2h",sk:["stakeholder","risk-register","premortem"]},
+ {d:10,t:"Toàn bộ Thực hiện (8 quy trình)",h:"2h",sk:["track-nomicro","docs"]},
+ {d:11,t:"Toàn bộ M&C + Kết thúc",h:"2h",sk:["change-control","postmortem","status-report"]}]},
+{id:"pp3",name:"Agile & Hybrid",rng:"Day 12–16",note:"~60% đề. Cũng là phần gần nhất với công việc thật ở product company.",days:[
+ {d:12,t:"Agile (1/3) — Tư duy + Scrum",h:"2h",sk:["meeting-cadence"]},
+ {d:13,t:"Agile (2/3) — XP, Lean, Kanban, Servant leadership",h:"2h",sk:["delegate-decision","coaching"]},
+ {d:14,t:"Agile (3/3) — Đội ngũ, xung đột, động lực",h:"2h",sk:["arbitrate","safety","retention"]},
+ {d:15,t:"Agile Product (1/2) — Giá trị, user story",h:"2h",sk:["breakdown","revenue"]},
+ {d:16,t:"Agile Product (2/2) — Metrics, hybrid",h:"2h",sk:["dora","tech-roadmap"]}]},
+{id:"pp4",name:"ECO 2026 & Mindset",rng:"Day 17–20",note:"Business Environment tăng từ 8% lên 26%. Day 20 là ngày ăn điểm nhiều nhất theo chính ghi chú của anh.",days:[
+ {d:17,t:"ECO 2026 (1/2): People + Process · AI",h:"2h",sk:["influence","one-on-one"]},
+ {d:18,t:"ECO 2026 (2/2): Business Environment 26%",h:"2h",sk:["revenue","org-priority","investment-case"]},
+ {d:19,t:"Điền hồ sơ PMP (không nộp) + ECO lần 2",h:"2h",sk:[]},
+ {d:20,t:"PMP Exam Mindset",h:"2h",sk:["arbitrate","bad-news","influence"]}]},
+{id:"pp5",name:"Luyện đề",rng:"Day 21–27",note:"Chỉ có nghĩa khi đã đặt lịch thi. Hồ sơ chưa đủ điều kiện thì bỏ qua cả giai đoạn này.",days:[
+ {d:21,t:"Mock của khoá + chứng chỉ 35h + nộp hồ sơ",h:"4h",sk:[]},
+ {d:22,t:"Mock 1–3 · mục tiêu 70–75%",h:"4h",sk:[]},
+ {d:23,t:"Mock 4–6 · mục tiêu 70–75%",h:"4h",sk:[]},
+ {d:24,t:"Full mock 7 · mục tiêu 75%+",h:"4h",sk:[]},
+ {d:25,t:"Full mock 8 · mục tiêu 75%+",h:"4h",sk:[]},
+ {d:26,t:"Ultra hard · 65–70% + đặt lịch thi",h:"4h",sk:[]},
+ {d:27,t:"100 câu drag & drop / matching",h:"4h",sk:[]}]},
+{id:"pp6",name:"Về đích",rng:"Day 28–30",note:"Ba ngày cuối. Day 29 không học gì — đó là chủ ý trong plan gốc.",days:[
+ {d:28,t:"Ôn mindset + ECO + công thức",h:"3h",sk:[]},
+ {d:29,t:"NGHỈ. Dậy 5h sáng. Ngủ sớm.",h:"0h",sk:[]},
+ {d:30,t:"NGÀY THI",h:"—",sk:[]}]}
+];
+var PMP_DAYS = PMP_PHASES.reduce(function(a,ph){ return a.concat(ph.days); },[]);
+PMP_DAYS.forEach(function(d){ d.carry = (d.sk||[]).length > 0; });
+var PMP_BY_SKILL = {};
+PMP_DAYS.forEach(function(d){ (d.sk||[]).forEach(function(k){ (PMP_BY_SKILL[k]=PMP_BY_SKILL[k]||[]).push(d); }); });
+
+var PMP_BOOKS = [
+ {t:"Sổ 1 — Sổ lỗi sai",n:"Quan trọng nhất. Mỗi câu sai ghi lại vì sao sai, không chỉ ghi đáp án đúng.",p:"pmp/pmbok8_ghi_chu.md"},
+ {t:"Sổ 2 — Công thức",n:"EVM và các công thức tài chính. Phần ít dùng nhất ngoài kỳ thi.",p:"pmp/pmbok8_ghi_chu.md"},
+ {t:"Sổ 3 — PMP mindset",n:"Cách PMI muốn bạn hành xử. Đây là phần chuyển được sang công việc thật nhiều nhất.",p:"pmp/pmbok8_ghi_chu.md"},
+ {t:"Sổ 4 — Thuật ngữ Anh–Việt",n:"Ghép với vocabulary.md.",p:"pmp/vocabulary.md"},
+ {t:"Sổ 5 — Theo dõi điểm mock",n:"Chỉ dùng khi đã vào giai đoạn luyện đề.",p:"pmp/pmbok8_ghi_chu.md"},
+ {t:"Ma trận 7×5 và từ điển quy trình",n:"Hai file HTML anh tự dựng — bản tra cứu tốt nhất trong cả folder pmp.",p:"pmp/pmbok8_process_matrix.html"},
+ {t:"Lộ trình 30 ngày (file gốc)",n:"Nơi viết reflection dài cho từng ngày. Tab này chỉ theo dõi trạng thái, không thay thế nó.",p:"pmp/pmp_lo_trinh_30_ngay.md"}
+];
+
+var LS="roadmap-em-v1", DOC="roadmap/progress";
+var state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null};
+var db=null, timer=null, lastFocus=null;
+
+/* ---- index ---- */
+var NODES={}, NODE_LIST=[], GROUPS={}, STAGES={};
+DATA.forEach(function(st){
+  STAGES[st.id]={name:st.name,stLabel:st.st,ids:[]};
+  st.groups.forEach(function(g){
+    GROUPS[g.id]={name:g.name,en:g.en,stage:st.id,ids:[]};
+    g.nodes.forEach(function(n){
+      n.stage=st.id; n.group=g.id;
+      NODES[n.id]=n; NODE_LIST.push(n);
+      GROUPS[g.id].ids.push(n.id); STAGES[st.id].ids.push(n.id);
+    });
+  });
+});
+
+function stOf(id){ return state.s[id] || "pending"; }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function tally(ids){
+  var r={done:0,learning:0,skipped:0,pending:0};
+  ids.forEach(function(i){ r[stOf(i)]++; });
+  r.total=ids.length;
+  r.counted=ids.length - r.skipped;
+  r.pct = r.counted ? Math.round(r.done/r.counted*100) : 100;
+  return r;
+}
+
+/* ================= render roadmap ================= */
+function buildTrack(){
+  var html = DATA.map(function(st){
+    var groups = st.groups.map(function(g){
+      var nodes = g.nodes.map(function(n){
+        return '<div class="node" data-node="'+n.id+'" data-s="'+stOf(n.id)+'">'
+          + '<button class="mark" data-cycle="'+n.id+'" title="Đổi trạng thái" aria-label="Đổi trạng thái: '+esc(n.t)+'"><i></i></button>'
+          + '<button class="open" data-open="'+n.id+'">'
+          + '<span class="ax '+n.ax+'" aria-hidden="true"></span>'
+          + '<span class="t">'+esc(n.en||n.t)+'<i class="en">'+esc(n.t)+'</i></span>'
+          + (n.core?'<span class="opt" style="color:var(--live);border-color:var(--live)">lõi</span>':n.opt?'<span class="opt">tuỳ chọn</span>':'')
+          + '</button></div>';
+      }).join("");
+      return '<div class="group '+g.side+'" data-group="'+g.id+'">'
+        + '<div class="group-head"><h3>'+esc(g.en||g.name)+'<i class="en">'+esc(g.name)+'</i></h3>'
+        + '<span class="cnt" data-gcnt="'+g.id+'"></span></div>'
+        + '<div class="nodes">'+nodes+'</div></div>';
+    }).join("");
+    return '<section class="stage" data-stage="'+st.id+'">'
+      + '<div class="stage-head"><span class="st">'+esc(st.st)+'</span>'
+      + '<h2>'+esc(st.name)+'</h2><p>'+esc(st.sub)+'</p>'
+      + '<div class="stage-bar"><div class="b"><i data-sfill="'+st.id+'"></i></div>'
+      + '<span data-scnt="'+st.id+'"></span></div></div>'
+      + '<div class="groups">'+groups+'</div></section>';
+  }).join("");
+  document.getElementById("track").innerHTML = html;
+}
+
+var filterMode = "core";
+function inFilter(id){ return filterMode==="all" || !!NODES[id].core; }
+function visible(ids){ return ids.filter(inFilter); }
+
+function paint(){
+  NODE_LIST.forEach(function(n){
+    var el=document.querySelector('.node[data-node="'+n.id+'"]');
+    if(!el) return;
+    el.setAttribute("data-s", stOf(n.id));
+    el.classList.toggle("dim", !inFilter(n.id));
+  });
+  Object.keys(GROUPS).forEach(function(gid){
+    var ids=visible(GROUPS[gid].ids), t=tally(ids);
+    var el=document.querySelector('[data-gcnt="'+gid+'"]');
+    if(el) el.textContent = t.done+"/"+t.counted;
+    var box=document.querySelector('.group[data-group="'+gid+'"]');
+    if(box) box.classList.toggle("dim", ids.length===0);
+  });
+  DATA.forEach(function(st){
+    var t=tally(visible(STAGES[st.id].ids));
+    var f=document.querySelector('[data-sfill="'+st.id+'"]');
+    var c=document.querySelector('[data-scnt="'+st.id+'"]');
+    if(f) f.style.width=t.pct+"%";
+    if(c) c.textContent=t.done+"/"+t.counted+(filterMode==="core"?" kỹ năng lõi":" kỹ năng");
+  });
+  var all=tally(NODE_LIST.map(function(n){return n.id;}));
+  document.getElementById("top-done").textContent=all.done;
+  document.getElementById("top-all").textContent=all.counted;
+  document.getElementById("top-fill").style.width=all.pct+"%";
+  document.getElementById("brand-sub").textContent = NODE_LIST.length+" kỹ năng · 20 nhóm · 4 giai đoạn";
+  var fn=document.getElementById("fnote");
+  if(fn) fn.textContent = filterMode==="core"
+    ? "Đang ẩn 70 kỹ năng bổ trợ. Thanh tiến độ trên cùng vẫn tính đủ 89."
+    : "Bản đồ đầy đủ. Nếu thấy quá nhiều, quay lại chế độ lõi — 19 ô kia là phần bắt buộc.";
+  if(!document.getElementById("view-dash").hidden) renderDash();
+  if(!document.getElementById("view-core").hidden) renderCore();
+  if(!document.getElementById("view-reading").hidden) renderReading();
+  if(!document.getElementById("view-pmp").hidden) renderPmp();
+}
+
+/* ================= tab Cốt lõi ================= */
+function renderCore(){
+  var i=0;
+  document.getElementById("core-list").innerHTML = DATA.map(function(st){
+    var items=st.groups.reduce(function(a,g){return a.concat(g.nodes.filter(function(n){return n.core;}));},[]);
+    if(!items.length) return "";
+    var t=tally(items.map(function(n){return n.id;}));
+    return '<div class="core-stage"><div class="ch"><b>'+esc(st.name)+'</b>'
+      + '<span>'+t.done+"/"+items.length+' xong</span></div>'
+      + items.map(function(n){
+          i++;
+          return '<button type="button" class="core-item" data-open="'+n.id+'" data-s="'+stOf(n.id)+'">'
+            + '<span class="n">'+(i<10?"0":"")+i+'</span><span class="cbody">'
+            + '<span class="ct"><span class="dot '+n.ax+'"></span><b>'+esc(n.en||n.t)+'</b>'
+            + '<span class="sflag">'+ST_LABEL[stOf(n.id)]+'</span></span>'
+            + '<span class="cen">'+esc(n.t)+'</span>'
+            + '<span class="why">'+esc(n.why||n.d)+'</span></span></button>';
+        }).join("")
+      + '</div>';
+  }).join("");
+
+  document.getElementById("src-list").innerHTML = SOURCES.map(function(s){
+    return '<div class="src"><div class="src-h"><code>'+esc(s.p)+'</code>'
+      + '<span class="verdict '+s.v+'">'+esc(s.vl)+'</span>'
+      + '<span class="sz">'+esc(s.sz)+'</span></div>'
+      + '<p>'+esc(s.d)+'</p>'
+      + '<div class="items">'+s.items.map(function(it){
+          return '<div class="it"><code>'+esc(it[0])+'</code><span>'+esc(it[1])+'</span></div>';
+        }).join("")+'</div>'
+      + (s.sk.length?'<div class="skl">'+chips(s.sk)+'</div>':"")
+      + '</div>';
+  }).join("");
+
+  document.getElementById("gap-list").innerHTML = GAPS.map(function(g){
+    return '<div class="gap"><b>'+esc(g.t)+'</b><p>'+esc(g.d)+'</p></div>';
+  }).join("");
+
+  renderTpl();
+}
+function chips(ids){
+  return ids.filter(function(id){return NODES[id];}).map(function(id){
+    return '<button type="button" data-open="'+id+'">'+esc(NODES[id].en||NODES[id].t)+'</button>';
+  }).join("");
+}
+var tplMode="use";
+function renderTpl(){
+  var rows=TPL.filter(function(r){return r.v===tplMode;});
+  document.querySelector("#tpl-table tbody").innerHTML = rows.map(function(r){
+    return '<tr><td class="metric">'+esc(r.n)+'</td><td><code>'+esc(r.f)+'</code></td>'
+      + '<td>'+(r.sk.length?'<div class="skl">'+chips(r.sk)+'</div>':'<span style="color:var(--ink-faint)">—</span>')+'</td>'
+      + '<td class="how">'+esc(r.h)+'</td></tr>';
+  }).join("");
+}
+
+/* ================= drawer ================= */
+var IS_LOCAL = (location.protocol === "file:");
+var TPL_BY_SKILL = {};
+TPL.forEach(function(t){ if(!t.file) return;
+  (t.sk||[]).forEach(function(k){ (TPL_BY_SKILL[k]=TPL_BY_SKILL[k]||[]).push(t); }); });
+
+function fileRow(label, path, note){
+  var body = '<span class="rl"><b>'+esc(label)+'</b>'
+    + (note?'<em>'+esc(note)+'</em>':'')
+    + '<code>'+esc(path)+'</code></span>';
+  if (IS_LOCAL)
+    return '<a class="rr" href="'+esc(encodeURI(path))+'" target="_blank" rel="noopener">'
+      + '<span class="k">file</span>'+body+'<span class="go">mở</span></a>';
+  return '<div class="rr"><span class="k">file</span>'+body
+    + '<button type="button" class="cp" data-copy="'+esc(path)+'">chép</button></div>';
+}
+function webRow(label, url){
+  return '<a class="rr" href="'+esc(url)+'" target="_blank" rel="noopener">'
+    + '<span class="k">link</span><span class="rl"><b>'+esc(label)+'</b><code>'+esc(url)+'</code></span>'
+    + '<span class="go">mở</span></a>';
+}
+function bookRow(label){
+  var path = "lich-doc-sach.html";
+  var body = '<span class="rl"><b>'+esc(label)+'</b><em>có trong lịch đọc sách</em></span>';
+  if (IS_LOCAL)
+    return '<a class="rr" href="'+esc(path)+'" target="_blank" rel="noopener"><span class="k">sách</span>'+body+'<span class="go">lịch đọc</span></a>';
+  return '<div class="rr"><span class="k">sách</span>'+body+'</div>';
+}
+
+function openNode(id){
+  var n=NODES[id]; if(!n) return;
+  lastFocus=document.activeElement;
+  document.getElementById("dr-crumb").textContent =
+    STAGES[n.stage].stLabel + " · " + (GROUPS[n.group].en || GROUPS[n.group].name);
+  document.getElementById("dr-title").textContent = n.en || n.t;
+  document.getElementById("dr-en").textContent = n.t;
+  document.getElementById("dr-tags").innerHTML =
+    '<span class="tag '+n.ax+'">'+AXIS[n.ax].n+'</span>'
+    + (n.core?'<span class="tag" style="color:var(--live);border-color:var(--live)">Kỹ năng lõi</span>'
+             : n.opt?'<span class="tag">Tuỳ chọn</span>':'<span class="tag">Bổ trợ</span>');
+
+  var rows = (n.res||[]).map(function(r){
+    if(r.k==="web") return webRow(r.l, r.u);
+    if(r.k==="book") return bookRow(r.l);
+    return fileRow(r.l, r.p, "");
+  });
+  (TPL_BY_SKILL[id]||[]).forEach(function(t){ rows.push(fileRow(t.n, t.file, t.h)); });
+
+  var ev = (state.ev && state.ev[id]) || {};
+  document.getElementById("dr-body").innerHTML =
+      (n.core ? sec("Vì sao đây là kỹ năng lõi", '<div class="ok-box live">'+esc(n.why)+'</div>') : '')
+    + sec("Là gì", '<p>'+esc(n.d)+'</p>')
+    + (n.no ? sec("Dấu hiệu anh chưa có kỹ năng này", '<div class="ok-box flag">'+esc(n.no)+'</div>') : '')
+    + sec("Luyện thế nào", '<ol>'+n.how.map(function(h){return "<li>"+esc(h)+"</li>";}).join("")+'</ol>')
+    + (n.first ? sec("Bài tập đầu tiên — làm được ngay tuần này", '<div class="ok-box live">'+esc(n.first)+'</div>') : '')
+    + sec("Coi là thành thạo khi", '<div class="ok-box">'+esc(n.ok)+'</div>')
+    + sec("Tài liệu", rows.length
+        ? '<div class="res">'+rows.join("")+'</div>'
+          + (IS_LOCAL?'':'<p class="rnote">Đang mở bản trên web nên không mở file trong máy được. Bấm “chép” rồi dán vào Explorer — hoặc mở <code>D:\\LEARNING\\career-path\\roadmap-em.html</code> thì mọi file bấm là mở.</p>')
+        : '<p class="empty">Kỹ năng này luyện bằng tình huống thật, không có tài liệu riêng.</p>')
+    + readingBlock(id)
+    + pmpBlock(id)
+    + evidenceBlock(id, ev);
+
+  var cur=stOf(id);
+  Array.prototype.forEach.call(document.querySelectorAll(".st-btn"),function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.set===cur));
+    b.onclick=function(){ setStatus(id,b.dataset.set); openNode(id); };
+  });
+  wireEvidence(id);
+  document.getElementById("drawer").classList.add("on");
+  document.getElementById("drawer").setAttribute("aria-hidden","false");
+  document.getElementById("scrim").classList.add("on");
+  document.getElementById("dr-close").focus();
+}
+function copyPath(txt, btn){
+  var old = btn.textContent;
+  var done = function(){ btn.textContent="đã chép"; setTimeout(function(){ btn.textContent=old; },1300); };
+  var fallback = function(){
+    try{
+      var ta=document.createElement("textarea");
+      ta.value=txt; ta.setAttribute("readonly","");
+      ta.style.position="fixed"; ta.style.top="-1000px"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      document.execCommand("copy"); ta.remove(); done();
+    }catch(err){ btn.textContent="không chép được"; setTimeout(function(){ btn.textContent=old; },1600); }
+  };
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done, fallback); return;
+    }
+  }catch(err){}
+  fallback();
+}
+function pmpBlock(id){
+  var ds = PMP_BY_SKILL[id];
+  if(!ds || !ds.length) return "";
+  return sec("Ngày PMP liên quan", '<div class="drd">' + ds.map(function(x){
+    return '<label class="drdi"><input type="checkbox" data-pmp="'+x.d+'"'+(pmpDone(x.d)?" checked":"")+'>'
+      + '<span class="rt"><b>Day '+x.d+' — '+esc(x.t)+'</b><em>'+esc(x.h)+' · lộ trình 30 ngày</em></span></label>';
+  }).join("") + '</div>');
+}
+function readingBlock(id){
+  var items = READ_BY_SKILL[id];
+  if(!items || !items.length) return "";
+  return sec("Đọc gì cho kỹ năng này", '<div class="drd">' + items.map(function(it){
+    return '<label class="drdi"><input type="checkbox" data-read="'+it.id+'"'+(isRead(it.id)?" checked":"")+'>'
+      + '<span class="rt"><b>'+esc(it.t)+'</b><em>'+esc(it.bk)+' · '+esc(it.wk)+' · phase '+it.ph+'</em></span></label>';
+  }).join("") + '</div><p class="rnote">Tick ở đây hay ở tab Đọc sách đều như nhau — cùng một trạng thái.</p>');
+}
+function sec(label, inner){
+  return '<div class="dr-sec"><span class="lb">'+esc(label)+'</span>'+inner+'</div>';
+}
+
+/* ---------------- bằng chứng + Claude chấm ---------------- */
+var VERDICT = {
+  dat:      {l:"Đạt",       c:"done"},
+  gan_dat:  {l:"Gần đạt",   c:"learn"},
+  chua_dat: {l:"Chưa đạt",  c:"flag"}
+};
+function evidenceBlock(id, ev){
+  var v = ev.v;
+  var out = "";
+  if (v) {
+    var meta = VERDICT[v.ket_luan] || VERDICT.chua_dat;
+    out = '<div class="vd '+meta.c+'">'
+      + '<div class="vd-h"><b>'+esc(meta.l)+'</b><span class="score">'+(v.diem!=null?esc(String(v.diem))+"/100":"")+'</span></div>'
+      + '<p>'+esc(v.vi_sao||"")+'</p>'
+      + (v.con_thieu && v.con_thieu.length
+         ? '<div class="vd-l"><span>Còn thiếu</span><ul>'+v.con_thieu.map(function(x){return "<li>"+esc(x)+"</li>";}).join("")+'</ul></div>' : '')
+      + (v.viec_tiep ? '<div class="vd-l"><span>Việc tiếp theo</span><p>'+esc(v.viec_tiep)+'</p></div>' : '')
+      + (v.ket_luan==="dat" && stOf(id)!=="done"
+         ? '<button type="button" class="accept" data-accept="'+id+'">Đánh dấu kỹ năng này là thành thạo</button>' : '')
+      + '</div>';
+  }
+  return '<div class="dr-sec ev-sec"><span class="lb">Bằng chứng của tôi</span>'
+    + '<p class="evhint">Viết tình huống thật: anh đã làm gì, với ai, kết quả ra sao. Càng cụ thể thì đánh giá càng đáng tin — “tôi có làm rồi” sẽ bị chấm là chưa đủ.</p>'
+    + '<textarea id="ev-text" rows="5" placeholder="Ví dụ: tháng 8 tôi viết design doc cho việc tách service thanh toán, gửi cho Hùng bên team khác; bạn ấy triển khai xong trong 3 tuần và chỉ hỏi tôi 1 lần về format message.">'+esc(ev.t||"")+'</textarea>'
+    + '<div class="ev-bar"><button type="button" id="ev-ask" class="ask">Nhờ Claude đánh giá</button>'
+    + '<span id="ev-state" class="evst"></span></div>'
+    + '<div id="ev-out">'+out+'</div></div>';
+}
+var sampleFn = null, sampleTried = false, evTimer = null, evCtl = null;
+function wireEvidence(id){
+  var ta = document.getElementById("ev-text");
+  var ask = document.getElementById("ev-ask");
+  if(!ta || !ask) return;
+  ta.addEventListener("input", function(){
+    state.ev = state.ev || {};
+    state.ev[id] = state.ev[id] || {};
+    state.ev[id].t = ta.value;
+    clearTimeout(evTimer); evTimer = setTimeout(save, 500);
+  });
+  if(!sampleFn){ ask.disabled = true; ask.textContent = sampleTried ? "Đánh giá không khả dụng ở đây" : "Đang kết nối Claude…"; }
+  ask.addEventListener("click", function(){ assess(id); });
+  var acc = document.querySelector("[data-accept]");
+  if(acc) acc.addEventListener("click", function(){ setStatus(acc.dataset.accept, "done"); openNode(acc.dataset.accept); });
+}
+function evState(msg, cls){
+  var el=document.getElementById("ev-state"); if(!el) return;
+  el.textContent = msg || ""; el.className = "evst" + (cls?" "+cls:"");
+}
+function assess(id){
+  var n = NODES[id];
+  var ta = document.getElementById("ev-text");
+  var ask = document.getElementById("ev-ask");
+  if(!sampleFn || !ta) return;
+  var text = (ta.value||"").trim();
+  if(text.length < 20){ evState("Viết cụ thể hơn — ít nhất một tình huống thật.", "warn"); return; }
+
+  ask.disabled = true; evState("Claude đang đọc bằng chứng…");
+  var prompt =
+    "Bạn là một engineering manager giàu kinh nghiệm, đang thẩm định xem một đồng nghiệp đã thật sự đạt được một kỹ năng hay chưa. "
+    + "Hãy nghiêm khắc và công bằng: bằng chứng phải là tình huống có thật, cụ thể, có kết quả quan sát được. "
+    + "Lời khẳng định chung chung (\"tôi làm rồi\", \"tôi hiểu rõ\"), ý định trong tương lai, hoặc kiến thức lý thuyết đều KHÔNG đủ để kết luận là đạt.\n\n"
+    + "KỸ NĂNG: " + n.t + "\n"
+    + "ĐỊNH NGHĨA: " + n.d + "\n"
+    + "TIÊU CHÍ THÀNH THẠO: " + n.ok + "\n"
+    + (n.no ? "DẤU HIỆU CHƯA CÓ KỸ NĂNG: " + n.no + "\n" : "")
+    + "CÁCH LUYỆN CHUẨN: " + n.how.join(" | ") + "\n\n"
+    + "BẰNG CHỨNG NGƯỜI ĐÓ TỰ VIẾT:\n\"\"\"\n" + text + "\n\"\"\"\n\n"
+    + "Trả lời bằng tiếng Việt, xưng hô \"anh\", giọng thẳng thắn, không khen xã giao. "
+    + "Chỉ trả về JSON đúng dạng sau, không thêm chữ nào ngoài JSON:\n"
+    + "{\"ket_luan\":\"dat\"|\"gan_dat\"|\"chua_dat\","
+    + "\"diem\":<số nguyên 0-100>,"
+    + "\"vi_sao\":\"<2-3 câu giải thích, chỉ ra chính xác phần nào trong bằng chứng khớp hoặc không khớp tiêu chí>\","
+    + "\"con_thieu\":[\"<điều còn thiếu, tối đa 3 mục, mỗi mục 1 câu ngắn>\"],"
+    + "\"viec_tiep\":\"<một việc cụ thể làm được trong 2 tuần tới để khép khoảng cách>\"}";
+
+  evCtl = new AbortController();
+  sampleFn.json(prompt, {modelTier:"default", signal: evCtl.signal}).then(function(v){
+    state.ev = state.ev || {};
+    state.ev[id] = {t: text, v: v, at: new Date().toISOString()};
+    save();
+    if(location.hash === "#/n/"+id) openNode(id);
+  }).catch(function(e){
+    ask.disabled = false;
+    var c = e && e.code;
+    if(c === "cancelled") { evState(""); return; }
+    if(c === "not_granted"){ evState("Anh đã từ chối cho trang gọi Claude. Tải lại trang nếu muốn bật lại.", "warn"); return; }
+    if(c === "rate_limited"){ evState("Đang bị giới hạn tần suất. Chờ một lát rồi thử lại.", "warn"); return; }
+    if(c === "invalid_json"){ evState("Câu trả lời không đúng định dạng. Bấm lại một lần nữa.", "warn"); return; }
+    evState("Không gọi được Claude lúc này.", "warn");
+  });
+}
+function closeDrawer(){
+  document.getElementById("drawer").classList.remove("on");
+  document.getElementById("drawer").setAttribute("aria-hidden","true");
+  document.getElementById("scrim").classList.remove("on");
+  if(location.hash.indexOf("#/n/")===0) location.hash = baseView;
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+function setStatus(id,s){
+  if(s==="pending") delete state.s[id]; else state.s[id]=s;
+  paint(); save();
+}
+
+/* ================= dashboard ================= */
+function bar(t){
+  var d=t.counted?t.done/t.counted*100:0, l=t.counted?t.learning/t.counted*100:0;
+  return '<div class="meter"><i class="d" style="width:'+d+'%"></i><i class="l" style="width:'+l+'%"></i></div>';
+}
+function renderDash(){
+  var all=tally(NODE_LIST.map(function(n){return n.id;}));
+  document.getElementById("t-done").textContent=all.done;
+  document.getElementById("t-learn").textContent=all.learning;
+  document.getElementById("t-left").textContent=all.counted-all.done-all.learning;
+  document.getElementById("t-pct").textContent=all.pct+"%";
+
+  var axKeys=["L","P","S"], axT={};
+  axKeys.forEach(function(k){
+    axT[k]=tally(NODE_LIST.filter(function(n){return n.ax===k;}).map(function(n){return n.id;}));
+  });
+  document.getElementById("axis-rows").innerHTML = axKeys.map(function(k){
+    var t=axT[k];
+    return '<div class="row"><div class="nm">'+AXIS[k].n+'<em>'+AXIS[k].v+' — '+AXIS[k].d+'</em></div>'
+      + bar(t) + '<div class="vl">'+t.done+"/"+t.counted+'</div></div>';
+  }).join("");
+
+  var weakest=axKeys.slice().sort(function(a,b){return axT[a].pct-axT[b].pct;})[0];
+  var strongest=axKeys.slice().sort(function(a,b){return axT[b].pct-axT[a].pct;})[0];
+  var note;
+  if(all.done===0){
+    note='Chưa có dữ liệu. Đánh dấu vài kỹ năng anh đã thật sự có — không phải đã đọc qua — rồi quay lại đây.';
+  } else if(weakest===strongest){
+    note='Ba trục đang cân bằng. Giữ nguyên cách chọn kỹ năng hiện tại.';
+  } else {
+    note='Trục yếu nhất: <b>'+AXIS[weakest].n+'</b> ('+axT[weakest].pct+'%), mạnh nhất: <b>'+AXIS[strongest].n+'</b> ('+axT[strongest].pct+'%). '
+      + (weakest==="P"
+         ? 'Đây là mẫu điển hình của dev đi lên quản lý — và cũng là trục quyết định. Hai giai đoạn tới gần như toàn bộ là trục Con người, nên khoảng cách này sẽ thành nút chặn nếu không xử lý sớm.'
+         : 'Ưu tiên kỹ năng thuộc trục này trong vài lượt chọn tiếp theo để không lệch.');
+  }
+  document.getElementById("axis-note").innerHTML=note;
+
+  var rt2 = readTally();
+  var days2 = Object.keys(state.days||{}).filter(function(k){return state.days[k];}).length;
+  var readSkills = Object.keys(READ_BY_SKILL).filter(function(k){return NODES[k];});
+  var readDone = readSkills.filter(function(k){
+    return (READ_BY_SKILL[k]||[]).some(function(it){ return isRead(it.id); });
+  });
+  var readAndMastered = readDone.filter(function(k){ return stOf(k)==="done"; });
+  document.getElementById("read-rows").innerHTML =
+      '<div class="row"><div class="nm">Mục đã đọc<em>16 mục đọc thật, 2 mục đánh dấu bỏ</em></div>'
+    + '<div class="meter"><i class="d" style="width:'+(rt2.total?Math.round(rt2.done/rt2.total*100):0)+'%"></i></div>'
+    + '<div class="vl">'+rt2.done+"/"+rt2.total+'</div></div>'
+    + '<div class="row"><div class="nm">Ngày chú tâm<em>10 phút mỗi ngày, mốc 60 ngày</em></div>'
+    + '<div class="meter"><i class="d" style="width:'+Math.round(days2/60*100)+'%"></i></div>'
+    + '<div class="vl">'+days2+'/60</div></div>'
+    + '<div class="row"><div class="nm">Đọc rồi và đã đạt<em>trong '+readDone.length+' kỹ năng đã có tài liệu đọc</em></div>'
+    + '<div class="meter"><i class="d" style="width:'+(readDone.length?Math.round(readAndMastered.length/readDone.length*100):0)+'%"></i></div>'
+    + '<div class="vl">'+readAndMastered.length+"/"+readDone.length+'</div></div>';
+
+  document.getElementById("stage-rows").innerHTML = DATA.map(function(st){
+    var t=tally(STAGES[st.id].ids);
+    return '<div class="row"><div class="nm">'+esc(st.name)+'<em>'+esc(st.st)+'</em></div>'
+      + bar(t) + '<div class="vl">'+t.done+"/"+t.counted+'</div></div>';
+  }).join("");
+
+  var evs=NODE_LIST.filter(function(n){ return state.ev && state.ev[n.id] && state.ev[n.id].v; });
+  var vl=document.getElementById("verified-list");
+  if(!evs.length){
+    vl.innerHTML='<p class="empty">Chưa có kỹ năng nào được chấm. Mở một kỹ năng bất kỳ, kéo xuống mục “Bằng chứng của tôi”, viết một tình huống thật rồi bấm “Nhờ Claude đánh giá”.</p>';
+  } else {
+    var ord={dat:0,gan_dat:1,chua_dat:2};
+    evs.sort(function(a,b){
+      return (ord[state.ev[a.id].v.ket_luan]||9)-(ord[state.ev[b.id].v.ket_luan]||9);
+    });
+    vl.innerHTML=evs.map(function(n){
+      var v=state.ev[n.id].v, m=VERDICT[v.ket_luan]||VERDICT.chua_dat;
+      return '<button type="button" data-open="'+n.id+'"><span class="vb '+m.c+'">'+esc(m.l)+'</span>'
+        + '<span>'+esc(n.en||n.t)+'</span>'
+        + '<span class="sc">'+(v.diem!=null?esc(String(v.diem))+"/100":"")+'</span></button>';
+    }).join("");
+  }
+
+  var learning=NODE_LIST.filter(function(n){return stOf(n.id)==="learning";});
+  var lc=document.getElementById("learning-list");
+  if(!learning.length){
+    lc.innerHTML='<p class="empty">Chưa đánh dấu kỹ năng nào đang học. Mở một ô trong roadmap và chọn “Đang học”.</p>';
+  } else {
+    lc.innerHTML = learning.map(nodeBtn).join("")
+      + (learning.length>5 ? '<div class="callout" style="margin-top:8px">Đang mở <b>'+learning.length+' kỹ năng</b> cùng lúc. Quá năm thì không cái nào vào sâu — đóng bớt trước khi mở thêm.</div>' : "");
+  }
+
+  var stageOrder=DATA.map(function(s){return s.id;});
+  var activeStage=stageOrder[0];
+  for(var i=0;i<stageOrder.length;i++){
+    var t=tally(STAGES[stageOrder[i]].ids);
+    if(t.done < t.counted){ activeStage=stageOrder[i]; break; }
+    activeStage=stageOrder[Math.min(i+1,stageOrder.length-1)];
+  }
+  var pool=NODE_LIST.filter(function(n){
+    return n.stage===activeStage && stOf(n.id)==="pending";
+  });
+  pool.sort(function(a,b){
+    var w=(a.ax===weakest?0:1)-(b.ax===weakest?0:1);
+    if(w) return w;
+    return (a.opt?1:0)-(b.opt?1:0);
+  });
+  var nx=document.getElementById("next-list");
+  nx.innerHTML = pool.length
+    ? pool.slice(0,6).map(nodeBtn).join("")
+    : '<p class="empty">Giai đoạn này đã kín. Chuyển sang giai đoạn sau trong roadmap.</p>';
+
+  document.getElementById("group-grid").innerHTML = Object.keys(GROUPS).map(function(gid){
+    var g=GROUPS[gid], t=tally(g.ids);
+    var lbl = t.done===t.counted ? "hoàn tất" : (t.done||t.learning ? "đang mở" : "chưa bắt đầu");
+    return '<div class="gcard"><div class="gh"><b>'+esc(g.en||g.name)+'<i class="en">'+esc(g.name)+'</i></b><span>'+t.done+"/"+t.counted+'</span></div>'
+      + bar(t) + '<span class="st">'+STAGES[g.stage].stLabel+' · '+lbl+'</span></div>';
+  }).join("");
+}
+/* ================= tab Đọc sách ================= */
+function isRead(id){ return !!(state.rd && state.rd[id]); }
+function readTally(){
+  var real = READ_ITEMS.filter(function(it){ return !it.skip; });
+  return {done: real.filter(function(it){ return isRead(it.id); }).length, total: real.length};
+}
+function skillChipsRead(sk){
+  return sk.filter(function(k){return NODES[k];}).map(function(k){
+    var st = stOf(k);
+    return '<button type="button" class="rk '+(st==="done"?"d":st==="learning"?"l":"")+'" data-open="'+k+'">'
+      + esc(NODES[k].en||NODES[k].t)+'</button>';
+  }).join("");
+}
+function renderReading(){
+  var rt = readTally();
+  var days = Object.keys(state.days||{}).filter(function(k){return state.days[k];}).length;
+  var covered = Object.keys(READ_BY_SKILL).filter(function(k){return NODES[k];});
+  var openGap = covered.filter(function(k){
+    return stOf(k)!=="done" && (READ_BY_SKILL[k]||[]).some(function(it){ return isRead(it.id); });
+  });
+  document.getElementById("r-done").textContent = rt.done + "/" + rt.total;
+  document.getElementById("r-days").textContent = days + "/60";
+  document.getElementById("r-cov").textContent = covered.length;
+  document.getElementById("r-open").textContent = openGap.length;
+
+  var note;
+  if (rt.done === 0) {
+    note = 'Chưa đọc mục nào. Mục đáng đọc đầu tiên là <b>Ch.3 — Tech Lead</b>: nó phục vụ 5 kỹ năng của M0–M1, nhiều hơn bất kỳ chương nào khác trong cả kế hoạch.';
+  } else if (openGap.length > 3) {
+    note = 'Đã đọc tài liệu cho <b>' + openGap.length + ' kỹ năng</b> nhưng chưa kỹ năng nào trong số đó được đánh dấu thành thạo. Đọc xong là bước một; bước hai là dùng thật rồi nhập bằng chứng. Đây đúng là cái bẫy “đọc thay cho làm” trong <code>00_huong-dan</code> của anh.';
+  } else {
+    note = 'Đã đọc ' + rt.done + '/' + rt.total + ' mục. Giữ nhịp một mục mỗi tuần, và mỗi mục đọc xong phải áp dụng vào một tình huống thật trong tuần đó.';
+  }
+  document.getElementById("r-note").innerHTML = note;
+
+  [1,2].forEach(function(ph){
+    document.getElementById("r-p"+ph).innerHTML = READING.filter(function(w){return w.ph===ph;}).map(function(w){
+      return '<div class="rweek"><div class="rwh"><b>'+esc(w.wk)+'</b><span>'+esc(w.bk)+'</span></div>'
+        + w.items.map(function(it){
+            var done = isRead(it.id);
+            var sk = (it.sk||[]).filter(function(k){return NODES[k];});
+            var got = sk.filter(function(k){return stOf(k)==="done";}).length;
+            return '<div class="ri'+(it.skip?" skipitem":"")+'" data-done="'+done+'">'
+              + '<label><input type="checkbox" data-read="'+it.id+'"'+(done?" checked":"")+'>'
+              + '<span class="rt"><b>'+esc(it.t)+'</b><em>'+esc(it.n)+'</em></span></label>'
+              + (sk.length
+                 ? '<div class="rskl"><span class="rlb">Phục vụ</span><div class="skl">'+skillChipsRead(sk)+'</div>'
+                   + '<span class="rprog">'+got+'/'+sk.length+' đã đạt</span></div>'
+                 : '')
+              + '</div>';
+          }).join("")
+        + '</div>';
+    }).join("");
+  });
+
+  document.getElementById("r-grid").innerHTML = Array.from({length:60}, function(_,i){
+    var d=i+1;
+    return '<button type="button" data-day="'+d+'" aria-pressed="'+(!!(state.days&&state.days[d]))+'" aria-label="Ngày '+d+'">'+d+'</button>';
+  }).join("");
+  document.getElementById("r-mile").textContent =
+    days === 0  ? "Tuần đầu sẽ thấy tâm loạn. Đó không phải thất bại." :
+    days < 8    ? "Giai đoạn loạn nhất. Chỉ cần ngồi đủ 10 phút, chưa cần yên." :
+    days < 42   ? "Đang vào nhịp. Vẫn giữ 10 phút, đừng tăng." :
+    days < 60   ? "Khoảng này bắt đầu thấy khác ở chỗ khác: ngồi đọc code hoặc họp mà không với tay lấy điện thoại." :
+                  "Đủ 60 ngày. Giờ mới là lúc cân nhắc tăng thời lượng.";
+
+  document.getElementById("r-axis").innerHTML = ["L","P","S"].map(function(k){
+    var all = NODE_LIST.filter(function(n){return n.ax===k;});
+    var withBook = all.filter(function(n){return READ_BY_SKILL[n.id];});
+    var pct = all.length ? Math.round(withBook.length/all.length*100) : 0;
+    return '<div class="row"><div class="nm">'+AXIS[k].n+'<em>'+AXIS[k].v+'</em></div>'
+      + '<div class="meter"><i class="d" style="width:'+pct+'%"></i></div>'
+      + '<div class="vl">'+withBook.length+"/"+all.length+'</div></div>';
+  }).join("");
+}
+
+/* ================= tab PMP ================= */
+function pmpDone(d){ return !!(state.pmp && state.pmp[d]); }
+function pmpScore(d){ var v = state.pmpSc && state.pmpSc[d]; return (v===0||v)?v:null; }
+function renderPmp(){
+  var done = PMP_DAYS.filter(function(x){ return pmpDone(x.d); });
+  var scored = PMP_DAYS.map(function(x){ return pmpScore(x.d); }).filter(function(v){ return v!==null; });
+  var avg = scored.length ? (scored.reduce(function(a,b){return a+b;},0)/scored.length) : null;
+  var weak = PMP_DAYS.filter(function(x){ var v=pmpScore(x.d); return v!==null && v<7; });
+  var carryDone = done.filter(function(x){ return x.carry; });
+
+  document.getElementById("pm-done").textContent = done.length + "/30";
+  document.getElementById("pm-avg").textContent = avg===null ? "—" : (Math.round(avg*10)/10).toFixed(1);
+  document.getElementById("pm-weak").textContent = weak.length;
+  document.getElementById("pm-carry").textContent = carryDone.length + "/" + PMP_DAYS.filter(function(x){return x.carry;}).length;
+
+  var m = (typeof state.pmpM === "number") ? state.pmpM : null;
+  var inp = document.getElementById("pm-months");
+  if (document.activeElement !== inp) inp.value = (m===null ? "" : m);
+  var pct = m===null ? 0 : Math.min(100, Math.round(m/36*100));
+  document.getElementById("pm-mfill").style.width = pct + "%";
+  document.getElementById("pm-verdict").innerHTML =
+    m === null ? 'Chưa điền. Đếm lại số tháng thật rồi ghi vào đây và vào <code>pmbok8_ghi_chu.md</code> — nó quyết định kỳ thi có chạy được không.'
+    : m >= 36  ? '<b>Đủ điều kiện nộp hồ sơ.</b> Nếu anh cũng đang cân nhắc chuyển sang môi trường có PMO thì mở lại kỳ thi; nếu vẫn ở product company và đích là EM thì chứng chỉ này không thêm gì cho hồ sơ.'
+    : 'Còn thiếu <b>' + (36-m) + ' tháng</b>. Chặng M1 và M2 trên roadmap chính là nơi tích luỹ số tháng đó — dẫn dắt thật, không phải chờ chức danh.';
+
+  var note;
+  if (!done.length) {
+    note = 'Nếu file gốc mới điền được vài ngày đầu rồi dừng: khi quay lại, đừng bắt đầu lại từ Day 1. <b>Day 9 và Day 11</b> là hai ngày mang được nhiều thứ nhất ra khỏi phòng thi — risk register, stakeholder, change control, post-mortem.';
+  } else if (weak.length) {
+    note = 'Có <b>' + weak.length + ' ngày dưới ngưỡng 7</b>. Theo đúng luật anh tự đặt: không đi tiếp, chèn ngày đệm và học lại — kiến thức PMP xếp chồng.';
+  } else {
+    note = 'Đã học ' + done.length + '/30 ngày, trong đó ' + carryDone.length + ' ngày có kiến thức dùng được ngoài kỳ thi. Với đích Engineering Manager, ' + carryDone.length + ' ngày kia mới là phần đáng tính.';
+  }
+  document.getElementById("pm-note").innerHTML = note;
+
+  document.getElementById("pm-phases").innerHTML = PMP_PHASES.map(function(ph){
+    var dn = ph.days.filter(function(x){ return pmpDone(x.d); }).length;
+    return '<div class="pmph"><div class="pmphh"><b>'+esc(ph.name)+'</b><span class="rg">'+esc(ph.rng)+'</span>'
+      + '<span class="pmpc">'+dn+"/"+ph.days.length+'</span></div>'
+      + '<p class="pmpn">'+esc(ph.note)+'</p>'
+      + ph.days.map(function(x){
+          var sc = pmpScore(x.d);
+          var sk = (x.sk||[]).filter(function(k){return NODES[k];});
+          return '<div class="pmd" data-done="'+pmpDone(x.d)+'"'+(sc!==null&&sc<7?' data-weak="1"':'')+'>'
+            + '<label><input type="checkbox" data-pmp="'+x.d+'"'+(pmpDone(x.d)?" checked":"")+'>'
+            + '<span class="pmdt"><b>Day '+x.d+' — '+esc(x.t)+'</b>'
+            + '<em>'+esc(x.h)+(x.carry?" · dùng được ngoài kỳ thi":" · chỉ phục vụ kỳ thi")+'</em></span></label>'
+            + '<select class="pmsc" data-pmpsc="'+x.d+'" aria-label="Tự chấm Day '+x.d+'">'
+            + '<option value="">—</option>'
+            + [0,1,2,3,4,5,6,7,8,9,10].map(function(v){
+                return '<option value="'+v+'"'+(sc===v?" selected":"")+'>'+v+'/10</option>';
+              }).join("")
+            + '</select>'
+            + (sk.length ? '<div class="rskl"><span class="rlb">Phục vụ</span><div class="skl">'+skillChipsRead(sk)+'</div></div>' : '')
+            + '</div>';
+        }).join("")
+      + '</div>';
+  }).join("");
+
+  document.getElementById("pm-books").innerHTML = PMP_BOOKS.map(function(b){
+    return fileRow(b.t, b.p, b.n);
+  }).join("");
+}
+
+function nodeBtn(n){
+  return '<button type="button" data-open="'+n.id+'"><span class="w '+n.ax+'"></span>'
+    + '<span>'+esc(n.en||n.t)+'</span><span class="where">'+esc(GROUPS[n.group].en||GROUPS[n.group].name)+'</span></button>';
+}
+
+/* ================= routing ================= */
+var baseView="#/";
+function route(){
+  var h=location.hash||"#/";
+  if(h.indexOf("#/n/")!==0) baseView = h;
+  var back = h.indexOf("#/n/")===0 ? baseView : h;
+  var dash = back.indexOf("#/dashboard")===0;
+  var core = back.indexOf("#/core")===0;
+  var read = back.indexOf("#/reading")===0;
+  var pmpv = back.indexOf("#/pmp")===0;
+  document.getElementById("view-map").hidden = dash||core||read||pmpv;
+  document.getElementById("view-core").hidden = !core;
+  document.getElementById("view-reading").hidden = !read;
+  document.getElementById("view-pmp").hidden = !pmpv;
+  document.getElementById("view-dash").hidden = !dash;
+  document.getElementById("nav-map").className = (dash||core||read||pmpv)?"":"on";
+  document.getElementById("nav-core").className = core?"on":"";
+  document.getElementById("nav-read").className = read?"on":"";
+  document.getElementById("nav-pmp").className = pmpv?"on":"";
+  document.getElementById("nav-dash").className = dash?"on":"";
+  if(dash) renderDash();
+  if(core) renderCore();
+  if(read) renderReading();
+  if(pmpv) renderPmp();
+  if(h.indexOf("#/n/")===0){
+    var id=h.slice(4);
+    if(NODES[id]) openNode(id); else location.hash="#/";
+  } else if(document.getElementById("drawer").classList.contains("on")){
+    document.getElementById("drawer").classList.remove("on");
+    document.getElementById("drawer").setAttribute("aria-hidden","true");
+    document.getElementById("scrim").classList.remove("on");
+  }
+  if(!dash && h==="#/") window.scrollTo({top:window.scrollY});
+}
+
+/* ================= persistence ================= */
+function readLocal(){ try{var r=localStorage.getItem(LS); if(r) return JSON.parse(r);}catch(e){} return null; }
+function writeLocal(){ try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){} }
+function status(m){ var el=document.getElementById("save"); el.textContent=m;
+  if(m) setTimeout(function(){ if(el.textContent===m) el.textContent=""; },1700); }
+function save(){
+  writeLocal(); clearTimeout(timer);
+  timer=setTimeout(function(){
+    if(!db){ status("đã lưu trên máy này"); return; }
+    db.doc(DOC).set({s:state.s, ev:state.ev||{}, rd:state.rd||{}, days:state.days||{}, pmp:state.pmp||{}, pmpSc:state.pmpSc||{}, pmpM:(state.pmpM==null?null:state.pmpM)}).then(function(){ status("đã lưu"); })
+      .catch(function(){ status("chỉ lưu được trên máy này"); });
+  },400);
+}
+
+/* ================= wire up ================= */
+document.addEventListener("click",function(e){
+  var cyc=e.target.closest?e.target.closest("[data-cycle]"):null;
+  if(cyc){ var id=cyc.dataset.cycle;
+    setStatus(id, CYCLE[(CYCLE.indexOf(stOf(id))+1)%CYCLE.length]); return; }
+  var dy=e.target.closest?e.target.closest("[data-day]"):null;
+  if(dy){
+    var d=dy.dataset.day;
+    state.days = state.days || {};
+    if(state.days[d]) delete state.days[d]; else state.days[d]=1;
+    save(); renderReading(); return;
+  }
+  var cp=e.target.closest?e.target.closest("[data-copy]"):null;
+  if(cp){ copyPath(cp.dataset.copy, cp); return; }
+  var fb=e.target.closest?e.target.closest("[data-filter]"):null;
+  if(fb){
+    filterMode=fb.dataset.filter;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-filter]"),function(b){
+      b.classList.toggle("on", b.dataset.filter===filterMode);
+    });
+    paint(); return;
+  }
+  var tb=e.target.closest?e.target.closest("[data-tpl]"):null;
+  if(tb){
+    tplMode=tb.dataset.tpl;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-tpl]"),function(b){
+      b.classList.toggle("on", b.dataset.tpl===tplMode);
+    });
+    renderTpl(); return;
+  }
+  var op=e.target.closest?e.target.closest("[data-open]"):null;
+  if(op){ location.hash="#/n/"+op.dataset.open; return; }
+});
+document.addEventListener("change", function(e){
+  var t=e.target;
+  if(!t || !t.matches) return;
+  if(t.matches("input[data-pmp]")){
+    state.pmp = state.pmp || {};
+    if(t.checked) state.pmp[t.dataset.pmp]=1; else delete state.pmp[t.dataset.pmp];
+    save();
+    Array.prototype.forEach.call(document.querySelectorAll('input[data-pmp="'+t.dataset.pmp+'"]'),
+      function(b){ b.checked = t.checked; });
+    if(!document.getElementById("view-pmp").hidden) renderPmp();
+    return;
+  }
+  if(t.matches("select[data-pmpsc]")){
+    state.pmpSc = state.pmpSc || {};
+    if(t.value === "") delete state.pmpSc[t.dataset.pmpsc];
+    else state.pmpSc[t.dataset.pmpsc] = parseInt(t.value,10);
+    save(); renderPmp();
+    return;
+  }
+  if(t.id === "pm-months"){
+    var v = t.value.trim();
+    state.pmpM = (v==="") ? null : Math.max(0, Math.min(120, parseInt(v,10)||0));
+    save(); renderPmp();
+    return;
+  }
+  if(t.matches("input[data-read]")){
+    state.rd = state.rd || {};
+    if(t.checked) state.rd[t.dataset.read]=1; else delete state.rd[t.dataset.read];
+    save();
+    Array.prototype.forEach.call(document.querySelectorAll('input[data-read="'+t.dataset.read+'"]'),
+      function(b){ b.checked = t.checked; });
+    if(!document.getElementById("view-reading").hidden) renderReading();
+    if(!document.getElementById("view-dash").hidden) renderDash();
+  }
+});
+document.getElementById("dr-close").addEventListener("click",closeDrawer);
+document.getElementById("scrim").addEventListener("click",closeDrawer);
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape" && document.getElementById("drawer").classList.contains("on")) closeDrawer();
+});
+/* ================= xuất / nhập JSON ================= */
+var dlFn = null;
+function buildExport(){
+  var all = tally(NODE_LIST.map(function(n){return n.id;}));
+  var rt = readTally();
+  var days = Object.keys(state.days||{}).filter(function(k){return state.days[k];}).length;
+  return {
+    schema: "career-path-roadmap-em",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    summary: {
+      skillsTotal: NODE_LIST.length,
+      skillsDone: all.done,
+      skillsLearning: all.learning,
+      skillsSkipped: all.skipped,
+      coreDone: NODE_LIST.filter(function(n){return n.core && stOf(n.id)==="done";}).length,
+      coreTotal: NODE_LIST.filter(function(n){return n.core;}).length,
+      evidenceCount: Object.keys(state.ev||{}).length,
+      readingDone: rt.done,
+      readingTotal: rt.total,
+      attentionDays: days,
+      pmpDaysDone: Object.keys(state.pmp||{}).length,
+      pmpMonthsLeading: (typeof state.pmpM==="number" ? state.pmpM : null)
+    },
+    status: state.s || {},
+    evidence: state.ev || {},
+    reading: state.rd || {},
+    attentionDays: state.days || {},
+    pmpDays: state.pmp || {},
+    pmpScores: state.pmpSc || {},
+    pmpMonthsLeading: (typeof state.pmpM==="number" ? state.pmpM : null)
+  };
+}
+function ioState(msg, cls){
+  var el=document.getElementById("io-state");
+  el.textContent = msg||""; el.className = "evst" + (cls?" "+cls:"");
+}
+function showIO(title, hint, text, editable){
+  document.getElementById("io-title").textContent = title;
+  document.getElementById("io-hint").innerHTML = hint;
+  var ta = document.getElementById("io-json");
+  ta.value = text; ta.readOnly = !editable;
+  document.getElementById("io-apply").hidden = !editable;
+  document.getElementById("io-pick").hidden = !editable;
+  document.getElementById("io-copy").hidden = editable;
+  document.getElementById("iobox").hidden = false;
+  ioState("");
+}
+function doExport(){
+  var txt = JSON.stringify(buildExport(), null, 2);
+  var name = "tien-do.json";
+  showIO("Xuất JSON",
+    'Lưu đè lên <code>D:\\LEARNING\\career-path\\tien-do.json</code> để giữ một bản trong folder — file đó đọc được bằng mắt và commit được vào git.',
+    txt, false);
+  if (dlFn) {
+    dlFn.save({filename:name, data:txt}).then(function(r){
+      ioState(r === "saved" ? "Đã tải file về máy." : "");
+    }).catch(function(e){
+      if(e && e.code === "cancelled") { ioState(""); return; }
+      ioState("Không tải được file — chép nội dung bên trên rồi dán vào tien-do.json.", "warn");
+    });
+    return;
+  }
+  try{
+    var url = URL.createObjectURL(new Blob([txt], {type:"application/json"}));
+    var a = document.createElement("a");
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+    ioState("Đã tải file về máy.");
+  }catch(err){
+    ioState("Chép nội dung bên trên rồi dán vào tien-do.json.", "warn");
+  }
+}
+function doImport(){
+  showIO("Nhập JSON",
+    'Chọn file <code>tien-do.json</code>, hoặc dán nội dung vào ô dưới rồi bấm Áp dụng. Dữ liệu hiện tại sẽ bị thay thế.',
+    "", true);
+}
+function applyImport(txt){
+  var d;
+  try{ d = JSON.parse(txt); }
+  catch(e){ ioState("Không đọc được JSON — kiểm tra lại nội dung.", "warn"); return; }
+  if(!d || typeof d !== "object"){ ioState("File không đúng định dạng.", "warn"); return; }
+
+  var src = {
+    s:  d.status || d.s || {},
+    ev: d.evidence || d.ev || {},
+    rd: d.reading || d.rd || {},
+    dy: d.attentionDays || d.days || {},
+    pm: d.pmpDays || d.pmp || {},
+    ps: d.pmpScores || d.pmpSc || {}
+  };
+  var ok = {done:1, learning:1, skipped:1};
+  var s2={}, e2={}, r2={}, y2={}, kept=0, drop=0;
+  Object.keys(src.s).forEach(function(k){
+    if(NODES[k] && ok[src.s[k]]) { s2[k]=src.s[k]; kept++; } else drop++;
+  });
+  Object.keys(src.ev).forEach(function(k){
+    if(NODES[k] && src.ev[k] && typeof src.ev[k]==="object") e2[k]=src.ev[k]; else drop++;
+  });
+  Object.keys(src.rd).forEach(function(k){
+    if(READ_BY_ID[k] && src.rd[k]) r2[k]=1; else drop++;
+  });
+  Object.keys(src.dy).forEach(function(k){
+    var n=parseInt(k,10);
+    if(n>=1 && n<=60 && src.dy[k]) y2[n]=1; else drop++;
+  });
+
+  var pm2={}, ps2={};
+  Object.keys(src.pm).forEach(function(k){
+    var n=parseInt(k,10); if(n>=1 && n<=30 && src.pm[k]) pm2[n]=1; else drop++;
+  });
+  Object.keys(src.ps).forEach(function(k){
+    var n=parseInt(k,10), v=parseInt(src.ps[k],10);
+    if(n>=1 && n<=30 && v>=0 && v<=10) ps2[n]=v; else drop++;
+  });
+  var pmM = (typeof d.pmpMonthsLeading === "number") ? d.pmpMonthsLeading : null;
+  state = {s:s2, ev:e2, rd:r2, days:y2, pmp:pm2, pmpSc:ps2, pmpM:pmM};
+  paint(); save();
+  if(!document.getElementById("view-reading").hidden) renderReading();
+  if(!document.getElementById("view-pmp").hidden) renderPmp();
+  ioState("Đã nhập " + kept + " kỹ năng, " + Object.keys(e2).length + " bằng chứng, "
+        + Object.keys(r2).length + " mục đọc, " + Object.keys(y2).length + " ngày chú tâm."
+        + (drop ? " Bỏ qua " + drop + " mục không khớp." : ""));
+}
+document.getElementById("export").addEventListener("click", doExport);
+document.getElementById("import").addEventListener("click", doImport);
+document.getElementById("io-close").addEventListener("click", function(){
+  document.getElementById("iobox").hidden = true;
+});
+document.getElementById("io-apply").addEventListener("click", function(){
+  applyImport(document.getElementById("io-json").value);
+});
+document.getElementById("io-copy").addEventListener("click", function(){
+  copyPath(document.getElementById("io-json").value, this);
+});
+document.getElementById("io-pick").addEventListener("click", function(){
+  document.getElementById("io-file").click();
+});
+document.getElementById("io-file").addEventListener("change", function(){
+  var f = this.files && this.files[0]; if(!f) return;
+  var fr = new FileReader();
+  fr.onload = function(){
+    document.getElementById("io-json").value = String(fr.result||"");
+    applyImport(String(fr.result||""));
+  };
+  fr.onerror = function(){ ioState("Không đọc được file.", "warn"); };
+  fr.readAsText(f);
+  this.value = "";
+});
+
+document.getElementById("reset").addEventListener("click",function(){
+  state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null}; paint(); save(); status("đã xoá"); if(location.hash.indexOf("#/n/")===0) openNode(location.hash.slice(4));
+});
+window.addEventListener("hashchange",route);
+
+var local=readLocal();
+if(local && local.s) state={s:local.s, ev:(local.ev&&typeof local.ev==="object")?local.ev:{}, rd:(local.rd&&typeof local.rd==="object")?local.rd:{}, days:(local.days&&typeof local.days==="object")?local.days:{}, pmp:(local.pmp&&typeof local.pmp==="object")?local.pmp:{}, pmpSc:(local.pmpSc&&typeof local.pmpSc==="object")?local.pmpSc:{}, pmpM:(typeof local.pmpM==="number"?local.pmpM:null)};
+buildTrack(); paint(); route();
+
+if(window.claude && typeof window.claude.use==="function"){
+  window.claude.use("db").then(function(ns){
+    if(!ns) return; db=ns;
+    db.doc(DOC).onSnapshot(function(snap){
+      if(!snap.exists) return;
+      if(snap.metadata && snap.metadata.hasPendingWrites) return;
+      var d=snap.data()||{};
+      state={s: d.s && typeof d.s==="object" ? d.s : {}, ev: d.ev && typeof d.ev==="object" ? d.ev : {}, rd: d.rd && typeof d.rd==="object" ? d.rd : {}, days: d.days && typeof d.days==="object" ? d.days : {}, pmp: d.pmp && typeof d.pmp==="object" ? d.pmp : {}, pmpSc: d.pmpSc && typeof d.pmpSc==="object" ? d.pmpSc : {}, pmpM: (typeof d.pmpM==="number" ? d.pmpM : null)};
+      writeLocal(); paint();
+      if(location.hash.indexOf("#/n/")===0) openNode(location.hash.slice(4));
+    },function(){ db=null; });
+  }).catch(function(){});
+  window.claude.use("downloads").then(function(d){ if(d) dlFn = d; }).catch(function(){});
+  window.claude.use("sample").then(function(fn){
+    sampleTried = true;
+    if(typeof fn === "function") sampleFn = fn;
+    if(location.hash.indexOf("#/n/")===0) openNode(location.hash.slice(4));
+  }).catch(function(){ sampleTried = true; });
+}
+</script>
