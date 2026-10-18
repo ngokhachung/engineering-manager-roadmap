@@ -6,13 +6,14 @@ Không có build step, không có dependency. Mở `roadmap-em.html` bằng trì
 
 ---
 
-## Năm tab
+## Sáu tab
 
 | Tab | Làm gì |
 |---|---|
 | **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 98" khi cần bản đồ đầy đủ. |
 | **Cốt lõi** | 19 kỹ năng lõi kèm lý do vì sao là lõi, cộng phần kiểm kê tài liệu học và bảng 70 template PMBOK phân loại dùng / để dành / bỏ. |
 | **Đọc sách** | 16 mục đọc từ 5 cuốn, 2 phase, cộng 60 ngày attention training. Mỗi mục nối thẳng vào các kỹ năng nó phục vụ. |
+| **Luyện tư duy** | Làm các bài trong `tu-duy-leader/` ngay trên trang. Mỗi ngày chỉ hiện những thẻ đến lượt theo lộ trình 12 tuần, chia buổi sáng và buổi tối. Trang tự gom dự đoán để chấm, tính bảng hiệu chỉnh T7, và báo các tín hiệu lặp lại mà thẻ đã định ngưỡng. Bấm Lưu thì ghi ra `nhat-ky/YYYY-MM-DD.json`. |
 | **PMP** | Phân tích chứng chỉ PMP: ba domain của ECO với trọng số, mindset được kiểm tra (thang bậc hành động, chuỗi ưu tiên, 12 đáp án gần như luôn sai), và thu hoạch thật khi học xong. Kèm lộ trình 30 ngày có tự chấm 0–10 và theo dõi điều kiện dự thi. |
 | **Dashboard** | Cân bằng ba trục Leverage / People / Systems, tiến độ theo giai đoạn, danh sách đã xác minh, gợi ý học tiếp theo trục đang yếu nhất. |
 
@@ -72,11 +73,17 @@ Cấu trúc:
 
 ## `tu-duy-leader/`
 
-Hệ thống luyện tư duy chạy song song với roadmap: 8 template (T1–T8) và 7 thẻ ngắn dưới một phút. Nguyên lý duy nhất của nó là rút ngắn feedback loop của một phán đoán từ tám tháng xuống một tuần, bằng cách buộc mọi phán đoán phải có con số và hạn chót.
+Hệ thống luyện tư duy chạy song song với roadmap: 8 template (T1–T8) và 10 thẻ ngắn. Thẻ 8–10 (nói chuyện khó, giao việc, phản hồi SBI) được thêm cho giai đoạn đã dẫn dắt người. Nguyên lý duy nhất của nó là rút ngắn feedback loop của một phán đoán từ tám tháng xuống một tuần, bằng cách buộc mọi phán đoán phải có con số và hạn chót.
 
-Roadmap trỏ vào các mã T1–T8 và Thẻ 1–7 ở phần "Luyện thế nào" của từng kỹ năng, nên hai phần này dùng chung.
+Roadmap trỏ vào các mã T1–T8 và Thẻ 1–10 ở phần "Luyện thế nào" của từng kỹ năng, nên hai phần này dùng chung.
 
 Bắt đầu ở `00_huong-dan-luyen-tap-tu-duy.md`. Nếu chỉ làm được một thứ, làm T1.
+
+### `nhat-ky/`
+
+Tab Luyện tư duy ghi mỗi ngày thành một file `nhat-ky/YYYY-MM-DD.json`. Lần đầu bấm Lưu, Chrome hỏi chọn thư mục một lần; từ đó trở đi trang ghi thẳng vào file. Trong lúc gõ, bản nháp được giữ trong trình duyệt nên đóng tab trước khi lưu cũng không mất.
+
+Thư mục này **không lên git**: `.gitignore` kiểu allowlist chặn sẵn, và nên giữ như vậy vì nhật ký có tên và nhận xét về người trong team. Mở bản publish trên claude.ai hoặc dùng trình duyệt không có File System Access API thì nút Lưu tải file về máy, và nút "Nạp file nhật ký" đọc lại các file đó.
 
 ## Không có trong repo này
 

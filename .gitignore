@@ -25,3 +25,15 @@
 # Hệ thống luyện tư duy (bản công bố)
 !tu-duy-leader/
 !tu-duy-leader/*.md
+
+# Test cho logic của tab Luyện tư duy (node --test tests/tu-duy.test.js)
+!tests/
+!tests/*.js
+
+# Spec và plan
+!docs/
+!docs/superpowers/
+!docs/superpowers/specs/
+!docs/superpowers/specs/*.md
+!docs/superpowers/plans/
+!docs/superpowers/plans/*.md

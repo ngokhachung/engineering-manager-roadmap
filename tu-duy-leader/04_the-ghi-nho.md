@@ -169,6 +169,58 @@ Tôi đang định tự làm việc này. Dừng lại 30 giây:
 
 ---
 
+## THẺ 8 — Trước cuộc nói chuyện khó (3 phút)
+
+```
+□ Sự kiện quan sát được là gì? (thứ camera ghi lại được, không phải kết luận)
+  → ____________________________
+□ Câu chuyện tôi đang tự kể về động cơ của họ?  → ______________
+  Còn cách giải thích nào khác?  → ______________
+□ Tôi thật sự muốn gì — cho tôi, cho họ, cho quan hệ?
+  → ____________________________
+□ Câu mở đầu: nêu sự kiện, rồi hỏi họ nhìn thế nào
+  → ____________________________
+
+Sau buổi nói:
+□ Họ có im lặng hoặc gay gắt lên không?  [ ] Có  [ ] Không
+□ Nếu có: tôi có dừng nội dung lại để khôi phục an toàn không?
+```
+
+---
+
+## THẺ 9 — Khi giao việc (2 phút)
+
+```
+□ Giao việc gì, cho ai?  → ____________________________
+□ Cấp uỷ quyền:
+  1 Tôi quyết, báo lại  ·  2 Tôi quyết, giải thích vì sao
+  3 Tôi hỏi ý rồi quyết  ·  4 Cùng quyết
+  5 Tôi góp ý, bạn quyết  ·  6 Bạn quyết, tôi hỏi lại sau
+  7 Bạn quyết, không cần báo
+  → Cấp ___   Đã nói rõ cấp này ra miệng chưa?  [ ] Rồi  [ ] Chưa
+□ Đã nói: vì sao việc này quan trọng · ràng buộc · thế nào là xong?
+□ Hẹn kiểm tra theo cột mốc, không theo cảm hứng: ngày ______
+□ Việc này căng hơn sức họ hiện tại một chút chưa? Lưới an toàn là gì?
+  → ____________________________
+```
+
+---
+
+## THẺ 10 — Ghi phản hồi SBI (1 phút, ghi lúc thấy, nói trong 48 giờ)
+
+```
+Người: ________   [ ] Khen  [ ] Góp ý
+S — Tình huống (khi nào, ở đâu):  ____________________
+B — Hành vi quan sát được:        ____________________
+I — Tác động (lên team, sản phẩm, tôi): ______________
+Hạn nói (≤ 48 giờ): ______   Đã nói: [ ]
+
+Tự kiểm: B có phải thứ camera quay được không?
+Nếu là tính từ ("thiếu trách nhiệm") → viết lại.
+```
+
+---
+
 ## Thẻ gốc — nếu chỉ nhớ được một thứ
 
 > **Ba câu hỏi, hỏi bất cứ lúc nào:**

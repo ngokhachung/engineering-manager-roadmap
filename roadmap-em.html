@@ -564,8 +564,71 @@ footer code{font-family:var(--mono);font-size:11.5px}
   border:1px solid var(--rule);border-radius:6px;padding:6px 12px;cursor:pointer}
 .ghost:hover{color:var(--ink);border-color:var(--ink-soft)}
 
+/* ================= tab Luyện tư duy ================= */
+.td-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px;padding:10px 0;
+  border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
+.td-date{font-size:15px;font-weight:600;min-width:8.5em;text-align:center}
+.td-bar .ghost[disabled]{opacity:.4;cursor:default}
+.td-st{font-family:var(--mono);font-size:11px;color:var(--ink-faint);flex:1;min-width:110px;text-align:right}
+.td-save{font:inherit;font-size:13px;font-weight:600;color:var(--paper);background:var(--live);
+  border:none;border-radius:6px;padding:7px 16px;cursor:pointer}
+.td-save[disabled]{opacity:.45;cursor:not-allowed}
+.td-save:focus-visible,.td-ri:focus-visible,.td-x:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+.td-bad{font-size:12.5px;color:var(--ink-faint);margin-top:8px}
+.td-grid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:24px;margin-top:16px;align-items:start}
+.td-main{min-width:0}
+.td-sec{display:flex;flex-direction:column;gap:12px;margin-bottom:26px}
+.td-sec > h2{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:500;padding-bottom:6px;border-bottom:1px solid var(--rule-soft)}
+.td-card{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;
+  display:flex;flex-direction:column;gap:10px;min-width:0}
+.td-card > header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.td-card > header b{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.td-card > header span{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);margin-left:auto;white-space:nowrap}
+.td-f{display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--ink-mid);min-width:0}
+.td-in{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);
+  border-radius:6px;padding:7px 9px;width:100%;min-width:0}
+textarea.td-in{resize:vertical}
+.td-in:focus{outline:2px solid var(--live);outline-offset:1px}
+.td-pct{display:flex;align-items:center;gap:6px} .td-pct .td-in{max-width:7em}
+.td-chk{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:var(--ink-mid);cursor:pointer}
+.td-chk input{margin-top:3px;accent-color:var(--live);flex:0 0 auto}
+.td-note{font-size:12.5px;color:var(--ink-faint);font-weight:300}
+.td-card .seg{flex-wrap:wrap;align-self:flex-start;max-width:100%}
+.td-card .seg button{white-space:normal;text-align:left}
+.td-item{border-top:1px dashed var(--rule);padding-top:10px;display:flex;flex-direction:column;gap:8px}
+.td-item-h{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.td-x{margin-left:auto;font:inherit;font-size:12px;color:var(--ink-faint);background:none;border:none;cursor:pointer;padding:2px 4px}
+.td-x:hover{color:var(--ink)}
+.td-add{display:flex;gap:6px;flex-wrap:wrap}
+.td-warn{font-size:12.5px;color:var(--learn);background:var(--learn-tint);border-radius:6px;padding:7px 10px}
+.td-err{font-size:12.5px;color:#A8432C}
+.td-empty{font-size:13px;color:var(--ink-faint);font-weight:300}
+.td-cnt{display:flex;align-items:center;gap:10px}
+.td-cnt b{font-size:20px;min-width:2ch;text-align:center;font-variant-numeric:tabular-nums}
+.td-rail{position:sticky;top:76px;display:flex;flex-direction:column;gap:6px}
+.td-rail h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:500;margin-top:8px}
+.td-ri{font:inherit;text-align:left;font-size:13px;color:var(--ink-mid);background:var(--card);
+  border:1px solid var(--rule);border-radius:7px;padding:7px 10px;cursor:pointer;display:flex;flex-direction:column;gap:1px}
+.td-ri:hover{border-color:var(--ink-soft)}
+.td-ri b{font-family:var(--mono);font-size:11px;color:var(--ink-soft);font-weight:500}
+.td-ri em{font-style:normal;font-size:11.5px;color:var(--ink-faint)}
+.td-ri.locked{opacity:.6;border-style:dashed}
+#td-banner .td-card,#td-due .td-card{margin-bottom:14px}
+#td-signals .td-warn{margin-bottom:8px}
+.td-tbl{overflow-x:auto;max-width:100%}
+.td-tbl table{border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums;min-width:100%}
+.td-tbl th,.td-tbl td{border-bottom:1px solid var(--rule-soft);padding:5px 8px;text-align:right;white-space:nowrap}
+.td-tbl th{font-family:var(--mono);font-size:10.5px;font-weight:500;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.05em}
+.td-tbl th:first-child,.td-tbl td:first-child{text-align:left}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .td-err{color:#E89A84} }
+:root[data-theme="dark"] .td-err{color:#E89A84}
+
 [hidden]{display:none!important}
 @media (max-width:860px){
+  .td-grid{grid-template-columns:1fr}
+  .td-rail{position:static}
   .track::before{left:13px;margin-left:0}
   .stage-head{margin-left:0;text-align:left;align-items:flex-start;padding-left:34px;max-width:100%}
   .group{width:auto;margin-left:34px!important;margin-right:0!important}
@@ -587,6 +650,7 @@ footer code{font-family:var(--mono);font-size:11.5px}
       <a href="#/" id="nav-map">Roadmap</a>
       <a href="#/core" id="nav-core">Cốt lõi</a>
       <a href="#/reading" id="nav-read">Đọc sách</a>
+      <a href="#/tu-duy" id="nav-tuduy">Luyện tư duy</a>
       <a href="#/pmp" id="nav-pmp">PMP</a>
       <a href="#/dashboard" id="nav-dash">Dashboard</a>
     </nav>
@@ -724,6 +788,9 @@ footer code{font-family:var(--mono);font-size:11.5px}
     </section>
   </div>
 </main>
+
+<!-- ============================ LUYỆN TƯ DUY ============================ -->
+<main class="wrap" id="view-tuduy" hidden></main>
 
 <!-- ============================ PMP ============================ -->
 <main class="wrap" id="view-pmp" hidden>
@@ -1089,16 +1156,18 @@ var DATA = [
   {id:"delegate-decision",en:"Delegating Decisions",no:"Anh giao việc nhưng vẫn duyệt từng bước, và người nhận phải đoán ý anh.",first:"Chọn một quyết định trong mảng của anh, nói rõ ràng buộc và tiêu chí, rồi im lặng để người khác chọn — kể cả khi họ chọn khác ý anh.",core:1,why:"Ranh giới thật giữa senior dev và tech lead. Giao việc thì ai cũng làm được; giao quyền quyết mới tạo ra người thay thế.",t:"Delegate quyết định, không chỉ việc",ax:"L",
    d:"Giao cả quyền chọn phương án, không chỉ giao phần thực thi của phương án anh đã chọn.",
    how:["Nói rõ ràng buộc và tiêu chí, rồi im lặng.","Chấp nhận phương án khác ý mình nếu nó đạt tiêu chí — đây là bài tập thật.","Thẻ 4 mỗi lần định lấy lại quyền quyết."],
-   ok:"Có quyết định trong mảng của anh được ra mà anh chỉ biết sau."},
+   ok:"Có quyết định trong mảng của anh được ra mà anh chỉ biết sau.",
+   res:[{k:"file",l:"Thẻ 9 — khi giao việc",p:"tu-duy-leader/04_the-ghi-nho.md"}]},
   {id:"delegation-levels",en:"Delegation Levels",no:"Hay xảy ra tình huống “tôi tưởng anh sẽ hỏi tôi trước”.",first:"Lần giao việc tới, nói rõ một trong ba: báo trước khi làm, báo sau khi làm, hay không cần báo.",t:"Bảy cấp uỷ quyền",ax:"L",
    d:"Uỷ quyền không phải bật/tắt: từ “tôi quyết” tới “anh quyết, không cần báo” có nhiều nấc, và nói rõ nấc nào tránh được phần lớn hiểu lầm.",
    how:["Mỗi lần giao việc, nói rõ nấc: báo trước khi làm, báo sau khi làm, hay không cần báo.","Nâng nấc dần cho từng người, ghi lại nấc hiện tại."],
    ok:"Không còn tình huống “tôi tưởng anh sẽ hỏi tôi trước”.",
-   res:[{k:"web",l:"Delegation Poker — bảy cấp uỷ quyền",u:"https://management30.com/practice/delegation-poker/"}]},
+   res:[{k:"file",l:"Thẻ 9 — khi giao việc",p:"tu-duy-leader/04_the-ghi-nho.md"},{k:"web",l:"Delegation Poker — bảy cấp uỷ quyền",u:"https://management30.com/practice/delegation-poker/"}]},
   {id:"stretch",en:"Stretch Assignment",no:"Anh chỉ giao cho mỗi người đúng thứ họ đã làm được rồi, nên không ai lớn lên.",first:"Chọn một việc quan trọng nhưng đảo ngược được, giao cho người chưa từng làm, nói trước chỗ họ sẽ vướng và mốc anh sẽ can thiệp.",t:"Giao việc căng vừa đủ",ax:"P",
    d:"Giao việc trên khả năng hiện tại một chút, kèm lưới an toàn — cách duy nhất người khác lớn lên.",
    how:["Chọn việc quan trọng nhưng đảo ngược được.","Nói trước: tôi kỳ vọng anh sẽ vướng ở chỗ này, cứ vướng rồi hỏi.","Đừng cứu quá sớm; đặt trước mốc mình sẽ can thiệp."],
-   ok:"Một người làm được việc mà ba tháng trước anh phải tự làm."},
+   ok:"Một người làm được việc mà ba tháng trước anh phải tự làm.",
+   res:[{k:"file",l:"Thẻ 9 — khi giao việc",p:"tu-duy-leader/04_the-ghi-nho.md"}]},
   {id:"bus-factor",en:"Bus Factor & Bottleneck Removal",no:"Anh nghỉ hai hôm và có ba việc phải chờ anh về.",first:"Liệt kê ba thứ chỉ mình anh biết. Tuần này chuyển giao một thứ — bằng tài liệu, không bằng buổi nói chuyện.",t:"Chống bottleneck",ax:"L",
    d:"Không để mọi thông tin và mọi phê duyệt đi qua một người — kể cả khi người đó là anh và cảm giác rất giống đang dẫn dắt.",
    how:["Phép thử: nghỉ ba ngày liền, xem team có đứng không.","Ghi lại mọi thứ chỉ mình anh biết, mỗi tuần chuyển giao một mục.","Luân phiên người đại diện trong các cuộc họp thường kỳ."],
@@ -1114,11 +1183,12 @@ var DATA = [
    d:"Tình huống — hành vi — tác động: nói về việc quan sát được, không nói về tính cách.",
    how:["Viết ra trước ba phần đó, đọc lại xem có từ nào nói về con người thay vì hành vi.","Bỏ hết “anh luôn” và “anh không bao giờ”.","Thẻ 2D sau mỗi 1-1: có nói thẳng hay đã né?"],
    ok:"Người nhận hỏi lại “tôi nên làm khác thế nào” thay vì tự vệ.",
-   res:[{k:"file",l:"Thẻ 2D",p:"tư duy leader/04_the-ghi-nho.md"},{k:"book",l:"Radical Candor — Kim Scott"}]},
+   res:[{k:"file",l:"Thẻ 10 — ghi phản hồi SBI",p:"tu-duy-leader/04_the-ghi-nho.md"},{k:"file",l:"Thẻ 2D",p:"tư duy leader/04_the-ghi-nho.md"},{k:"book",l:"Radical Candor — Kim Scott"}]},
   {id:"feedback-48h",en:"Timely Feedback",no:"Anh gom nhận xét lại để nói một thể vào kỳ review.",first:"Điều đáng nói gần nhất anh đang giữ trong đầu: nói trong hai ngày tới, hoặc viết ra rồi đọc trong 1-1 gần nhất.",t:"Phản hồi trong 48 giờ",ax:"P",
    d:"Phản hồi để dành tới kỳ review thì mất hết giá trị — và biến thành một cú sốc.",
    how:["Quy tắc cứng: quan sát được điều gì đáng nói, nói trong hai ngày.","Nếu chưa đủ can đảm, viết ra trước rồi đọc trong 1-1 gần nhất."],
-   ok:"Không có điều gì trong kỳ review là bất ngờ với người nhận."},
+   ok:"Không có điều gì trong kỳ review là bất ngờ với người nhận.",
+   res:[{k:"file",l:"Thẻ 10 — ghi phản hồi SBI",p:"tu-duy-leader/04_the-ghi-nho.md"}]},
   {id:"receive-feedback",en:"Receiving Feedback",no:"Phản ứng đầu tiên của anh khi nghe góp ý là giải thích vì sao mình đúng.",first:"Trong 1-1 với sếp tuần này, hỏi một câu cụ thể: “em nên bớt làm gì?” rồi chỉ hỏi làm rõ, không phản bác.",t:"Nhận feedback không phòng thủ",ax:"P",
    d:"Tách ba loại kích hoạt — thấy sai sự thật, thấy do quan hệ, thấy đe doạ bản thân — để nghe được phần đúng.",
    how:["Khi thấy muốn phản bác, hỏi một câu làm rõ trước khi trả lời.","Chủ động xin feedback mỗi quý, hỏi cụ thể: “tôi nên bớt làm gì?”"],
@@ -1135,12 +1205,12 @@ var DATA = [
    d:"Cách nói điều khó nghe mà không làm người kia đóng cửa: nêu sự kiện, kể câu chuyện của mình, hỏi câu chuyện của họ, nói thăm dò, khuyến khích thử lại.",
    how:["Học thuộc năm bước — đây là khung đáng thuộc nhất trong cả roadmap.","Viết ra trước ba câu đầu cho mỗi cuộc khó.","Sau mỗi lần, ghi lại: chuẩn bị gì, nói gì, họ phản ứng ra sao."],
    ok:"Một cuộc trò chuyện khó đã diễn ra và quan hệ vẫn còn nguyên sau đó.",
-   res:[{k:"book",l:"Crucial Conversations — Ch.7 (đã có trong lịch đọc)"}]},
+   res:[{k:"file",l:"Thẻ 8 — trước cuộc nói chuyện khó",p:"tu-duy-leader/04_the-ghi-nho.md"},{k:"book",l:"Crucial Conversations — Ch.7 (đã có trong lịch đọc)"}]},
   {id:"safety",en:"Psychological Safety in Dialogue",no:"Giữa cuộc nói chuyện, người kia im bặt hoặc mỉa mai, và anh vẫn nói tiếp nội dung.",first:"Học thuộc hai dấu hiệu: rút lui và tấn công. Lần tới thấy một trong hai, dừng nội dung và nói rõ ý định chung của cả hai.",t:"Giữ an toàn trong hội thoại",ax:"P",
    d:"Nhận ra lúc người kia chuyển sang im lặng hoặc bạo lực lời nói, và khôi phục an toàn trước khi nói tiếp nội dung.",
    how:["Học hai dấu hiệu: rút lui (im, đổi chủ đề) và tấn công (mỉa, dán nhãn).","Khi thấy dấu hiệu, dừng nội dung, nói rõ ý định chung."],
    ok:"Anh cứu được một cuộc nói chuyện đang hỏng giữa chừng.",
-   res:[{k:"book",l:"Crucial Conversations — Ch.5"}]},
+   res:[{k:"file",l:"Thẻ 8 — trước cuộc nói chuyện khó",p:"tu-duy-leader/04_the-ghi-nho.md"},{k:"book",l:"Crucial Conversations — Ch.5"}]},
   {id:"stories",en:"Master My Stories",no:"Anh kết luận về động cơ của người khác trước khi hỏi họ.",first:"Tình huống đang khó chịu: viết hai cột — tôi thấy gì / tôi đang kể chuyện gì. Rồi hỏi: người tử tế và có lý sẽ làm vậy vì lý do gì?",t:"Chống tự diễn giải ý đồ",ax:"P",
    d:"Tách sự kiện khỏi câu chuyện mình tự dựng về động cơ người khác.",
    how:["Viết hai cột: tôi thấy gì / tôi đang kể chuyện gì về điều đó.","Hỏi: người tử tế và có lý sẽ làm vậy vì lý do gì?"],
@@ -1149,7 +1219,8 @@ var DATA = [
   {id:"say-no",en:"Saying No with Options",no:"Anh nhận thêm việc rồi tự bù bằng làm ngoài giờ.",first:"Yêu cầu tiếp theo không vừa sức: trả lời theo công thức “điều tôi có thể làm là X, nếu cần Y thì phải bỏ Z”.",t:"Nói không kèm phương án",ax:"P",
    d:"Từ chối mà vẫn giữ được quan hệ và vẫn giải quyết vấn đề gốc của người hỏi.",
    how:["Công thức: điều tôi có thể làm là X, nếu cần Y thì phải bỏ Z.","Không bao giờ nói không mà không nêu cái giá của việc nói có."],
-   ok:"Anh từ chối một yêu cầu và người yêu cầu vẫn quay lại lần sau."}]},
+   ok:"Anh từ chối một yêu cầu và người yêu cầu vẫn quay lại lần sau.",
+   res:[{k:"file",l:"Thẻ 8 — trước cuộc nói chuyện khó",p:"tu-duy-leader/04_the-ghi-nho.md"}]}]},
 
  {id:"g-delivery",en:"Delivery",side:"r",name:"Giao hàng",nodes:[
   {id:"breakdown",en:"Work Breakdown & Sequencing",no:"Team làm phần dễ trước, và phần chứa ẩn số lớn nhất bị đẩy về cuối.",first:"Hạng mục đang làm: xác định phần chứa ẩn số lớn nhất, xếp nó vào một phần ba thời gian đầu.",t:"Chia nhỏ và sắp thứ tự",ax:"S",
@@ -1211,7 +1282,8 @@ var DATA = [
   {id:"underperform",en:"Managing Underperformance",no:"Anh biết một người đang không đạt nhưng đã hoãn nói chuyện đó hơn một tháng.",first:"Viết ra ba ví dụ quan sát được về khoảng cách, không phải cảm nhận chung. Đặt lịch nói trong bảy ngày, dùng khung STATE.",core:1,why:"Việc khó nhất và bị hoãn nhiều nhất. Hoãn nó gây hại cho cả người đó lẫn cả team, và là lý do phổ biến nhất khiến TLM không lên được EM.",t:"Xử lý người underperform",ax:"P",
    d:"Nói sớm, cụ thể, có kế hoạch và có hạn — trì hoãn việc này gây hại cho cả người đó lẫn cả team.",
    how:["Nêu khoảng cách bằng ví dụ quan sát được, không bằng cảm nhận chung.","Cùng viết performance improvement plan có mốc thời gian và tiêu chí rõ.","Thẻ 2D và khung STATE dùng ở đây."],
-   ok:"Anh đã có một cuộc như vậy, và kết quả — dù là cải thiện hay chia tay — đến từ tiêu chí đã thống nhất."},
+   ok:"Anh đã có một cuộc như vậy, và kết quả — dù là cải thiện hay chia tay — đến từ tiêu chí đã thống nhất.",
+   res:[{k:"file",l:"Thẻ 8 — trước cuộc nói chuyện khó",p:"tu-duy-leader/04_the-ghi-nho.md"}]},
   {id:"ladder",en:"Career Ladder & Growth Plan",no:"Người trong team hỏi “em cần gì để lên level” và anh trả lời chung chung.",first:"Nếu công ty chưa có ladder, viết bản nháp cho một vai trò. Rồi cùng một người viết kế hoạch một trang: đích · khoảng trống · ba việc quý này.",t:"Career ladder và kế hoạch phát triển",ax:"P",
    d:"Biết mỗi bậc đòi hỏi gì, và giúp từng người thấy đường đi của họ.",
    how:["Nếu công ty chưa có ladder, viết bản nháp cho team mình.","Mỗi người một kế hoạch một trang: đích, khoảng trống, ba việc quý này."],
@@ -1764,6 +1836,496 @@ var PMP_GAINS = {
 var LS="roadmap-em-v1", DOC="roadmap/progress";
 var state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null};
 var db=null, timer=null, lastFocus=null;
+
+/* tuduy-core:start */
+/* ---------- tab Luyện tư duy — lõi, không đụng DOM (tests/tu-duy.test.js chạy khối này) ---------- */
+var TD_THU = ["Chủ nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"];
+function tdPad(n){ return (n<10?"0":"")+n; }
+/* ngày theo giờ máy — không dùng toISOString, trước 7h sáng ở UTC+7 nó ra ngày hôm qua */
+function tdDateStr(d){ return d.getFullYear()+"-"+tdPad(d.getMonth()+1)+"-"+tdPad(d.getDate()); }
+function tdNow(){
+  if(typeof location!=="undefined"){
+    var m=/[?&]tdToday=(\d{4}-\d{2}-\d{2})/.exec(location.search||"");
+    if(m) return m[1];
+  }
+  return tdDateStr(new Date());
+}
+function tdParse(s){ var p=s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+function tdAddDays(s,n){ var d=tdParse(s); d.setDate(d.getDate()+n); return tdDateStr(d); }
+function tdAddMonths(s,n){
+  var p=s.split("-"), y=+p[0], m=+p[1]-1+n;
+  var last=new Date(y, m+1, 0).getDate();
+  return tdDateStr(new Date(y, m, Math.min(+p[2], last)));
+}
+function tdDiffDays(a,b){ return Math.round((tdParse(a)-tdParse(b))/86400000); }
+function tdMonday(s){ return tdAddDays(s, -((tdParse(s).getDay()+6)%7)); }
+function tdWeekNo(s,startMon){ return Math.floor(tdDiffDays(s,startMon)/7)+1; }
+function tdStartMonday(dates,today){
+  if(!dates.length) return tdMonday(today);
+  return tdMonday(dates.slice().sort()[0]);
+}
+function tdClampDate(s,min,max){ return s<min ? min : (s>max ? max : s); }
+function tdVnDate(s){ var d=tdParse(s); return TD_THU[d.getDay()]+" "+tdPad(d.getDate())+"/"+tdPad(d.getMonth()+1); }
+
+/* danh mục thẻ — câu chữ chép nguyên văn từ tu-duy-leader/03_template.md và 04_the-ghi-nho.md.
+   Field: {k, t, l, o?} với t = text | area | check | yn | choice | pct | num | date | note.
+   yn lưu "co" / "khong"; choice có o = [[giá trị, nhãn], ...]. */
+function tdF(k,t,l,o){ var f={k:k,t:t,l:l}; if(o) f.o=o; return f; }
+function tdN(l){ return {t:"note",l:l}; }
+var TD_YN = ["Có","Không"];
+var TD_YN_DOAN = ["Có — dấu hiệu đã có nhưng tôi bỏ qua","Không — thông tin lúc đó không đủ"];
+var TD_MEETING = {
+ "2A":{name:"Họp ra quyết định",fields:[
+  tdF("decided","yn","Cuộc họp này có ra được quyết định không?",TD_YN),
+  tdF("whyNot","text","Không → vì sao"),
+  tdN("(Nếu 3 cuộc liên tiếp không ra quyết định → tôi đang họp sai cách)"),
+  tdF("rejected","check","Tôi có nêu được phương án mình ĐÃ LOẠI và vì sao không?"),
+  tdF("assumption","check","Tôi có nói ra giả định mình đang dựa vào không?"),
+  tdF("wrongQ","check","Tôi có hỏi “điều gì sẽ khiến chúng ta sai” không?"),
+  tdF("objection","check","Có ai phản đối không? Nếu không ai phản đối, mọi người thực sự đồng ý hay chỉ đang im lặng?"),
+  tdF("owners","check","Ai làm gì, xong khi nào — đã nói rõ ra miệng chưa?")]},
+ "2B":{name:"Họp với sếp / khách hàng",fields:[
+  tdF("conclusion","check","Tôi nói KẾT LUẬN trước hay dẫn dắt lòng vòng trước?"),
+  tdF("jargon","check","Tôi có dùng thuật ngữ kỹ thuật mà người nghe phải đoán không?"),
+  tdF("deadline","check","Khi nhận deadline: tôi gật đầu, hay đưa ra phương án đánh đổi?"),
+  tdF("nodded","text","→ Nếu gật đầu mà trong bụng thấy phi lý: ghi lại đây"),
+  tdN("(đây chính là ô “thương lượng lên trên” (managing up) đang ở mức 1)"),
+  tdF("riskFirst","check","Tôi có nêu rủi ro TRƯỚC khi được hỏi không?"),
+  tdF("ask","check","Tôi có xin thứ mình cần (người, thời gian, thông tin) không?")]},
+ "2C":{name:"Họp trạng thái / standup",fields:[
+  tdF("listen","check","Tôi có đang nghe để hiểu, hay nghe để chờ tới lượt nói?"),
+  tdF("jumped","check","Ai đó vừa nói ra một vấn đề — tôi có nhảy vào giải luôn không?"),
+  tdN("→ Nếu có: lẽ ra nên hỏi “em định làm thế nào?” trước"),
+  tdF("silent","check","Có ai im lặng suốt buổi không? Vì sao?"),
+  tdF("risk","check","Có dấu hiệu sớm nào của rủi ro vừa lộ ra mà không ai để ý?"),
+  tdF("riskWhat","text","→")]},
+ "2D":{name:"1-1 với thành viên",fields:[
+  tdF("oneThing","yn","Tôi có nói MỘT điều họ nên làm khác đi không?",TD_YN),
+  tdN("(Từ 3 lần trở lên → đây không phải vấn đề thời gian, mà là né tránh)"),
+  tdF("talkRatio","check","Tôi nói phần lớn thời gian hay họ nói?"),
+  tdF("blockers","check","Tôi có hỏi họ đang vướng gì và gỡ được gì không?"),
+  tdF("holding","check","Có việc nào tôi đang giữ mà lẽ ra nên giao cho họ không?")]}
+};
+function tdT3Causes(){
+  var f=[];
+  for(var i=1;i<=5;i++){
+    f.push(tdF("cause"+i,"text",i+"."));
+    f.push(tdF("prob"+i,"pct","Khả năng"));
+    f.push(tdF("early"+i,"text", i===1 ? "Tôi phát hiện sớm bằng dấu hiệu gì" : "Dấu hiệu sớm"));
+  }
+  return f;
+}
+var TD_CARDS = [
+ {id:"review",code:"T5",name:"Rà soát tuần",dur:"15 phút",slot:"sang",multi:false,from:2,fields:[]},
+ {id:"t1",code:"T1",name:"Nhật ký dự đoán",dur:"10 phút",slot:"sang",multi:false,from:1,fields:[]},
+ {id:"the1",code:"Thẻ 1",name:"Đầu ngày",dur:"2 phút",slot:"sang",multi:false,from:5,fields:[
+  tdF("important","check","Hôm nay việc gì QUAN TRỌNG nhưng không ai yêu cầu?"),
+  tdF("importantWhat","text","→"), tdF("importantSlot","text","Chặn giờ nào"),
+  tdF("decision","check","Quyết định nào tôi phải ra hôm nay?"),
+  tdF("decisionWhat","text","→"),
+  tdF("reversible","yn","Đảo ngược được?",["Có → quyết nhanh","Không → chậm lại"]),
+  tdF("hardest","check","Việc khó nhất hôm nay — tôi làm hay giao?"),
+  tdF("hardestWhy","text","→ Nếu tôi định tự làm: vì nhanh hơn, hay vì cần thiết?")]},
+ {id:"the2",code:"Thẻ 2",name:"Sau mỗi cuộc họp",dur:"1 phút",slot:"toi",multi:true,from:1,fields:[]},
+ {id:"the4",code:"Thẻ 4",name:"Khi định tự làm một việc",dur:"30 giây",slot:"toi",multi:false,from:5,fields:[
+  tdN("Tôi đang định tự làm việc này. Dừng lại 30 giây:"),
+  tdN("□ Tôi làm vì NHANH HƠN, hay vì thực sự chỉ tôi làm được? → Nếu vì nhanh hơn: đây là ô “trao quyền” (delegation) ở mức 1."),
+  tdN("□ Nếu giao đi, tệ nhất chuyện gì xảy ra? → Chậm hơn 30%? Chấp nhận được. → Hỏng thứ không sửa được? Không giao — nhưng làm CÙNG, không làm THAY."),
+  tdN("□ Sau việc này, có ai trong team làm được nó không? Nếu không → tôi vừa tạo thêm một ô chỉ có một người.")]},
+ {id:"the6",code:"Thẻ 6",name:"Cuối ngày",dur:"2 phút",slot:"toi",multi:false,from:5,fields:[
+  tdF("creativePct","pct","Hôm nay tôi dành bao nhiêu % cho việc KIẾN TẠO (không ai yêu cầu)?"),
+  tdN("(dưới 20% ba ngày liên tiếp → thứ Sáu phải xem lại lịch)"),
+  tdF("changedMindQ","check","Hôm nay tôi có đổi ý về điều gì không?"),
+  tdF("changedMind","text","→"),
+  tdN("(Không có gì trong 5 ngày liên tiếp → tôi đang không cân nhắc thật)"),
+  tdF("teamStronger","check","Việc tôi làm hôm nay khiến team mạnh lên, hay chỉ khiến kết quả hôm nay đẹp hơn?"),
+  tdF("pendingQ","check","Có điều gì cần nói với ai đó mà tôi đang trì hoãn không?"),
+  tdF("pending","text","→"), tdF("pendingDue","date","Hạn 48 giờ: ngày")]},
+ {id:"the8",code:"Thẻ 8",name:"Trước cuộc nói chuyện khó",dur:"3 phút",slot:"khi",multi:true,from:1,fields:[
+  tdF("who","text","Nói chuyện với ai, về việc gì"),
+  tdF("fact","check","Sự kiện quan sát được là gì? (thứ camera ghi lại được, không phải kết luận)"),
+  tdF("factWhat","text","→"),
+  tdF("story","check","Câu chuyện tôi đang tự kể về động cơ của họ?"),
+  tdF("storyWhat","text","→"), tdF("altStory","text","Còn cách giải thích nào khác?"),
+  tdF("want","check","Tôi thật sự muốn gì — cho tôi, cho họ, cho quan hệ?"),
+  tdF("wantWhat","text","→"),
+  tdF("opener","check","Câu mở đầu: nêu sự kiện, rồi hỏi họ nhìn thế nào"),
+  tdF("openerWhat","text","→"),
+  tdN("Sau buổi nói:"),
+  tdF("unsafe","yn","Họ có im lặng hoặc gay gắt lên không?",TD_YN),
+  tdF("restored","check","Nếu có: tôi có dừng nội dung lại để khôi phục an toàn không?")]},
+ {id:"the9",code:"Thẻ 9",name:"Khi giao việc",dur:"2 phút",slot:"khi",multi:true,from:1,fields:[
+  tdF("task","text","Giao việc gì, cho ai?"),
+  tdF("level","choice","Cấp uỷ quyền",[["1","Tôi quyết, báo lại"],["2","Tôi quyết, giải thích vì sao"],["3","Tôi hỏi ý rồi quyết"],["4","Cùng quyết"],["5","Tôi góp ý, bạn quyết"],["6","Bạn quyết, tôi hỏi lại sau"],["7","Bạn quyết, không cần báo"]]),
+  tdF("levelSaid","yn","Đã nói rõ cấp này ra miệng chưa?",["Rồi","Chưa"]),
+  tdF("context","check","Đã nói: vì sao việc này quan trọng · ràng buộc · thế nào là xong?"),
+  tdF("checkDate","date","Hẹn kiểm tra theo cột mốc, không theo cảm hứng: ngày"),
+  tdF("stretch","check","Việc này căng hơn sức họ hiện tại một chút chưa? Lưới an toàn là gì?"),
+  tdF("safetyNet","text","→")]},
+ {id:"the10",code:"Thẻ 10",name:"Ghi phản hồi SBI",dur:"1 phút",slot:"khi",multi:true,from:1,fields:[
+  tdF("person","text","Người"),
+  tdF("kind","choice","Loại",[["khen","Khen"],["gop-y","Góp ý"]]),
+  tdF("s","text","S — Tình huống (khi nào, ở đâu)"),
+  tdF("b","text","B — Hành vi quan sát được"),
+  tdF("i","text","I — Tác động (lên team, sản phẩm, tôi)"),
+  tdF("due","date","Hạn nói (≤ 48 giờ)"), tdF("done","check","Đã nói"),
+  tdN("Tự kiểm: B có phải thứ camera quay được không? Nếu là tính từ (“thiếu trách nhiệm”) → viết lại.")]},
+ {id:"the3",code:"Thẻ 3",name:"Trước khi ra quyết định",dur:"1 phút",slot:"khi",multi:true,from:5,fields:[
+  tdF("decision","text","Quyết định"),
+  tdF("reversible","yn","Quyết định này ĐẢO NGƯỢC ĐƯỢC không?",TD_YN),
+  tdF("minutes","num","Có → quyết trong ___ phút, sai thì sửa. Đừng phân tích thêm."),
+  tdF("needInfo","text","Không → chậm lại. Cần thêm thông tin gì"),
+  tdF("assumption","check","Tôi đang dựa vào giả định nào?"), tdF("assumptionWhat","text","→"),
+  tdN("Nếu giả định đó sai thì quyết định này còn đúng không?"),
+  tdF("alt","check","Ngoài phương án tôi đang thích, còn phương án nào?"), tdF("altWhat","text","→"),
+  tdN("Nếu không nghĩ ra được cái thứ hai → tôi chưa thực sự cân nhắc."),
+  tdF("hardReverse","check","Sáu tháng nữa, thứ gì sẽ KHÓ ĐẢO NGƯỢC vì quyết định này?"),
+  tdF("hardReverseWhat","text","→")]},
+ {id:"the5",code:"Thẻ 5",name:"Khi có sự cố",dur:"1 phút",slot:"khi",multi:true,from:1,fields:[
+  tdF("incident","text","Sự cố"),
+  tdF("signal","check","Ghi lại NGAY: dấu hiệu nào đã xuất hiện trước khi nổ?"), tdF("signalWhat","text","→"),
+  tdN("(Ghi lúc nóng, đừng đợi post-mortem — lúc đó sẽ nhớ sai)"),
+  tdF("couldPredict","yn","Tôi đã có thể dự đoán việc này không?",TD_YN_DOAN),
+  tdF("blame","check","Tôi đang tìm nguyên nhân, hay đang tìm người có lỗi?")]},
+ {id:"t2",code:"T2",name:"Decision doc một trang",dur:"30 phút",slot:"khi",multi:true,from:5,fields:[
+  tdF("decision","text","QUYẾT ĐỊNH"),
+  tdN("1. BỐI CẢNH (3-5 câu)"),
+  tdF("problem","area","Vấn đề đang giải"), tdF("whyNow","area","Vì sao phải quyết bây giờ"), tdF("constraints","area","Ràng buộc"),
+  tdF("reversible","yn","2. ĐẢO NGƯỢC ĐƯỢC?",["Có — quyết nhanh, sai thì sửa","Không — chậm lại, thu thập thêm"]),
+  tdF("selfDeadline","text","Hạn chót tự đặt"), tdF("needMore","text","Cần thêm gì"),
+  tdN("3. CÁC PHƯƠNG ÁN"),
+  tdF("optA","text","A."), tdF("optAPro","text","Ưu"), tdF("optACon","text","Nhược"),
+  tdF("optB","text","B."), tdF("optBPro","text","Ưu"), tdF("optBCon","text","Nhược"),
+  tdF("optC","text","C. Không làm gì — Hệ quả"),
+  tdN("4. TIÊU CHÍ CHỌN (xếp theo thứ tự ưu tiên, tối đa 3)"),
+  tdF("crit1","text","1."), tdF("crit2","text","2."), tdF("crit3","text","3."),
+  tdF("recommend","text","5. KHUYẾN NGHỊ: Phương án"), tdF("recommendWhy","text","Vì"),
+  tdN("6. PHƯƠNG ÁN ĐÃ LOẠI VÀ VÌ SAO ← mục bắt buộc"),
+  tdF("rejected1","text","Loại ____ vì"), tdF("rejected2","text","Loại ____ vì"),
+  tdF("hardReverse","text","7. THỨ SẼ KHÓ ĐẢO NGƯỢC SAU QUYẾT ĐỊNH NÀY"),
+  tdN("8. GIẢ ĐỊNH TÔI ĐANG DỰA VÀO (liệt kê ít nhất 2)"),
+  tdF("assume1","text","-"), tdF("assume2","text","-"),
+  tdF("assumeCritical","text","Nếu giả định nào sai thì cả quyết định sai?"),
+  tdN("9. DỰ ĐOÁN GẮN VÀO ← nối với T1"),
+  tdF("predMonths","num","Sau ____ tháng"),
+  tdF("predSign","text","dấu hiệu cho thấy tôi quyết đúng"),
+  tdF("predProb","pct","Xác suất tôi cho là đúng")]},
+ {id:"t3",code:"T3",name:"Pre-mortem",dur:"20 phút",slot:"khi",multi:true,from:9,fields:[
+  tdF("project","text","DỰ ÁN"), tdF("horizon","num","MỐC GIẢ ĐỊNH: ____ tháng nữa"),
+  tdN("“Bây giờ là ngày ____. Dự án đã thất bại. Không phải trễ một chút, mà thất bại rõ ràng. Vì sao?” Viết 5 nguyên nhân. Viết ở THÌ QUÁ KHỨ, như việc đã xảy ra rồi.")
+ ].concat(tdT3Causes(),[
+  tdN("BA NGUYÊN NHÂN KHẢ NĂNG CAO NHẤT → hành động phòng ngừa ngay tuần này:"),
+  tdF("prevent1","text","1."), tdF("prevent2","text","2."), tdF("prevent3","text","3.")])},
+ {id:"t4",code:"T4",name:"Post-mortem tới tầng ba",dur:"30 phút",slot:"khi",multi:true,from:1,fields:[
+  tdF("incident","text","SỰ CỐ"), tdF("impact","text","Tác động"),
+  tdF("layer1","text","TẦNG 1 — Chuyện gì đã xảy ra? (nguyên nhân trực tiếp)"),
+  tdF("layer2","text","TẦNG 2 — Vì sao điều đó xảy ra được? (nguyên nhân điều kiện)"),
+  tdF("layer3","text","TẦNG 3 — Vì sao hệ thống/quy trình cho phép điều đó? (nguyên nhân hệ thống)"),
+  tdN("← DỪNG Ở ĐÂY. Không đi tiếp tầng 4 (dễ thành triết lý vô dụng). ← Nếu tầng 3 vẫn là tên một người, anh chưa tới nguyên nhân hệ thống."),
+  tdN("HÀNH ĐỘNG"),
+  tdF("fix1","text","Sửa tầng 1 (ngay)"), tdF("fix3","text","Sửa tầng 3 (trong 30 ngày)"), tdF("owner","text","Ai chịu trách nhiệm"),
+  tdF("couldPredict","yn","TÔI ĐÃ CÓ THỂ DỰ ĐOÁN ĐƯỢC KHÔNG?",TD_YN_DOAN),
+  tdF("signal","text","Dấu hiệu đó là"),
+  tdN("← Đây là mục nối vào T1. Nếu chọn “Có” từ 3 lần trở lên trong một quý, vấn đề của anh không phải kiến thức, mà là không dừng lại để nghĩ.")]},
+ {id:"t6",code:"T6",name:"Giải thích 3 điểm",dur:"15 phút",slot:"dinh",multi:true,from:9,fields:[
+  tdF("decision","text","QUYẾT ĐỊNH"),
+  tdF("conclusion","text","KẾT LUẬN TRƯỚC (1 câu, không có thuật ngữ kỹ thuật)"),
+  tdN("BA LÝ DO CHỐNG ĐỠ (mỗi cái 1 câu, không chồng lấn nhau)"),
+  tdF("r1","text","1."), tdF("r2","text","2."), tdF("r3","text","3."),
+  tdF("question","text","ĐIỀU NGƯỜI NGHE SẼ HỎI LẠI"), tdF("answer","text","Trả lời"),
+  tdN("TỰ KIỂM"),
+  tdF("noJargon","check","Không có thuật ngữ nào cần giải thích thêm"),
+  tdF("distinct","check","Ba lý do không trùng nhau (không phải một lý do nói ba cách)"),
+  tdF("cost","check","Có nêu cái giá phải trả, không chỉ nêu lợi ích")]},
+ {id:"t7",code:"T7",name:"Chấm hiệu chỉnh",dur:"20 phút",slot:"dinh",multi:false,from:1,fields:[]},
+ {id:"t8",code:"T8",name:"Nhật ký thời gian",dur:"5 phút/ngày",slot:"dinh",multi:false,from:10,fields:[]}
+];
+var TD_CARD_BY_ID = {};
+TD_CARDS.forEach(function(c){ TD_CARD_BY_ID[c.id]=c; });
+var TD_STOP_TEXT = "Nếu sau 12 tuần, bảng chấm hiệu chỉnh T7 không thay đổi gì và tôi không phát hiện được mẫu lặp lại nào trong cách mình sai, thì cách luyện này không hợp với tôi. Hành động khi đó: dừng và chuyển sang cách khác — ví dụ tìm một người phản biện cố định mỗi hai tuần thay vì tự chấm một mình. Đây là quyết định, không phải thất bại.";
+
+/* T7 thuộc tháng nào: ngày cuối tháng → tháng đó; ngày 1–7 → tháng trước; ngày khác → null */
+function tdT7Month(date){
+  if(tdAddDays(date,1).slice(5,7)!==date.slice(5,7)) return date.slice(0,7);
+  if(+date.slice(8,10)<=7) return tdAddDays(date, -(+date.slice(8,10))).slice(0,7);
+  return null;
+}
+function tdEntries(days,date){ return (days[date] && days[date].entries) || {}; }
+/* có ngày nào trong [from, to) mang mục key không */
+function tdHasIn(days,from,to,key){
+  for(var d in days){ if(d>=from && d<to && tdEntries(days,d)[key]) return true; }
+  return false;
+}
+function tdPlan(date,startMon,days){
+  var week=tdWeekNo(date,startMon), mon=tdMonday(date), today=tdEntries(days,date);
+  var sang=[], toi=[], rail=[], open=[];
+  if(week>=2 && !tdHasIn(days,mon,date,"review")) sang.push("review");
+  if(!tdHasIn(days,mon,date,"t1")) sang.push("t1");
+  if(week>=5) sang.push("the1");
+  if(week>=9 && !tdHasIn(days,tdAddDays(date,-13),date,"t6")) sang.push("t6");
+  var m7=tdT7Month(date), t7done=false;
+  if(m7) for(var d in days){ var e7=tdEntries(days,d).t7; if(d!==date && e7 && e7.month===m7) t7done=true; }
+  if(m7 && !t7done) sang.push("t7");
+  toi.push("the2");
+  if(week>=5){ toi.push("the4"); toi.push("the6"); }
+  var mm=+date.slice(5,7), dd=+date.slice(8,10);
+  if((week>=10 && week<=12) || (week>=13 && mm%3===1 && dd<=14)) toi.push("t8");
+  TD_CARDS.forEach(function(c){
+    if(c.slot==="khi" || c.slot==="dinh") rail.push({id:c.id, locked:week<c.from, from:c.from});
+    else if(week<c.from) rail.push({id:c.id, locked:true, from:c.from});
+    if(today[c.id] && sang.indexOf(c.id)<0 && toi.indexOf(c.id)<0) open.push(c.id);
+  });
+  return {week:week, sang:sang, toi:toi, rail:rail, open:open,
+          banner: week===12 ? {reviewDate:tdAddDays(startMon,84), text:TD_STOP_TEXT} : null};
+}
+
+/* dự đoán: T1 cộng mục 9 của T2; điểm nằm trong file của ngày chấm, lần chấm mới nhất thắng */
+function tdDates(days){ return Object.keys(days).sort(); }
+function tdPredictions(days){
+  var out=[];
+  tdDates(days).forEach(function(d){
+    var e=tdEntries(days,d);
+    ((e.t1 && e.t1.predictions) || []).forEach(function(p){
+      if(tdBlank(p.text) && !p.due) return;   /* hàng trống không phải dự đoán */
+      out.push({id:p.id, date:d, text:p.text, prob:p.prob, due:p.due});
+    });
+    (e.t2 || []).forEach(function(t,i){
+      if(t.predSign && t.predProb)
+        out.push({id:d+"#t2-"+(i+1), date:d, text:(t.decision||"")+": "+t.predSign, prob:t.predProb, due:tdAddMonths(d, t.predMonths||1)});
+    });
+  });
+  return out;
+}
+function tdGradesUntil(days,until){
+  var g={};
+  tdDates(days).forEach(function(d){
+    if(until && d>=until) return;
+    var r=tdEntries(days,d).review; if(!r || !r.grades) return;
+    Object.keys(r.grades).forEach(function(id){
+      g[id]={grade:r.grades[id], date:d, note:(r.notes && r.notes[id]) || ""};
+    });
+  });
+  return g;
+}
+function tdGrades(days){ return tdGradesUntil(days, null); }
+function tdFinal(g){ return !!g && (g.grade==="dung" || g.grade==="sai"); }
+function tdReviewList(days,date){
+  var before=tdGradesUntil(days,date), r=tdEntries(days,date).review, now=(r && r.grades) || {};
+  return tdPredictions(days).filter(function(p){ return p.date<date && !tdFinal(before[p.id]); })
+    .map(function(p){
+      return {id:p.id, date:p.date, text:p.text, prob:p.prob, due:p.due,
+              grade: now[p.id] || (p.due && p.due>=date ? "chua" : null)};
+    });
+}
+function tdT7Table(days,month){
+  var g=tdGrades(days), names=["20-40","40-60","60-80","80-100"];
+  var rows=names.map(function(b){ return {bucket:b, n:0, hit:0, sum:0}; });
+  tdPredictions(days).forEach(function(p){
+    if(!p.due || p.due.slice(0,7)!==month || !tdFinal(g[p.id])) return;
+    var pr=+p.prob, r=rows[pr<40 ? 0 : pr<60 ? 1 : pr<80 ? 2 : 3];
+    r.n++; r.sum+=pr; if(g[p.id].grade==="dung") r.hit++;
+  });
+  return rows.map(function(r){
+    if(!r.n) return {bucket:r.bucket, n:0, hit:0, rate:null, avgProb:null, diff:null};
+    var rate=Math.round(r.hit/r.n*100), avg=Math.round(r.sum/r.n);
+    return {bucket:r.bucket, n:r.n, hit:r.hit, rate:rate, avgProb:avg, diff:rate-avg};
+  });
+}
+function tdValidateT1(preds){
+  if(!preds.length) return [{i:-1, level:"block", msg:"Ghi ít nhất 1 dự đoán."}];
+  var out=[];
+  if(preds.length>3) out.push({i:-1, level:"block", msg:"Tối đa 3 dự đoán."});
+  preds.forEach(function(p,i){
+    var n=Number(p.prob);
+    if(!p.text || !String(p.text).trim()) out.push({i:i, level:"block", msg:"Mệnh đề trống."});
+    if(n===50) out.push({i:i, level:"block", msg:"Không dùng 50% — chọn 40 hoặc 60."});
+    else if(p.prob==="" || p.prob==null || n%1!==0 || n<1 || n>99) out.push({i:i, level:"block", msg:"Xác suất từ 1 đến 99."});
+    if(!p.due) out.push({i:i, level:"block", msg:"Thiếu hạn chót."});
+    if(!p.wrongIf || !String(p.wrongIf).trim()) out.push({i:i, level:"warn", msg:"Dòng “điều gì sẽ khiến tôi sai” là dòng quan trọng nhất."});
+  });
+  return out;
+}
+
+/* tín hiệu lặp lại — chỉ đếm, câu chữ lấy theo ngưỡng ghi trong thẻ, không diễn giải thêm */
+var TD_SIGNALS = {
+ s2d:"Từ 3 lần trở lên bỏ qua “một điều nên làm khác đi” trong 1-1 → đây không phải vấn đề thời gian, mà là né tránh.",
+ s6mind:"Không đổi ý về điều gì trong 5 ngày liên tiếp → tôi đang không cân nhắc thật.",
+ s5pred:"3 sự cố liên tiếp trả lời “Có, tôi đã có thể dự đoán” → vấn đề không phải kiến thức, mà là không dừng lại để nghĩ.",
+ s2a:"3 cuộc họp liên tiếp không ra quyết định → tôi đang họp sai cách.",
+ s6pct:"Kiến tạo dưới 20% ba ngày liên tiếp → thứ Sáu phải xem lại lịch.",
+ s5mind:"3 tuần liên tiếp không đổi ý về điều gì → tôi đang không thực sự cân nhắc phương án khác, chỉ đang tìm lý do cho phương án đã chọn."
+};
+function tdBlank(v){ return v==null || !String(v).trim(); }
+function tdLast(arr,n,ok){ return arr.length>=n && arr.slice(-n).every(ok); }
+function tdSignals(days,date){
+  var m2d=[], m2a=[], the6=[], inc=[], rev=[], out=[];
+  tdDates(days).forEach(function(d){
+    if(d>date) return;
+    var e=tdEntries(days,d);
+    (e.the2 || []).forEach(function(m){ if(m.type==="2D") m2d.push(m); if(m.type==="2A") m2a.push(m); });
+    if(e.the6) the6.push(e.the6);
+    (e.the5 || []).concat(e.t4 || []).forEach(function(x){ inc.push(x); });
+    if(e.review) rev.push(e.review);
+  });
+  var hit={
+    s2d: tdLast(m2d,3,function(m){ return m.oneThing==="khong"; }),
+    s6mind: tdLast(the6,5,function(x){ return tdBlank(x.changedMind); }),
+    s5pred: tdLast(inc,3,function(x){ return x.couldPredict==="co"; }),
+    s2a: tdLast(m2a,3,function(m){ return m.decided==="khong"; }),
+    s6pct: tdLast(the6,3,function(x){ return !tdBlank(x.creativePct) && +x.creativePct<20; }),
+    s5mind: tdLast(rev,3,function(x){ return tdBlank(x.changedMind); })
+  };
+  Object.keys(TD_SIGNALS).forEach(function(k){ if(hit[k]) out.push({key:k, text:TD_SIGNALS[k]}); });
+  return out;
+}
+/* việc đến hạn hôm nay, theo thứ tự pred → sbi → deleg → pending */
+function tdDueToday(days,date){
+  var g=tdGrades(days), pred=[], sbi=[], deleg=[], pend=[];
+  tdPredictions(days).forEach(function(p){
+    if(p.due===date && !tdFinal(g[p.id]))
+      pred.push({kind:"pred", label:p.text, ref:{date:p.date, card:p.id.indexOf("#t2-")>0 ? "t2" : "t1", id:p.id}});
+  });
+  tdDates(days).forEach(function(d){
+    if(d>date) return;
+    var e=tdEntries(days,d);
+    (e.the10 || []).forEach(function(x,i){
+      if(!x.done && x.due && x.due<=date) sbi.push({kind:"sbi", label:(x.person||"")+(x.b ? " — "+x.b : ""), ref:{date:d, card:"the10", index:i}});
+    });
+    (e.the9 || []).forEach(function(x,i){
+      if(x.checkDate===date) deleg.push({kind:"deleg", label:x.task||"", ref:{date:d, card:"the9", index:i}});
+    });
+    if(e.the6 && e.the6.pendingDue===date) pend.push({kind:"pending", label:e.the6.pending||"", ref:{date:d, card:"the6"}});
+  });
+  return pred.concat(sbi, deleg, pend);
+}
+function tdWeekStats(days,monday){
+  var end=tdAddDays(monday,6), the4=0, nod=0, sum=0, n=0;
+  tdDates(days).forEach(function(d){
+    if(d<monday || d>end) return;
+    var e=tdEntries(days,d);
+    if(e.the4) the4+=(+e.the4.count||0);
+    (e.the2 || []).forEach(function(m){ if(m.type==="2B" && !tdBlank(m.nodded)) nod++; });
+    if(e.the6 && !tdBlank(e.the6.creativePct)){ sum+=+e.the6.creativePct; n++; }
+  });
+  return {the4:the4, nod2B:nod, creativeAvg: n ? Math.round(sum/n) : null};
+}
+function tdT8Stats(days,date){
+  var from=tdAddDays(date,-13), p=0, k=0;
+  tdDates(days).forEach(function(d){
+    if(d<from || d>date) return;
+    var t=tdEntries(days,d).t8;
+    ((t && t.blocks) || []).forEach(function(b){ if(b.pk==="P") p++; else if(b.pk==="K") k++; });
+  });
+  var n=p+k;
+  return {blocks:n, p:p, k:k, pPct: n ? Math.round(p/n*100) : null, kPct: n ? Math.round(k/n*100) : null};
+}
+
+/* file ngày: nhat-ky/YYYY-MM-DD.json — chỉ dùng API của handle được truyền vào, không đụng window */
+var TD_SCHEMA = "career-path-tu-duy-ngay";
+var TD_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+var TD_FILE_RE = /^\d{4}-\d{2}-\d{2}\.json$/;
+function tdFileName(date){ return date+".json"; }
+function tdIsDayFile(name){ return TD_FILE_RE.test(name); }
+/* bỏ chuỗi rỗng, false, null, mảng/object rỗng; mọi số đều giữ, kể cả 0 */
+function tdPruneVal(v){
+  if(v==null || v===false) return undefined;
+  if(typeof v==="string") return v.trim() ? v : undefined;
+  if(typeof v!=="object") return v;
+  if(Array.isArray(v)){
+    var a=[]; v.forEach(function(x){ var p=tdPruneVal(x); if(p!==undefined) a.push(p); });
+    return a.length ? a : undefined;
+  }
+  var o={}, any=false;
+  Object.keys(v).forEach(function(k){ var p=tdPruneVal(v[k]); if(p!==undefined){ o[k]=p; any=true; } });
+  return any ? o : undefined;
+}
+function tdPrune(entries){
+  var out={};
+  Object.keys(entries || {}).forEach(function(k){
+    var v=entries[k];
+    if(k==="the4" && v && !(+v.count) && !tdPruneVal(v.items)) return;
+    var p=tdPruneVal(v); if(p!==undefined) out[k]=p;
+  });
+  return out;
+}
+function tdDayDoc(date,entries,nowIso){
+  return {schema:TD_SCHEMA, version:1, date:date, savedAt:nowIso, entries:entries};
+}
+/* hình dạng từng mục — file sửa tay sai hình dạng thì từ chối, tránh làm sập cả tab */
+var TD_ARR_KEYS = ["the2","the3","the5","the8","the9","the10","t2","t3","t4","t6"];
+var TD_OBJ_KEYS = ["t1","review","the1","the4","the6","t7","t8"];
+function tdIsObj(v){ return !!v && typeof v==="object" && !Array.isArray(v); }
+function tdArrOfObj(v){ return Array.isArray(v) && v.every(tdIsObj); }
+function tdShapeOk(e){
+  if(!tdIsObj(e)) return false;
+  if(TD_ARR_KEYS.some(function(k){ return (k in e) && !tdArrOfObj(e[k]); })) return false;
+  if(TD_OBJ_KEYS.some(function(k){ return (k in e) && !tdIsObj(e[k]); })) return false;
+  var sub=[["t1","predictions",tdArrOfObj],["t8","blocks",tdArrOfObj],["the4","items",Array.isArray],
+           ["review","grades",tdIsObj],["review","notes",tdIsObj],["review","stats",tdIsObj],
+           ["t7","patterns",tdIsObj],["t8","analysis",tdIsObj]];
+  return sub.every(function(s){ return !e[s[0]] || !(s[1] in e[s[0]]) || s[2](e[s[0]][s[1]]); });
+}
+function tdParseDayDoc(text){
+  var d; try{ d=JSON.parse(text); }catch(e){ return null; }
+  if(!d || typeof d!=="object" || Array.isArray(d)) return null;
+  if(d.schema!==TD_SCHEMA || d.version!==1 || !TD_DATE_RE.test(d.date||"")) return null;
+  if(!tdShapeOk(d.entries)) return null;
+  return d;
+}
+/* hàng T1 coi là đã nhập khi có ít nhất một ô; cuộc họp coi là đã nhập khi có gì ngoài loại họp */
+function tdT1Filled(p){ return !!p && ["text","prob","due","basis","wrongIf"].some(function(k){ return !tdBlank(p[k]); }); }
+function tdHasData(o,skip){
+  return Object.keys(o || {}).some(function(k){ return k!==skip && tdPruneVal(o[k])!==undefined; });
+}
+function tdCleanForSave(entries){
+  var e=JSON.parse(JSON.stringify(entries || {}));
+  if(e.t1 && Array.isArray(e.t1.predictions)) e.t1.predictions=e.t1.predictions.filter(tdT1Filled);
+  if(Array.isArray(e.the2)) e.the2=e.the2.filter(function(m){ return tdHasData(m,"type"); });
+  return e;
+}
+/* nạp tay: cùng ngày thì bản savedAt mới nhất thắng; không đè bản mới hơn đang có */
+function tdMergeImport(base,docs){
+  var best={}, out={}, older=0;
+  docs.forEach(function(d){ var b=best[d.date]; if(!b || (d.savedAt||"")>(b.savedAt||"")) best[d.date]=d; });
+  Object.keys(base || {}).forEach(function(k){ out[k]=base[k]; });
+  Object.keys(best).forEach(function(k){
+    if(out[k] && (out[k].savedAt||"")>(best[k].savedAt||"")) older++; else out[k]=best[k];
+  });
+  return {days:out, older:older};
+}
+/* file trên đĩa mới hơn bản đã lưu mà bản nháp bắt đầu từ đó → không ghi đè lặng lẽ */
+function tdConflict(disk,baseSavedAt){
+  return !!(disk && disk.savedAt && (!baseSavedAt || disk.savedAt>baseSavedAt));
+}
+function tdRollDate(cur,today,follow,hasDraft){ return follow && cur!==today && !hasDraft ? today : cur; }
+function tdCarried(date){ return tdParse(date).getDay()!==1; }
+/* doc từ file luôn thắng bản sao cùng ngày */
+function tdMergeDays(base,docs){
+  var out={};
+  Object.keys(base || {}).forEach(function(k){ out[k]=base[k]; });
+  docs.forEach(function(d){ out[d.date]=d; });
+  return out;
+}
+function tdWriteDayTo(dir,doc){
+  return dir.getFileHandle(tdFileName(doc.date), {create:true})
+    .then(function(h){ return h.createWritable(); })
+    .then(function(w){ return w.write(JSON.stringify(doc, null, 2)).then(function(){ return w.close(); }); });
+}
+function tdReadDir(dir){
+  var docs=[], bad=[], it=dir.values();
+  function step(){
+    return it.next().then(function(r){
+      if(r.done) return {docs:docs, bad:bad};
+      var h=r.value;
+      if(h.kind!=="file" || !tdIsDayFile(h.name)) return step();
+      return h.getFile().then(function(f){ return f.text(); }).then(function(t){
+        var d=tdParseDayDoc(t); if(d) docs.push(d); else bad.push(h.name);
+      }, function(){ bad.push(h.name); }).then(step);
+    });
+  }
+  return step();
+}
+/* tuduy-core:end */
 
 /* ---- index ---- */
 var NODES={}, NODE_LIST=[], GROUPS={}, STAGES={};
@@ -2427,6 +2989,569 @@ function nodeBtn(n){
     + '<span>'+esc(n.en||n.t)+'</span><span class="where">'+esc(GROUPS[n.group].en||GROUPS[n.group].name)+'</span></button>';
 }
 
+/* ================= tab Luyện tư duy ================= */
+var TD_LS = "roadmap-em-tuduy-v1";
+/* base: savedAt của bản đã lưu mà bản nháp bắt đầu từ đó; follow: đang xem "hôm nay" thì tự sang ngày mới */
+var tdState = {date:null, days:{}, draft:{}, base:{}, dir:null, perm:null, opened:{}, msg:"",
+               writeFailed:false, fsBlocked:false, bad:0, dirRead:false, force:null, follow:true};
+var tdTimer = null;
+
+/* ---- lưu trữ: bản sao + bản nháp trong localStorage, handle thư mục trong IndexedDB ---- */
+function tdCacheLoad(){
+  try{
+    var r=JSON.parse(localStorage.getItem(TD_LS)||"null");
+    if(!r || r.v!==1) return;
+    /* kiểm lại từng ngày: bản sao bị nhiễm từ file sai hình dạng thì bỏ */
+    Object.keys(r.days || {}).forEach(function(k){
+      var d=tdParseDayDoc(JSON.stringify(r.days[k])); if(d) tdState.days[k]=d;
+    });
+    Object.keys(r.draft || {}).forEach(function(k){ if(tdShapeOk(r.draft[k])) tdState.draft[k]=r.draft[k]; });
+    tdState.base=r.base || {};
+  }catch(e){}
+}
+function tdCacheSave(){
+  try{ localStorage.setItem(TD_LS, JSON.stringify({v:1, days:tdState.days, draft:tdState.draft, base:tdState.base})); }catch(e){}
+}
+function tdIdb(){
+  return new Promise(function(res,rej){
+    if(!window.indexedDB){ rej(new Error("no idb")); return; }
+    var q=indexedDB.open("roadmap-em-tuduy",1);
+    q.onupgradeneeded=function(){ q.result.createObjectStore("kv"); };
+    q.onsuccess=function(){ res(q.result); };
+    q.onerror=function(){ rej(q.error); };
+  });
+}
+function tdIdbGet(k){
+  return tdIdb().then(function(db){ return new Promise(function(res,rej){
+    var r=db.transaction("kv","readonly").objectStore("kv").get(k);
+    r.onsuccess=function(){ res(r.result||null); }; r.onerror=function(){ rej(r.error); };
+  }); }).catch(function(){ return null; });
+}
+function tdIdbSet(k,v){
+  return tdIdb().then(function(db){ return new Promise(function(res,rej){
+    var r=db.transaction("kv","readwrite").objectStore("kv").put(v,k);
+    r.onsuccess=function(){ res(); }; r.onerror=function(){ rej(r.error); };
+  }); });
+}
+function tdFsOk(){ return typeof window.showDirectoryPicker==="function" && !tdState.fsBlocked; }
+/* handle OPFS (dùng khi kiểm) không có queryPermission/requestPermission → coi như đã có quyền */
+function tdPerm(h,ask){
+  if(!h.queryPermission) return Promise.resolve("granted");
+  return ask ? h.requestPermission({mode:"readwrite"}) : h.queryPermission({mode:"readwrite"});
+}
+function tdReadIntoState(dir){
+  return tdReadDir(dir).then(function(r){
+    tdState.days=tdMergeDays(tdState.days, r.docs); tdState.bad=r.bad.length; tdState.dirRead=true;
+    tdCacheSave();
+  });
+}
+function tdLoadDir(){ return tdReadIntoState(tdState.dir).then(renderTuDuy); }
+function tdConnect(ask){
+  var p = tdState.dir ? Promise.resolve(tdState.dir) : tdIdbGet("dir");
+  return p.then(function(h){
+    if(!h) return false;
+    tdState.dir=h;
+    return tdPerm(h,ask).then(function(s){
+      tdState.perm=s;
+      if(s!=="granted"){ renderTuDuy(); return false; }
+      return tdLoadDir().then(function(){ return true; });
+    });
+  }).catch(function(){ renderTuDuy(); return false; });
+}
+function tdWritableDir(){
+  var p = tdState.dir ? Promise.resolve(tdState.dir)
+    : window.showDirectoryPicker({id:"nhat-ky", mode:"readwrite"}).then(function(h){
+        tdState.dir=h;
+        return tdIdbSet("dir",h).then(function(){ return h; }, function(){ return h; });
+      });
+  return p.then(function(h){
+    return tdPerm(h,true).then(function(s){
+      tdState.perm=s;
+      if(s!=="granted") throw new Error("không có quyền ghi");
+      return h;
+    });
+  });
+}
+function tdDownload(name,text){
+  if(dlFn){ dlFn.save({filename:name, data:text}).catch(function(){}); return; }
+  var url=URL.createObjectURL(new Blob([text], {type:"application/json"}));
+  var a=document.createElement("a");
+  a.href=url; a.download=name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+}
+function tdCommit(doc){
+  tdState.days[doc.date]=doc; delete tdState.draft[doc.date]; delete tdState.base[doc.date];
+  tdState.writeFailed=false; tdState.force=null; tdCacheSave();
+}
+/* T1 có lỗi "block" thì không cho lưu; hàng trống hoàn toàn bị bỏ qua */
+function tdT1Rows(date){ var t1=tdView(date).t1; return (t1 && t1.predictions) || []; }
+function tdT1Errors(date){
+  var rows=tdT1Rows(date), idx=[], list=[];
+  rows.forEach(function(p,i){ if(tdT1Filled(p)){ idx.push(i); list.push(p); } });
+  if(!list.length) return [];
+  return tdValidateT1(list).map(function(e){ return {i: e.i<0 ? -1 : idx[e.i], level:e.level, msg:e.msg}; });
+}
+function tdSaveBlocked(date){ return tdT1Errors(date).some(function(e){ return e.level==="block"; }); }
+function tdBuildDoc(date){ return tdDayDoc(date, tdPrune(tdCleanForSave(tdView(date))), new Date().toISOString()); }
+function tdSave(){
+  var date=tdState.date;
+  if(tdSaveBlocked(date)) return Promise.resolve("blocked");
+  if(!tdFsOk()){
+    var doc=tdBuildDoc(date);
+    tdDownload(tdFileName(date), JSON.stringify(doc, null, 2));
+    tdCommit(doc); tdState.msg="đã tải file về máy"; renderTuDuy();
+    return Promise.resolve("download");
+  }
+  return tdWritableDir()
+    .then(function(dir){
+      /* vừa có quyền mà chưa đọc thư mục trong phiên này → đọc trước, file thắng bản sao */
+      return (tdState.dirRead ? Promise.resolve() : tdReadIntoState(dir)).then(function(){ return dir; });
+    })
+    .then(function(dir){
+      if(tdState.force!==date && tdState.draft[date] && tdConflict(tdState.days[date], tdState.base[date])){
+        tdState.force=date;
+        tdState.msg="File ngày này trong thư mục mới hơn bản nháp — chưa ghi. Bấm Lưu lần nữa để ghi đè.";
+        renderTuDuy(); return "conflict";
+      }
+      var doc=tdBuildDoc(date);
+      return tdWriteDayTo(dir, doc).then(function(){ tdCommit(doc); tdState.msg=""; renderTuDuy(); return "file"; });
+    })
+    .catch(function(err){
+      var n=err && err.name;
+      if(n==="AbortError"){ renderTuDuy(); return "cache"; }          // bấm Huỷ ở hộp chọn thư mục
+      if(n==="SecurityError" && !tdState.dir){ tdState.fsBlocked=true; return tdSave(); }  // iframe Artifact
+      tdCacheSave(); tdState.writeFailed=true; tdState.msg=""; renderTuDuy();
+      return "cache";
+    });
+}
+function tdImport(files){
+  var list=Array.prototype.slice.call(files||[]), docs=[], bad=0;
+  return Promise.all(list.map(function(f){
+    return new Promise(function(res){
+      var fr=new FileReader();
+      fr.onload=function(){ var d=tdParseDayDoc(String(fr.result||"")); if(d) docs.push(d); else bad++; res(); };
+      fr.onerror=function(){ bad++; res(); };
+      fr.readAsText(f);
+    });
+  })).then(function(){
+    var m=tdMergeImport(tdState.days, docs);
+    tdState.days=m.days; tdCacheSave();
+    tdState.msg="đã nạp "+docs.length+" file"+(bad ? ", bỏ qua "+bad : "")
+      + (m.older ? ", giữ "+m.older+" ngày đang có bản mới hơn" : "");
+    renderTuDuy();
+    return {ok:docs.length, bad:bad, older:m.older};
+  });
+}
+
+/* ---- dữ liệu ngày đang sửa: bản nháp nếu có, không thì bản đã lưu ---- */
+function tdView(date){ return tdState.draft[date] || tdEntries(tdState.days, date); }
+function tdWork(date){
+  if(!tdState.draft[date]){
+    tdState.draft[date]=JSON.parse(JSON.stringify(tdEntries(tdState.days, date)));
+    tdState.base[date]=(tdState.days[date] && tdState.days[date].savedAt) || null;
+  }
+  return tdState.draft[date];
+}
+function tdDaysView(){
+  var v={};
+  Object.keys(tdState.days).forEach(function(k){ v[k]=tdState.days[k]; });
+  Object.keys(tdState.draft).forEach(function(k){ v[k]={date:k, entries:tdState.draft[k]}; });
+  return v;
+}
+function tdStart(){ return tdStartMonday(Object.keys(tdState.days), tdNow()); }
+function tdDirty(){ return Object.keys(tdState.draft).length>0; }
+function tdGetPath(o,path){
+  var ks=path.split(".");
+  for(var i=0;i<ks.length;i++){ if(o==null) return undefined; o=o[ks[i]]; }
+  return o;
+}
+function tdSetPath(o,path,val){
+  var ks=path.split(".");
+  for(var i=0;i<ks.length-1;i++){
+    if(o[ks[i]]==null) o[ks[i]] = /^\d+$/.test(ks[i+1]) ? [] : {};
+    o=o[ks[i]];
+  }
+  o[ks[ks.length-1]]=val;
+}
+function tdTouch(){
+  tdState.msg="";
+  var st=document.getElementById("td-status");
+  if(st) st.textContent=tdStatusFor(tdState.date);
+  clearTimeout(tdTimer); tdTimer=setTimeout(tdCacheSave, 500);
+}
+function tdStatusFor(date){
+  if(tdState.msg) return tdState.msg;
+  if(tdState.draft[date]) return tdState.writeFailed ? "chỉ lưu trong trình duyệt" : "chưa lưu vào file";
+  var d=tdState.days[date], t=d && d.savedAt ? new Date(d.savedAt) : null;
+  return t && !isNaN(t) ? "đã lưu "+tdPad(t.getHours())+":"+tdPad(t.getMinutes()) : "";
+}
+function tdGoDate(date){ location.hash = "#/tu-duy/"+tdClampDate(date, tdStart(), tdNow()); }
+
+/* ---- form chung ---- */
+function tdFieldHtml(f,base,obj){
+  if(f.t==="note") return '<p class="td-note">'+esc(f.l)+'</p>';
+  var path=base+"."+f.k, v=obj ? obj[f.k] : undefined, val=esc(v==null ? "" : v);
+  if(f.t==="check")
+    return '<label class="td-chk"><input type="checkbox" data-td-path="'+path+'" data-td-t="check"'+(v ? " checked" : "")+'><span>'+esc(f.l)+'</span></label>';
+  if(f.t==="yn" || f.t==="choice"){
+    var opts = f.t==="yn" ? [["co",(f.o||TD_YN)[0]],["khong",(f.o||TD_YN)[1]]] : f.o;
+    return '<div class="td-f"><span>'+esc(f.l)+'</span><div class="seg">'
+      + opts.map(function(o){
+          return '<button type="button" data-td-set="'+path+'" data-td-v="'+esc(o[0])+'" class="'+(v===o[0] ? "on" : "")+'">'+esc(f.t==="choice" && f.k==="level" ? o[0]+" · "+o[1] : o[1])+'</button>';
+        }).join("")+'</div></div>';
+  }
+  if(f.t==="area")
+    return '<label class="td-f"><span>'+esc(f.l)+'</span><textarea class="td-in" rows="3" data-td-path="'+path+'" data-td-t="text">'+val+'</textarea></label>';
+  if(f.t==="pct" || f.t==="num")
+    return '<label class="td-f"><span>'+esc(f.l)+'</span><span class="td-pct"><input class="td-in" type="number" inputmode="numeric" '
+      + (f.t==="pct" ? 'min="0" max="100" ' : 'min="0" ')+'data-td-path="'+path+'" data-td-t="num" value="'+val+'">'+(f.t==="pct" ? "%" : "")+'</span></label>';
+  return '<label class="td-f"><span>'+esc(f.l)+'</span><input class="td-in" type="'+(f.t==="date" ? "date" : "text")+'" data-td-path="'+path+'" data-td-t="text" value="'+val+'"></label>';
+}
+function tdFieldsHtml(fields,base,obj){ return fields.map(function(f){ return tdFieldHtml(f,base,obj); }).join(""); }
+function tdItemHead(label,id,i){
+  return '<div class="td-item-h"><span>'+esc(label)+'</span><button type="button" class="td-x" data-td-act="del:'+id+':'+i+'" aria-label="Xoá mục '+(i+1)+'">xoá</button></div>';
+}
+var TD_RENDER = {};   /* thẻ có màn hình riêng (T1, Rà soát, T7, T8) */
+function tdBodyHtml(id,date){
+  var c=TD_CARD_BY_ID[id], e=tdView(date);
+  if(TD_RENDER[id]) return TD_RENDER[id](date);
+  if(id==="the2"){
+    var ms=e.the2 || [];
+    return ms.map(function(m,i){
+      var t=TD_MEETING[m.type] || TD_MEETING["2C"];
+      return '<div class="td-item">'+tdItemHead("Thẻ "+m.type+" · "+t.name, "the2", i)
+        + tdFieldHtml({k:"title",t:"text",l:"Cuộc họp"}, "the2."+i, m)
+        + tdFieldsHtml(t.fields, "the2."+i, m)+'</div>';
+    }).join("")
+    + (ms.length ? "" : '<p class="td-empty">Chưa có cuộc họp nào. Chọn loại họp để thêm.</p>')
+    + '<div class="td-add">'+["2A","2B","2C","2D"].map(function(k){
+        return '<button type="button" class="ghost" data-td-act="addm:'+k+'">+ '+k+' · '+esc(TD_MEETING[k].name)+'</button>';
+      }).join("")+'</div>';
+  }
+  if(id==="the4"){
+    var t4=e.the4 || {}, items=t4.items || [];
+    return tdFieldsHtml(c.fields, "the4", t4)
+      + '<div class="td-f"><span>Số lần “tôi làm vì nhanh hơn” hôm nay</span><div class="td-cnt">'
+      + '<button type="button" class="ghost" data-td-act="cnt:-1" aria-label="Bớt một">–</button><b>'+(+t4.count||0)+'</b>'
+      + '<button type="button" class="ghost" data-td-act="cnt:1" aria-label="Thêm một">+</button></div></div>'
+      + items.map(function(x,i){
+          return '<div class="td-pct"><input class="td-in" type="text" data-td-path="the4.items.'+i+'" data-td-t="text" value="'+esc(x||"")+'" aria-label="Việc '+(i+1)+'">'
+            + '<button type="button" class="td-x" data-td-act="delitem:the4.items:'+i+'">xoá</button></div>';
+        }).join("")
+      + '<div class="td-add"><button type="button" class="ghost" data-td-act="additem:the4.items">+ Ghi việc</button></div>';
+  }
+  if(c.multi){
+    var arr=e[id] || [];
+    return arr.map(function(it,i){ return '<div class="td-item">'+tdItemHead("#"+(i+1), id, i)+tdFieldsHtml(c.fields, id+"."+i, it)+'</div>'; }).join("")
+      + '<div class="td-add"><button type="button" class="ghost" data-td-act="add:'+id+'">+ Thêm</button></div>';
+  }
+  return tdFieldsHtml(c.fields, id, e[id] || {});
+}
+function tdCardHtml(id,date,week){
+  var c=TD_CARD_BY_ID[id];
+  return '<article class="td-card" id="td-c-'+id+'"><header><b>'+esc(c.code)+' — '+esc(c.name)+'</b><span>'+esc(c.dur)+'</span></header>'
+    + (week<c.from ? '<p class="td-warn">Hướng dẫn khuyên chưa mở thẻ này trước tuần '+c.from+' — làm hết cùng lúc thì sang tuần thứ ba sẽ bỏ.</p>' : '')
+    + ((id==="review" || id==="t1") && tdCarried(date) ? '<p class="td-note">thường làm sáng thứ Hai</p>' : '')
+    + tdBodyHtml(id,date)+'</article>';
+}
+function tdRailHtml(rail){
+  function item(r){
+    var c=TD_CARD_BY_ID[r.id];
+    return '<button type="button" class="td-ri'+(r.locked ? " locked" : "")+'" data-td-act="open:'+r.id+'"><b>'+esc(c.code)+'</b>'+esc(c.name)
+      + (r.locked ? '<em>mở từ tuần '+r.from+'</em>' : '')+'</button>';
+  }
+  var khi=rail.filter(function(r){ return TD_CARD_BY_ID[r.id].slot==="khi"; });
+  var dinh=rail.filter(function(r){ return TD_CARD_BY_ID[r.id].slot!=="khi"; });
+  return '<h3>Khi cần</h3>'+khi.map(item).join("")+'<h3>Định kỳ</h3>'+dinh.map(item).join("");
+}
+function renderTuDuy(){
+  var v=document.getElementById("view-tuduy");
+  if(!v || v.hidden) return;
+  var today=tdNow(), start=tdStart(), date=tdClampDate(tdState.date||today, start, today);
+  tdState.date=date;
+  var days=tdDaysView(), plan=tdPlan(date,start,days), week=plan.week;
+  var shown=plan.sang.concat(plan.toi), extra=[], opened=tdState.opened[date] || {};
+  TD_CARDS.forEach(function(c){
+    if(shown.indexOf(c.id)<0 && (plan.open.indexOf(c.id)>=0 || opened[c.id])) extra.push(c.id);
+  });
+  function cards(ids){ return ids.map(function(id){ return tdCardHtml(id,date,week); }).join(""); }
+  var fs=tdFsOk();
+  v.innerHTML =
+    '<div class="intro"><h1>Luyện tư duy</h1><p>Mỗi ngày chỉ hiện những thẻ đến lượt theo lộ trình 12 tuần. Sáng làm phần làm trước được, tối nhập phần đã ghi chú trong ngày, rồi bấm Lưu để ghi ra file <code>'+esc(tdFileName(date))+'</code>.</p></div>'
+    + '<div class="td-bar">'
+    + '<button type="button" class="ghost" data-td-act="prev" aria-label="Ngày trước"'+(date<=start ? " disabled" : "")+'>‹</button>'
+    + '<b class="td-date">'+esc(tdVnDate(date))+'</b>'
+    + '<button type="button" class="ghost" data-td-act="next" aria-label="Ngày sau"'+(date>=today ? " disabled" : "")+'>›</button>'
+    + '<span class="tag">'+(week<=12 ? "Tuần "+week+"/12" : "Tuần "+week)+'</span>'
+    + (date!==today ? '<button type="button" class="ghost" data-td-act="today">Về hôm nay</button>' : '')
+    + '<span class="td-st" id="td-status" role="status">'+esc(tdStatusFor(date))+'</span>'
+    + (tdState.dir && tdState.perm==="prompt" ? '<button type="button" class="ghost" data-td-act="connect">Kết nối thư mục nhật ký</button>' : '')
+    + (tdState.writeFailed ? '<button type="button" class="ghost" data-td-act="repick">Chọn lại thư mục</button>' : '')
+    + (tdState.force===date && tdState.draft[date] ? '<button type="button" class="ghost" data-td-act="discard">Bỏ bản nháp, xem bản trong thư mục</button>' : '')
+    + (fs ? '' : '<button type="button" class="ghost" data-td-act="import">Nạp file nhật ký</button>')
+    + '<button type="button" class="td-save" id="td-save" data-td-act="save">Lưu</button>'
+    + '<input type="file" id="td-file" multiple accept=".json" hidden>'
+    + '</div>'
+    + (tdState.bad ? '<p class="td-bad">Bỏ qua '+tdState.bad+' file không đọc được.</p>' : '')
+    + '<div class="td-grid"><div class="td-main">'
+    + '<div id="td-banner"></div>'
+    + '<section class="td-sec"><h2>Buổi sáng</h2><div id="td-due"></div><div id="td-signals"></div>'
+    + (plan.sang.length ? cards(plan.sang) : '<p class="td-empty">Sáng nay không có thẻ nào đến lượt.</p>')+'</section>'
+    + '<section class="td-sec"><h2>Buổi tối</h2>'+cards(plan.toi)+'</section>'
+    + (extra.length ? '<section class="td-sec"><h2>Mở thêm hôm nay</h2>'+cards(extra)+'</section>' : '')
+    + '</div><aside class="td-rail" aria-label="Thẻ khác">'+tdRailHtml(plan.rail)+'</aside></div>';
+  tdAfterRender(date, plan, days);
+}
+/* ---- màn hình riêng: T1, Rà soát tuần, T7, T8 ---- */
+var TD_T1_HINT = ["Task ___ sẽ xong trước ___ — ___%","Đề xuất/yêu cầu ___ của tôi sẽ được duyệt — ___%","Bạn ___ sẽ hoàn thành ___ mà không cần hỏi tôi — ___%"];
+var TD_GRADE = [["dung","Đúng"],["sai","Sai"],["chua","Chưa tới hạn"]];
+function tdDmy(s){ return s.slice(8,10)+"/"+s.slice(5,7)+"/"+s.slice(0,4); }
+TD_RENDER.t1 = function(date){
+  var rows=tdT1Rows(date), n=Math.max(1, rows.length);
+  var html='<p class="td-note">Ba quy tắc bắt buộc: mệnh đề phải kiểm chứng được · không dùng 50% · dòng “điều gì sẽ khiến tôi sai” là dòng quan trọng nhất. Tuần cực bận: 1 dự đoán thay vì 3.</p><div class="td-err" id="td-v-g"></div>';
+  for(var i=0;i<n;i++){
+    var p=rows[i] || {}, b="t1.predictions."+i;
+    html += '<div class="td-item"><div class="td-item-h"><span>Dự đoán '+(i+1)+'</span>'
+      + (n>1 ? '<button type="button" class="td-x" data-td-act="delpred:'+i+'">xoá</button>' : '')+'</div>'
+      + '<label class="td-f"><span>Mệnh đề</span><input class="td-in" type="text" data-td-path="'+b+'.text" data-td-t="text" value="'+esc(p.text||"")+'" placeholder="'+esc(TD_T1_HINT[i]||"")+'"></label>'
+      + '<div class="td-add">'
+      + '<label class="td-f"><span>Xác suất</span><span class="td-pct"><input class="td-in" type="number" min="1" max="99" inputmode="numeric" data-td-path="'+b+'.prob" data-td-t="num" value="'+esc(p.prob==null ? "" : p.prob)+'">%</span></label>'
+      + '<label class="td-f"><span>Hạn chót</span><input class="td-in" type="date" data-td-path="'+b+'.due" data-td-t="text" value="'+esc(p.due||"")+'"></label></div>'
+      + '<label class="td-f"><span>Căn cứ (1 dòng)</span><input class="td-in" type="text" data-td-path="'+b+'.basis" data-td-t="text" value="'+esc(p.basis||"")+'"></label>'
+      + '<label class="td-f"><span>Điều gì sẽ khiến tôi sai</span><input class="td-in" type="text" data-td-path="'+b+'.wrongIf" data-td-t="text" value="'+esc(p.wrongIf||"")+'"></label>'
+      + '<div id="td-v-'+i+'"></div></div>';
+  }
+  return html+'<div class="td-add"><button type="button" class="ghost" data-td-act="addpred"'+(n>=3 ? " disabled" : "")+'>+ Thêm dự đoán</button></div>';
+};
+TD_RENDER.review = function(date){
+  var days=tdDaysView(), list=tdReviewList(days,date), r=tdView(date).review || {}, st=r.stats || {};
+  var ws=tdWeekStats(days, tdAddDays(tdMonday(date),-7));
+  function stat(k,l,v){
+    var cur = st[k]!=null && st[k]!=="" ? st[k] : (v==null ? "" : v);
+    return '<label class="td-f"><span>'+esc(l)+'</span><span class="td-pct"><input class="td-in" type="number" min="0" data-td-path="review.stats.'+k+'" data-td-t="num" value="'+esc(cur)+'"></span></label>';
+  }
+  function f(k,t,l,ph){ var o={k:k,t:t,l:l}; var h=tdFieldHtml(o,"review",r); return ph ? h.replace('data-td-t="num"','data-td-t="num" placeholder="'+esc(ph)+'"') : h; }
+  var preds = list.length ? list.map(function(p){
+      return '<div class="td-item"><div class="td-item-h"><span>'+esc(tdVnDate(p.date))+' · '+esc(p.prob)+'% · hạn '+esc(p.due ? tdDmy(p.due) : "—")+'</span></div>'
+        + '<p>'+esc(p.text||"")+'</p><div class="seg">'
+        + TD_GRADE.map(function(g){
+            return '<button type="button" data-td-set="review.grades.'+esc(p.id)+'" data-td-v="'+g[0]+'" class="'+(p.grade===g[0] ? "on" : "")+'">'+g[1]+'</button>';
+          }).join("")+'</div>'
+        + '<label class="td-f"><span>Ghi chú</span><input class="td-in" type="text" data-td-path="review.notes.'+esc(p.id)+'" data-td-t="text" value="'+esc((r.notes && r.notes[p.id]) || "")+'"></label></div>';
+    }).join("") : '<p class="td-empty">Không còn dự đoán nào cần chấm.</p>';
+  var cAvg = ws.creativeAvg;
+  return '<p class="td-note">CHẤM DỰ ĐOÁN</p>'+preds
+    + f("wrongest","text","Cái sai nhất — tôi đã bỏ qua yếu tố gì?")
+    + f("changedMind","text","TUẦN NÀY TÔI ĐÃ ĐỔI Ý VỀ ĐIỀU GÌ?")
+    + '<p class="td-note">(Nếu 3 tuần liên tiếp không đổi ý về điều gì → tôi đang không thực sự cân nhắc phương án khác, chỉ đang tìm lý do cho phương án đã chọn)</p>'
+    + '<p class="td-note">PHÂN BỔ THỜI GIAN TUẦN NÀY (ước lượng thô) — ← dưới 20% kiến tạo là báo động</p><div class="td-add">'
+    + f("reactivePct","pct","Phản ứng (bị kéo vào)", cAvg==null ? "" : String(100-cAvg))
+    + f("creativePct","pct","Kiến tạo (tự chọn, không ai yêu cầu)", cAvg==null ? "" : String(cAvg))+'</div>'
+    + f("selfCheck","text","MỘT CÂU TỰ KIỂM — Việc tôi làm tuần này khiến team mạnh lên, hay chỉ khiến kết quả tuần này đẹp hơn?")
+    + f("hoarded","text","Tuần này tôi ôm việc gì mà lẽ ra nên giao?")
+    + f("avoided","text","Tuần này tôi né cuộc nói chuyện nào?")
+    + '<p class="td-note">SỐ LIỆU TUẦN TRƯỚC — trang tự đếm, anh sửa được</p><div class="td-add">'
+    + stat("the4","Tick Thẻ 4 “tôi làm vì nhanh hơn”", ws.the4)
+    + stat("nod2B","“Gật đầu deadline” ở Thẻ 2B", ws.nod2B)
+    + stat("creativeAvg","% kiến tạo trung bình (Thẻ 6)", ws.creativeAvg)+'</div>';
+};
+function tdT7MonthFor(date){ var e=tdView(date).t7; return (e && e.month) || tdT7Month(date) || date.slice(0,7); }
+function tdT7Sync(date){
+  var w=tdWork(date), m=tdT7MonthFor(date);
+  w.t7=w.t7 || {}; w.t7.month=m;
+  w.t7.table=tdT7Table(tdDaysView(), m).map(function(r){ return {bucket:r.bucket, n:r.n, hit:r.hit}; });
+}
+function tdCell(v,suffix){ return v==null ? "—" : esc(v)+(suffix||""); }
+TD_RENDER.t7 = function(date){
+  var days=tdDaysView(), m=tdT7MonthFor(date), t=tdT7Table(days,m), e=tdView(date).t7 || {};
+  var week=tdWeekNo(date, tdStart());
+  var head='<tr><th>Nhóm xác suất</th><th>Số dự đoán</th><th>Số đúng</th><th>Tỷ lệ thực</th><th>TB đã ghi</th><th>Lệch</th></tr>';
+  var body=t.map(function(r){
+    return '<tr><td>'+r.bucket+'%</td><td>'+r.n+'</td><td>'+r.hit+'</td><td>'+tdCell(r.rate,"%")+'</td><td>'+tdCell(r.avgProb,"%")+'</td><td>'
+      + (r.diff==null ? "—" : (r.diff>0 ? "+" : "")+r.diff)+'</td></tr>';
+  }).join("");
+  var cmp="";
+  if(week>=12){
+    var months={};
+    tdPredictions(days).forEach(function(p){ if(p.due && p.due<=date) months[p.due.slice(0,7)]=1; });
+    cmp='<p class="td-note">SO SÁNH GIỮA CÁC THÁNG — độ lệch từng nhóm</p><div class="td-tbl"><table><tr><th>Tháng</th><th>20-40</th><th>40-60</th><th>60-80</th><th>80-100</th></tr>'
+      + Object.keys(months).sort().map(function(mm){
+          return '<tr><td>'+mm.slice(5,7)+'/'+mm.slice(0,4)+'</td>'+tdT7Table(days,mm).map(function(r){
+            return '<td>'+(r.diff==null ? "—" : (r.diff>0 ? "+" : "")+r.diff)+'</td>'; }).join("")+'</tr>';
+        }).join("")+'</table></div>';
+  }
+  return '<p class="td-note">THÁNG '+m.slice(5,7)+'/'+m.slice(0,4)+' · Tổng số dự đoán đã tới hạn và đã chấm: '+t.reduce(function(s,r){ return s+r.n; },0)+'</p>'
+    + '<div class="td-tbl"><table>'+head+body+'</table></div>'
+    + '<p class="td-note">ĐỌC KẾT QUẢ: Nhóm 70% mà đúng ~7/10 → hiệu chỉnh tốt · Nhóm 70% mà đúng 9/10 → quá dè dặt, nên mạnh dạn hơn · Nhóm 70% mà đúng 4/10 → quá tự tin, đây là hướng lệch phổ biến nhất</p>'
+    + cmp
+    + '<p class="td-note">MẪU LẶP LẠI TÔI THẤY</p>'
+    + tdFieldsHtml([tdF("wrongAbout","text","Tôi thường sai khi dự đoán về"), tdF("rightAbout","text","Tôi thường đúng khi dự đoán về"), tdF("missed","text","Yếu tố tôi hay bỏ qua nhất")], "t7.patterns", e.patterns || {})
+    + '<p class="td-note">Lưu ý: tháng đầu tiên số liệu chưa nói lên gì (quá ít mẫu). Từ tháng thứ ba trở đi mới đọc được xu hướng.</p>';
+};
+function tdNextSlot(s){
+  var m=/^(\d{1,2}):(\d{2})$/.exec(s||""); if(!m) return "";
+  var t=(+m[1])*60+(+m[2])+30; return tdPad(Math.floor(t/60)%24)+":"+tdPad(t%60);
+}
+TD_RENDER.t8 = function(date){
+  var days=tdDaysView(), t8=tdView(date).t8 || {}, bl=t8.blocks || [], s=tdT8Stats(days,date), a=t8.analysis || {};
+  var rows=bl.map(function(b,i){
+    var base="t8.blocks."+i;
+    return '<div class="td-item"><div class="td-item-h"><span>Khối '+(i+1)+'</span><button type="button" class="td-x" data-td-act="delblock:'+i+'">xoá</button></div><div class="td-add">'
+      + '<label class="td-f"><span>Khung giờ</span><input class="td-in" type="text" data-td-path="'+base+'.slot" data-td-t="text" value="'+esc(b.slot||"")+'" placeholder="8:30"></label>'
+      + '<label class="td-f"><span>Ai khởi xướng</span><input class="td-in" type="text" data-td-path="'+base+'.by" data-td-t="text" value="'+esc(b.by||"")+'"></label></div>'
+      + '<label class="td-f"><span>Làm gì</span><input class="td-in" type="text" data-td-path="'+base+'.what" data-td-t="text" value="'+esc(b.what||"")+'"></label>'
+      + '<div class="seg"><button type="button" data-td-set="'+base+'.pk" data-td-v="P" class="'+(b.pk==="P" ? "on" : "")+'">P · Phản ứng</button>'
+      + '<button type="button" data-td-set="'+base+'.pk" data-td-v="K" class="'+(b.pk==="K" ? "on" : "")+'">K · Kiến tạo</button></div></div>';
+  }).join("");
+  var top=[1,2,3].map(function(i){
+    return tdFieldsHtml([tdF("top"+i,"text",i+". Việc"), tdF("top"+i+"Blocks","num","Số khối"), tdF("top"+i+"NeedMe","yn","Có cần tôi không?",TD_YN)], "t8.analysis", a);
+  }).join("");
+  return '<p class="td-note">P = Phản ứng (ai đó/việc gì kéo tôi vào) · K = Kiến tạo (tôi chủ động chọn, không ai yêu cầu)</p>'
+    + rows + '<div class="td-add"><button type="button" class="ghost" data-td-act="addblock">+ Thêm khối 30 phút</button></div>'
+    + '<p class="td-note">14 NGÀY GẦN NHẤT — Tổng số khối 30 phút: '+s.blocks+' · Phản ứng: '+s.p+' khối ('+tdCell(s.pPct,"%")+') · Kiến tạo: '+s.k+' khối ('+tdCell(s.kPct,"%")+')</p>'
+    + '<p class="td-note">BA VIỆC NGỐN NHIỀU THỜI GIAN NHẤT</p>'+top
+    + tdFieldsHtml([tdF("handoff","text","VIỆC TRẢ LỜI “KHÔNG” Ở TRÊN → giao cho ai, hoặc bỏ hẳn?"),
+                    tdF("actionBlocks","num","HÀNH ĐỘNG: chặn trước ____ khối/tuần cho việc kiến tạo"),
+                    tdF("actionSlot","text","vào khung giờ ____ (chọn khung ít bị ngắt nhất theo dữ liệu trên)")], "t8.analysis", a);
+};
+var TD_DUE_LABEL = {pred:"Dự đoán tới hạn", sbi:"Phản hồi SBI cần nói", deleg:"Kiểm tra việc đã giao", pending:"Điều cần nói (Thẻ 6)"};
+var tdScrollTo = null;
+function tdRefreshT1(date){
+  var errs=tdT1Errors(date), g=document.getElementById("td-v-g"), save=document.getElementById("td-save");
+  for(var i=0;i<3;i++){
+    var el=document.getElementById("td-v-"+i);
+    if(el) el.innerHTML=errs.filter(function(e){ return e.i===i; }).map(function(e){
+      return '<p class="'+(e.level==="block" ? "td-err" : "td-warn")+'">'+esc(e.msg)+'</p>'; }).join("");
+  }
+  if(g) g.innerHTML=errs.filter(function(e){ return e.i<0; }).map(function(e){ return esc(e.msg); }).join(" ");
+  if(save){ var blk=tdSaveBlocked(date); save.disabled=blk; save.title=blk ? "Sửa lỗi ở T1 trước khi lưu" : ""; }
+}
+function tdAfterRender(date,plan,days){
+  var due=tdDueToday(days,date), dEl=document.getElementById("td-due");
+  dEl.innerHTML = due.length ? '<div class="td-card"><header><b>Đến hạn hôm nay</b></header>'
+    + due.map(function(x){
+        return '<button type="button" class="td-ri" data-td-act="goto:'+x.ref.date+':'+x.ref.card+'"><b>'+esc(TD_DUE_LABEL[x.kind])+'</b>'+esc(x.label)+'</button>';
+      }).join("")+'</div>' : '';
+  var sig=tdSignals(days,date);
+  document.getElementById("td-signals").innerHTML=sig.map(function(s){ return '<p class="td-warn">'+esc(s.text)+'</p>'; }).join("");
+  document.getElementById("td-banner").innerHTML = plan.banner
+    ? '<div class="td-card"><header><b>Tuần 12 — ngày rà soát: '+tdDmy(plan.banner.reviewDate)+'</b></header><p class="td-note">'+esc(plan.banner.text)+'</p></div>' : '';
+  tdRefreshT1(date);
+  if(tdScrollTo){
+    var el=document.getElementById("td-c-"+tdScrollTo); tdScrollTo=null;
+    if(el) el.scrollIntoView({block:"start"});
+  }
+}
+
+/* ---- sự kiện trong tab ---- */
+(function(){
+  var root=document.getElementById("view-tuduy");
+  function onInput(e){
+    var el=e.target, p=el.getAttribute && el.getAttribute("data-td-path");
+    if(!p) return;
+    var t=el.getAttribute("data-td-t");
+    var val = t==="check" ? el.checked : t==="num" ? (el.value==="" ? "" : Number(el.value)) : el.value;
+    tdSetPath(tdWork(tdState.date), p, val);
+    tdTouch();
+    tdOnInput(p);
+  }
+  root.addEventListener("input", onInput);
+  root.addEventListener("change", function(e){
+    if(e.target.id==="td-file"){
+      tdImport(e.target.files); return;
+    }
+    onInput(e);
+  });
+  root.addEventListener("click", function(e){
+    var b=e.target.closest ? e.target.closest("[data-td-act],[data-td-set]") : null;
+    if(!b || b.disabled) return;
+    var date=tdState.date;
+    if(b.hasAttribute("data-td-set")){
+      var path=b.getAttribute("data-td-set"), v=b.getAttribute("data-td-v"), w=tdWork(date);
+      tdSetPath(w, path, tdGetPath(w,path)===v ? "" : v);
+      tdTouch(); renderTuDuy(); return;
+    }
+    var a=b.getAttribute("data-td-act").split(":");
+    if(a[0]==="prev"){ tdGoDate(tdAddDays(date,-1)); return; }
+    if(a[0]==="next"){ tdGoDate(tdAddDays(date,1)); return; }
+    if(a[0]==="today"){ tdGoDate(tdNow()); return; }
+    if(a[0]==="discard"){
+      delete tdState.draft[date]; delete tdState.base[date]; tdState.force=null; tdState.msg="";
+      tdCacheSave(); renderTuDuy(); return;
+    }
+    if(a[0]==="save"){ tdSave(); return; }
+    if(a[0]==="connect"){ tdConnect(true); return; }
+    if(a[0]==="repick"){ tdState.dir=null; tdState.dirRead=false; tdSave(); return; }
+    if(a[0]==="import"){ document.getElementById("td-file").click(); return; }
+    if(a[0]==="open"){
+      (tdState.opened[date]=tdState.opened[date]||{})[a[1]]=true;
+      renderTuDuy();
+      var el=document.getElementById("td-c-"+a[1]); if(el) el.scrollIntoView({block:"start", behavior:"smooth"});
+      return;
+    }
+    if(a[0]==="goto"){ tdOnAct(a, null, date); return; }   /* chỉ điều hướng, không tạo bản nháp */
+    var w2=tdWork(date);
+    if(a[0]==="add"){ (w2[a[1]]=w2[a[1]]||[]).push({}); }
+    else if(a[0]==="addm"){ (w2.the2=w2.the2||[]).push({type:a[1], title:""}); }
+    else if(a[0]==="del"){ (w2[a[1]]||[]).splice(+a[2],1); }
+    else if(a[0]==="cnt"){ var c4=w2.the4=w2.the4||{}; c4.count=Math.max(0,(+c4.count||0)+(+a[1])); }
+    else if(a[0]==="additem"){ var arr=tdGetPath(w2,a[1]); if(!arr){ tdSetPath(w2,a[1]+".0",""); } else arr.push(""); }
+    else if(a[0]==="delitem"){ (tdGetPath(w2,a[1])||[]).splice(+a[2],1); }
+    else if(!tdOnAct(a, w2, date)) return;
+    tdTouch(); renderTuDuy();
+  });
+  window.addEventListener("beforeunload", function(e){
+    if(tdDirty()){ e.preventDefault(); e.returnValue=""; }
+  });
+  /* để tab mở qua đêm: quay lại trang thì sang hôm nay, trừ khi đang có bản nháp dở */
+  function roll(){
+    if(document.hidden || root.hidden || !tdState.date) return;
+    var nd=tdRollDate(tdState.date, tdNow(), tdState.follow, !!tdState.draft[tdState.date]);
+    if(nd!==tdState.date) tdGoDate(nd);
+  }
+  window.addEventListener("focus", roll);
+  document.addEventListener("visibilitychange", roll);
+})();
+function tdOnInput(path){
+  var date=tdState.date, m=/^t1\.predictions\.(\d+)\./.exec(path);
+  if(m){
+    var p=tdWork(date).t1.predictions[+m[1]];
+    if(p && !p.id) p.id=tdNewPredId(date);
+    tdRefreshT1(date);
+  }
+  if(path.indexOf("t7.")===0) tdT7Sync(date);
+}
+function tdNewPredId(date){
+  var max=0, t1=tdWork(date).t1, ps=(t1 && t1.predictions) || [];
+  ps.forEach(function(p){ var m=p && /#(\d+)$/.exec(p.id||""); if(m) max=Math.max(max,+m[1]); });
+  return date+"#"+(max+1);
+}
+function tdOnAct(a,w,date){
+  if(a[0]==="addpred"){
+    w.t1=w.t1 || {}; var ps=w.t1.predictions=w.t1.predictions || [];
+    if(!ps.length) ps.push({id:tdNewPredId(date)});
+    if(ps.length<3) ps.push({id:tdNewPredId(date)});
+    return true;
+  }
+  if(a[0]==="delpred"){ var t1=w.t1; if(t1 && t1.predictions) t1.predictions.splice(+a[1],1); return true; }
+  if(a[0]==="addblock"){
+    w.t8=w.t8 || {}; var bl=w.t8.blocks=w.t8.blocks || [];
+    bl.push({slot: bl.length ? tdNextSlot(bl[bl.length-1].slot) : ""});
+    return true;
+  }
+  if(a[0]==="delblock"){ if(w.t8 && w.t8.blocks) w.t8.blocks.splice(+a[1],1); return true; }
+  if(a[0]==="goto"){
+    tdScrollTo=a[2];
+    if(a[1]!==date){ tdGoDate(a[1]); return false; }
+    (tdState.opened[date]=tdState.opened[date]||{})[a[2]]=true;
+    renderTuDuy(); return false;
+  }
+  return false;
+}
+tdCacheLoad();
+tdConnect(false);
+
 /* ================= routing ================= */
 var baseView="#/";
 function route(){
@@ -2437,12 +3562,21 @@ function route(){
   var core = back.indexOf("#/core")===0;
   var read = back.indexOf("#/reading")===0;
   var pmpv = back.indexOf("#/pmp")===0;
-  document.getElementById("view-map").hidden = dash||core||read||pmpv;
+  var tdv = back.indexOf("#/tu-duy")===0;
+  document.getElementById("view-map").hidden = dash||core||read||pmpv||tdv;
   document.getElementById("view-core").hidden = !core;
   document.getElementById("view-reading").hidden = !read;
   document.getElementById("view-pmp").hidden = !pmpv;
   document.getElementById("view-dash").hidden = !dash;
-  document.getElementById("nav-map").className = (dash||core||read||pmpv)?"":"on";
+  document.getElementById("view-tuduy").hidden = !tdv;
+  document.getElementById("nav-tuduy").className = tdv?"on":"";
+  if(tdv){
+    var tdm=/^#\/tu-duy\/(\d{4}-\d{2}-\d{2})/.exec(back);
+    tdState.date = tdm ? tdm[1] : tdNow();
+    tdState.follow = tdState.date===tdNow();
+    renderTuDuy();
+  }
+  document.getElementById("nav-map").className = (dash||core||read||pmpv||tdv)?"":"on";
   document.getElementById("nav-core").className = core?"on":"";
   document.getElementById("nav-read").className = read?"on":"";
   document.getElementById("nav-pmp").className = pmpv?"on":"";
