@@ -431,6 +431,11 @@ a.rr:hover{border-color:var(--live);background:var(--live-tint)}
 .ms-stopb > b{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
 #ms-metrics td{white-space:normal;min-width:4.5em}
 #ms-metrics td,#ms-metrics th{text-align:left}
+.ms-notice{background:var(--learn-tint);border:1px solid var(--learn-line);border-radius:8px;padding:10px 14px;margin:12px 0 4px;
+  display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--ink)}
+.ms-notice .ghost{align-self:flex-start}
+.ms-anchor{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-faint);margin-top:12px}
+.ms-intro{font-size:13px;color:var(--ink-soft);font-weight:300;max-width:60ch;margin-top:4px}
 .pm-kd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
 .pm-kd h3{font-size:13.5px;font-weight:600;margin-bottom:4px}
 .pm-kd ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--ink-mid)}
@@ -701,6 +706,7 @@ textarea.td-in{resize:vertical}
     <h1>Roadmap kỹ năng: từ Dev lên Engineering Manager</h1>
     <p>Bốn giai đoạn, hai mươi mốt nhóm kỹ năng. Bấm vào một ô để mở chi tiết, tài liệu bấm-là-mở, và ô nhập bằng chứng để Claude chấm xem anh đã đạt kỹ năng đó chưa. Bấm chấm tròn bên trái để đổi trạng thái ngay tại chỗ.</p>
   </div>
+  <div id="ms-top"></div>
   <div class="legend">
     <span class="lg"><i></i>Chưa học</span>
     <span class="lg l"><i></i>Đang học</span>
@@ -830,20 +836,12 @@ textarea.td-in{resize:vertical}
 <main class="wrap" id="view-pmp" hidden>
   <div class="intro">
     <h1>PMP study track</h1>
-    <p>Không còn trên đường chính tới Engineering Manager — chỉ giữ phần dùng thật (xem Trạng thái bên dưới). Nhưng 60–80 giờ đã bỏ ra không mất: lộ trình 30 ngày trong <code>pmp/pmp_lo_trinh_30_ngay.md</code> vẫn là cách có cấu trúc nhất để lấy phần kiến thức dùng được. Tab này theo dõi nó, và đánh dấu rõ ngày nào có giá trị ngoài phòng thi, ngày nào chỉ để thi.</p>
+    <p>Không còn trên đường chính tới Engineering Manager — chỉ giữ phần dùng thật (xem Trạng thái bên dưới). 60–80 giờ đã bỏ ra không mất: phần đáng giữ nằm ở Trạng thái, còn lộ trình 30 ngày trong <code>pmp/pmp_lo_trinh_30_ngay.md</code> được gập ở cuối tab — vẫn tick và chấm được nếu sau này đủ điều kiện quay lại thi.</p>
   </div>
 
   <div class="dash">
 
     <section class="d-sec" id="pm-freeze"></section>
-    <section class="d-sec">
-      <div class="tiles">
-        <div class="tile d"><b id="pm-done" class="num">0</b><span>Ngày đã học</span></div>
-        <div class="tile"><b id="pm-avg" class="num">—</b><span>Điểm tự chấm TB</span></div>
-        <div class="tile l"><b id="pm-weak" class="num">0</b><span>Ngày dưới ngưỡng 7</span></div>
-        <div class="tile"><b id="pm-carry" class="num">0</b><span>Ngày có giá trị ngoài thi</span></div>
-      </div>
-    </section>
 
     <section class="d-sec">
       <header>
@@ -861,7 +859,6 @@ textarea.td-in{resize:vertical}
       </div>
     </section>
 
-    <div class="callout" id="pm-note"></div>
 
     <section class="d-sec">
       <header>
@@ -898,6 +895,15 @@ textarea.td-in{resize:vertical}
     </section>
 
     <details class="pm-frozen"><summary><h2>Lộ trình 30 ngày — đóng băng</h2></summary>
+    <section class="d-sec">
+      <div class="tiles">
+        <div class="tile d"><b id="pm-done" class="num">0</b><span>Ngày đã học</span></div>
+        <div class="tile"><b id="pm-avg" class="num">—</b><span>Điểm tự chấm TB</span></div>
+        <div class="tile l"><b id="pm-weak" class="num">0</b><span>Ngày dưới ngưỡng 7</span></div>
+        <div class="tile"><b id="pm-carry" class="num">0</b><span>Ngày có giá trị ngoài thi</span></div>
+      </div>
+    </section>
+    <div class="callout" id="pm-note"></div>
     <section class="d-sec">
       <header>
         <p>Tick ngày đã học, chấm 0–10. Luật ngưỡng 7 của anh: dưới 7 thì không đi tiếp — kiến thức PMP xếp chồng, thủng ở Day 6 thì Day 11 sập. Ngày có chip kỹ năng là ngày mang được thứ gì đó ra khỏi phòng thi.</p>
@@ -2649,8 +2655,14 @@ var MS_IDS = ["M0","M1","M2","M3"];
 var MS_DATE_KEYS = ["M0","M1","M2","M3","PMP"];
 var MS_BY_ID = {};
 MS_DATA.forEach(function(m){ MS_BY_ID[m.id]=m; });
-/* ngày ghi tay ở bản cũ: d/m/yyyy hoặc dd/mm/yyyy; ngày không có thật trả về null */
+/* câu dẫn, mốc khởi điểm và tiêu đề bằng chứng M0 của bản cũ — nguyên văn */
+var MS_INTRO = "Mốc được định nghĩa bằng dấu hiệu quan sát được, không bằng chức danh. Chức danh đến sau, và thường đến muộn hơn thực tế vài tháng.";
+var MS_ANCHOR = ["Product company","Đích: Engineering Manager","Khởi điểm 08/09/2026","Rà soát đầu tiên 08/03/2027"];
+var MS_EV_TITLE = "Bằng chứng cần thu — đây cũng là hồ sơ đề xuất lên EM sau này";
+/* ngày ghi tay ở bản cũ: d/m/yyyy, dd/mm/yyyy hoặc yyyy-mm-dd; ngày không có thật trả về null */
 function msParseOldDate(s){
+  var iso=s==null ? "" : String(s).trim();
+  if(TD_DATE_RE.test(iso)) return tdDateStr(tdParse(iso))===iso ? iso : null;
   var m=/^\s*(\d{1,2})\/(\d{1,2})\/(\d{4})\s*$/.exec(s==null ? "" : String(s));
   if(!m) return null;
   var d=new Date(+m[3], +m[2]-1, +m[1]);
@@ -2668,7 +2680,7 @@ function msNormalize(x){
 }
 /* chuyển từ khoá career-path-em-v1 của lo-trinh-em: chỉ điền chỗ trống, bỏ các ô 30 ngày đầu (p-*, w*-*) */
 function msMigrate(old,ms){
-  var out=msNormalize(ms), count=0, skipped=0, o=tdIsObj(old) ? old : {};
+  var out=msNormalize(ms), count=0, skippedList=[], o=tdIsObj(old) ? old : {};
   var ch=tdIsObj(o.checked) ? o.checked : {}, dt=tdIsObj(o.dates) ? o.dates : {};
   Object.keys(ch).forEach(function(k){
     if(ch[k]===true && /^m[0-3]-/.test(k) && !out.checked[k]){ out.checked[k]=true; count++; }
@@ -2677,11 +2689,11 @@ function msMigrate(old,ms){
     var v=dt[k];
     if(v==null || !String(v).trim()) return;
     var iso=msParseOldDate(v);
-    if(!iso){ skipped++; return; }
+    if(!iso){ skippedList.push({k:k, v:String(v)}); return; }
     if(!out.dates[k]){ out.dates[k]=iso; count++; }
   });
   out.from="lo-trinh-em";
-  return {ms:out, count:count, skipped:skipped};
+  return {ms:out, count:count, skipped:skippedList.length, skippedList:skippedList};
 }
 /* "Xoá tiến độ": bỏ ô tick + ngày, giữ cờ from để không chuyển lại từ bản cũ; không để trường undefined (db từ chối) */
 function msReset(ms){ return msNormalize({from: ms && ms.from}); }
@@ -3336,7 +3348,7 @@ function renderPmp(){
   var pct = m===null ? 0 : Math.min(100, Math.round(m/36*100));
   document.getElementById("pm-mfill").style.width = pct + "%";
   document.getElementById("pm-verdict").innerHTML =
-    m === null ? 'Chưa điền. Đếm lại số tháng thật rồi ghi vào đây và vào <code>pmbok8_ghi_chu.md</code> — nó quyết định kỳ thi có chạy được không.'
+    m === null ? 'Chưa điền. Chỉ cần khi xét điều kiện quay lại thi (xem Trạng thái ở trên) — đếm số tháng dẫn dắt thật rồi ghi vào đây.'
     : m >= 36  ? '<b>Đủ điều kiện nộp hồ sơ.</b> Nếu anh cũng đang cân nhắc chuyển sang môi trường có PMO thì mở lại kỳ thi; nếu vẫn ở product company và đích là EM thì chứng chỉ này không thêm gì cho hồ sơ.'
     : 'Còn thiếu <b>' + (36-m) + ' tháng</b>. Chặng M1 và M2 trên roadmap chính là nơi tích luỹ số tháng đó — dẫn dắt thật, không phải chờ chức danh.';
 
@@ -3981,7 +3993,7 @@ function msPanelHtml(m){
     + '<h4>Đã tới khi</h4><ol>'+m.reached.map(li).join("")+'</ol>'
     + '<div class="ms-split"><div><h4>Đo hằng tuần</h4><ul>'+m.weekly.map(li).join("")+'</ul></div>'
     + '<div><h4>Đo hằng quý</h4><ul>'+m.quarterly.map(li).join("")+'</ul></div></div>'
-    + '<h4>Bằng chứng cần thu</h4><ul class="ms-ev">'
+    + '<h4>'+esc(m.id==="M0" ? MS_EV_TITLE : "Bằng chứng cần thu")+'</h4><ul class="ms-ev">'
     + m.evidence.map(function(e){
         return '<li><label><input type="checkbox" data-ms-check="'+e.id+'"'+(state.ms.checked[e.id] ? ' checked' : '')+'>'
           + '<span>'+esc(e.t)+'<em>'+esc(e.n)+'</em></span></label></li>';
@@ -4019,6 +4031,23 @@ function msRenderDash(){
     }).join("")
     + (msLowCreative(days,today) ? '<p class="td-warn">'+esc(MS_LOW_CREATIVE)+'</p>' : '');
 }
+/* đầu tab Roadmap: thông báo chuyển dữ liệu (nếu có) + mốc khởi điểm và câu dẫn của lộ trình theo mốc */
+var MS_DATE_NAME = {M0:"M0", M1:"M1", M2:"M2", M3:"M3", PMP:"ngày hoãn PMP"};
+function msRenderTop(){
+  var n=null;
+  try{ n=JSON.parse(localStorage.getItem("roadmap-em-msnotice")||"null"); }catch(e){}
+  var notice = n ? '<div class="ms-notice" role="status"><p>Đã chuyển '+(+n.count||0)+' mục từ lo-trinh-em (ô bằng chứng và ngày đạt mốc).</p>'
+      + (n.skipped && n.skipped.length ? '<p>Không đọc được '+n.skipped.length+' ngày ở bản cũ — nhập lại bằng tay trong khối Mốc: '
+          + n.skipped.map(function(s){ return esc(MS_DATE_NAME[s.k] || s.k)+': “'+esc(s.v)+'”'; }).join(" · ")+'</p>' : '')
+      + '<button type="button" class="ghost" data-ms-dismiss>Đã xem, ẩn thông báo</button></div>' : '';
+  document.getElementById("ms-top").innerHTML = notice
+    + '<p class="ms-anchor">'+MS_ANCHOR.map(esc).join(" · ")+'</p><p class="ms-intro">'+esc(MS_INTRO)+'</p>';
+}
+document.addEventListener("click", function(e){
+  if(!e.target.closest || !e.target.closest("[data-ms-dismiss]")) return;
+  try{ localStorage.removeItem("roadmap-em-msnotice"); }catch(err){}
+  msRenderTop();
+});
 /* tab PMP: "Sổ PMP viết lại" của lo-trinh-em — giữ phần dùng thật, lộ trình 30 ngày đóng băng */
 function msRenderPmpFreeze(){
   var p=MS_PMP;
@@ -4087,8 +4116,13 @@ function route(){
     document.getElementById("scrim").classList.remove("on");
   }
   if(!dash && h==="#/") window.scrollTo({top:window.scrollY});
-  var moc=/^#\/moc\/(M[0-3])$/.exec(back);
-  if(moc) msOpen(moc[1]);
+  /* #/moc/M* chỉ là lối vào một lần: mở khối rồi trả hash về #/, để mở/đóng kỹ năng sau đó không cuộn lại về đây */
+  var moc=/^#\/moc\/(M[0-3])$/.exec(h);
+  if(moc){
+    msOpen(moc[1]);
+    try{ history.replaceState(null, "", "#/"); }catch(e){}
+    baseView="#/";
+  }
 }
 
 /* ================= persistence ================= */
@@ -4102,6 +4136,10 @@ function msAutoMigrate(){
   var r=msMigrate(old, state.ms);
   state.ms=r.ms; writeLocal();
   if(r.count) status("đã chuyển "+r.count+" mục từ lo-trinh-em");
+  /* thông báo cố định ở đầu tab Roadmap cho tới khi bấm ẩn — ngày bỏ qua phải nhập lại bằng tay, file cũ đã xoá */
+  if(r.count || r.skippedList.length){
+    try{ localStorage.setItem("roadmap-em-msnotice", JSON.stringify({count:r.count, skipped:r.skippedList})); }catch(e){}
+  }
   return r.count;
 }
 function status(m){ var el=document.getElementById("save"); el.textContent=m;
@@ -4349,7 +4387,7 @@ window.addEventListener("hashchange",route);
 
 var local=readLocal();
 if(local && local.s) state={s:local.s, ev:(local.ev&&typeof local.ev==="object")?local.ev:{}, rd:(local.rd&&typeof local.rd==="object")?local.rd:{}, days:(local.days&&typeof local.days==="object")?local.days:{}, pmp:(local.pmp&&typeof local.pmp==="object")?local.pmp:{}, pmpSc:(local.pmpSc&&typeof local.pmpSc==="object")?local.pmpSc:{}, pmpM:(typeof local.pmpM==="number"?local.pmpM:null), ms:msNormalize(local.ms)};
-msAutoMigrate();
+msAutoMigrate(); msRenderTop();
 buildTrack(); paint(); route();
 
 if(window.claude && typeof window.claude.use==="function"){

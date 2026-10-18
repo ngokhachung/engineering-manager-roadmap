@@ -539,4 +539,34 @@ test("nút Xoá tiến độ dùng msReset", () => {
   assert.match(inlineScript, /pmpM:null,ms:msReset\(state\.ms\)\}; paint\(\); save\(\); status\("đã xoá"\)/);
 });
 
+/* ---------------- Gộp lo-trinh-em — lượt sửa sau review độc lập ---------------- */
+test("R1: ngày cũ dạng yyyy-mm-dd cũng chuyển được; ngày không có thật thì không", () => {
+  assert.equal(td.msParseOldDate("2026-10-01"), "2026-10-01");
+  assert.equal(td.msParseOldDate("2026-02-31"), null);
+});
+test("R1: msMigrate trả danh sách ngày bỏ qua kèm giá trị gốc", () => {
+  const r = td.msMigrate({ checked: {}, dates: { M1: "khoảng tháng 3", PMP: " 31/02/2026 ", M0: "01/10/2026" } }, {});
+  assert.deepEqual(r.skippedList, [{ k: "M1", v: "khoảng tháng 3" }, { k: "PMP", v: " 31/02/2026 " }]);
+  assert.equal(r.skipped, 2);
+});
+test("R1: thông báo chuyển dữ liệu nằm đầu tab Roadmap, không chỉ ở dòng trạng thái cuối trang", () => {
+  assert.ok(html.includes('<div id="ms-top"></div>'));
+  assert.match(inlineScript, /localStorage\.setItem\("roadmap-em-msnotice"/);
+});
+test("R3: tab PMP không còn lời khuyên ôn thi ngoài khối đóng băng", () => {
+  const intro = html.slice(html.indexOf("<h1>PMP study track</h1>"), html.indexOf('<div class="dash">', html.indexOf("<h1>PMP study track</h1>")));
+  assert.ok(!intro.includes("vẫn là cách có cấu trúc nhất"));
+  const frozen = html.indexOf('<details class="pm-frozen">');
+  assert.ok(frozen > 0 && frozen < html.indexOf('id="pm-done"') && frozen < html.indexOf('id="pm-note"'));
+  assert.ok(!inlineScript.includes("nó quyết định kỳ thi có chạy được không"));
+});
+test("R4: câu nguyên tắc, mốc khởi điểm và câu hồ sơ đề xuất của bản cũ được giữ nguyên văn", () => {
+  assert.ok(O.includes(norm(td.MS_INTRO)));
+  for (const s of td.MS_ANCHOR) assert.ok(O.includes(norm(s)), s);
+  assert.deepEqual(td.MS_ANCHOR, ["Product company", "Đích: Engineering Manager", "Khởi điểm 08/09/2026", "Rà soát đầu tiên 08/03/2027"]);
+  assert.ok(O.includes(norm(td.MS_EV_TITLE)));
+  assert.match(inlineScript, /m\.id==="M0" \? MS_EV_TITLE : "Bằng chứng cần thu"/);
+  assert.match(inlineScript, /esc\(MS_INTRO\)/);
+});
+
 module.exports = { root, load, inlineScript, day, P };
