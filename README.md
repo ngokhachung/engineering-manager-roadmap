@@ -10,12 +10,12 @@ Không có build step, không có dependency. Mở `roadmap-em.html` bằng trì
 
 | Tab | Làm gì |
 |---|---|
-| **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 98" khi cần bản đồ đầy đủ. |
+| **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 98" khi cần bản đồ đầy đủ. Mỗi giai đoạn có khối **Mốc M0–M3** (tháng 0–3, 3–9, 9–18, 18–30): dấu hiệu đã tới, chỉ số đo hằng tuần/quý, bằng chứng cần thu có ô tick, bẫy của mốc, cửa sang mốc sau, ngày đạt mốc. |
 | **Cốt lõi** | 19 kỹ năng lõi kèm lý do vì sao là lõi, cộng phần kiểm kê tài liệu học và bảng 70 template PMBOK phân loại dùng / để dành / bỏ. |
 | **Đọc sách** | 16 mục đọc từ 5 cuốn, 2 phase, cộng 60 ngày attention training. Mỗi mục nối thẳng vào các kỹ năng nó phục vụ. |
 | **Luyện tư duy** | Làm các bài trong `tu-duy-leader/` ngay trên trang. Mỗi ngày chỉ hiện những thẻ đến lượt theo lộ trình 12 tuần, chia buổi sáng và buổi tối. Trang tự gom dự đoán để chấm, tính bảng hiệu chỉnh T7, và báo các tín hiệu lặp lại mà thẻ đã định ngưỡng. Bấm Lưu thì ghi ra `nhat-ky/YYYY-MM-DD.json`. |
-| **PMP** | Phân tích chứng chỉ PMP: ba domain của ECO với trọng số, mindset được kiểm tra (thang bậc hành động, chuỗi ưu tiên, 12 đáp án gần như luôn sai), và thu hoạch thật khi học xong. Kèm lộ trình 30 ngày có tự chấm 0–10 và theo dõi điều kiện dự thi. |
-| **Dashboard** | Cân bằng ba trục Leverage / People / Systems, tiến độ theo giai đoạn, danh sách đã xác minh, gợi ý học tiếp theo trục đang yếu nhất. |
+| **PMP** | Phân tích chứng chỉ PMP: ba domain của ECO với trọng số, mindset được kiểm tra (thang bậc hành động, chuỗi ưu tiên, 12 đáp án gần như luôn sai), và thu hoạch thật khi học xong. Trạng thái **đóng băng**: không còn trên đường chính, chỉ giữ phần dùng thật (sổ rủi ro, bảng bên liên quan, quản trị thay đổi), kèm điều kiện quay lại thi. Lộ trình 30 ngày có tự chấm 0–10 vẫn dùng được, nằm trong khối gập. |
+| **Dashboard** | Cân bằng ba trục Leverage / People / Systems, tiến độ theo giai đoạn kèm bằng chứng mốc, bảng 14 chỉ số dẫn dắt / kết quả (cột "Tuần trước" tự tính từ tab Luyện tư duy), tiêu chí dừng của lộ trình, danh sách đã xác minh, gợi ý học tiếp theo trục đang yếu nhất. |
 
 ## Mỗi kỹ năng có gì
 
@@ -67,7 +67,8 @@ Cấu trúc:
   "reading":  { "ch3": 1 },
   "attentionDays": { "1": 1 },
   "pmpDays":  { "9": 1 },
-  "pmpScores": { "9": 8 }
+  "pmpScores": { "9": 8 },
+  "milestones": { "checked": { "m0-doc": true }, "dates": { "M0": "2026-10-01" } }
 }
 ```
 
@@ -85,11 +86,14 @@ Tab Luyện tư duy ghi mỗi ngày thành một file `nhat-ky/YYYY-MM-DD.json`.
 
 Thư mục này **không lên git**: `.gitignore` kiểu allowlist chặn sẵn, và nên giữ như vậy vì nhật ký có tên và nhận xét về người trong team. Mở bản publish trên claude.ai hoặc dùng trình duyệt không có File System Access API thì nút Lưu tải file về máy, và nút "Nạp file nhật ký" đọc lại các file đó.
 
+## Lộ trình theo mốc
+
+`lo-trinh-em.html` (lộ trình 30 tháng, 4 mốc) đã gộp vào `roadmap-em.html`: khối Mốc ở từng giai đoạn trên tab Roadmap, bảng chỉ số và tiêu chí dừng trên Dashboard, "Sổ PMP viết lại" trên tab PMP. Ô tick và ngày đạt mốc của bản cũ tự chuyển sang khi mở roadmap từ ổ đĩa lần đầu. File cũ vẫn xem được trong lịch sử git (commit `e07e5b6`).
+
 ## Không có trong repo này
 
 Sách và tài liệu khoá học có bản quyền (PMBOK® Guide, PMP Examination Content Outline, *Crafting Engineering Strategy*, bộ template PMBOK, transcript khoá Udemy). Roadmap có trỏ tới chúng bằng đường dẫn tương đối — muốn dùng phần đó thì tự đặt bản hợp lệ của mình vào đúng vị trí.
 
 ## Các file khác
 
-- `lo-trinh-em.html` — bản lộ trình theo mốc thời gian (30 tháng, 4 mốc). Bản cũ, giữ lại để đối chiếu; `roadmap-em.html` mới là bản đang dùng.
 - `lich-doc-sach.html` — lịch đọc sách bản độc lập, trước khi được đưa vào thành một tab.

@@ -12,19 +12,29 @@ const root = p => path.join(__dirname, "..", p);
 const html = fs.readFileSync(root("roadmap-em.html"), "utf8");
 const inlineScript = html.slice(html.indexOf("<script>") + "<script>".length, html.lastIndexOf("</script>"));
 
-// Chạy khối core cùng realm với file test, để deepStrictEqual so được object.
+// Chạy các khối core cùng realm với file test, để deepStrictEqual so được object.
 function load() {
   const m = html.match(/\/\* tuduy-core:start \*\/([\s\S]*?)\/\* tuduy-core:end \*\//);
   if (!m) throw new Error("không tìm thấy khối tuduy-core trong roadmap-em.html");
   vm.runInThisContext(m[1], { filename: "tuduy-core" });
+  const r = html.match(/\/\* roadmap-core:start \*\/([\s\S]*?)\/\* roadmap-core:end \*\//);
+  if (r) vm.runInThisContext(r[1], { filename: "roadmap-core" });
   return globalThis;
+}
+// lo-trinh-em.html đã gộp vào roadmap; so nguyên văn với bản trong git để test vẫn chạy sau khi xoá file.
+const norm = s => String(s).replace(/\s+/g, " ").trim();
+function oldText() {
+  const src = require("child_process").execFileSync("git", ["show", "e07e5b6:lo-trinh-em.html"], { cwd: root("."), encoding: "utf8" });
+  return norm(src.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ")
+    .replace(/<\/(td|th|tr|li|p|div|h\d|ol|ul)>/g, " ").replace(/<[^>]*>/g, "")   // thẻ trong dòng bỏ hẳn: "T7</span>:" → "T7:"
+    .replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&"));
 }
 
 let td;
 try { td = load(); } catch (e) { td = {}; test("nạp khối tuduy-core", () => { throw e; }); }
 
 const day = (date, entries) => ({ date, entries });
-const P = (id, prob, due, extra = {}) => ({ id, text: "x", prob, due, basis: "", wrongIf: "y", ...extra });
+const P = (id, prob, due, extra = {}) => ({ id, text: "x", prob, due, basis: "", wrongIf: "y", about: "nguoi", ...extra });
 
 /* ---------------- Task 1: ngày tháng ---------------- */
 test("toàn bộ inline script parse được", () => { new vm.Script(inlineScript); });
@@ -57,7 +67,7 @@ const S = "2026-10-19";
 const p = (date, days = {}) => td.tdPlan(date, S, days);
 test("tuần 1 thứ Hai: chỉ T1, chưa có rà soát", () => {
   const r = p("2026-10-19");
-  assert.deepEqual(r.sang, ["t1"]); assert.deepEqual(r.toi, ["the2"]);
+  assert.deepEqual(r.sang, ["t1"]); assert.deepEqual(r.toi, ["the2", "the4"]);
   assert.deepEqual(r.rail.find(x => x.id === "the1"), { id: "the1", locked: true, from: 5 });
   assert.equal(r.rail.find(x => x.id === "the10").locked, false);
 });
@@ -126,7 +136,7 @@ test("dự đoán đã chấm trong chính ngày rà soát vẫn hiện, kèm đ
 });
 test("dự đoán từ mục 9 của T2", () => {
   const days = { "2026-10-20": day("2026-10-20", { t2: [{ decision: "Tách service", predSign: "deploy độc lập", predMonths: 2, predProb: 70 }] }) };
-  assert.deepEqual(td.tdPredictions(days)[0], { id: "2026-10-20#t2-1", date: "2026-10-20", text: "Tách service: deploy độc lập", prob: 70, due: "2026-12-20" });
+  assert.deepEqual(td.tdPredictions(days)[0], { id: "2026-10-20#t2-1", date: "2026-10-20", text: "Tách service: deploy độc lập", prob: 70, due: "2026-12-20", about: "kythuat" });
 });
 test("tdT7Month", () => {
   assert.equal(td.tdT7Month("2026-10-31"), "2026-10");
@@ -399,6 +409,134 @@ test("mọi link file trỏ vào tu-duy-leader/ đều tồn tại", () => {
   const paths = [...new Set([...html.matchAll(/p:"(tu-duy-leader\/[^"]+)"/g)].map(m => m[1]))];
   assert.ok(paths.length >= 4, "quá ít link: " + paths.length);
   for (const p of paths) assert.ok(fs.existsSync(root(p)), "không có file: " + p);
+});
+
+/* ---------------- Gộp lo-trinh-em — Task 1: dữ liệu mốc ---------------- */
+const O = oldText();
+const allText = m => [m.lead, m.question, ...m.reached, ...m.weekly, ...m.quarterly, ...m.trap, m.gate.text,
+  ...m.evidence.flatMap(e => [e.t, e.n])];
+test("MS_DATA chép nguyên văn và giữ đúng id bằng chứng", () => {
+  assert.deepEqual(td.MS_DATA.map(m => m.id), ["M0", "M1", "M2", "M3"]);
+  assert.deepEqual(td.MS_DATA.flatMap(m => m.evidence.map(e => e.id)),
+    ["m0-doc","m0-t2","m0-t4","m0-t7","m0-metrics","m1-11","m1-pre","m1-nego","m1-est","m1-learn",
+     "m2-strategy","m2-review","m2-process","m2-hard","m2-hire","m3-away","m3-hire","m3-promo","m3-plan","m3-deputy"]);
+  for (const m of td.MS_DATA) for (const s of allText(m)) assert.ok(O.includes(norm(s)), m.id + ": " + s);
+  assert.deepEqual(td.MS_DATA.map(m => m.months), ["Tháng 0–3", "Tháng 3–9", "Tháng 9–18", "Tháng 18–30"]);
+  assert.deepEqual(td.MS_DATA.map(m => m.gate.title), ["Cửa sang M1", "Cửa sang M2", "Cửa sang M3", "Sau M3"]);
+  assert.deepEqual(td.MS_DATA.map(m => m.stage), ["s0", "s1", "s2", "s3"]);
+  for (const m of td.MS_DATA) { assert.equal(m.reached.length, 3, m.id); assert.equal(m.evidence.length, 5, m.id); }
+});
+test("bảng chỉ số, tiêu chí dừng và sổ PMP chép nguyên văn", () => {
+  assert.equal(td.MS_METRICS.length, 14);
+  for (const r of td.MS_METRICS) assert.ok(O.includes(norm(r.join(" "))), r[0]);
+  assert.ok(O.includes(norm(td.MS_METRICS_NOTE)));
+  assert.equal(td.MS_STOP.length, 3);
+  for (const b of td.MS_STOP) for (const s of [b.title, b.text, b.action]) assert.ok(O.includes(norm(s)), s);
+  assert.ok(O.includes(norm(td.MS_LOW_CREATIVE)));
+  const p = td.MS_PMP;
+  for (const s of [p.intro, p.back.title, p.back.text, ...p.keep.flat(), ...p.drop.flat()]) assert.ok(O.includes(norm(s)), s);
+  assert.equal(p.keep.length, 5); assert.equal(p.drop.length, 5);
+});
+test("msParseOldDate", () => {
+  assert.equal(td.msParseOldDate("08/03/2027"), "2027-03-08");
+  assert.equal(td.msParseOldDate(" 8/3/2027 "), "2027-03-08");
+  for (const bad of ["", "08-03-2027", "khoảng tháng 3", "31/02/2027", null]) assert.equal(td.msParseOldDate(bad), null);
+});
+test("msMigrate chỉ điền chỗ trống, bỏ ô 30 ngày đầu, đếm ngày hỏng", () => {
+  const old = { checked: { "m0-doc": true, "m0-t2": false, "m1-11": true, "w1-t1": true, "p-pmp": true },
+                dates: { M0: "01/10/2026", M1: "khoảng tháng 3", PMP: "08/09/2026" } };
+  const r = td.msMigrate(old, { checked: { "m1-11": true }, dates: { M0: "2026-09-30" } });
+  assert.deepEqual(r.ms.checked, { "m1-11": true, "m0-doc": true });
+  assert.deepEqual(r.ms.dates, { M0: "2026-09-30", PMP: "2026-09-08" });
+  assert.equal(r.count, 2); assert.equal(r.skipped, 1); assert.equal(r.ms.from, "lo-trinh-em");
+});
+test("msNormalize chịu được dữ liệu sai hình dạng", () => {
+  assert.deepEqual(td.msNormalize(undefined), { checked: {}, dates: {} });
+  assert.deepEqual(td.msNormalize({ checked: [], dates: "x" }), { checked: {}, dates: {} });
+  assert.deepEqual(td.msNormalize({ checked: { a: true, b: 1 }, dates: { M0: "2026-10-01", M1: "1/10" }, from: "lo-trinh-em" }),
+    { checked: { a: true }, dates: { M0: "2026-10-01" }, from: "lo-trinh-em" });
+});
+test("msCurrent và msEvidence", () => {
+  assert.equal(td.msCurrent({}), "M0");
+  assert.equal(td.msCurrent({ M0: "2026-10-01" }), "M1");
+  assert.equal(td.msCurrent({ M0: "a", M1: "b", M2: "c", M3: "d" }), null);
+  assert.deepEqual(td.msEvidence({ checked: { "m1-11": true, "m1-pre": true, "m0-doc": true } }, "M1"), { done: 2, total: 5 });
+});
+
+/* ---------------- Gộp lo-trinh-em — Task 4: chỉ số tuần trước, kiến tạo dưới 10% ---------------- */
+test("msLastWeek tính tuần trước, không có dữ liệu thì null/0", () => {
+  assert.deepEqual(td.msLastWeek({}, "2026-11-04"), { graded: 0, the4: 0, nod2B: 0, creativeAvg: null, fit: null });
+  const days = {
+    "2026-10-26": day("2026-10-26", { the4: { count: 2 }, the6: { creativePct: 30 }, review: { grades: { a: "dung", b: "chua" } } }),
+    "2026-10-28": day("2026-10-28", { the2: [{ type: "2B", nodded: "x" }], the6: { creativePct: 10 } }),
+    "2026-11-02": day("2026-11-02", { the4: { count: 5 } }),
+  };
+  const r = td.msLastWeek(days, "2026-11-04");
+  assert.deepEqual([r.graded, r.the4, r.nod2B, r.creativeAvg], [1, 2, 1, 20]);
+});
+test("msLastWeek: độ khớp nhóm 60–80 lấy từ T7 tháng trước", () => {
+  const days = {
+    "2026-10-05": day("2026-10-05", { t1: { predictions: [P("a#1", 70, "2026-10-09"), P("a#2", 65, "2026-10-09")] } }),
+    "2026-10-12": day("2026-10-12", { review: { grades: { "a#1": "dung", "a#2": "sai" } } }),
+  };
+  assert.deepEqual(td.msLastWeek(days, "2026-11-04").fit, { hit: 1, n: 2 });
+});
+test("msLowCreative cần đủ 4 tuần trọn, mỗi tuần dưới 10%", () => {
+  const days = {};
+  ["2026-10-05", "2026-10-12", "2026-10-19", "2026-10-26"].forEach(d => { days[d] = day(d, { the6: { creativePct: 5 } }); });
+  assert.equal(td.msLowCreative(days, "2026-11-04"), true);
+  days["2026-10-20"] = day("2026-10-20", { the6: { creativePct: 40 } });
+  assert.equal(td.msLowCreative(days, "2026-11-04"), false);
+  delete days["2026-10-20"]; delete days["2026-10-12"];
+  assert.equal(td.msLowCreative(days, "2026-11-04"), false);
+  assert.equal(td.msLowCreative({}, "2026-11-04"), false);
+});
+
+/* ---------------- Gộp lo-trinh-em — Task 6: Thẻ 4, nhãn về người/kỹ thuật, T7 tách, nhắc mốc ---------------- */
+test("Thẻ 4 có từ tuần 1", () => { assert.deepEqual(td.tdPlan("2026-10-19", "2026-10-19", {}).toi, ["the2", "the4"]); });
+test("dự đoán mang nhãn about; T2 mặc định kỹ thuật", () => {
+  const days = { "2026-10-19": day("2026-10-19", { t1: { predictions: [P("a#1", 70, "2026-10-23", { about: "nguoi" })] },
+    t2: [{ decision: "D", predSign: "s", predProb: 60, predMonths: 1 }, { decision: "E", predSign: "s", predProb: 60, about: "nguoi" }] }) };
+  assert.deepEqual(td.tdPredictions(days).map(p => p.about), ["nguoi", "kythuat", "nguoi"]);
+});
+test("T7 tách theo about", () => {
+  const days = {
+    "2026-10-05": day("2026-10-05", { t1: { predictions: [P("a#1", 70, "2026-10-09", { about: "nguoi" }), P("a#2", 65, "2026-10-09", { about: "kythuat" })] } }),
+    "2026-10-12": day("2026-10-12", { review: { grades: { "a#1": "dung", "a#2": "sai" } } }),
+  };
+  assert.equal(td.tdT7Table(days, "2026-10", "nguoi")[2].hit, 1);
+  assert.equal(td.tdT7Table(days, "2026-10", "kythuat")[2].hit, 0);
+  assert.equal(td.tdT7Table(days, "2026-10")[2].n, 2);
+});
+test("cảnh báo khi không có dự đoán nào về người", () => {
+  const msg = "Chưa có dự đoán nào về người khác — đó là loại dự đoán duy nhất luyện được năng lực dẫn dắt.";
+  assert.ok(td.tdValidateT1([P("x", 60, "2026-10-23", { about: "kythuat" })]).some(e => e.i === -1 && e.level === "warn" && e.msg === msg));
+  assert.ok(td.tdValidateT1([P("x", 60, "2026-10-23", { about: undefined })]).some(e => e.msg === msg));
+  assert.ok(!td.tdValidateT1([P("x", 60, "2026-10-23", { about: "nguoi" })]).some(e => e.msg === msg));
+});
+test("T2 có ô chọn 'Dự đoán này về' ngay trước predMonths", () => {
+  const ks = td.TD_CARD_BY_ID.t2.fields.map(f => f.k);
+  assert.equal(ks[ks.indexOf("predMonths") - 1], "about");
+});
+test("dòng nhắc mốc: tháng, quý, trùng nhau ngày 1–7 tháng 1", () => {
+  assert.deepEqual(td.tdReminders("2026-10-31", "M1", { done: 3, total: 5 }).map(r => r.label), ["Rà bằng chứng của mốc M1 (3/5)"]);
+  assert.deepEqual(td.tdReminders("2027-01-05", "M2", { done: 0, total: 5 }).map(r => r.kind), ["ms-month", "ms-quarter"]);
+  assert.match(td.tdReminders("2027-01-05", "M2", { done: 0, total: 5 })[1].label, / · strategy note$/);
+  assert.doesNotMatch(td.tdReminders("2026-10-03", "M1", { done: 0, total: 5 })[1].label, /strategy note/);
+  assert.deepEqual(td.tdReminders("2026-11-15", "M1", { done: 0, total: 5 }), []);
+  assert.deepEqual(td.tdReminders("2026-10-31", null, null), []);
+  assert.equal(td.tdReminders("2027-04-02", null, null)[0].ref, "M3");
+});
+
+/* ---------------- Gộp lo-trinh-em — lượt sửa sau review ---------------- */
+test("msReset xoá ô tick và ngày, giữ cờ from, không để lại trường undefined", () => {
+  assert.deepEqual(td.msReset({ checked: { "m0-doc": true }, dates: { M0: "2026-10-01" }, from: "lo-trinh-em" }), { checked: {}, dates: {}, from: "lo-trinh-em" });
+  const r = td.msReset({ checked: { "m0-doc": true }, dates: {} });
+  assert.deepEqual(r, { checked: {}, dates: {} });
+  assert.equal(Object.prototype.hasOwnProperty.call(r, "from"), false);
+});
+test("nút Xoá tiến độ dùng msReset", () => {
+  assert.match(inlineScript, /pmpM:null,ms:msReset\(state\.ms\)\}; paint\(\); save\(\); status\("đã xoá"\)/);
 });
 
 module.exports = { root, load, inlineScript, day, P };

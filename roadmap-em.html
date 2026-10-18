@@ -407,6 +407,38 @@ a.rr:hover{border-color:var(--live);background:var(--live-tint)}
   text-transform:uppercase;color:var(--live)}
 .stage-head h2{font-size:19px;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
 .stage-head p{font-size:13px;color:var(--ink-soft);font-weight:300;max-width:44ch}
+/* ---- mốc M0–M3 ---- */
+.ms{position:relative;z-index:2;max-width:min(640px,100%);margin:12px auto 22px;background:var(--card);
+  border:1px solid var(--rule);border-radius:10px;scroll-margin-top:72px}
+.ms summary{cursor:pointer;padding:10px 14px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-size:13.5px}
+.ms summary b{font-weight:600}
+.ms summary span{font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.ms summary:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+.ms-body{padding:2px 16px 14px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--ink-mid)}
+.ms-body h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-top:8px}
+.ms-body ol,.ms-body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:3px}
+.ms-lead{font-weight:600;color:var(--ink)}
+.ms-q{font-style:italic;color:var(--ink-soft)}
+.ms-split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ms-ev{list-style:none;padding-left:0!important}
+.ms-ev label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.ms-ev input{margin-top:3px;accent-color:var(--live);flex:0 0 auto}
+.ms-ev em{display:block;font-size:12px;color:var(--ink-faint)}
+.ms-date{display:flex;align-items:center;gap:8px;margin-top:8px;font-weight:500}
+.ms-stop{display:flex;flex-direction:column;gap:10px}
+.ms-stopb{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--learn);border-radius:8px;padding:10px 14px;
+  display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--ink-mid)}
+.ms-stopb > b{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+#ms-metrics td{white-space:normal;min-width:4.5em}
+#ms-metrics td,#ms-metrics th{text-align:left}
+.pm-kd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+.pm-kd h3{font-size:13.5px;font-weight:600;margin-bottom:4px}
+.pm-kd ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--ink-mid)}
+.pm-kd em{display:block;font-size:12px;color:var(--ink-faint)}
+.pm-frozen > summary{cursor:pointer;padding:6px 0}
+.pm-frozen > summary h2{display:inline;font-size:16px}
+.pm-frozen > summary:focus-visible{outline:2px solid var(--live);outline-offset:2px}
+.ms-date input{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:5px 8px}
 .stage-bar{display:flex;align-items:center;gap:8px;margin-top:6px}
 .stage-bar .b{width:120px;height:4px;background:var(--rule);border-radius:2px;overflow:hidden}
 .stage-bar .b i{display:block;height:100%;width:0;background:var(--done);transition:width .4s}
@@ -631,6 +663,8 @@ textarea.td-in{resize:vertical}
   .td-rail{position:static}
   .track::before{left:13px;margin-left:0}
   .stage-head{margin-left:0;text-align:left;align-items:flex-start;padding-left:34px;max-width:100%}
+  .ms{margin-left:34px;margin-right:0}
+  .ms-split,.pm-kd{grid-template-columns:1fr}
   .group{width:auto;margin-left:34px!important;margin-right:0!important}
   .group::after{left:-34px!important;right:auto!important;width:33px}
   .tiles{grid-template-columns:repeat(2,1fr)}
@@ -796,10 +830,12 @@ textarea.td-in{resize:vertical}
 <main class="wrap" id="view-pmp" hidden>
   <div class="intro">
     <h1>PMP study track</h1>
-    <p>Nhánh song song, không nằm trên đường chính tới Engineering Manager. Nhưng 60–80 giờ đã bỏ ra không mất: lộ trình 30 ngày trong <code>pmp/pmp_lo_trinh_30_ngay.md</code> vẫn là cách có cấu trúc nhất để lấy phần kiến thức dùng được. Tab này theo dõi nó, và đánh dấu rõ ngày nào có giá trị ngoài phòng thi, ngày nào chỉ để thi.</p>
+    <p>Không còn trên đường chính tới Engineering Manager — chỉ giữ phần dùng thật (xem Trạng thái bên dưới). Nhưng 60–80 giờ đã bỏ ra không mất: lộ trình 30 ngày trong <code>pmp/pmp_lo_trinh_30_ngay.md</code> vẫn là cách có cấu trúc nhất để lấy phần kiến thức dùng được. Tab này theo dõi nó, và đánh dấu rõ ngày nào có giá trị ngoài phòng thi, ngày nào chỉ để thi.</p>
   </div>
 
   <div class="dash">
+
+    <section class="d-sec" id="pm-freeze"></section>
     <section class="d-sec">
       <div class="tiles">
         <div class="tile d"><b id="pm-done" class="num">0</b><span>Ngày đã học</span></div>
@@ -861,13 +897,14 @@ textarea.td-in{resize:vertical}
       <div class="gains" id="pm-gains"></div>
     </section>
 
+    <details class="pm-frozen"><summary><h2>Lộ trình 30 ngày — đóng băng</h2></summary>
     <section class="d-sec">
       <header>
-        <h2>Lộ trình 30 ngày</h2>
         <p>Tick ngày đã học, chấm 0–10. Luật ngưỡng 7 của anh: dưới 7 thì không đi tiếp — kiến thức PMP xếp chồng, thủng ở Day 6 thì Day 11 sập. Ngày có chip kỹ năng là ngày mang được thứ gì đó ra khỏi phòng thi.</p>
       </header>
       <div id="pm-phases" class="pmphases"></div>
     </section>
+    </details>
 
     <section class="d-sec">
       <header>
@@ -908,6 +945,16 @@ textarea.td-in{resize:vertical}
     <section class="d-sec">
       <header><h2>Tiến độ theo giai đoạn</h2></header>
       <div class="rows" id="stage-rows"></div>
+    </section>
+
+    <section class="d-sec">
+      <header><h2>Bảng chỉ số</h2><p id="ms-metrics-note"></p></header>
+      <div class="td-tbl" id="ms-metrics"></div>
+    </section>
+
+    <section class="d-sec">
+      <header><h2>Tiêu chí dừng của lộ trình</h2><p id="ms-stop-note"></p></header>
+      <div class="ms-stop" id="ms-stop"></div>
     </section>
 
     <section class="d-sec">
@@ -1834,7 +1881,7 @@ var PMP_GAINS = {
 };
 
 var LS="roadmap-em-v1", DOC="roadmap/progress";
-var state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null};
+var state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null,ms:{checked:{},dates:{}}};
 var db=null, timer=null, lastFocus=null;
 
 /* tuduy-core:start */
@@ -1873,6 +1920,9 @@ function tdVnDate(s){ var d=tdParse(s); return TD_THU[d.getDay()]+" "+tdPad(d.ge
 function tdF(k,t,l,o){ var f={k:k,t:t,l:l}; if(o) f.o=o; return f; }
 function tdN(l){ return {t:"note",l:l}; }
 var TD_YN = ["Có","Không"];
+/* nhãn dự đoán để T7 tách hai bảng (lo-trinh-em M0, M3) */
+var TD_ABOUT = [["nguoi","Về người"],["kythuat","Về kỹ thuật"]];
+var TD_ABOUT_WARN = "Chưa có dự đoán nào về người khác — đó là loại dự đoán duy nhất luyện được năng lực dẫn dắt.";
 var TD_YN_DOAN = ["Có — dấu hiệu đã có nhưng tôi bỏ qua","Không — thông tin lúc đó không đủ"];
 var TD_MEETING = {
  "2A":{name:"Họp ra quyết định",fields:[
@@ -1927,7 +1977,7 @@ var TD_CARDS = [
   tdF("hardest","check","Việc khó nhất hôm nay — tôi làm hay giao?"),
   tdF("hardestWhy","text","→ Nếu tôi định tự làm: vì nhanh hơn, hay vì cần thiết?")]},
  {id:"the2",code:"Thẻ 2",name:"Sau mỗi cuộc họp",dur:"1 phút",slot:"toi",multi:true,from:1,fields:[]},
- {id:"the4",code:"Thẻ 4",name:"Khi định tự làm một việc",dur:"30 giây",slot:"toi",multi:false,from:5,fields:[
+ {id:"the4",code:"Thẻ 4",name:"Khi định tự làm một việc",dur:"30 giây",slot:"toi",multi:false,from:1,fields:[
   tdN("Tôi đang định tự làm việc này. Dừng lại 30 giây:"),
   tdN("□ Tôi làm vì NHANH HƠN, hay vì thực sự chỉ tôi làm được? → Nếu vì nhanh hơn: đây là ô “trao quyền” (delegation) ở mức 1."),
   tdN("□ Nếu giao đi, tệ nhất chuyện gì xảy ra? → Chậm hơn 30%? Chấp nhận được. → Hỏng thứ không sửa được? Không giao — nhưng làm CÙNG, không làm THAY."),
@@ -2007,6 +2057,7 @@ var TD_CARDS = [
   tdF("assume1","text","-"), tdF("assume2","text","-"),
   tdF("assumeCritical","text","Nếu giả định nào sai thì cả quyết định sai?"),
   tdN("9. DỰ ĐOÁN GẮN VÀO ← nối với T1"),
+  tdF("about","choice","Dự đoán này về",TD_ABOUT),
   tdF("predMonths","num","Sau ____ tháng"),
   tdF("predSign","text","dấu hiệu cho thấy tôi quyết đúng"),
   tdF("predProb","pct","Xác suất tôi cho là đúng")]},
@@ -2066,8 +2117,8 @@ function tdPlan(date,startMon,days){
   var m7=tdT7Month(date), t7done=false;
   if(m7) for(var d in days){ var e7=tdEntries(days,d).t7; if(d!==date && e7 && e7.month===m7) t7done=true; }
   if(m7 && !t7done) sang.push("t7");
-  toi.push("the2");
-  if(week>=5){ toi.push("the4"); toi.push("the6"); }
+  toi.push("the2"); toi.push("the4");
+  if(week>=5) toi.push("the6");
   var mm=+date.slice(5,7), dd=+date.slice(8,10);
   if((week>=10 && week<=12) || (week>=13 && mm%3===1 && dd<=14)) toi.push("t8");
   TD_CARDS.forEach(function(c){
@@ -2087,11 +2138,11 @@ function tdPredictions(days){
     var e=tdEntries(days,d);
     ((e.t1 && e.t1.predictions) || []).forEach(function(p){
       if(tdBlank(p.text) && !p.due) return;   /* hàng trống không phải dự đoán */
-      out.push({id:p.id, date:d, text:p.text, prob:p.prob, due:p.due});
+      out.push({id:p.id, date:d, text:p.text, prob:p.prob, due:p.due, about:p.about || null});
     });
     (e.t2 || []).forEach(function(t,i){
       if(t.predSign && t.predProb)
-        out.push({id:d+"#t2-"+(i+1), date:d, text:(t.decision||"")+": "+t.predSign, prob:t.predProb, due:tdAddMonths(d, t.predMonths||1)});
+        out.push({id:d+"#t2-"+(i+1), date:d, text:(t.decision||"")+": "+t.predSign, prob:t.predProb, due:tdAddMonths(d, t.predMonths||1), about:t.about || "kythuat"});
     });
   });
   return out;
@@ -2117,11 +2168,11 @@ function tdReviewList(days,date){
               grade: now[p.id] || (p.due && p.due>=date ? "chua" : null)};
     });
 }
-function tdT7Table(days,month){
+function tdT7Table(days,month,about){
   var g=tdGrades(days), names=["20-40","40-60","60-80","80-100"];
   var rows=names.map(function(b){ return {bucket:b, n:0, hit:0, sum:0}; });
   tdPredictions(days).forEach(function(p){
-    if(!p.due || p.due.slice(0,7)!==month || !tdFinal(g[p.id])) return;
+    if(!p.due || p.due.slice(0,7)!==month || !tdFinal(g[p.id]) || (about && p.about!==about)) return;
     var pr=+p.prob, r=rows[pr<40 ? 0 : pr<60 ? 1 : pr<80 ? 2 : 3];
     r.n++; r.sum+=pr; if(g[p.id].grade==="dung") r.hit++;
   });
@@ -2143,6 +2194,16 @@ function tdValidateT1(preds){
     if(!p.due) out.push({i:i, level:"block", msg:"Thiếu hạn chót."});
     if(!p.wrongIf || !String(p.wrongIf).trim()) out.push({i:i, level:"warn", msg:"Dòng “điều gì sẽ khiến tôi sai” là dòng quan trọng nhất."});
   });
+  if(!preds.some(function(p){ return p.about==="nguoi"; }))
+    out.push({i:-1, level:"warn", msg:TD_ABOUT_WARN});
+  return out;
+}
+
+/* dòng nhắc theo nhịp vận hành của lo-trinh-em: cuối tháng rà bằng chứng mốc, đầu quý xét cửa lên mốc */
+function tdReminders(date,cur,ev){
+  var out=[], mm=+date.slice(5,7), dd=+date.slice(8,10);
+  if(tdT7Month(date) && cur) out.push({kind:"ms-month", label:"Rà bằng chứng của mốc "+cur+" ("+ev.done+"/"+ev.total+")", ref:cur});
+  if(mm%3===1 && dd<=7) out.push({kind:"ms-quarter", label:"Xét cửa lên mốc + tiêu chí dừng · đọc lại T2 đầu tiên cạnh cái mới nhất"+(cur==="M2" || cur==="M3" ? " · strategy note" : ""), ref:cur || "M3"});
   return out;
 }
 
@@ -2327,6 +2388,335 @@ function tdReadDir(dir){
 }
 /* tuduy-core:end */
 
+/* roadmap-core:start */
+/* ---------- lộ trình M0–M3 (gộp từ lo-trinh-em.html) — câu chữ chép nguyên văn, kiểm bằng tests/tu-duy.test.js ---------- */
+var MS_DATA = [
+ {
+  id: "M0",
+  stage: "s0",
+  months: "Tháng 0–3",
+  title: "Senior Dev có ảnh hưởng",
+  lead: "Làm cho ảnh hưởng tồn tại khi mình không có mặt",
+  question: "Ảnh hưởng của tôi có tồn tại khi tôi không ở trong phòng không?",
+  reached: [
+   "Có ít nhất 2 quyết định kỹ thuật trong quý được team làm theo mà anh không phải người thực thi.",
+   "Có một tài liệu thiết kế người khác đọc rồi triển khai được, không cần hỏi lại anh quá 2 lần.",
+   "Anh nói được 3 chỉ số sức khoẻ của mảng mình phụ trách bằng con số thật — không phải cảm giác."
+  ],
+  weekly: [
+   "Số dự đoán T1 đã chấm — không phải đã ghi",
+   "Số lần tick Thẻ 4 “tôi làm vì nhanh hơn” — kỳ vọng giảm dần",
+   "% kiến tạo trong Thẻ 6 — giữ trên 20%"
+  ],
+  quarterly: [
+   "T7: nhóm 70% có đúng khoảng 7/10 không",
+   "Số quyết định team làm theo mà anh không viết code",
+   "3 chỉ số sức khoẻ mảng — có đủ số liệu chưa"
+  ],
+  evidence: [
+   {
+    id: "m0-doc",
+    t: "Một design doc người khác đã triển khai",
+    n: "Lưu link hoặc file, ghi ai là người thực thi"
+   },
+   {
+    id: "m0-t2",
+    t: "Ba decision doc T2",
+    n: "Ba quyết định thật, mỗi cái một trang, có mục “phương án đã loại”"
+   },
+   {
+    id: "m0-t4",
+    t: "Một post-mortem T4 tới tầng ba",
+    n: "Từ sự cố thật, không phải sự cố giả định"
+   },
+   {
+    id: "m0-t7",
+    t: "Bảng hiệu chỉnh T7 lần đầu",
+    n: "Dù chỉ có 12 dự đoán, vẫn chấm — để tạo nhịp"
+   },
+   {
+    id: "m0-metrics",
+    t: "3 chỉ số sức khoẻ mảng, có số thật",
+    n: "Ví dụ: lead time, tỷ lệ rollback, số bug lọt ra production"
+   }
+  ],
+  trap: [
+   "Ở M0 anh vẫn được thưởng vì tự làm. Tự tay xử lý sự cố nhanh nhất, tự viết phần khó nhất — tất cả đều được ghi nhận, nên gần như không thể tự nhận ra mình đang không tạo ra đòn bẩy nào.",
+   "Thứ duy nhất phát hiện được điều đó là con số tick Thẻ 4. Nếu sau 8 tuần con số ấy không giảm, mốc này chưa qua — bất kể anh bận đến đâu."
+  ],
+  gate: {
+   title: "Cửa sang M1",
+   text: "Ba dấu hiệu ở trên, cộng một mảng hoặc dự án đang cần chủ. Nếu công ty không có chỗ trống thì hành động không phải là chờ — mà là tạo ra chỗ: nhận mảng không ai muốn nhận nhưng ai cũng phụ thuộc vào (build, on-call, migration, chất lượng dữ liệu). Đó là đường ngắn nhất tới quyền dẫn dắt phi chính thức ở product company."
+  }
+ },
+ {
+  id: "M1",
+  stage: "s1",
+  months: "Tháng 3–9",
+  title: "Tech Lead thật",
+  lead: "Chuyển từ tạo kết quả bằng tay sang tạo kết quả qua người",
+  question: "Tôi tạo ra kết quả qua người khác, hay vẫn qua tay mình?",
+  reached: [
+   "Anh chịu trách nhiệm cho kết quả của một nhóm 3–5 người trong một mảng — dù không phải sếp họ.",
+   "Có ít nhất một người nói được cụ thể họ học được gì từ anh trong ba tháng qua. Hỏi thẳng, đừng đoán.",
+   "Anh dự đoán ngày xong của một hạng mục 4–6 tuần với sai số dưới 20%, có ghi lại từ đầu."
+  ],
+  weekly: [
+   "1-1 đã làm / 1-1 đã hẹn — ≥ 90%, hoãn 1-1 là tín hiệu xấu nhất ở mốc này",
+   "Số quyết định anh giao cho người khác quyết",
+   "Số lần Thẻ 2B tick “gật đầu” — giảm"
+  ],
+  quarterly: [
+   "Sai số ước lượng hạng mục, tính bằng %",
+   "Số người nêu được cụ thể điều học từ anh",
+   "Số pre-mortem có ít nhất một rủi ro thành hiện thực — nếu bằng 0 nghĩa là đang viết rủi ro quá an toàn"
+  ],
+  evidence: [
+   {
+    id: "m1-11",
+    t: "Sáu tháng ghi chép 1-1, liên tục",
+    n: "Một dòng mỗi buổi là đủ; điều quan trọng là không đứt"
+   },
+   {
+    id: "m1-pre",
+    t: "Ba T3 pre-mortem kèm hậu kiểm",
+    n: "Rủi ro nào đã xảy ra thật, rủi ro nào viết thừa"
+   },
+   {
+    id: "m1-nego",
+    t: "Một lần đàm phán phạm vi có ghi lại",
+    n: "Đề nghị ban đầu, phương án anh đưa, kết quả cuối"
+   },
+   {
+    id: "m1-est",
+    t: "Một hạng mục 4–6 tuần, ước lượng sai dưới 20%",
+    n: "Ghi ngày dự đoán từ đầu, không sửa về sau"
+   },
+   {
+    id: "m1-learn",
+    t: "Câu trả lời của một người về điều họ học được từ anh",
+    n: "Hỏi trực tiếp trong 1-1, chép nguyên văn"
+   }
+  ],
+  trap: [
+   "Trở thành trạm trung chuyển. Mọi thông tin đi qua anh, mọi quyết định đợi anh duyệt. Cảm giác rất giống đang dẫn dắt, và cực kỳ dễ nhầm với năng lực.",
+   "Phép thử một câu: anh nghỉ ba ngày liền, team có đứng không. Nếu có, anh đang là nút cổ chai chứ không phải leader — và đó là thứ chặn đường lên M2 nhiều hơn bất kỳ thiếu sót kỹ thuật nào."
+  ],
+  gate: {
+   title: "Cửa sang M2",
+   text: "Ba dấu hiệu ở trên, cộng một cuộc trò chuyện với sếp về việc chuyển hướng sang quản lý — nói ra thành lời, không ngụ ý. Ở product company, đường lên EM gần như luôn cần một người đã biết anh muốn đi hướng đó trước khi có vị trí trống."
+  }
+ },
+ {
+  id: "M2",
+  stage: "s2",
+  months: "Tháng 9–18",
+  title: "Tech Lead Manager",
+  lead: "Nấc rơi nhiều nhất: nửa kỹ thuật, nửa quản lý",
+  question: "Tôi có dám nói điều khó nghe với người tôi quý không?",
+  reached: [
+   "Anh có ít nhất hai người báo cáo trực tiếp, hoặc mentee chính thức mà anh chịu trách nhiệm đánh giá.",
+   "Anh đã có một cuộc trò chuyện khó thật — hiệu suất kém, thái độ, hoặc từ chối thăng cấp — và quan hệ vẫn còn nguyên sau đó.",
+   "Thời gian viết code dưới 30%, và anh không còn thấy day dứt về điều đó."
+  ],
+  weekly: [
+   "% thời gian viết code, đo bằng T8 chứ không ước lượng",
+   "Số feedback chỉnh sửa đã đưa trong tuần",
+   "Số việc anh nhận lại từ người khác vì “để tôi làm cho nhanh” — mục tiêu 0"
+  ],
+  quarterly: [
+   "Ít nhất một cuộc trò chuyện khó đã thực hiện",
+   "Không ai rời team vì lý do quản lý",
+   "Ít nhất một người lên được level tiếp theo"
+  ],
+  evidence: [
+   {
+    id: "m2-strategy",
+    t: "Một strategy note mỗi quý",
+    n: "Một trang: bối cảnh, chẩn đoán, hướng đi, đánh đổi đã chấp nhận"
+   },
+   {
+    id: "m2-review",
+    t: "Hồ sơ hai chu kỳ đánh giá đã hoàn thành",
+    n: "Có ghi chú chuẩn bị, không chỉ form nộp lên HR"
+   },
+   {
+    id: "m2-process",
+    t: "Một quy trình do anh thiết kế còn chạy sau 3 tháng",
+    n: "Còn chạy khi anh không nhắc — đó là tiêu chí"
+   },
+   {
+    id: "m2-hard",
+    t: "Một cuộc trò chuyện khó, ghi lại theo khung STATE",
+    n: "Chuẩn bị gì, nói gì, người kia phản ứng ra sao, sau đó thế nào"
+   },
+   {
+    id: "m2-hire",
+    t: "Đã phỏng vấn ít nhất 5 ứng viên",
+    n: "Kèm nhận định của anh và kết quả thực tế của người được tuyển"
+   }
+  ],
+  trap: [
+   "Nửa vời. Vẫn ôm phần code quan trọng nhất và quản người — kết quả là cả hai đều dở, và người chịu thiệt là những người báo cáo cho anh, vì code luôn thắng trong tranh chấp thời gian.",
+   "Đây là mốc rớt nhiều nhất trên toàn tuyến. Cách chống duy nhất có bằng chứng: T8 hai tuần mỗi quý. Nếu % code không xuống dưới 30% sau hai quý, phải chọn — quay lại đường kỹ thuật cũng là một lựa chọn hợp lệ, nhưng phải là lựa chọn, không phải trôi."
+  ],
+  gate: {
+   title: "Cửa sang M3",
+   text: "Ba dấu hiệu ở trên, cộng một lần anh đã bảo vệ được ưu tiên của team trước áp lực bên ngoài mà không đẩy áp lực đó xuống cho team gánh. Đó là việc EM làm hằng tuần, và là thứ không tập được ở mốc thấp hơn."
+  }
+ },
+ {
+  id: "M3",
+  stage: "s3",
+  months: "Tháng 18–30",
+  title: "Engineering Manager",
+  lead: "Chịu trách nhiệm cho một cỗ máy chạy được khi mình vắng",
+  question: "Team tôi giao hàng đều mà không cần tôi gác cổng chứ?",
+  reached: [
+   "Team 5–8 người, anh chịu trách nhiệm tuyển, đánh giá và kết quả giao hàng.",
+   "Anh nghỉ hai tuần liền và không có gì sập, không có quyết định nào phải đợi.",
+   "Anh trình bày được kế hoạch quý bằng ngôn ngữ của người ngoài phòng kỹ thuật, và họ hỏi lại đúng chỗ."
+  ],
+  weekly: [
+   "% thời gian dành cho việc của quý sau trở đi — mục tiêu ≥ 30%",
+   "Số quyết định team ra mà anh chỉ biết sau — con số này phải tăng",
+   "Số 1-1 bị hoãn — mục tiêu 0"
+  ],
+  quarterly: [
+   "Tỷ lệ giao hàng so với cam kết đầu quý",
+   "Khảo sát team: có ai đang cân nhắc rời đi không",
+   "Số người anh đã thăng cấp, tính từ đầu tuyến"
+  ],
+  evidence: [
+   {
+    id: "m3-away",
+    t: "Hai tuần vắng mặt, không có gì sập",
+    n: "Ghi lại quyết định nào team tự ra trong thời gian đó"
+   },
+   {
+    id: "m3-hire",
+    t: "Một người do anh tuyển đã qua thử việc và đóng góp được",
+    n: "Từ mô tả vị trí tới quyết định cuối là của anh"
+   },
+   {
+    id: "m3-promo",
+    t: "Một người trong team lên level nhờ kế hoạch phát triển anh viết",
+    n: "Đây là bằng chứng mạnh nhất của cả tuyến"
+   },
+   {
+    id: "m3-plan",
+    t: "Một bản kế hoạch quý trình bày cho người ngoài kỹ thuật",
+    n: "Kèm câu hỏi họ hỏi lại — đó mới là thước đo"
+   },
+   {
+    id: "m3-deputy",
+    t: "Một người thay được anh trong các cuộc họp thường kỳ",
+    n: "Đã thay thật ít nhất ba lần"
+   }
+  ],
+  trap: [
+   "Quản lý theo cảm tính, vì vòng phản hồi kỹ thuật đã mất. Trước đây sai thì test đỏ, production sập, có tín hiệu rõ. Quản người sai thì sáu tháng sau mới biết, qua một lá đơn nghỉ việc.",
+   "Đây chính xác là vấn đề mà toàn bộ hệ thống T1/T7 anh tự thiết kế sinh ra để giải — chỉ khác lĩnh vực. Đừng bỏ nó ở mốc này; đây mới là nơi nó có giá trị cao nhất."
+  ],
+  gate: {
+   title: "Sau M3",
+   text: "Từ đây tách hai nhánh: Senior EM / Director (quản nhiều team, quản manager) hoặc quay lại nhánh kỹ thuật ở tầm Principal với kinh nghiệm quản lý làm lợi thế. Cả hai đều mở, và quyết định đó nên dựa trên dữ liệu T8 của 12 tháng cuối — việc nào anh làm mà quên mất thời gian."
+  }
+ }
+];
+var MS_METRICS = [["Dự đoán đã chấm mỗi tuần","Dẫn dắt","T1 + T5","M0–M3","≥ 3/tuần"],
+ ["Tick “tôi làm vì nhanh hơn”","Dẫn dắt","Thẻ 4","M0–M2","giảm dần"],
+ ["% thời gian kiến tạo","Dẫn dắt","Thẻ 6 + T8","M0–M3","≥ 20%"],
+ ["Tick “gật đầu deadline phi lý”","Dẫn dắt","Thẻ 2B","M1–M3","giảm dần"],
+ ["1-1 đã làm / đã hẹn","Dẫn dắt","Lịch + ghi chép 1-1","M1–M3","≥ 90%"],
+ ["% thời gian viết code","Dẫn dắt","T8","M2–M3","< 30%"],
+ ["% thời gian cho quý sau trở đi","Dẫn dắt","T8","M3","≥ 30%"],
+ ["Độ khớp hiệu chỉnh nhóm 70%","Kết quả","T7","M0–M3","6–8 / 10"],
+ ["Sai số ước lượng hạng mục","Kết quả","T2 + ghi ngày dự đoán","M1–M3","< 20%"],
+ ["Người nêu được điều học từ anh","Kết quả","Hỏi thẳng trong 1-1","M1–M3","≥ 1/quý"],
+ ["Trò chuyện khó đã thực hiện","Kết quả","Ghi chép theo khung STATE","M2–M3","≥ 1/quý"],
+ ["Người rời team vì lý do quản lý","Kết quả","Phỏng vấn nghỉ việc","M2–M3","0"],
+ ["Người lên level","Kết quả","Chu kỳ đánh giá","M2–M3","≥ 1/năm"],
+ ["Giao hàng so với cam kết quý","Kết quả","Kế hoạch quý","M3","≥ 80%"]];
+var MS_METRICS_NOTE = "Chỉ số dẫn dắt phản hồi trong tuần và anh tác động được ngay. Chỉ số kết quả chỉ đọc được sau vài tháng — đừng đánh giá bản thân bằng cột đó ở giai đoạn đầu.";
+var MS_STOP_NOTE = "Đúng nguyên tắc mục 8 trong sổ tay của anh: điều kiện được phép dừng phải viết trước khi bắt đầu, không phải lúc đã chán. Dừng theo tiêu chí là một quyết định; dừng vì hết hứng là một thất bại.";
+var MS_STOP = [{title:"Sau 6 tháng — 08/03/2027",text:"Nếu không có bề mặt dẫn dắt nào xuất hiện — không ai để dẫn, không mảng nào để chủ — dù anh đã chủ động đề xuất ít nhất hai lần, thì vấn đề nằm ở tổ chức chứ không ở năng lực.",action:"đổi công ty, giữ nguyên lộ trình. Đừng đổi lộ trình để hợp với một nơi không có chỗ cho nó."},
+ {title:"Sau 12 tháng ở M1",text:"Nếu bảng T7 không cải thiện và không ai nêu được điều cụ thể họ học từ anh, thì cách tự luyện một mình không hợp.",action:"tìm một EM hoặc mentor phản biện hai tuần một lần — đúng phương án dự phòng anh đã ghi sẵn trong mục 8. Không phải bỏ, mà đổi cơ chế phản hồi."},
+ {title:"Bất cứ lúc nào",text:"Nếu % kiến tạo dưới 10% trong bốn tuần liên tiếp, dừng nhận việc mới trước khi làm bất cứ điều gì khác trong lộ trình này. Không mốc nào chạy được trên một tuần bị kéo hoàn toàn bởi phản ứng.",action:""}];
+var MS_LOW_CREATIVE = "Nếu % kiến tạo dưới 10% trong bốn tuần liên tiếp, dừng nhận việc mới trước khi làm bất cứ điều gì khác trong lộ trình này. Không mốc nào chạy được trên một tuần bị kéo hoàn toàn bởi phản ứng.";
+var MS_PMP = {intro:"60–80 giờ đã dành cho PMBOK không mất. Nhưng nó cần đổi vai: từ mục tiêu thành hộp công cụ, và phần lớn hộp đó không dùng tới ở product company.",keep:[["Sổ rủi ro một trang cho mảng mình","M0"],["Bảng bên liên quan + ma trận trách nhiệm","M1"],["Quản trị thay đổi — cách nói “có, nhưng đổi cái gì”","M2"],["Sáu nguyên tắc PMBOK 8 làm khung tự vấn khi ra quyết định","M0–M3"],["Chứng chỉ 35 contact hours — giữ lại, không hết hạn",""]],drop:[["ITTO 40 quy trình","Kiến thức để thi, không phải để làm"],["Công thức EVM, CPI/SPI","Product company không quản theo earned value"],["Ma trận 7×5 vẽ lại từ trí nhớ","Bài tập luyện thi thuần tuý"],["Mock test và luyện sức bền 240 phút","Chỉ có nghĩa nếu sắp thi"],["Lịch 30 ngày và mốc nộp hồ sơ","Đóng băng, không xoá — xem điều kiện quay lại bên dưới"]],back:{title:"Điều kiện quay lại thi PMP",text:"Mở lại hồ sơ khi cả hai điều sau đúng: anh đã ở M2 hoặc M3 (tức đã có 36 tháng dẫn dắt hợp lệ để khai), và anh đang cân nhắc chuyển sang môi trường có PMO — enterprise, consulting, hoặc vai trò delivery. Nếu chỉ có điều thứ nhất, đừng thi: chứng chỉ đó không thêm gì cho hồ sơ EM ở product company."}};
+var MS_IDS = ["M0","M1","M2","M3"];
+var MS_DATE_KEYS = ["M0","M1","M2","M3","PMP"];
+var MS_BY_ID = {};
+MS_DATA.forEach(function(m){ MS_BY_ID[m.id]=m; });
+/* ngày ghi tay ở bản cũ: d/m/yyyy hoặc dd/mm/yyyy; ngày không có thật trả về null */
+function msParseOldDate(s){
+  var m=/^\s*(\d{1,2})\/(\d{1,2})\/(\d{4})\s*$/.exec(s==null ? "" : String(s));
+  if(!m) return null;
+  var d=new Date(+m[3], +m[2]-1, +m[1]);
+  if(d.getFullYear()!==+m[3] || d.getMonth()!==+m[2]-1 || d.getDate()!==+m[1]) return null;
+  return tdDateStr(d);
+}
+/* state.ms luôn đi qua đây: ô tick chỉ giữ true, ngày chỉ giữ YYYY-MM-DD */
+function msNormalize(x){
+  var out={checked:{}, dates:{}};
+  if(!tdIsObj(x)) return out;
+  if(tdIsObj(x.checked)) Object.keys(x.checked).forEach(function(k){ if(x.checked[k]===true) out.checked[k]=true; });
+  if(tdIsObj(x.dates)) Object.keys(x.dates).forEach(function(k){ if(TD_DATE_RE.test(x.dates[k]||"")) out.dates[k]=x.dates[k]; });
+  if(x.from) out.from=String(x.from);
+  return out;
+}
+/* chuyển từ khoá career-path-em-v1 của lo-trinh-em: chỉ điền chỗ trống, bỏ các ô 30 ngày đầu (p-*, w*-*) */
+function msMigrate(old,ms){
+  var out=msNormalize(ms), count=0, skipped=0, o=tdIsObj(old) ? old : {};
+  var ch=tdIsObj(o.checked) ? o.checked : {}, dt=tdIsObj(o.dates) ? o.dates : {};
+  Object.keys(ch).forEach(function(k){
+    if(ch[k]===true && /^m[0-3]-/.test(k) && !out.checked[k]){ out.checked[k]=true; count++; }
+  });
+  MS_DATE_KEYS.forEach(function(k){
+    var v=dt[k];
+    if(v==null || !String(v).trim()) return;
+    var iso=msParseOldDate(v);
+    if(!iso){ skipped++; return; }
+    if(!out.dates[k]){ out.dates[k]=iso; count++; }
+  });
+  out.from="lo-trinh-em";
+  return {ms:out, count:count, skipped:skipped};
+}
+/* "Xoá tiến độ": bỏ ô tick + ngày, giữ cờ from để không chuyển lại từ bản cũ; không để trường undefined (db từ chối) */
+function msReset(ms){ return msNormalize({from: ms && ms.from}); }
+/* mốc hiện tại: mốc đầu tiên chưa có ngày đạt */
+function msCurrent(dates){
+  for(var i=0;i<MS_IDS.length;i++){ if(!(dates || {})[MS_IDS[i]]) return MS_IDS[i]; }
+  return null;
+}
+/* cột "Tuần trước" của bảng chỉ số: tuần trọn trước tuần của today; độ khớp nhóm 60–80 lấy T7 tháng trước */
+function msLastWeek(days,today){
+  var mon=tdAddDays(tdMonday(today),-7), end=tdAddDays(mon,6), ws=tdWeekStats(days,mon), graded=0;
+  tdDates(days).forEach(function(d){
+    if(d<mon || d>end) return;
+    var r=tdEntries(days,d).review;
+    if(!r || !tdIsObj(r.grades)) return;
+    Object.keys(r.grades).forEach(function(k){ if(r.grades[k]==="dung" || r.grades[k]==="sai") graded++; });
+  });
+  var row=tdT7Table(days, tdAddDays(today.slice(0,8)+"01",-1).slice(0,7))[2];
+  return {graded:graded, the4:ws.the4, nod2B:ws.nod2B, creativeAvg:ws.creativeAvg, fit: row.n ? {hit:row.hit, n:row.n} : null};
+}
+/* "Bất cứ lúc nào": % kiến tạo dưới 10% trong cả 4 tuần trọn gần nhất, tuần nào cũng phải có dữ liệu Thẻ 6 */
+function msLowCreative(days,today){
+  var mon=tdMonday(today);
+  for(var i=1;i<=4;i++){
+    var w=tdWeekStats(days, tdAddDays(mon,-7*i));
+    if(w.creativeAvg==null || w.creativeAvg>=10) return false;
+  }
+  return true;
+}
+function msEvidence(ms,mid){
+  var ev=MS_BY_ID[mid].evidence, ch=(ms && ms.checked) || {};
+  return {done: ev.filter(function(e){ return ch[e.id]; }).length, total: ev.length};
+}
+/* roadmap-core:end */
+
 /* ---- index ---- */
 var NODES={}, NODE_LIST=[], GROUPS={}, STAGES={};
 DATA.forEach(function(st){
@@ -2370,11 +2760,13 @@ function buildTrack(){
         + '<span class="cnt" data-gcnt="'+g.id+'"></span></div>'
         + '<div class="nodes">'+nodes+'</div></div>';
     }).join("");
+    var ms=msOfStage(st.id);
     return '<section class="stage" data-stage="'+st.id+'">'
-      + '<div class="stage-head"><span class="st">'+esc(st.st)+'</span>'
+      + '<div class="stage-head"><span class="st">'+esc(st.st)+(ms ? ' · '+esc(ms.months) : '')+'</span>'
       + '<h2>'+esc(st.name)+'</h2><p>'+esc(st.sub)+'</p>'
       + '<div class="stage-bar"><div class="b"><i data-sfill="'+st.id+'"></i></div>'
       + '<span data-scnt="'+st.id+'"></span></div></div>'
+      + (ms ? msPanelHtml(ms) : '')
       + '<div class="groups">'+groups+'</div></section>';
   }).join("");
   document.getElementById("track").innerHTML = html;
@@ -2419,6 +2811,7 @@ function paint(){
   if(!document.getElementById("view-core").hidden) renderCore();
   if(!document.getElementById("view-reading").hidden) renderReading();
   if(!document.getElementById("view-pmp").hidden) renderPmp();
+  msSync();
 }
 
 /* ================= tab Cốt lõi ================= */
@@ -2747,9 +3140,10 @@ function renderDash(){
     + '<div class="meter"><i class="d" style="width:'+(readDone.length?Math.round(readAndMastered.length/readDone.length*100):0)+'%"></i></div>'
     + '<div class="vl">'+readAndMastered.length+"/"+readDone.length+'</div></div>';
 
+  msRenderDash();
   document.getElementById("stage-rows").innerHTML = DATA.map(function(st){
-    var t=tally(STAGES[st.id].ids);
-    return '<div class="row"><div class="nm">'+esc(st.name)+'<em>'+esc(st.st)+'</em></div>'
+    var t=tally(STAGES[st.id].ids), ms=msOfStage(st.id);
+    return '<div class="row"><div class="nm">'+esc(st.name)+'<em>'+esc(st.st)+(ms ? ' · '+msSummary(ms.id) : '')+'</em></div>'
       + bar(t) + '<div class="vl">'+t.done+"/"+t.counted+'</div></div>';
   }).join("");
 
@@ -2923,6 +3317,7 @@ function renderPmpAnalysis(){
 }
 
 function renderPmp(){
+  msRenderPmpFreeze();
   renderPmpAnalysis();
   var done = PMP_DAYS.filter(function(x){ return pmpDone(x.d); });
   var scored = PMP_DAYS.map(function(x){ return pmpScore(x.d); }).filter(function(v){ return v!==null; });
@@ -3309,12 +3704,15 @@ var TD_GRADE = [["dung","Đúng"],["sai","Sai"],["chua","Chưa tới hạn"]];
 function tdDmy(s){ return s.slice(8,10)+"/"+s.slice(5,7)+"/"+s.slice(0,4); }
 TD_RENDER.t1 = function(date){
   var rows=tdT1Rows(date), n=Math.max(1, rows.length);
-  var html='<p class="td-note">Ba quy tắc bắt buộc: mệnh đề phải kiểm chứng được · không dùng 50% · dòng “điều gì sẽ khiến tôi sai” là dòng quan trọng nhất. Tuần cực bận: 1 dự đoán thay vì 3.</p><div class="td-err" id="td-v-g"></div>';
+  var html='<p class="td-note">Ba quy tắc bắt buộc: mệnh đề phải kiểm chứng được · không dùng 50% · dòng “điều gì sẽ khiến tôi sai” là dòng quan trọng nhất. Tuần cực bận: 1 dự đoán thay vì 3.</p><div id="td-v-g"></div>';
   for(var i=0;i<n;i++){
     var p=rows[i] || {}, b="t1.predictions."+i;
     html += '<div class="td-item"><div class="td-item-h"><span>Dự đoán '+(i+1)+'</span>'
       + (n>1 ? '<button type="button" class="td-x" data-td-act="delpred:'+i+'">xoá</button>' : '')+'</div>'
       + '<label class="td-f"><span>Mệnh đề</span><input class="td-in" type="text" data-td-path="'+b+'.text" data-td-t="text" value="'+esc(p.text||"")+'" placeholder="'+esc(TD_T1_HINT[i]||"")+'"></label>'
+      + '<div class="seg">'+TD_ABOUT.map(function(o){
+          return '<button type="button" data-td-set="'+b+'.about" data-td-v="'+o[0]+'" class="'+(p.about===o[0] ? "on" : "")+'">'+o[1]+'</button>';
+        }).join("")+'</div>'
       + '<div class="td-add">'
       + '<label class="td-f"><span>Xác suất</span><span class="td-pct"><input class="td-in" type="number" min="1" max="99" inputmode="numeric" data-td-path="'+b+'.prob" data-td-t="num" value="'+esc(p.prob==null ? "" : p.prob)+'">%</span></label>'
       + '<label class="td-f"><span>Hạn chót</span><input class="td-in" type="date" data-td-path="'+b+'.due" data-td-t="text" value="'+esc(p.due||"")+'"></label></div>'
@@ -3367,10 +3765,18 @@ TD_RENDER.t7 = function(date){
   var days=tdDaysView(), m=tdT7MonthFor(date), t=tdT7Table(days,m), e=tdView(date).t7 || {};
   var week=tdWeekNo(date, tdStart());
   var head='<tr><th>Nhóm xác suất</th><th>Số dự đoán</th><th>Số đúng</th><th>Tỷ lệ thực</th><th>TB đã ghi</th><th>Lệch</th></tr>';
-  var body=t.map(function(r){
-    return '<tr><td>'+r.bucket+'%</td><td>'+r.n+'</td><td>'+r.hit+'</td><td>'+tdCell(r.rate,"%")+'</td><td>'+tdCell(r.avgProb,"%")+'</td><td>'
-      + (r.diff==null ? "—" : (r.diff>0 ? "+" : "")+r.diff)+'</td></tr>';
-  }).join("");
+  function rows(tt){
+    return tt.map(function(r){
+      return '<tr><td>'+r.bucket+'%</td><td>'+r.n+'</td><td>'+r.hit+'</td><td>'+tdCell(r.rate,"%")+'</td><td>'+tdCell(r.avgProb,"%")+'</td><td>'
+        + (r.diff==null ? "—" : (r.diff>0 ? "+" : "")+r.diff)+'</td></tr>';
+    }).join("");
+  }
+  var body=rows(t);
+  /* tách hai bảng khi đã có dự đoán gắn nhãn (kỹ năng lõi Calibration in the People Domain) */
+  var split = tdPredictions(days).some(function(p){ return p.about; })
+    ? TD_ABOUT.map(function(o){
+        return '<p class="td-note">'+o[1].toUpperCase()+'</p><div class="td-tbl"><table>'+head+rows(tdT7Table(days,m,o[0]))+'</table></div>';
+      }).join("") : "";
   var cmp="";
   if(week>=12){
     var months={};
@@ -3383,6 +3789,7 @@ TD_RENDER.t7 = function(date){
   }
   return '<p class="td-note">THÁNG '+m.slice(5,7)+'/'+m.slice(0,4)+' · Tổng số dự đoán đã tới hạn và đã chấm: '+t.reduce(function(s,r){ return s+r.n; },0)+'</p>'
     + '<div class="td-tbl"><table>'+head+body+'</table></div>'
+    + split
     + '<p class="td-note">ĐỌC KẾT QUẢ: Nhóm 70% mà đúng ~7/10 → hiệu chỉnh tốt · Nhóm 70% mà đúng 9/10 → quá dè dặt, nên mạnh dạn hơn · Nhóm 70% mà đúng 4/10 → quá tự tin, đây là hướng lệch phổ biến nhất</p>'
     + cmp
     + '<p class="td-note">MẪU LẶP LẠI TÔI THẤY</p>'
@@ -3424,14 +3831,19 @@ function tdRefreshT1(date){
     if(el) el.innerHTML=errs.filter(function(e){ return e.i===i; }).map(function(e){
       return '<p class="'+(e.level==="block" ? "td-err" : "td-warn")+'">'+esc(e.msg)+'</p>'; }).join("");
   }
-  if(g) g.innerHTML=errs.filter(function(e){ return e.i<0; }).map(function(e){ return esc(e.msg); }).join(" ");
+  if(g) g.innerHTML=errs.filter(function(e){ return e.i<0; }).map(function(e){
+    return '<p class="'+(e.level==="block" ? "td-err" : "td-warn")+'">'+esc(e.msg)+'</p>'; }).join("");
   if(save){ var blk=tdSaveBlocked(date); save.disabled=blk; save.title=blk ? "Sửa lỗi ở T1 trước khi lưu" : ""; }
 }
 function tdAfterRender(date,plan,days){
   var due=tdDueToday(days,date), dEl=document.getElementById("td-due");
-  dEl.innerHTML = due.length ? '<div class="td-card"><header><b>Đến hạn hôm nay</b></header>'
+  var cur=msCurrent(state.ms.dates), rem=tdReminders(date, cur, cur ? msEvidence(state.ms,cur) : null);
+  dEl.innerHTML = due.length || rem.length ? '<div class="td-card"><header><b>Đến hạn hôm nay</b></header>'
     + due.map(function(x){
         return '<button type="button" class="td-ri" data-td-act="goto:'+x.ref.date+':'+x.ref.card+'"><b>'+esc(TD_DUE_LABEL[x.kind])+'</b>'+esc(x.label)+'</button>';
+      }).join("")
+    + rem.map(function(x){
+        return '<button type="button" class="td-ri" data-td-act="moc:'+x.ref+'"><b>Mốc</b>'+esc(x.label)+'</button>';
       }).join("")+'</div>' : '';
   var sig=tdSignals(days,date);
   document.getElementById("td-signals").innerHTML=sig.map(function(s){ return '<p class="td-warn">'+esc(s.text)+'</p>'; }).join("");
@@ -3491,6 +3903,7 @@ function tdAfterRender(date,plan,days){
       return;
     }
     if(a[0]==="goto"){ tdOnAct(a, null, date); return; }   /* chỉ điều hướng, không tạo bản nháp */
+    if(a[0]==="moc"){ location.hash="#/moc/"+a[1]; return; }
     var w2=tdWork(date);
     if(a[0]==="add"){ (w2[a[1]]=w2[a[1]]||[]).push({}); }
     else if(a[0]==="addm"){ (w2.the2=w2.the2||[]).push({type:a[1], title:""}); }
@@ -3552,6 +3965,86 @@ function tdOnAct(a,w,date){
 tdCacheLoad();
 tdConnect(false);
 
+/* ================= mốc M0–M3 trên tab Roadmap ================= */
+function msOfStage(sid){ return MS_DATA.filter(function(m){ return m.stage===sid; })[0] || null; }
+function msSummary(mid){
+  var ev=msEvidence(state.ms, mid), d=state.ms.dates[mid];
+  return 'bằng chứng '+ev.done+'/'+ev.total+(d ? ' · đạt '+tdDmy(d) : '');
+}
+function msPanelHtml(m){
+  function li(x){ return '<li>'+esc(x)+'</li>'; }
+  var d=state.ms.dates[m.id];
+  return '<details class="ms" data-ms="'+m.id+'"'+(msCurrent(state.ms.dates)===m.id ? ' open' : '')+'>'
+    + '<summary><b>Mốc '+m.id+' · '+esc(m.months)+' · '+esc(m.title)+'</b><span data-ms-sum="'+m.id+'">'+esc(msSummary(m.id))+'</span></summary>'
+    + '<div class="ms-body">'
+    + '<p class="ms-lead">'+esc(m.lead)+'</p><p class="ms-q">'+esc(m.question)+'</p>'
+    + '<h4>Đã tới khi</h4><ol>'+m.reached.map(li).join("")+'</ol>'
+    + '<div class="ms-split"><div><h4>Đo hằng tuần</h4><ul>'+m.weekly.map(li).join("")+'</ul></div>'
+    + '<div><h4>Đo hằng quý</h4><ul>'+m.quarterly.map(li).join("")+'</ul></div></div>'
+    + '<h4>Bằng chứng cần thu</h4><ul class="ms-ev">'
+    + m.evidence.map(function(e){
+        return '<li><label><input type="checkbox" data-ms-check="'+e.id+'"'+(state.ms.checked[e.id] ? ' checked' : '')+'>'
+          + '<span>'+esc(e.t)+'<em>'+esc(e.n)+'</em></span></label></li>';
+      }).join("")+'</ul>'
+    + '<h4>Bẫy của mốc này</h4>'+m.trap.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join("")
+    + '<h4>'+esc(m.gate.title)+'</h4><p>'+esc(m.gate.text)+'</p>'
+    + '<label class="ms-date">Đạt mốc ngày <input type="date" data-ms-date="'+m.id+'" value="'+esc(d||"")+'"></label>'
+    + '</div></details>';
+}
+/* state.ms đổi từ chỗ khác (nhập JSON, xoá, đồng bộ db) → cập nhật ô tick, ngày, dòng tóm tắt */
+function msSync(){
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ms-check]"), function(el){ el.checked=!!state.ms.checked[el.getAttribute("data-ms-check")]; });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ms-date]"), function(el){ el.value=state.ms.dates[el.getAttribute("data-ms-date")] || ""; });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ms-sum]"), function(el){ el.textContent=msSummary(el.getAttribute("data-ms-sum")); });
+}
+/* Dashboard: bảng chỉ số (cột "Tuần trước" tính từ tab Luyện tư duy) và tiêu chí dừng */
+function msRenderDash(){
+  var today=tdNow(), days=tdDaysView(), lw=msLastWeek(days,today);
+  function v(x,suffix){ return x==null ? "—" : esc(x)+(suffix||""); }
+  var live={
+    "Dự đoán đã chấm mỗi tuần": v(lw.graded),
+    "Tick “tôi làm vì nhanh hơn”": v(lw.the4),
+    "% thời gian kiến tạo": v(lw.creativeAvg,"%"),
+    "Tick “gật đầu deadline phi lý”": v(lw.nod2B),
+    "Độ khớp hiệu chỉnh nhóm 70%": lw.fit ? lw.fit.hit+"/"+lw.fit.n : "—"
+  };
+  document.getElementById("ms-metrics-note").textContent=MS_METRICS_NOTE;
+  document.getElementById("ms-metrics").innerHTML='<table><tr><th>Chỉ số</th><th>Loại</th><th>Nguồn dữ liệu</th><th>Mốc</th><th>Ngưỡng</th><th>Tuần trước</th></tr>'
+    + MS_METRICS.map(function(r){
+        return '<tr>'+r.map(function(c){ return '<td>'+esc(c)+'</td>'; }).join("")+'<td>'+(live[r[0]] || "—")+'</td></tr>';
+      }).join("")+'</table>';
+  document.getElementById("ms-stop-note").textContent=MS_STOP_NOTE;
+  document.getElementById("ms-stop").innerHTML=MS_STOP.map(function(b){
+      return '<div class="ms-stopb"><b>'+esc(b.title)+'</b><p>'+esc(b.text)+'</p>'+(b.action ? '<p><b>Hành động:</b> '+esc(b.action)+'</p>' : '')+'</div>';
+    }).join("")
+    + (msLowCreative(days,today) ? '<p class="td-warn">'+esc(MS_LOW_CREATIVE)+'</p>' : '');
+}
+/* tab PMP: "Sổ PMP viết lại" của lo-trinh-em — giữ phần dùng thật, lộ trình 30 ngày đóng băng */
+function msRenderPmpFreeze(){
+  var p=MS_PMP;
+  document.getElementById("pm-freeze").innerHTML='<header><h2>Trạng thái: đóng băng</h2><p>'+esc(p.intro)+'</p></header>'
+    + '<div class="pm-kd"><div><h3>Giữ — dùng thật</h3><ul>'
+    + p.keep.map(function(k){ return '<li>'+esc(k[0])+(k[1] ? ' <span class="tag">'+esc(k[1])+'</span>' : '')+'</li>'; }).join("")
+    + '</ul></div><div><h3>Bỏ — không dùng tới</h3><ul>'
+    + p.drop.map(function(x){ return '<li>'+esc(x[0])+'<em>'+esc(x[1])+'</em></li>'; }).join("")
+    + '</ul></div></div>'
+    + '<div class="ms-stopb"><b>'+esc(p.back.title)+'</b><p>'+esc(p.back.text)+'</p>'
+    + '<label class="ms-date">Ghi lại quyết định hoãn, ngày <input type="date" data-ms-date="PMP" value="'+esc(state.ms.dates.PMP||"")+'"></label></div>';
+}
+function msOpen(mid){
+  var el=document.querySelector('details.ms[data-ms="'+mid+'"]');
+  if(!el) return;
+  el.open=true; el.scrollIntoView({block:"start"});
+}
+document.addEventListener("change", function(e){
+  var t=e.target, c=t.getAttribute && t.getAttribute("data-ms-check"), d=t.getAttribute && t.getAttribute("data-ms-date");
+  if(!c && !d) return;
+  if(c){ if(t.checked) state.ms.checked[c]=true; else delete state.ms.checked[c]; }
+  if(d){ if(TD_DATE_RE.test(t.value)) state.ms.dates[d]=t.value; else delete state.ms.dates[d]; }
+  save(); msSync();
+  if(!document.getElementById("view-dash").hidden) renderDash();
+});
+
 /* ================= routing ================= */
 var baseView="#/";
 function route(){
@@ -3594,18 +4087,30 @@ function route(){
     document.getElementById("scrim").classList.remove("on");
   }
   if(!dash && h==="#/") window.scrollTo({top:window.scrollY});
+  var moc=/^#\/moc\/(M[0-3])$/.exec(back);
+  if(moc) msOpen(moc[1]);
 }
 
 /* ================= persistence ================= */
 function readLocal(){ try{var r=localStorage.getItem(LS); if(r) return JSON.parse(r);}catch(e){} return null; }
 function writeLocal(){ try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){} }
+/* chuyển một lần các ô bằng chứng + ngày đạt mốc từ lo-trinh-em.html (cùng localStorage khi mở bằng file://) */
+function msAutoMigrate(){
+  if(state.ms.from) return 0;
+  var old=null;
+  try{ old=JSON.parse(localStorage.getItem("career-path-em-v1")||"null"); }catch(e){}
+  var r=msMigrate(old, state.ms);
+  state.ms=r.ms; writeLocal();
+  if(r.count) status("đã chuyển "+r.count+" mục từ lo-trinh-em");
+  return r.count;
+}
 function status(m){ var el=document.getElementById("save"); el.textContent=m;
   if(m) setTimeout(function(){ if(el.textContent===m) el.textContent=""; },1700); }
 function save(){
   writeLocal(); clearTimeout(timer);
   timer=setTimeout(function(){
     if(!db){ status("đã lưu trên máy này"); return; }
-    db.doc(DOC).set({s:state.s, ev:state.ev||{}, rd:state.rd||{}, days:state.days||{}, pmp:state.pmp||{}, pmpSc:state.pmpSc||{}, pmpM:(state.pmpM==null?null:state.pmpM)}).then(function(){ status("đã lưu"); })
+    db.doc(DOC).set({s:state.s, ev:state.ev||{}, rd:state.rd||{}, days:state.days||{}, pmp:state.pmp||{}, pmpSc:state.pmpSc||{}, pmpM:(state.pmpM==null?null:state.pmpM), ms:state.ms}).then(function(){ status("đã lưu"); })
       .catch(function(){ status("chỉ lưu được trên máy này"); });
   },400);
 }
@@ -3705,7 +4210,8 @@ function buildExport(){
       readingTotal: rt.total,
       attentionDays: days,
       pmpDaysDone: Object.keys(state.pmp||{}).length,
-      pmpMonthsLeading: (typeof state.pmpM==="number" ? state.pmpM : null)
+      pmpMonthsLeading: (typeof state.pmpM==="number" ? state.pmpM : null),
+      milestonesReached: MS_IDS.filter(function(k){ return state.ms.dates[k]; }).length
     },
     status: state.s || {},
     evidence: state.ev || {},
@@ -3713,7 +4219,8 @@ function buildExport(){
     attentionDays: state.days || {},
     pmpDays: state.pmp || {},
     pmpScores: state.pmpSc || {},
-    pmpMonthsLeading: (typeof state.pmpM==="number" ? state.pmpM : null)
+    pmpMonthsLeading: (typeof state.pmpM==="number" ? state.pmpM : null),
+    milestones: state.ms
   };
 }
 function ioState(msg, cls){
@@ -3801,7 +4308,7 @@ function applyImport(txt){
     if(n>=1 && n<=30 && v>=0 && v<=10) ps2[n]=v; else drop++;
   });
   var pmM = (typeof d.pmpMonthsLeading === "number") ? d.pmpMonthsLeading : null;
-  state = {s:s2, ev:e2, rd:r2, days:y2, pmp:pm2, pmpSc:ps2, pmpM:pmM};
+  state = {s:s2, ev:e2, rd:r2, days:y2, pmp:pm2, pmpSc:ps2, pmpM:pmM, ms:msNormalize(d.milestones)};
   paint(); save();
   if(!document.getElementById("view-reading").hidden) renderReading();
   if(!document.getElementById("view-pmp").hidden) renderPmp();
@@ -3836,12 +4343,13 @@ document.getElementById("io-file").addEventListener("change", function(){
 });
 
 document.getElementById("reset").addEventListener("click",function(){
-  state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null}; paint(); save(); status("đã xoá"); if(location.hash.indexOf("#/n/")===0) openNode(location.hash.slice(4));
+  state={s:{},ev:{},rd:{},days:{},pmp:{},pmpSc:{},pmpM:null,ms:msReset(state.ms)}; paint(); save(); status("đã xoá"); if(location.hash.indexOf("#/n/")===0) openNode(location.hash.slice(4));
 });
 window.addEventListener("hashchange",route);
 
 var local=readLocal();
-if(local && local.s) state={s:local.s, ev:(local.ev&&typeof local.ev==="object")?local.ev:{}, rd:(local.rd&&typeof local.rd==="object")?local.rd:{}, days:(local.days&&typeof local.days==="object")?local.days:{}, pmp:(local.pmp&&typeof local.pmp==="object")?local.pmp:{}, pmpSc:(local.pmpSc&&typeof local.pmpSc==="object")?local.pmpSc:{}, pmpM:(typeof local.pmpM==="number"?local.pmpM:null)};
+if(local && local.s) state={s:local.s, ev:(local.ev&&typeof local.ev==="object")?local.ev:{}, rd:(local.rd&&typeof local.rd==="object")?local.rd:{}, days:(local.days&&typeof local.days==="object")?local.days:{}, pmp:(local.pmp&&typeof local.pmp==="object")?local.pmp:{}, pmpSc:(local.pmpSc&&typeof local.pmpSc==="object")?local.pmpSc:{}, pmpM:(typeof local.pmpM==="number"?local.pmpM:null), ms:msNormalize(local.ms)};
+msAutoMigrate();
 buildTrack(); paint(); route();
 
 if(window.claude && typeof window.claude.use==="function"){
@@ -3851,7 +4359,7 @@ if(window.claude && typeof window.claude.use==="function"){
       if(!snap.exists) return;
       if(snap.metadata && snap.metadata.hasPendingWrites) return;
       var d=snap.data()||{};
-      state={s: d.s && typeof d.s==="object" ? d.s : {}, ev: d.ev && typeof d.ev==="object" ? d.ev : {}, rd: d.rd && typeof d.rd==="object" ? d.rd : {}, days: d.days && typeof d.days==="object" ? d.days : {}, pmp: d.pmp && typeof d.pmp==="object" ? d.pmp : {}, pmpSc: d.pmpSc && typeof d.pmpSc==="object" ? d.pmpSc : {}, pmpM: (typeof d.pmpM==="number" ? d.pmpM : null)};
+      state={s: d.s && typeof d.s==="object" ? d.s : {}, ev: d.ev && typeof d.ev==="object" ? d.ev : {}, rd: d.rd && typeof d.rd==="object" ? d.rd : {}, days: d.days && typeof d.days==="object" ? d.days : {}, pmp: d.pmp && typeof d.pmp==="object" ? d.pmp : {}, pmpSc: d.pmpSc && typeof d.pmpSc==="object" ? d.pmpSc : {}, pmpM: (typeof d.pmpM==="number" ? d.pmpM : null), ms: msNormalize(d.ms)};
       writeLocal(); paint();
       if(location.hash.indexOf("#/n/")===0) openNode(location.hash.slice(4));
     },function(){ db=null; });
