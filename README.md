@@ -1,6 +1,6 @@
 # Engineering Manager Roadmap
 
-Một trang HTML tự chứa để theo dõi lộ trình từ senior developer / tech lead lên engineering manager: **89 kỹ năng, 20 nhóm, 4 giai đoạn**, kèm dashboard đo độ phủ và cơ chế xác minh bằng chứng.
+Một trang HTML tự chứa để theo dõi lộ trình từ senior developer / tech lead lên engineering manager: **98 kỹ năng, 21 nhóm, 4 giai đoạn**, kèm dashboard đo độ phủ và cơ chế xác minh bằng chứng.
 
 Không có build step, không có dependency. Mở `roadmap-em.html` bằng trình duyệt là chạy.
 
@@ -10,7 +10,7 @@ Không có build step, không có dependency. Mở `roadmap-em.html` bằng trì
 
 | Tab | Làm gì |
 |---|---|
-| **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 89" khi cần bản đồ đầy đủ. |
+| **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 98" khi cần bản đồ đầy đủ. |
 | **Cốt lõi** | 19 kỹ năng lõi kèm lý do vì sao là lõi, cộng phần kiểm kê tài liệu học và bảng 70 template PMBOK phân loại dùng / để dành / bỏ. |
 | **Đọc sách** | 16 mục đọc từ 5 cuốn, 2 phase, cộng 60 ngày attention training. Mỗi mục nối thẳng vào các kỹ năng nó phục vụ. |
 | **PMP** | Phân tích chứng chỉ PMP: ba domain của ECO với trọng số, mindset được kiểm tra (thang bậc hành động, chuỗi ưu tiên, 12 đáp án gần như luôn sai), và thu hoạch thật khi học xong. Kèm lộ trình 30 ngày có tự chấm 0–10 và theo dõi điều kiện dự thi. |
@@ -42,9 +42,9 @@ Prompt chấm được viết nghiêng về nghiêm khắc: khẳng định chun
 
 Mỗi kỹ năng thuộc một trục. Đây là chỉ số quan trọng nhất trên dashboard:
 
-- **Leverage** (18) — tạo kết quả qua hệ thống và qua người khác
-- **People** (38) — giao tiếp, feedback, dẫn dắt, xung đột
-- **Systems & Business** (33) — quyết định, số liệu, chiến lược, kinh doanh
+- **Leverage** (21) — tạo kết quả qua hệ thống và qua người khác
+- **People** (39) — giao tiếp, feedback, dẫn dắt, xung đột
+- **Systems & Business** (38) — quyết định, số liệu, chiến lược, kinh doanh
 
 Developer đi lên quản lý gần như luôn đầy ở Leverage và Systems, rỗng ở People — và People mới là trục quyết định. Dashboard sẽ nói thẳng điều đó khi có đủ dữ liệu.
 

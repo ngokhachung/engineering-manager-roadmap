@@ -19,6 +19,9 @@
 !lich-doc-sach.html
 !tien-do.json
 
+# Đối chiếu với JD thực tế
+!em-skills-tong-hop.md
+
 # Hệ thống luyện tư duy (bản công bố)
 !tu-duy-leader/
 !tu-duy-leader/*.md
