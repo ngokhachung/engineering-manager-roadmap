@@ -391,4 +391,14 @@ test("F5: nhãn 'thường làm sáng thứ Hai' khi rà soát/T1 dời sang ng�
   assert.equal(td.tdCarried("2026-10-26"), false);
 });
 
+/* ---------------- link tới tu-duy-leader/ ---------------- */
+test("không còn tham chiếu tới thư mục cũ 'tư duy leader/'", () => {
+  assert.equal(html.includes("tư duy leader"), false);
+});
+test("mọi link file trỏ vào tu-duy-leader/ đều tồn tại", () => {
+  const paths = [...new Set([...html.matchAll(/p:"(tu-duy-leader\/[^"]+)"/g)].map(m => m[1]))];
+  assert.ok(paths.length >= 4, "quá ít link: " + paths.length);
+  for (const p of paths) assert.ok(fs.existsSync(root(p)), "không có file: " + p);
+});
+
 module.exports = { root, load, inlineScript, day, P };
