@@ -50,7 +50,7 @@ Không lặp lại cách điền (xem `03_template.md` và `04_the-ghi-nho.md`) 
 
 ---
 
-## Phần 2 — 7 thẻ (Thẻ 1–7)
+## Phần 2 — 10 thẻ (Thẻ 1–10)
 
 ### Thẻ 1 — Đầu ngày
 - **Mục đích:** đặt câu hỏi ưu tiên (quan trọng-không-ai-yêu-cầu, đảo ngược được không, làm hay giao) trước khi ngày bị cuốn vào phản ứng.
@@ -81,6 +81,20 @@ Không lặp lại cách điền (xem `03_template.md` và `04_the-ghi-nho.md`) 
 - **Mục đích:** gộp việc chấm dự đoán, review việc ôm/né, và khởi tạo dự đoán tuần mới — cầu nối giữa các thẻ hàng ngày và T1/T5.
 - **Nhắm vào:** đảm bảo nhịp tuần không đứt gãy dù các thẻ hàng ngày có bị bỏ vài hôm.
 
+Ba thẻ sau dành cho giai đoạn đã dẫn dắt người. Chúng dùng theo sự việc, không theo lịch.
+
+### Thẻ 8 — Trước cuộc nói chuyện khó
+- **Mục đích:** ba phút chuẩn bị: tách sự kiện quan sát được khỏi câu chuyện mình tự kể về động cơ người kia, xác định mình thật sự muốn gì, và viết sẵn câu mở đầu. Sau buổi nói, kiểm xem có dừng nội dung lại để khôi phục an toàn khi người kia im lặng hoặc gay gắt không.
+- **Nhắm vào:** né cuộc nói chuyện khó, hoặc mở lời bằng một kết luận về con người thay vì một sự kiện.
+
+### Thẻ 9 — Khi giao việc
+- **Mục đích:** nói rõ cấp uỷ quyền (1–7), vì sao việc quan trọng, ràng buộc và thế nào là xong; hẹn kiểm tra theo cột mốc; và tự hỏi việc này đã căng hơn sức người nhận một chút chưa.
+- **Nhắm vào:** hiểu lầm kiểu "tôi tưởng anh sẽ hỏi tôi trước", theo dõi theo cảm hứng, và thói quen chỉ giao việc người kia đã làm được rồi.
+
+### Thẻ 10 — Ghi phản hồi SBI
+- **Mục đích:** ghi phản hồi ngay lúc thấy theo tình huống – hành vi – tác động, kèm hạn nói trong 48 giờ.
+- **Nhắm vào:** phản hồi về tính cách thay vì hành vi quan sát được, và thói quen gom nhận xét để dành tới kỳ review.
+
 ---
 
 ## Phần 3 — Tra ngược: muốn luyện thêm về X thì làm hoạt động nào
@@ -97,4 +111,7 @@ Không lặp lại cách điền (xem `03_template.md` và `04_the-ghi-nho.md`) 
 | Trao quyền, bớt ôm việc (delegation) | Thẻ 4 | Thẻ 2D, Thẻ 1 |
 | Nhận biết phản ứng vs kiến tạo (reactive vs. proactive) | T8 | Thẻ 6, T5 |
 | Lắng nghe / không nhảy vào giải hộ (active listening) | Thẻ 2C | — |
-| Feedback thẳng thắn định kỳ (direct feedback) | Thẻ 2D | — |
+| Feedback thẳng thắn định kỳ (direct feedback) | Thẻ 2D | Thẻ 10 |
+| Phản hồi theo hành vi, trong 48 giờ (SBI) | Thẻ 10 | Thẻ 2D |
+| Nói chuyện khó mà người kia không đóng cửa (crucial conversations) | Thẻ 8 | Thẻ 2D |
+| Giao việc rõ cấp uỷ quyền (delegation levels) | Thẻ 9 | Thẻ 4 |

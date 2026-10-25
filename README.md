@@ -6,6 +6,19 @@ Một trang HTML tự chứa để theo dõi lộ trình từ senior developer /
 
 Không có build step, không có dependency. Mở `roadmap-em.html` bằng trình duyệt là chạy.
 
+## Trong repo này
+
+| File | Là gì |
+|---|---|
+| `roadmap-em.html` | Toàn bộ công cụ: dữ liệu 98 kỹ năng, bảy tab, lưu tiến độ. Mở bằng trình duyệt |
+| `em-skills-tong-hop.md` | Đối chiếu kỹ năng EM từ bốn JD thực tế ở TP.HCM (đã ẩn tên công ty) với roadmap: kỹ năng nào JD đòi, roadmap đã phủ tới đâu |
+| `tu-duy-leader/` | Hệ thống luyện tư duy: hướng dẫn, mục đích, 8 template, 10 thẻ. Xem `tu-duy-leader/README.md` |
+| `tests/tu-duy.test.js` | Test logic tab Luyện tư duy và lộ trình theo mốc |
+| `tests/linkedin.test.js` | Test logic tab LinkedIn, cùng nhóm test "public:" giữ cho repo không lộ thông tin riêng |
+| `.gitignore` | Kiểu allowlist: chỉ những file trên được lên repo |
+
+Chạy test: `node --test "tests/*.test.js"` (Node 18 trở lên, không cần cài gì).
+
 ---
 
 ## Bảy tab
@@ -14,7 +27,7 @@ Không có build step, không có dependency. Mở `roadmap-em.html` bằng trì
 |---|---|
 | **Roadmap** | Cây kỹ năng dạng spine. Mỗi ô mở ra trang chi tiết. Mặc định chỉ hiện 19 kỹ năng lõi; bật "Tất cả 98" khi cần bản đồ đầy đủ. Mỗi giai đoạn có khối **Mốc M0–M3** (tháng 0–3, 3–9, 9–18, 18–30): dấu hiệu đã tới, chỉ số đo hằng tuần/quý, bằng chứng cần thu có ô tick, bẫy của mốc, cửa sang mốc sau, ngày đạt mốc. |
 | **Cốt lõi** | 19 kỹ năng lõi kèm lý do vì sao là lõi, cộng bảng 70 template PMBOK phân loại dùng / để dành / bỏ. |
-| **Đọc sách** | 16 mục đọc từ 5 cuốn, 2 phase, cộng 60 ngày attention training. Mỗi mục nối thẳng vào các kỹ năng nó phục vụ. |
+| **Đọc sách** | 16 mục đọc từ 5 cuốn, 2 phase, cộng 60 ngày luyện tịnh tâm. Mỗi mục nối thẳng vào các kỹ năng nó phục vụ. |
 | **Luyện tư duy** | Làm các bài trong `tu-duy-leader/` ngay trên trang. Mỗi ngày chỉ hiện những thẻ đến lượt theo lộ trình 12 tuần, chia buổi sáng và buổi tối. Trang tự gom dự đoán để chấm, tính bảng hiệu chỉnh T7, và báo các tín hiệu lặp lại mà thẻ đã định ngưỡng. Bấm Lưu thì ghi ra `nhat-ky/YYYY-MM-DD.json`. |
 | **LinkedIn** | Học công khai: mỗi tuần một bài LinkedIn về kỹ năng đang học, viết để củng cố kiến thức. Bài tuần này kèm cách viết, góc viết và trạng thái bằng chứng; lịch 12 tuần đầu (bài ra mắt, 10 kỹ năng lõi, một bài trụ cột tiếng Anh), sau đó gợi ý theo kỹ năng đang học; bảng 98 kỹ năng với năm cách viết; khối "Bắt đầu chuẩn bị" cho những bài cần luyện trước nhiều tuần. Trang kỹ năng nào cũng có mục "Bài LinkedIn" để ghi trạng thái, link và chép khung bài — trang không viết bài hộ, không lưu nội dung nháp. |
 | **PMP** | Phân tích chứng chỉ PMP: ba domain của ECO với trọng số, mindset được kiểm tra (thang bậc hành động, chuỗi ưu tiên, 12 đáp án gần như luôn sai), và thu hoạch thật khi học xong. Trạng thái **đóng băng**: không còn trên đường chính, chỉ giữ phần dùng thật (sổ rủi ro, bảng bên liên quan, quản trị thay đổi), kèm điều kiện quay lại thi. Lộ trình 30 ngày có tự chấm 0–10 vẫn dùng được, nằm trong khối gập. |
@@ -24,13 +37,16 @@ Không có build step, không có dependency. Mở `roadmap-em.html` bằng trì
 
 Tên tiếng Anh chuẩn ngành, tiếng Việt làm chú thích. Trang chi tiết gồm:
 
+- **Vì sao đây là kỹ năng lõi** — chỉ có ở 19 kỹ năng lõi
 - **Là gì** — một câu định nghĩa
 - **Dấu hiệu chưa có kỹ năng này** — quan sát được, không phải cảm giác
 - **Luyện thế nào** — 2–3 bước cụ thể
 - **Bài tập đầu tiên** — một lần tập làm được ngay trong tuần
 - **Coi là thành thạo khi** — một dấu hiệu duy nhất, kiểm chứng được
 - **Tài liệu** — file, sách, template, link ngoài
+- **Đọc gì cho kỹ năng này** và **Ngày PMP liên quan** — khi kỹ năng có trong lịch đọc sách hoặc lộ trình PMP
 - **Bằng chứng của tôi** — ô nhập tình huống thật để được chấm
+- **Bài LinkedIn** — cách viết, góc viết, các bài đã viết và khung bài để tự viết
 
 Bốn trạng thái: chưa học → đang học → thành thạo → bỏ qua. Bấm chấm tròn bên trái ô để đổi ngay tại chỗ.
 
@@ -84,7 +100,7 @@ Hệ thống luyện tư duy chạy song song với roadmap: 8 template (T1–T8
 
 Roadmap trỏ vào các mã T1–T8 và Thẻ 1–10 ở phần "Luyện thế nào" của từng kỹ năng, nên hai phần này dùng chung.
 
-Bắt đầu ở `00_huong-dan-luyen-tap-tu-duy.md`. Nếu chỉ làm được một thứ, làm T1.
+Bắt đầu ở `tu-duy-leader/00_huong-dan-luyen-tap-tu-duy.md`. Nếu chỉ làm được một thứ, làm T1.
 
 ### `nhat-ky/`
 
@@ -94,7 +110,7 @@ Thư mục này **không lên git**: `.gitignore` kiểu allowlist chặn sẵn,
 
 ## Lộ trình theo mốc
 
-`lo-trinh-em.html` (lộ trình 30 tháng, 4 mốc) đã gộp vào `roadmap-em.html`: khối Mốc ở từng giai đoạn trên tab Roadmap, bảng chỉ số và tiêu chí dừng trên Dashboard, "Sổ PMP viết lại" trên tab PMP. Ô tick và ngày đạt mốc của bản cũ tự chuyển sang khi mở roadmap từ ổ đĩa lần đầu.
+Lộ trình 30 tháng chia bốn mốc M0–M3, định nghĩa bằng dấu hiệu quan sát được chứ không bằng chức danh. Mỗi mốc là một khối ở đầu giai đoạn tương ứng trên tab Roadmap. Bảng chỉ số và tiêu chí dừng nằm trên Dashboard; phần PMP còn dùng thật ("Sổ PMP viết lại") nằm trên tab PMP.
 
 ## Không có trong repo này
 

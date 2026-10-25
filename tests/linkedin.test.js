@@ -290,3 +290,27 @@ test("public: .gitignore không mở cho tài liệu làm việc nội bộ và 
   assert.ok(!/^!tien-do\.json/m.test(g), "tien-do.json");
   assert.ok(/^!em-skills-tong-hop\.md/m.test(g) && /^!roadmap-em\.html/m.test(g) && /^!tests\/\*\.js/m.test(g));
 });
+test("public: tên file tu-duy-leader nhắc trong tài liệu đều có thật", () => {
+  const have = new Set(fs.readdirSync(root("tu-duy-leader")));
+  const docs = ["README.md", ...[...have].filter(f => f.endsWith(".md")).map(f => "tu-duy-leader/" + f)];
+  for (const f of docs)
+    for (const m of fs.readFileSync(root(f), "utf8").matchAll(/`(?:tu-duy-leader\/)?(\d\d_[^`\/]+\.md)`/g))
+      assert.ok(have.has(m[1]), f + " → " + m[1]);
+});
+test("public: tài liệu khớp số thẻ thật — 10 thẻ, mục đích có đủ Thẻ 8–10", () => {
+  const read = f => fs.readFileSync(root(f), "utf8");
+  assert.equal((read("tu-duy-leader/04_the-ghi-nho.md").match(/^## THẺ \d+ /gm) || []).length, 10);
+  for (const f of ["tu-duy-leader/00_huong-dan-luyen-tap-tu-duy.md", "tu-duy-leader/01_muc-dich.md"])
+    assert.ok(!/\b7 thẻ\b|Thẻ 1–7\)/.test(read(f)), f);
+  for (const n of [8, 9, 10]) assert.ok(read("tu-duy-leader/01_muc-dich.md").includes("### Thẻ " + n + " "), "01_muc-dich.md thiếu Thẻ " + n);
+  assert.ok(!html.includes("bảy thẻ"));
+});
+test("public: README liệt kê đủ file trong repo, không trỏ tới file không có", () => {
+  const r = fs.readFileSync(root("README.md"), "utf8"), t = fs.readFileSync(root("tu-duy-leader/README.md"), "utf8");
+  for (const f of ["roadmap-em.html", "em-skills-tong-hop.md", "tu-duy-leader/", "tests/linkedin.test.js", "tests/tu-duy.test.js", ".gitignore"]) assert.ok(r.includes(f), f);
+  for (const s of ["Vì sao đây là kỹ năng lõi", "Đọc gì cho kỹ năng này", "Bài LinkedIn", "luyện tịnh tâm"]) assert.ok(r.includes(s), s);
+  assert.ok(!r.includes("lo-trinh-em.html"));
+  assert.ok(!html.includes("docs/superpowers"));
+  assert.ok(t.includes("nhat-ky/YYYY-MM-DD.json"));
+  for (const f of ["00_huong-dan-luyen-tap-tu-duy.md", "01_muc-dich.md", "03_template.md", "04_the-ghi-nho.md"]) assert.ok(t.includes(f), "tu-duy-leader/README.md " + f);
+});

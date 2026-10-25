@@ -1,15 +1,15 @@
 # Hướng dẫn — Lịch luyện tập tư duy
 
-Tài liệu này giải thích **cách vận hành**. Hai file kia là công cụ:
+Tài liệu này giải thích **cách vận hành**. Hai file công cụ là `04_the-ghi-nho.md` và `03_template.md`:
 
 | File | Là gì | Dùng khi nào |
 |---|---|---|
-| `04_the-ghi-nho.md` | 7 thẻ ngắn, mỗi thẻ dưới 1 phút | Hàng ngày, sau mỗi cuộc họp |
+| `04_the-ghi-nho.md` | 10 thẻ ngắn, mỗi thẻ vài phút trở xuống (Thẻ 8–10 dành cho giai đoạn đã dẫn dắt người) | Hàng ngày, sau mỗi cuộc họp, hoặc khi gặp đúng tình huống |
 | `03_template.md` | 8 template điền (T1–T8) | Theo lịch tuần / tháng / quý |
 | **File này** (`00_huong-dan-luyen-tap-tu-duy.md`) | Hướng dẫn vận hành | Đọc một lần khi bắt đầu, đọc lại khi thấy trôi |
-| `01_mục-đích.md` | Vì sao từng hoạt động tồn tại, nhắm vào điểm yếu nào | Khi mất động lực hoặc không hiểu vì sao phải làm |
-| `README.md` | Hướng dẫn dùng folder `nhat-ky/` để log và phân tích tiến bộ | Trước khi bắt đầu ghi log hàng ngày |
-| `nhat-ky/` | Folder log hàng ngày (dữ liệu thô, tự tạo file theo ngày) | Điền mỗi ngày, dùng để phân tích tiến bộ sau này |
+| `01_muc-dich.md` | Vì sao từng hoạt động tồn tại, nhắm vào điểm yếu nào | Khi mất động lực hoặc không hiểu vì sao phải làm |
+| `README.md` | Giới thiệu thư mục, cách ghi nhật ký và phân tích tiến bộ | Trước khi bắt đầu ghi log hàng ngày |
+| `nhat-ky/` | Nhật ký hàng ngày trên máy của anh — không có trong repo. Tab Luyện tư duy của `roadmap-em.html` ghi mỗi ngày một file `.json` | Điền mỗi ngày, dùng để phân tích tiến bộ sau này |
 
 ---
 
