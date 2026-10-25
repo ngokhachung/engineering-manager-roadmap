@@ -1,0 +1,30 @@
+# Allowlist: chặn tất cả, chỉ mở cho những file được liệt kê bên dưới.
+#
+# Repo này public. Thư mục làm việc còn chứa sách, tài liệu khoá học có bản
+# quyền và ghi chép cá nhân — chúng không được phát hành lại. Với allowlist,
+# một dòng `git add -A` vô ý cũng không kéo chúng lên được.
+#
+# Cố ý KHÔNG mở (chỉ nằm trên máy):
+#   tien-do.json    — chứa nguyên văn các ô "Bằng chứng của tôi"
+#   docs/           — spec và plan làm việc nội bộ
+#   nhat-ky/, rieng/ — nhật ký luyện tư duy, ghi chép riêng
+
+*
+
+!.gitignore
+!README.md
+!LICENSE
+
+# Công cụ
+!roadmap-em.html
+
+# Đối chiếu với JD thực tế (đã ẩn danh)
+!em-skills-tong-hop.md
+
+# Hệ thống luyện tư duy (bản công bố)
+!tu-duy-leader/
+!tu-duy-leader/*.md
+
+# Test (node --test "tests/*.test.js")
+!tests/
+!tests/*.js
